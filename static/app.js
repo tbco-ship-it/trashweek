@@ -26,6 +26,7 @@
   const on = (days, d) => (days || []).includes(DAYS[d.getDay()]);
   function occurrences(sched, from, n) {
     const out = [];
+    if (sched.__events) { const end = addDays(from, n); return sched.__events.filter(o => o.d >= from && o.d < end).map(o => ({ k: o.k, d: o.d, shifted: 0, base: o.d })); }
     for (let i = 0; i < n; i++) {
       const d = addDays(from, i);
       for (const k of KINDS) if (sched[k] && on(sched[k], d)) { const s = holidayShift(d); out.push({ k, d: addDays(d, s), shifted: s, base: d }); }
@@ -35,6 +36,7 @@
   function render(sched, name, root, link) {
     const occ = occurrences(sched, now, 14).sort((a, b) => a.d - b.d);
     const next = k => occ.find(o => o.k === k);
+    const KINDS_SHOWN = KINDS.filter(k => sched[k] && (sched[k].length || (sched.__events || []).some(o => o.k === k)));
     const today = occ.filter(o => iso(o.d) === iso(now)), tomorrow = occ.filter(o => iso(o.d) === iso(addDays(now, 1)));
     const lbl = o => LABEL[o.k];
     let head, cls = 'balanced';
@@ -42,7 +44,7 @@
     else if (today.length) head = 'Today: ' + [...new Set(today.map(lbl))].join(' + ');
     else { const nx = occ[0]; head = nx ? `Next: ${lbl(nx)} ${rel(nx.d)}` : 'No pickup scheduled'; cls = 'quiet'; }
     const sub = today.length ? `Today (${md(now)}): ${[...new Set(today.map(lbl))].join(' + ')} — have it out by 6–7 am.` : `Today (${md(now)}): no pickup.`;
-    const upcoming = KINDS.filter(k => sched[k] && sched[k].length).map(k => { const o = next(k); return `<div class="item"><span class="dot" style="background:${COLOR[k]}"></span><span class="txt"><b>${LABEL[k]}</b><span class="tsub">${(sched[k] || []).map(x => LONG[x]).join(' & ')}${k === 'recycling' && sched.recycling_week ? ` · week ${sched.recycling_week}` : ''}</span>${o && o.shifted ? '<span class="tsub">holiday week: one day late</span>' : ''}</span><span class="when">${o ? rel(o.d) : '—'}</span></div>`; }).join('');
+    const upcoming = KINDS_SHOWN.map(k => { const o = next(k); return `<div class="item"><span class="dot" style="background:${COLOR[k]}"></span><span class="txt"><b>${LABEL[k]}</b><span class="tsub">${(sched[k] || []).map(x => LONG[x]).join(' & ')}${k === 'recycling' && sched.recycling_week ? ` · week ${sched.recycling_week}` : ''}</span>${o && o.shifted ? '<span class="tsub">holiday week: one day late</span>' : ''}</span><span class="when">${o ? rel(o.d) : '—'}</span></div>`; }).join('');
     const week = Array.from({ length: 7 }, (_, i) => { const d = addDays(now, i); const ks = [...new Set(occ.filter(o => iso(o.d) === iso(d)).map(o => o.k))]; return `<div class="day${i === 0 ? ' today' : ''}"><span class="dow">${i === 0 ? 'Today' : DAYS[d.getDay()]}</span><span class="dnum">${d.getDate()}</span><span class="dots">${ks.map(k => `<span class="tag" style="background:${TAG[k]}">${LABEL[k].split(' ')[0]}</span>`).join('')}</span></div>`; }).join('');
     if (root) root.innerHTML = `<section class="sheet ${cls}"><p class="sheet-label">${name}</p><div class="sheet-num"><span class="num small-num">${head}</span></div><p class="sheet-title">${sub}</p><div class="stack">${upcoming}</div><p class="sheet-actions"><a class="next" href="${link}">Zone page &amp; calendar file</a></p></section><div class="week">${week}</div>`;
     else { const sheet = $('today'); sheet.classList.remove('balanced', 'quiet'); sheet.classList.add(cls); $('headline').textContent = head; $('sub').textContent = sub; $('upcoming').innerHTML = upcoming; $('week').innerHTML = week; }
@@ -85,6 +87,8 @@
     const sched = {}; const kindOf = f => /recycl/i.test(f) ? 'recycling' : /yard|organic|compost|brush|trimming/i.test(f) ? 'yard' : /bulk|junk|heavy|noncarted/i.test(f) ? 'bulk' : /garbage|trash|refuse|waste/i.test(f) ? 'trash' : null;
     for (const e of events) { const d = new Date(e.day + 'T00:00:00'); for (const f of (e.flags || [])) { const k = kindOf(f.name || f.subject || ''); if (!k) continue; (sched[k] = sched[k] || new Set()).add(DAYS[d.getDay()]); } }
     const s = {}; for (const k in sched) s[k] = [...sched[k]];
+    // ReCollect already returns real dates (holiday shifts and monthly bulk included) — use them as-is
+    s.__events = []; for (const e of events) { const d = new Date(e.day + 'T00:00:00'); for (const f of (e.flags || [])) { const k = kindOf(f.name || f.subject || ''); if (k && !s.__events.some(o => o.k === k && iso(o.d) === e.day)) s.__events.push({ k, d }); } }
     say(`Matched ${p.name}`);
     render(s, `${c.city} · ${p.name.split(',')[0]}`, out, `${base}${c.slug}/`);
     localStorage.setItem('trashweek.last', JSON.stringify({ slug: c.slug, q }));
