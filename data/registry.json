@@ -506,67 +506,6 @@
   "holiday_url": "https://www.columbus.gov/Services/Public-Service/Refuse-Collection/Holiday-Collection-Schedule",
   "source_url": "https://www.columbus.gov/Services/Public-Service/Refuse-Collection"
  },
- "st-paul": {
-  "city": "St. Paul",
-  "state": "MN",
-  "provider": "St. Paul Garbage Service",
-  "kind": "arcgis",
-  "url": "https://services8.arcgis.com/CjVb8BH1EIcrgkMg/arcgis/rest/services/GarbageZones2020/FeatureServer/17",
-  "zone": "Zone",
-  "fields": {
-   "trash": "Zone"
-  },
-  "code_map": {
-   "1A": [
-    "Mon"
-   ],
-   "1B": [
-    "Mon"
-   ],
-   "2A": [
-    "Tue"
-   ],
-   "2B": [
-    "Tue"
-   ],
-   "3A": [
-    "Wed"
-   ],
-   "3B": [
-    "Wed"
-   ],
-   "4A": [
-    "Thu"
-   ],
-   "4B": [
-    "Thu"
-   ],
-   "5A": [
-    "Fri"
-   ],
-   "5B": [
-    "Fri"
-   ],
-   "1": [
-    "Mon"
-   ],
-   "2": [
-    "Tue"
-   ],
-   "3": [
-    "Wed"
-   ],
-   "4": [
-    "Thu"
-   ],
-   "5": [
-    "Fri"
-   ]
-  },
-  "notes": "",
-  "holiday_url": "https://www.stpaul.gov/departments/public-works/garbage-and-recycling/holiday-schedule",
-  "source_url": "https://www.stpaul.gov/departments/public-works/garbage-and-recycling"
- },
  "lexington": {
   "city": "Lexington",
   "state": "KY",

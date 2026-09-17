@@ -39,8 +39,9 @@ def dissolve(rings):
         from shapely.ops import unary_union
     except ImportError:
         return rings
-    polys = [Polygon(r) for r in rings if len(r) >= 4]
-    u = unary_union([p.buffer(0) for p in polys]).simplify(0.0003, preserve_topology=True)
+    polys = [Polygon(r).buffer(0) for r in rings if len(r) >= 4]
+    # parcels/blocks are separated by streets: grow by ~45 m, union, shrink back so the street grid closes up
+    u = unary_union([p.buffer(0.0004) for p in polys]).buffer(-0.0003).simplify(0.0003, preserve_topology=True)
     geoms = list(u.geoms) if hasattr(u, "geoms") else [u]
     return [[list(c) for c in g.exterior.coords] for g in geoms if g.area > 0]
 
