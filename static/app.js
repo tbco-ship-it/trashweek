@@ -35,7 +35,8 @@
   }
   function render(sched, name, root, link) {
     const occ = occurrences(sched, now, 14).sort((a, b) => a.d - b.d);
-    const next = k => occ.find(o => o.k === k);
+    const occFar = occurrences(sched, now, 60).sort((a, b) => a.d - b.d);
+    const next = k => occFar.find(o => o.k === k);
     const KINDS_SHOWN = KINDS.filter(k => sched[k] && (sched[k].length || (sched.__events || []).some(o => o.k === k)));
     const today = occ.filter(o => iso(o.d) === iso(now)), tomorrow = occ.filter(o => iso(o.d) === iso(addDays(now, 1)));
     const lbl = o => LABEL[o.k];
