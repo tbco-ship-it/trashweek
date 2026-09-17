@@ -22,7 +22,7 @@
 
 <div class="ad-slot"><!-- ad: home --></div>
 
-<div class="sec" id="cities"><div class="sec-h"><h2>Cities</h2></div>
+<div class="sec" id="cities"><div class="sec-h"><h2>Cities</h2><a href="{{ base }}coverage/">Why some cities are missing</a></div>
 <div class="cities">{% for c in cities %}<a href="{{ base }}{{ c.slug }}/"><b>{{ c.city }}, {{ c.state }}</b><span>{% if c.kind == 'recollect' %}address lookup · {% else %}{{ c.zones|length }} zones · {% endif %}{{ c.provider }}</span></a>{% endfor %}</div>
 </div>
 

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Coverage: which cities TrashWeek supports and why some are missing | {{ site }}{% endblock %}
+{% block description %}{{ cities|length }} US cities with pickup-day lookup, and the specific reason for each large city that is not covered yet.{% endblock %}
+{% block content %}
+<nav class="crumbs"><a href="{{ base }}">Home</a> › Coverage</nav>
+<h1>Coverage</h1>
+<div class="prose"><p>We only publish a city when its collection days come from an official source we can check: a public GIS route layer, or the city's own address-lookup service. {{ cities|length }} cities qualify today. Cities below are missing for a stated reason, not because we have not looked.</p></div>
+<div class="sec"><div class="sec-h"><h2>Covered</h2></div>
+<ul class="list">{% for c in cities %}<li><a href="{{ base }}{{ c.slug }}/">{{ c.city }}, {{ c.state }}<span class="meta">{% if c.kind == 'recollect' %}live address lookup{% else %}{{ c.zones|length }} zones{% endif %}</span></a></li>{% endfor %}</ul></div>
+<div class="sec"><div class="sec-h"><h2>Not covered yet, and why</h2></div>
+<div class="tbl-wrap"><table class="tbl compact"><thead><tr><th>City</th><th>Reason</th><th>Where to look instead</th></tr></thead><tbody>
+<tr><td>Chicago, IL</td><td>No public route polygons; the city's data portal and GIS have no collection-day layer.</td><td><a href="https://www.chicago.gov/city/en/depts/streets/provdrs/streets_san/svcs/garbage_collection.html" rel="noopener">Streets &amp; Sanitation lookup</a></td></tr>
+<tr><td>San Diego, CA</td><td>Routes are inside the Get It Done 311 system only; no exportable layer.</td><td><a href="https://www.sandiego.gov/environmental-services/collection" rel="noopener">City collection page</a></td></tr>
+<tr><td>Kansas City, MO</td><td>The "Find My Trash Day" map is a static image; no data layer or API.</td><td><a href="https://www.kcmo.gov/city-hall/departments/public-works/solid-waste" rel="noopener">Solid Waste</a></td></tr>
+<tr><td>Phoenix, AZ</td><td>The city re-routed collection in 2026. Its live lookup only returns dates for March 2026 and the older GIS layer disagrees with it, so we cannot verify a current schedule.</td><td><a href="https://www.phoenix.gov/publicworks/garbage" rel="noopener">Phoenix Public Works</a></td></tr>
+<tr><td>St. Louis, MO</td><td>The only public layer is St. Louis County's contractor districts, which do not encode days; the city itself publishes no zone map.</td><td><a href="https://www.stlouis-mo.gov/government/departments/street/refuse/" rel="noopener">Refuse Division</a></td></tr>
+<tr><td>Nashville, TN</td><td>Routes are published as lines, not areas, so an address cannot be placed in a zone.</td><td><a href="https://www.nashville.gov/departments/water/waste-services" rel="noopener">Metro Waste Services</a></td></tr>
+<tr><td>El Paso, TX</td><td>The published layer marks most areas "Manual" without a weekday.</td><td><a href="https://www.elpasotexas.gov/environmental-services/" rel="noopener">Environmental Services</a></td></tr>
+</tbody></table></div>
+<div class="prose"><p>If your city publishes route data we have missed, <a href="{{ base }}contact/">tell us where</a> and we will add it.</p></div>
+{% endblock %}

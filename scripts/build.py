@@ -91,6 +91,7 @@ def main():
     for page in ("about", "methodology", "privacy", "contact"):
         write(f"{page}/", f"{page}.html")
     write("holidays/", "holidays.html")
+    write("coverage/", "coverage.html")
     for c in cities:
         write(f"{c['slug']}/", "city.html", c=c)
         write(f"{c['slug']}/holidays/", "city_holidays.html", c=c)
