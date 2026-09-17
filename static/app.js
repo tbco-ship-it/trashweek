@@ -60,6 +60,8 @@
   const out = $('result'), msg = $('msg'), go = $('go');
   const say = t => { msg.hidden = false; msg.textContent = t; };
   const cities = await (await fetch(base + 'static/cities.json?v=' + v)).json();
+  // Census geocoder has no CORS headers but supports JSONP
+  const jsonp = url => new Promise((res, rej) => { const cb = 'tw' + Date.now(); const s = document.createElement('script'); window[cb] = d => { delete window[cb]; s.remove(); res(d); }; s.onerror = () => { delete window[cb]; s.remove(); rej(new Error('jsonp')); }; s.src = url + '&callback=' + cb; document.head.appendChild(s); setTimeout(() => { if (window[cb]) { delete window[cb]; s.remove(); rej(new Error('timeout')); } }, 20000); });
   const geoCache = {};
   const loadGeo = async slug => geoCache[slug] || (geoCache[slug] = await (await fetch(base + `static/geo/${slug}.json?v=` + v)).json());
   function inRing(pt, ring) { let inside = false; for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) { const [xi, yi] = ring[i], [xj, yj] = ring[j]; if (((yi > pt[1]) !== (yj > pt[1])) && (pt[0] < (xj - xi) * (pt[1] - yi) / (yj - yi) + xi)) inside = !inside; } return inside; }
@@ -69,8 +71,8 @@
     const q = input.value.trim(); if (!q) return say('Type a street address first.');
     say('Locating…');
     try {
-      const r = await fetch('https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?benchmark=Public_AR_Current&format=json&address=' + encodeURIComponent(q + (input.dataset.cityname && !/[a-z]{2}\s*$/i.test(q) ? ', ' + input.dataset.cityname : '')));
-      const j = await r.json(); const m = j.result?.addressMatches?.[0];
+      const j = await jsonp('https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?benchmark=Public_AR_Current&format=jsonp&address=' + encodeURIComponent(q + (input.dataset.cityname && !/[a-z]{2}\s*$/i.test(q) ? ', ' + input.dataset.cityname : '')));
+      const m = j.result?.addressMatches?.[0];
       if (!m) return say('No match from the Census geocoder. Add the city and state, e.g. "123 Main St, Seattle WA".');
       const { x: lng, y: lat } = m.coordinates;
       const slug = input.dataset.city || slugOf(m.matchedAddress);
