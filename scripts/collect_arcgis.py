@@ -12,7 +12,7 @@ REG = json.loads((ROOT / "data/registry.json").read_text())
 
 
 def fetch(url, params, timeout=90):
-    req = url + "?" + urllib.parse.urlencode(params)
+    req = urllib.request.Request(url + "?" + urllib.parse.urlencode(params), headers={"User-Agent": "Mozilla/5.0 (TrashWeek collector; contact via github.com/tbco-ship-it/trashweek)"})
     with urllib.request.urlopen(req, timeout=timeout) as r:
         return json.load(r)
 

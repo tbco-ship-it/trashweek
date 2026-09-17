@@ -330,5 +330,1336 @@
   "notes": "",
   "holiday_url": "https://www.fresno.gov/publicutilities/solid-waste/",
   "source_url": "https://www.fresno.gov/publicutilities/solid-waste/"
+ },
+ "houston": {
+  "city": "Houston",
+  "state": "TX",
+  "provider": "Houston Solid Waste Management",
+  "kind": "arcgis",
+  "url": "https://services.arcgis.com/NummVBqZSIJKUeVR/arcgis/rest/services/COH_Solid_Waste_Automated_Trash_Pickup_Areas_view/FeatureServer/18",
+  "zone": "NAME",
+  "fields": {
+   "trash": "DAY"
+  },
+  "notes": "Automated trash weekly; recycling every other week; yard waste and junk on separate schedules.",
+  "holiday_url": "https://www.houstontx.gov/solidwaste/holiday.html",
+  "source_url": "https://www.houstontx.gov/solidwaste/"
+ },
+ "san-antonio": {
+  "city": "San Antonio",
+  "state": "TX",
+  "provider": "San Antonio Solid Waste Management",
+  "kind": "arcgis",
+  "url": "https://services.arcgis.com/g1fRTDLeMgspWrYp/arcgis/rest/services/GARBAGEROUTES_WEBMAP/FeatureServer/0",
+  "where": "Commodity='G'",
+  "zone": "RouteNumber",
+  "fields": {
+   "trash": "CollectionDay"
+  },
+  "notes": "Garbage, recycling and organics carts are collected on the same day.",
+  "holiday_url": "https://www.sa.gov/Directory/Departments/SWMD/Holiday-Schedule",
+  "source_url": "https://www.sa.gov/Directory/Departments/SWMD"
+ },
+ "philadelphia": {
+  "city": "Philadelphia",
+  "state": "PA",
+  "provider": "Philadelphia Streets Department",
+  "kind": "arcgis",
+  "url": "https://services.arcgis.com/fLeGjb7u4uXqeF9q/arcgis/rest/services/Rubbish_Recyc_Coll_Bnd/FeatureServer/0",
+  "zone": "sandis",
+  "fields": {
+   "trash": "collday",
+   "trash2": "secondary_rubbish_day"
+  },
+  "notes": "Trash and recycling are collected on the same day; some areas have a second weekly trash day.",
+  "holiday_url": "https://www.phila.gov/services/trash-recycling-city-upkeep/find-your-trash-and-recycling-collection-day/",
+  "source_url": "https://www.phila.gov/departments/streets/"
+ },
+ "washington-dc": {
+  "city": "Washington",
+  "state": "DC",
+  "provider": "DC Department of Public Works",
+  "kind": "arcgis",
+  "url": "https://maps2.dcgis.dc.gov/dcgis/rest/services/DCGIS_DATA/Public_Service_WebMercator/MapServer/28",
+  "zone": "ROUTE_ID",
+  "fields": {
+   "trash": "DAY_"
+  },
+  "notes": "Recycling is collected on the first listed day each week; twice-weekly areas get trash on both days.",
+  "holiday_url": "https://dpw.dc.gov/page/holiday-collection-schedule",
+  "source_url": "https://dpw.dc.gov/service/trash-collection"
+ },
+ "denver": {
+  "city": "Denver",
+  "state": "CO",
+  "provider": "Denver Solid Waste Management",
+  "kind": "arcgis",
+  "url": "https://services1.arcgis.com/zdB7qR0BtYrg0Xpl/arcgis/rest/services/ODC_ADMN_SOLIDWASTECOLLECTION_A/FeatureServer/311",
+  "where": "TRASH_DAY <> ' '",
+  "zone": "TRASH_ROUTE",
+  "fields": {
+   "trash": "TRASH_DAY",
+   "recycling": "RECYCLE_DAY"
+  },
+  "notes": "Weekly trash and recycling; compost on the same day for subscribers.",
+  "holiday_url": "https://www.denvergov.org/Government/Agencies-Departments-Offices/Agencies-Departments-Offices-Directory/Transportation-Infrastructure/Programs-Services/Trash-Recycling-Compost/Holiday-Schedule",
+  "source_url": "https://www.denvergov.org/Government/Agencies-Departments-Offices/Agencies-Departments-Offices-Directory/Transportation-Infrastructure/Programs-Services/Trash-Recycling-Compost"
+ },
+ "indianapolis": {
+  "city": "Indianapolis",
+  "state": "IN",
+  "provider": "Indianapolis DPW",
+  "kind": "arcgis",
+  "url": "https://gis.indy.gov/server/rest/services/OpenData/OpenData_SolidWasteCollectionAreasFS/FeatureServer/0",
+  "zone": "ROUTE_NO",
+  "fields": {
+   "trash": "DAY",
+   "hauler": "HAULER"
+  },
+  "notes": "Heavy trash is collected once a month on a separate schedule.",
+  "holiday_url": "https://www.indy.gov/activity/trash-and-recycling-holiday-schedule",
+  "source_url": "https://www.indy.gov/activity/trash-and-recycling"
+ },
+ "detroit": {
+  "city": "Detroit",
+  "state": "MI",
+  "provider": "City of Detroit DPW / GFL & WM",
+  "kind": "arcgis",
+  "url": "https://services2.arcgis.com/qvkbeam7Wirps6zC/arcgis/rest/services/AllServices/FeatureServer/0",
+  "zone": "FID",
+  "fields": {
+   "trash": "day",
+   "recycling_week": "week",
+   "hauler": "contractor"
+  },
+  "notes": "Trash weekly; recycling and yard waste every other week (week A or B) on the trash day.",
+  "holiday_url": "https://detroitmi.gov/departments/department-public-works/solid-waste-division/holiday-schedule",
+  "source_url": "https://detroitmi.gov/departments/department-public-works/solid-waste-division"
+ },
+ "columbus": {
+  "city": "Columbus",
+  "state": "OH",
+  "provider": "Columbus Refuse Collection",
+  "kind": "arcgis",
+  "url": "https://maps2.columbus.gov/arcgis/rest/services/Schemas/PublicService/MapServer/11",
+  "zone": "COLOR_DAY_NAME",
+  "fields": {
+   "trash": "COLOR_DAY_NAME"
+  },
+  "code_map": {
+   "RUBY": [
+    "Thu"
+   ],
+   "GOLD": [
+    "Fri"
+   ],
+   "GRAY": [
+    "Mon"
+   ],
+   "NAVY": [
+    "Tue"
+   ],
+   "PINK": [
+    "Wed"
+   ],
+   "10": [
+    "Fri"
+   ],
+   "11": [
+    "Mon"
+   ],
+   "12": [
+    "Tue"
+   ],
+   "13": [
+    "Wed"
+   ],
+   "14": [
+    "Thu"
+   ],
+   "MON": [
+    "Mon"
+   ],
+   "TUE": [
+    "Tue"
+   ],
+   "WED": [
+    "Wed"
+   ],
+   "THU": [
+    "Thu"
+   ],
+   "15": [
+    "Mon"
+   ],
+   "16": [
+    "Tue"
+   ],
+   "17": [
+    "Wed"
+   ],
+   "18": [
+    "Thu"
+   ]
+  },
+  "notes": "Color-day routes rotate one day later after each observed holiday until the next year — check the city's 2026 calendar for the exact date.",
+  "holiday_url": "https://www.columbus.gov/Services/Public-Service/Refuse-Collection/Holiday-Collection-Schedule",
+  "source_url": "https://www.columbus.gov/Services/Public-Service/Refuse-Collection"
+ },
+ "st-paul": {
+  "city": "St. Paul",
+  "state": "MN",
+  "provider": "St. Paul Garbage Service",
+  "kind": "arcgis",
+  "url": "https://services8.arcgis.com/CjVb8BH1EIcrgkMg/arcgis/rest/services/GarbageZones2020/FeatureServer/17",
+  "zone": "Zone",
+  "fields": {
+   "trash": "Zone"
+  },
+  "code_map": {
+   "1A": [
+    "Mon"
+   ],
+   "1B": [
+    "Mon"
+   ],
+   "2A": [
+    "Tue"
+   ],
+   "2B": [
+    "Tue"
+   ],
+   "3A": [
+    "Wed"
+   ],
+   "3B": [
+    "Wed"
+   ],
+   "4A": [
+    "Thu"
+   ],
+   "4B": [
+    "Thu"
+   ],
+   "5A": [
+    "Fri"
+   ],
+   "5B": [
+    "Fri"
+   ],
+   "1": [
+    "Mon"
+   ],
+   "2": [
+    "Tue"
+   ],
+   "3": [
+    "Wed"
+   ],
+   "4": [
+    "Thu"
+   ],
+   "5": [
+    "Fri"
+   ]
+  },
+  "notes": "",
+  "holiday_url": "https://www.stpaul.gov/departments/public-works/garbage-and-recycling/holiday-schedule",
+  "source_url": "https://www.stpaul.gov/departments/public-works/garbage-and-recycling"
+ },
+ "lexington": {
+  "city": "Lexington",
+  "state": "KY",
+  "provider": "LFUCG Waste Management",
+  "kind": "arcgis",
+  "url": "https://services1.arcgis.com/Mg7DLdfYcSWIaDnu/arcgis/rest/services/Waste_Management_Area/FeatureServer/0",
+  "zone": "QUAD",
+  "fields": {
+   "trash": "QUAD"
+  },
+  "code_map": {
+   "A": [
+    "Mon"
+   ],
+   "B": [
+    "Thu"
+   ],
+   "C": [
+    "Tue"
+   ],
+   "D": [
+    "Fri"
+   ],
+   "E": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri"
+   ]
+  },
+  "notes": "Area E (downtown) is collected daily.",
+  "holiday_url": "https://www.lexingtonky.gov/holiday-collection-schedule",
+  "source_url": "https://www.lexingtonky.gov/waste-management"
+ },
+ "milwaukee": {
+  "city": "Milwaukee",
+  "state": "WI",
+  "provider": "Milwaukee DPW Sanitation",
+  "kind": "arcgis",
+  "url": "https://milwaukeemaps.milwaukee.gov/arcgis/rest/services/DPW/DPW_Sanitation/MapServer/9",
+  "zone": "SUM_RT",
+  "fields": {
+   "trash": "SUM_RT"
+  },
+  "code_map": {
+   "A": [
+    "Mon"
+   ],
+   "B": [
+    "Tue"
+   ],
+   "C": [
+    "Wed"
+   ],
+   "D": [
+    "Thu"
+   ],
+   "E": [
+    "Fri"
+   ],
+   "F": [
+    "Fri"
+   ],
+   "CG1-1A": [
+    "Mon"
+   ],
+   "CG1-1B": [
+    "Tue"
+   ],
+   "CG1-1C": [
+    "Wed"
+   ],
+   "CG1-1D": [
+    "Thu"
+   ],
+   "CG1-1E": [
+    "Fri"
+   ],
+   "CG1-1F": [
+    "Fri"
+   ],
+   "CG1-2A": [
+    "Mon"
+   ],
+   "CG1-2B": [
+    "Tue"
+   ],
+   "CG1-2C": [
+    "Wed"
+   ],
+   "CG1-2D": [
+    "Thu"
+   ],
+   "CG1-2E": [
+    "Fri"
+   ],
+   "CG1-3A": [
+    "Mon"
+   ],
+   "CG1-3B": [
+    "Tue"
+   ],
+   "CG1-3C": [
+    "Wed"
+   ],
+   "CG1-3D": [
+    "Thu"
+   ],
+   "CG1-3E": [
+    "Fri"
+   ],
+   "CG1-4A": [
+    "Mon"
+   ],
+   "CG1-4B": [
+    "Tue"
+   ],
+   "CG1-4C": [
+    "Wed"
+   ],
+   "CG1-4D": [
+    "Thu"
+   ],
+   "CG1-4E": [
+    "Fri"
+   ],
+   "CG2-1A": [
+    "Mon"
+   ],
+   "CG2-1B": [
+    "Tue"
+   ],
+   "CG2-1C": [
+    "Wed"
+   ],
+   "CG2-1D": [
+    "Thu"
+   ],
+   "CG2-1E": [
+    "Fri"
+   ],
+   "CG2-2A": [
+    "Mon"
+   ],
+   "CG2-2B": [
+    "Tue"
+   ],
+   "CG2-2C": [
+    "Wed"
+   ],
+   "CG2-2D": [
+    "Thu"
+   ],
+   "CG2-2E": [
+    "Fri"
+   ],
+   "CG2-3A": [
+    "Mon"
+   ],
+   "CG2-3B": [
+    "Tue"
+   ],
+   "CG2-3C": [
+    "Wed"
+   ],
+   "CG2-3D": [
+    "Thu"
+   ],
+   "CG2-3E": [
+    "Fri"
+   ],
+   "CG2-4A": [
+    "Mon"
+   ],
+   "CG2-4B": [
+    "Tue"
+   ],
+   "CG2-4C": [
+    "Wed"
+   ],
+   "CG2-4D": [
+    "Thu"
+   ],
+   "CG2-4E": [
+    "Fri"
+   ],
+   "CG2-5A": [
+    "Mon"
+   ],
+   "CG2-5B": [
+    "Tue"
+   ],
+   "CG2-5C": [
+    "Wed"
+   ],
+   "CG2-5D": [
+    "Thu"
+   ],
+   "CG2-5E": [
+    "Fri"
+   ],
+   "CG2-6A": [
+    "Mon"
+   ],
+   "CG2-6B": [
+    "Tue"
+   ],
+   "CG2-6C": [
+    "Wed"
+   ],
+   "CG2-6D": [
+    "Thu"
+   ],
+   "CG2-6E": [
+    "Fri"
+   ],
+   "CG3-1A": [
+    "Mon"
+   ],
+   "CG3-1B": [
+    "Tue"
+   ],
+   "CG3-1C": [
+    "Wed"
+   ],
+   "CG3-1D": [
+    "Thu"
+   ],
+   "CG3-1E": [
+    "Fri"
+   ],
+   "CG3-2A": [
+    "Mon"
+   ],
+   "CG3-2B": [
+    "Tue"
+   ],
+   "CG3-2C": [
+    "Wed"
+   ],
+   "CG3-2D": [
+    "Thu"
+   ],
+   "CG3-2E": [
+    "Fri"
+   ],
+   "CG3-2F": [
+    "Fri"
+   ],
+   "CG3-3A": [
+    "Mon"
+   ],
+   "CG3-3B": [
+    "Tue"
+   ],
+   "CG3-3C": [
+    "Wed"
+   ],
+   "CG3-3D": [
+    "Thu"
+   ],
+   "CG3-3E": [
+    "Fri"
+   ],
+   "CG3-4A": [
+    "Mon"
+   ],
+   "CG3-4B": [
+    "Tue"
+   ],
+   "CG3-4C": [
+    "Wed"
+   ],
+   "CG3-4D": [
+    "Thu"
+   ],
+   "CG3-4E": [
+    "Fri"
+   ],
+   "CG3-5A": [
+    "Mon"
+   ],
+   "CG3-5B": [
+    "Tue"
+   ],
+   "CG3-5C": [
+    "Wed"
+   ],
+   "CG3-5D": [
+    "Thu"
+   ],
+   "CG3-5E": [
+    "Fri"
+   ],
+   "CG3-6A": [
+    "Mon"
+   ],
+   "CG3-6B": [
+    "Tue"
+   ],
+   "CG3-6C": [
+    "Wed"
+   ],
+   "CG3-6D": [
+    "Thu"
+   ],
+   "CG3-6E": [
+    "Fri"
+   ],
+   "CG4-1A": [
+    "Mon"
+   ],
+   "CG4-1B": [
+    "Tue"
+   ],
+   "CG4-1C": [
+    "Wed"
+   ],
+   "CG4-1D": [
+    "Thu"
+   ],
+   "CG4-1E": [
+    "Fri"
+   ],
+   "CG4-2A": [
+    "Mon"
+   ],
+   "CG4-2B": [
+    "Tue"
+   ],
+   "CG4-2C": [
+    "Wed"
+   ],
+   "CG4-2D": [
+    "Thu"
+   ],
+   "CG4-2E": [
+    "Fri"
+   ],
+   "CG4-3A": [
+    "Mon"
+   ],
+   "CG4-3B": [
+    "Tue"
+   ],
+   "CG4-3C": [
+    "Wed"
+   ],
+   "CG4-3D": [
+    "Thu"
+   ],
+   "CG4-3E": [
+    "Fri"
+   ],
+   "CG4-3F": [
+    "Fri"
+   ],
+   "CG4-4A": [
+    "Mon"
+   ],
+   "CG4-4B": [
+    "Tue"
+   ],
+   "CG4-4C": [
+    "Wed"
+   ],
+   "CG4-4D": [
+    "Thu"
+   ],
+   "CG4-4E": [
+    "Fri"
+   ],
+   "CG4-5A": [
+    "Mon"
+   ],
+   "CG4-5B": [
+    "Tue"
+   ],
+   "CG4-5C": [
+    "Wed"
+   ],
+   "CG4-5D": [
+    "Thu"
+   ],
+   "CG4-5E": [
+    "Fri"
+   ],
+   "CG4-5F": [
+    "Fri"
+   ],
+   "CG4-6A": [
+    "Mon"
+   ],
+   "CG4-6B": [
+    "Tue"
+   ],
+   "CG4-6C": [
+    "Wed"
+   ],
+   "CG4-6D": [
+    "Thu"
+   ],
+   "CG4-6E": [
+    "Fri"
+   ],
+   "CG5-1-FRI": [
+    "Fri"
+   ],
+   "CG5-1-MON": [
+    "Mon"
+   ],
+   "CG5-1-THU": [
+    "Thu"
+   ],
+   "CG5-1-TUE": [
+    "Tue"
+   ],
+   "CG5-1-WED": [
+    "Wed"
+   ],
+   "CG5-1F": [
+    "Fri"
+   ],
+   "NG1-1A": [
+    "Mon"
+   ],
+   "NG1-1B": [
+    "Tue"
+   ],
+   "NG1-1C": [
+    "Wed"
+   ],
+   "NG1-1D": [
+    "Thu"
+   ],
+   "NG1-1E": [
+    "Fri"
+   ],
+   "NG1-2A": [
+    "Mon"
+   ],
+   "NG1-2B": [
+    "Tue"
+   ],
+   "NG1-2C": [
+    "Wed"
+   ],
+   "NG1-2D": [
+    "Thu"
+   ],
+   "NG1-2E": [
+    "Fri"
+   ],
+   "NG1-2F": [
+    "Fri"
+   ],
+   "NG1-3A": [
+    "Mon"
+   ],
+   "NG1-3B": [
+    "Tue"
+   ],
+   "NG1-3C": [
+    "Wed"
+   ],
+   "NG1-3D": [
+    "Thu"
+   ],
+   "NG1-3E": [
+    "Fri"
+   ],
+   "NG1-4A": [
+    "Mon"
+   ],
+   "NG1-4B": [
+    "Tue"
+   ],
+   "NG1-4C": [
+    "Wed"
+   ],
+   "NG1-4D": [
+    "Thu"
+   ],
+   "NG1-4E": [
+    "Fri"
+   ],
+   "NG2-1A": [
+    "Mon"
+   ],
+   "NG2-1B": [
+    "Tue"
+   ],
+   "NG2-1C": [
+    "Wed"
+   ],
+   "NG2-1D": [
+    "Thu"
+   ],
+   "NG2-1E": [
+    "Fri"
+   ],
+   "NG2-1F": [
+    "Fri"
+   ],
+   "NG2-2A": [
+    "Mon"
+   ],
+   "NG2-2B": [
+    "Tue"
+   ],
+   "NG2-2C": [
+    "Wed"
+   ],
+   "NG2-2D": [
+    "Thu"
+   ],
+   "NG2-2E": [
+    "Fri"
+   ],
+   "NG2-3A": [
+    "Mon"
+   ],
+   "NG2-3B": [
+    "Tue"
+   ],
+   "NG2-3C": [
+    "Wed"
+   ],
+   "NG2-3D": [
+    "Thu"
+   ],
+   "NG2-3E": [
+    "Fri"
+   ],
+   "NG2-4A": [
+    "Mon"
+   ],
+   "NG2-4B": [
+    "Tue"
+   ],
+   "NG2-4C": [
+    "Wed"
+   ],
+   "NG2-4D": [
+    "Thu"
+   ],
+   "NG2-4E": [
+    "Fri"
+   ],
+   "NG2-5A": [
+    "Mon"
+   ],
+   "NG2-5B": [
+    "Tue"
+   ],
+   "NG2-5C": [
+    "Wed"
+   ],
+   "NG2-5D": [
+    "Thu"
+   ],
+   "NG2-5E": [
+    "Fri"
+   ],
+   "NG3-1A": [
+    "Mon"
+   ],
+   "NG3-1B": [
+    "Tue"
+   ],
+   "NG3-1C": [
+    "Wed"
+   ],
+   "NG3-1D": [
+    "Thu"
+   ],
+   "NG3-1E": [
+    "Fri"
+   ],
+   "NG3-2A": [
+    "Mon"
+   ],
+   "NG3-2B": [
+    "Tue"
+   ],
+   "NG3-2C": [
+    "Wed"
+   ],
+   "NG3-2D": [
+    "Thu"
+   ],
+   "NG3-2E": [
+    "Fri"
+   ],
+   "NG3-3A": [
+    "Mon"
+   ],
+   "NG3-3B": [
+    "Tue"
+   ],
+   "NG3-3C": [
+    "Wed"
+   ],
+   "NG3-3D": [
+    "Thu"
+   ],
+   "NG3-3E": [
+    "Fri"
+   ],
+   "NG3-4A": [
+    "Mon"
+   ],
+   "NG3-4B": [
+    "Tue"
+   ],
+   "NG3-4C": [
+    "Wed"
+   ],
+   "NG3-4D": [
+    "Thu"
+   ],
+   "NG3-4E": [
+    "Fri"
+   ],
+   "NG3-5A": [
+    "Mon"
+   ],
+   "NG3-5B": [
+    "Tue"
+   ],
+   "NG3-5C": [
+    "Wed"
+   ],
+   "NG3-5D": [
+    "Thu"
+   ],
+   "NG3-5E": [
+    "Fri"
+   ],
+   "NG4-1A": [
+    "Mon"
+   ],
+   "NG4-1B": [
+    "Tue"
+   ],
+   "NG4-1C": [
+    "Wed"
+   ],
+   "NG4-1D": [
+    "Thu"
+   ],
+   "NG4-1E": [
+    "Fri"
+   ],
+   "NG4-2A": [
+    "Mon"
+   ],
+   "NG4-2B": [
+    "Tue"
+   ],
+   "NG4-2C": [
+    "Wed"
+   ],
+   "NG4-2D": [
+    "Thu"
+   ],
+   "NG4-2E": [
+    "Fri"
+   ],
+   "NG4-3A": [
+    "Mon"
+   ],
+   "NG4-3B": [
+    "Tue"
+   ],
+   "NG4-3C": [
+    "Wed"
+   ],
+   "NG4-3D": [
+    "Thu"
+   ],
+   "NG4-3E": [
+    "Fri"
+   ],
+   "NG4-4A": [
+    "Mon"
+   ],
+   "NG4-4B": [
+    "Tue"
+   ],
+   "NG4-4C": [
+    "Wed"
+   ],
+   "NG4-4D": [
+    "Thu"
+   ],
+   "NG4-4E": [
+    "Fri"
+   ],
+   "NG4-5A": [
+    "Mon"
+   ],
+   "NG4-5B": [
+    "Tue"
+   ],
+   "NG4-5C": [
+    "Wed"
+   ],
+   "NG4-5D": [
+    "Thu"
+   ],
+   "NG4-5E": [
+    "Fri"
+   ],
+   "NG4-6A": [
+    "Mon"
+   ],
+   "NG4-6B": [
+    "Tue"
+   ],
+   "NG4-6C": [
+    "Wed"
+   ],
+   "NG4-6D": [
+    "Thu"
+   ],
+   "NG4-6E": [
+    "Fri"
+   ],
+   "NG4-6F": [
+    "Fri"
+   ],
+   "SG1-1A": [
+    "Mon"
+   ],
+   "SG1-1B": [
+    "Tue"
+   ],
+   "SG1-1C": [
+    "Wed"
+   ],
+   "SG1-1D": [
+    "Thu"
+   ],
+   "SG1-1E": [
+    "Fri"
+   ],
+   "SG1-2A": [
+    "Mon"
+   ],
+   "SG1-2B": [
+    "Tue"
+   ],
+   "SG1-2C": [
+    "Wed"
+   ],
+   "SG1-2D": [
+    "Thu"
+   ],
+   "SG1-2E": [
+    "Fri"
+   ],
+   "SG1-3A": [
+    "Mon"
+   ],
+   "SG1-3B": [
+    "Tue"
+   ],
+   "SG1-3C": [
+    "Wed"
+   ],
+   "SG1-3D": [
+    "Thu"
+   ],
+   "SG1-3E": [
+    "Fri"
+   ],
+   "SG1-4A": [
+    "Mon"
+   ],
+   "SG1-4B": [
+    "Tue"
+   ],
+   "SG1-4C": [
+    "Wed"
+   ],
+   "SG1-4D": [
+    "Thu"
+   ],
+   "SG1-4E": [
+    "Fri"
+   ],
+   "SG1-5A": [
+    "Mon"
+   ],
+   "SG1-5B": [
+    "Tue"
+   ],
+   "SG1-5C": [
+    "Wed"
+   ],
+   "SG1-5D": [
+    "Thu"
+   ],
+   "SG1-5E": [
+    "Fri"
+   ],
+   "SG1-6A": [
+    "Mon"
+   ],
+   "SG1-6B": [
+    "Tue"
+   ],
+   "SG1-6C": [
+    "Wed"
+   ],
+   "SG1-6D": [
+    "Thu"
+   ],
+   "SG1-6E": [
+    "Fri"
+   ],
+   "SG2-1A": [
+    "Mon"
+   ],
+   "SG2-1B": [
+    "Tue"
+   ],
+   "SG2-1C": [
+    "Wed"
+   ],
+   "SG2-1D": [
+    "Thu"
+   ],
+   "SG2-1E": [
+    "Fri"
+   ],
+   "SG2-2A": [
+    "Mon"
+   ],
+   "SG2-2B": [
+    "Tue"
+   ],
+   "SG2-2C": [
+    "Wed"
+   ],
+   "SG2-2D": [
+    "Thu"
+   ],
+   "SG2-2E": [
+    "Fri"
+   ],
+   "SG2-3A": [
+    "Mon"
+   ],
+   "SG2-3B": [
+    "Tue"
+   ],
+   "SG2-3C": [
+    "Wed"
+   ],
+   "SG2-3D": [
+    "Thu"
+   ],
+   "SG2-3E": [
+    "Fri"
+   ],
+   "SG2-4A": [
+    "Mon"
+   ],
+   "SG2-4B": [
+    "Tue"
+   ],
+   "SG2-4C": [
+    "Wed"
+   ],
+   "SG2-4D": [
+    "Thu"
+   ],
+   "SG2-4E": [
+    "Fri"
+   ],
+   "SG2-5A": [
+    "Mon"
+   ],
+   "SG2-5B": [
+    "Tue"
+   ],
+   "SG2-5C": [
+    "Wed"
+   ],
+   "SG2-5D": [
+    "Thu"
+   ],
+   "SG2-5E": [
+    "Fri"
+   ],
+   "SG2-6A": [
+    "Mon"
+   ],
+   "SG2-6B": [
+    "Tue"
+   ],
+   "SG2-6C": [
+    "Wed"
+   ],
+   "SG2-6D": [
+    "Thu"
+   ],
+   "SG2-6E": [
+    "Fri"
+   ],
+   "SG3-1A": [
+    "Mon"
+   ],
+   "SG3-1B": [
+    "Tue"
+   ],
+   "SG3-1C": [
+    "Wed"
+   ],
+   "SG3-1D": [
+    "Thu"
+   ],
+   "SG3-1E": [
+    "Fri"
+   ],
+   "SG3-1F": [
+    "Fri"
+   ],
+   "SG3-2A": [
+    "Mon"
+   ],
+   "SG3-2B": [
+    "Tue"
+   ],
+   "SG3-2C": [
+    "Wed"
+   ],
+   "SG3-2D": [
+    "Thu"
+   ],
+   "SG3-2E": [
+    "Fri"
+   ],
+   "SG3-2F": [
+    "Fri"
+   ],
+   "SG3-3A": [
+    "Mon"
+   ],
+   "SG3-3B": [
+    "Tue"
+   ],
+   "SG3-3C": [
+    "Wed"
+   ],
+   "SG3-3D": [
+    "Thu"
+   ],
+   "SG3-3E": [
+    "Fri"
+   ],
+   "SG3-4A": [
+    "Mon"
+   ],
+   "SG3-4B": [
+    "Tue"
+   ],
+   "SG3-4C": [
+    "Wed"
+   ],
+   "SG3-4D": [
+    "Thu"
+   ],
+   "SG3-4E": [
+    "Fri"
+   ],
+   "SG3-5A": [
+    "Mon"
+   ],
+   "SG3-5B": [
+    "Tue"
+   ],
+   "SG3-5C": [
+    "Wed"
+   ],
+   "SG3-5D": [
+    "Thu"
+   ],
+   "SG3-5E": [
+    "Fri"
+   ],
+   "SG4-1A": [
+    "Mon"
+   ],
+   "SG4-1B": [
+    "Tue"
+   ],
+   "SG4-1C": [
+    "Wed"
+   ],
+   "SG4-1D": [
+    "Thu"
+   ],
+   "SG4-1E": [
+    "Fri"
+   ],
+   "SG4-1F": [
+    "Fri"
+   ],
+   "SG4-2A": [
+    "Mon"
+   ],
+   "SG4-2B": [
+    "Tue"
+   ],
+   "SG4-2C": [
+    "Wed"
+   ],
+   "SG4-2D": [
+    "Thu"
+   ],
+   "SG4-2E": [
+    "Fri"
+   ],
+   "SG4-3A": [
+    "Mon"
+   ],
+   "SG4-3B": [
+    "Tue"
+   ],
+   "SG4-3C": [
+    "Wed"
+   ],
+   "SG4-3D": [
+    "Thu"
+   ],
+   "SG4-3E": [
+    "Fri"
+   ],
+   "SG4-4A": [
+    "Mon"
+   ],
+   "SG4-4B": [
+    "Tue"
+   ],
+   "SG4-4C": [
+    "Wed"
+   ],
+   "SG4-4D": [
+    "Thu"
+   ],
+   "SG4-4E": [
+    "Fri"
+   ],
+   "SG4-4F": [
+    "Fri"
+   ],
+   "SG4-5A": [
+    "Mon"
+   ],
+   "SG4-5B": [
+    "Tue"
+   ],
+   "SG4-5C": [
+    "Wed"
+   ],
+   "SG4-5D": [
+    "Thu"
+   ],
+   "SG4-5E": [
+    "Fri"
+   ],
+   "SG4-6A": [
+    "Mon"
+   ],
+   "SG4-6B": [
+    "Tue"
+   ],
+   "SG4-6C": [
+    "Wed"
+   ],
+   "SG4-6D": [
+    "Thu"
+   ],
+   "SG4-6E": [
+    "Fri"
+   ]
+  },
+  "notes": "Garbage every week in summer, every other week in winter; recycling every other week.",
+  "holiday_url": "https://city.milwaukee.gov/sanitation/Holiday-Schedule",
+  "source_url": "https://city.milwaukee.gov/sanitation"
  }
 }
