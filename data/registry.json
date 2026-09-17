@@ -1645,17 +1645,6 @@
   "holiday_url": "https://www.austintexas.gov/department/holiday-collection-schedule",
   "source_url": "https://www.austintexas.gov/department/austin-resource-recovery"
  },
- "phoenix": {
-  "city": "Phoenix",
-  "state": "AZ",
-  "provider": "City of Phoenix Public Works",
-  "kind": "recollect",
-  "area": "PhoenixAZ",
-  "service": 826,
-  "notes": "Phoenix re-routed collection in 2026; schedules come from the city's live service (include your house number).",
-  "holiday_url": "https://www.phoenix.gov/publicworks/garbage/holiday-schedule",
-  "source_url": "https://www.phoenix.gov/publicworks/garbage"
- },
  "st-paul": {
   "city": "St. Paul",
   "state": "MN",
