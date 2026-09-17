@@ -71,9 +71,11 @@ def main():
     (DIST / "static/geo").mkdir()
     # per-city geometry for the in-browser address lookup (loaded on demand)
     for c in cities:
+        if not c["zones"]:
+            continue
         geo = {"slug": c["slug"], "holidays": [d for d, _ in c["holidays"]["observed"]], "zones": [{"z": z["zone"], "u": z["slug"], "s": z["schedule"], "r": z["rings"]} for z in c["zones"]]}
         (DIST / "static/geo" / f"{c['slug']}.json").write_text(json.dumps(geo, separators=(",", ":")))
-    (DIST / "static/cities.json").write_text(json.dumps([{"slug": c["slug"], "city": c["city"], "state": c["state"], "n": len(c["zones"])} for c in cities], separators=(",", ":")))
+    (DIST / "static/cities.json").write_text(json.dumps([{"slug": c["slug"], "city": c["city"], "state": c["state"], "n": len(c["zones"]), "kind": c.get("kind", "arcgis"), "area": c.get("area"), "service": c.get("service")} for c in cities], separators=(",", ":")))
 
     urls = []
 

@@ -23,7 +23,7 @@
 <div class="ad-slot"><!-- ad: home --></div>
 
 <div class="sec" id="cities"><div class="sec-h"><h2>Cities</h2></div>
-<div class="cities">{% for c in cities %}<a href="{{ base }}{{ c.slug }}/"><b>{{ c.city }}, {{ c.state }}</b><span>{{ c.zones|length }} zones · {{ c.provider }}</span></a>{% endfor %}</div>
+<div class="cities">{% for c in cities %}<a href="{{ base }}{{ c.slug }}/"><b>{{ c.city }}, {{ c.state }}</b><span>{% if c.kind == 'recollect' %}address lookup · {% else %}{{ c.zones|length }} zones · {% endif %}{{ c.provider }}</span></a>{% endfor %}</div>
 </div>
 
 <section class="prose">

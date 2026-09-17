@@ -1,16 +1,17 @@
 {% extends "base.html" %}
 {% block title %}{{ c.city }}, {{ c.state }} trash pickup schedule — collection day by zone, recycling and holiday delays | {{ site }}{% endblock %}
 {% block description %}{{ c.city }} trash and recycling pickup days for all {{ c.zones|length }} collection zones ({{ c.provider }}). Find your zone by address, see this week's days and the holiday schedule.{% endblock %}
-{% block head %}<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What day is trash pickup in {{ c.city }}?","acceptedAnswer":{"@type":"Answer","text":"It depends on your collection zone. {{ c.city }} has {{ c.zones|length }} zones; {% for d in DAYS if c.day_counts[d] %}{{ c.day_counts[d] }} are collected on {{ LONG[d] }}{% if not loop.last %}, {% endif %}{% endfor %}. Enter your address on TrashWeek to find your zone.{% if c.notes %} {{ c.notes }}{% endif %}"}}]}</script>{% endblock %}
+{% block head %}<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What day is trash pickup in {{ c.city }}?","acceptedAnswer":{"@type":"Answer","text":"It depends on your collection zone. {{ c.city }} has {{ c.zones|length }} zones; {% if c.kind == 'recollect' %}<p class="prose muted small">Zone pages are not available for {{ c.city }} because the city does not publish zone boundaries; your result appears above after an address lookup.</p>{% endif %}
+{% for d in DAYS if c.day_counts[d] %}{{ c.day_counts[d] }} are collected on {{ LONG[d] }}{% if not loop.last %}, {% endif %}{% endfor %}. Enter your address on TrashWeek to find your zone.{% if c.notes %} {{ c.notes }}{% endif %}"}}]}</script>{% endblock %}
 {% block content %}
 <nav class="crumbs"><a href="{{ base }}">Home</a> › {{ c.city }}, {{ c.state }}</nav>
 <h1>{{ c.city }} trash pickup schedule</h1>
-<p class="prose">{{ c.provider }} runs {{ c.zones|length }} collection zones. Type your address to find yours, or browse the zones by day below.{% if c.notes %} {{ c.notes }}{% endif %}</p>
+<p class="prose">{% if c.kind == 'recollect' %}{{ c.provider }} publishes schedules per address rather than as a public zone map, so type your address and we fetch your pickup days directly (via the city's ReCollect service).{% else %}{{ c.provider }} runs {{ c.zones|length }} collection zones. Type your address to find yours, or browse the zones by day below.{% endif %}{% if c.notes %} {{ c.notes }}{% endif %}</p>
 <section class="calc-grid">
 <div class="calc card">
   <h2 class="card-title">Find your zone</h2>
   <label class="field">Street address
-    <input id="addr" class="pick search" type="text" autocomplete="street-address" placeholder="e.g. 123 Main St" data-city="{{ c.slug }}" data-cityname="{{ c.city }}, {{ c.state }}">
+    <input id="addr" class="pick search" type="text" autocomplete="street-address" placeholder="e.g. 123 Main St" data-city="{{ c.slug }}" data-cityname="{{ c.city }}, {{ c.state }}"{% if c.kind == 'recollect' %} data-kind="recollect" data-area="{{ c.area }}" data-service="{{ c.service }}"{% endif %}>
   </label>
   <p class="sheet-actions" style="margin-top:12px"><button id="go" class="next" type="button">Find my pickup days</button></p>
   <p id="msg" class="hint" hidden></p>
@@ -20,9 +21,10 @@
 <div class="ad-slot"><!-- ad: city --></div>
 <div class="sec"><div class="sec-h"><h2>Holiday delays</h2><a href="{{ base }}{{ c.slug }}/holidays/">2026 list</a></div>
 <p class="prose">{% if c.holidays.observed %}{{ c.provider }} skips collection on {{ c.holidays.observed|length }} holidays in 2026 ({% for d, n in c.holidays.observed[:4] %}{{ n }}{% if not loop.last %}, {% endif %}{% endfor %}{% if c.holidays.observed|length > 4 %}, …{% endif %}) — <a href="{{ base }}{{ c.slug }}/holidays/">full list and the delay rule</a>.{% else %}Check <a href="{{ c.holidays.source }}" rel="noopener" target="_blank">{{ c.city }}'s official holiday notice</a> for the current week; our <a href="{{ base }}{{ c.slug }}/holidays/">holiday page</a> lists the 2026 dates that commonly shift collection.{% endif %}</p></div>
+{% if c.kind == 'recollect' %}<p class="prose muted small">Zone pages are not available for {{ c.city }} because the city does not publish zone boundaries; your result appears above after an address lookup.</p>{% endif %}
 {% for d in DAYS if c.day_counts[d] %}
 <div class="sec"><div class="sec-h"><h2>{{ LONG[d] }} zones <span class="muted small">{{ c.day_counts[d] }}</span></h2></div>
 <ul class="list">{% for z in c.zones if d in z.schedule.trash %}<li><a href="{{ base }}{{ c.slug }}/zone/{{ z.slug }}/">Zone {{ z.zone }}<span class="meta">{{ z.schedule.trash|days_text }}{% if z.schedule.recycling %} · recycling {{ z.schedule.recycling|days_text }}{% endif %}</span></a></li>{% endfor %}</ul></div>
 {% endfor %}
-<p class="muted small" style="margin-top:24px">Source: <a href="{{ c.source_url }}" rel="noopener" target="_blank">{{ c.provider }}</a> route data (<a href="{{ c.data_url }}" rel="noopener" target="_blank">layer</a>, fetched {{ c.fetched }}).</p>
+<p class="muted small" style="margin-top:24px">Source: <a href="{{ c.source_url }}" rel="noopener" target="_blank">{{ c.provider }}</a>{% if c.kind == 'recollect' %} schedule service (ReCollect), queried live{% else %} route data (<a href="{{ c.data_url }}" rel="noopener" target="_blank">layer</a>, fetched {{ c.fetched }}){% endif %}.</p>
 {% endblock %}

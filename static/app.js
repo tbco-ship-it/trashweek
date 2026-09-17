@@ -70,8 +70,29 @@
   function inRing(pt, ring) { let inside = false; for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) { const [xi, yi] = ring[i], [xj, yj] = ring[j]; if (((yi > pt[1]) !== (yj > pt[1])) && (pt[0] < (xj - xi) * (pt[1] - yi) / (yj - yi) + xi)) inside = !inside; } return inside; }
   function findZone(geo, lng, lat) { for (const z of geo.zones) { let hits = 0; for (const r of z.r) if (inRing([lng, lat], r)) hits++; if (hits % 2 === 1) return z; } return null; }
   function slugOf(cityState) { const s = (cityState || '').toLowerCase(); return cities.find(c => s.includes(c.city.toLowerCase().split(',')[0]) || s.includes(c.city.toLowerCase().replace(' county', '')))?.slug; }
+  const API = 'https://api.trashweek.com';
+  const DAYNAME = { sunday: 'Sun', monday: 'Mon', tuesday: 'Tue', wednesday: 'Wed', thursday: 'Thu', friday: 'Fri', saturday: 'Sat' };
+  async function lookupRecollect(c, q) {
+    say('Looking up with ' + c.city + '\u2019s schedule service…');
+    const sug = await (await fetch(`${API}/recollect/suggest?area=${encodeURIComponent(c.area)}&q=${encodeURIComponent(q)}`)).json();
+    const p = Array.isArray(sug) ? sug.find(x => x.place_id) : null;
+    if (!p) return say(`No address match in ${c.city}\u2019s schedule service. Try the house number and street only, e.g. "10000 Leeway Tr".`);
+    const after = iso(now), before = iso(addDays(now, 42));
+    const ev = await (await fetch(`${API}/recollect/events?area=${encodeURIComponent(c.area)}&place=${p.place_id}&service=${c.service}&after=${after}&before=${before}`)).json();
+    const events = ev.events || [];
+    if (!events.length) return say(`${p.name}: found, but the service returned no pickups for this address (may be a non-residential or private-hauler address).`);
+    // derive weekday lists per kind from the returned events
+    const sched = {}; const kindOf = f => /recycl/i.test(f) ? 'recycling' : /yard|organic|compost|brush|trimming/i.test(f) ? 'yard' : /bulk|junk|heavy|noncarted/i.test(f) ? 'bulk' : /garbage|trash|refuse|waste/i.test(f) ? 'trash' : null;
+    for (const e of events) { const d = new Date(e.day + 'T00:00:00'); for (const f of (e.flags || [])) { const k = kindOf(f.name || f.subject || ''); if (!k) continue; (sched[k] = sched[k] || new Set()).add(DAYS[d.getDay()]); } }
+    const s = {}; for (const k in sched) s[k] = [...sched[k]];
+    say(`Matched ${p.name}`);
+    render(s, `${c.city} · ${p.name.split(',')[0]}`, out, `${base}${c.slug}/`);
+    localStorage.setItem('trashweek.last', JSON.stringify({ slug: c.slug, q }));
+  }
   async function lookup() {
     const q = input.value.trim(); if (!q) return say('Type a street address first.');
+    const rc = input.dataset.kind === 'recollect' ? cities.find(c => c.slug === input.dataset.city) : cities.find(c => c.kind === 'recollect' && new RegExp(c.city.split(' ')[0], 'i').test(q));
+    if (rc) { try { return await lookupRecollect(rc, q.replace(new RegExp(',?\\s*' + rc.city + '.*$', 'i'), '')); } catch (e) { return say('The schedule service did not answer. Try again in a moment.'); } }
     say('Locating…');
     try {
       const j = await jsonp('https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?benchmark=Public_AR_Current&format=jsonp&address=' + encodeURIComponent(q + (input.dataset.cityname && !/[a-z]{2}\s*$/i.test(q) ? ', ' + input.dataset.cityname : '')));
@@ -90,5 +111,5 @@
   }
   go.addEventListener('click', lookup); input.addEventListener('keydown', e => { if (e.key === 'Enter') lookup(); });
   const last = JSON.parse(localStorage.getItem('trashweek.last') || 'null');
-  if (last && (!input.dataset.city || input.dataset.city === last.slug)) { const geo = await loadGeo(last.slug); setHol(geo.holidays); const z = geo.zones.find(x => x.z === last.z); const c = cities.find(x => x.slug === last.slug); if (z && c) render(z.s, `${c.city} · zone ${z.z}`, out, `${base}${last.slug}/zone/${z.u}/`); }
+  if (last && last.z && (!input.dataset.city || input.dataset.city === last.slug)) { const geo = await loadGeo(last.slug); setHol(geo.holidays); const z = geo.zones.find(x => x.z === last.z); const c = cities.find(x => x.slug === last.slug); if (z && c) render(z.s, `${c.city} · zone ${z.z}`, out, `${base}${last.slug}/zone/${z.u}/`); }
 })();

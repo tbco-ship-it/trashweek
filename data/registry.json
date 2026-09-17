@@ -1600,5 +1600,49 @@
   "notes": "Garbage every week in summer, every other week in winter; recycling every other week.",
   "holiday_url": "https://city.milwaukee.gov/sanitation/Holiday-Schedule",
   "source_url": "https://city.milwaukee.gov/sanitation"
+ },
+ "jacksonville": {
+  "city": "Jacksonville",
+  "state": "FL",
+  "provider": "City of Jacksonville Solid Waste",
+  "kind": "recollect",
+  "area": "CityofJacksonvilleFL",
+  "service": 1405,
+  "notes": "Garbage weekly, recycling every other week, yard waste weekly — all on your route day.",
+  "holiday_url": "https://www.jacksonville.gov/departments/public-works/solid-waste/holiday-schedule",
+  "source_url": "https://www.jacksonville.gov/departments/public-works/solid-waste"
+ },
+ "fort-worth": {
+  "city": "Fort Worth",
+  "state": "TX",
+  "provider": "Fort Worth Solid Waste / Waste Management",
+  "kind": "recollect",
+  "area": "FortWorth",
+  "service": 314,
+  "notes": "Garbage, recycling and yard trimmings weekly on the same day; bulk once a month.",
+  "holiday_url": "https://www.fortworthtexas.gov/departments/code-compliance/solid-waste/holiday-schedule",
+  "source_url": "https://www.fortworthtexas.gov/departments/code-compliance/solid-waste"
+ },
+ "memphis": {
+  "city": "Memphis",
+  "state": "TN",
+  "provider": "City of Memphis Solid Waste",
+  "kind": "recollect",
+  "area": "MemphisTN",
+  "service": 842,
+  "notes": "Carted waste weekly; non-carted (bulk/yard) on set weeks.",
+  "holiday_url": "https://www.memphistn.gov/government/public-works/solid-waste-management/",
+  "source_url": "https://www.memphistn.gov/government/public-works/solid-waste-management/"
+ },
+ "austin": {
+  "city": "Austin",
+  "state": "TX",
+  "provider": "Austin Resource Recovery",
+  "kind": "recollect",
+  "area": "Austin",
+  "service": 323,
+  "notes": "Trash and composting weekly; recycling every other week (week A or B).",
+  "holiday_url": "https://www.austintexas.gov/department/holiday-collection-schedule",
+  "source_url": "https://www.austintexas.gov/department/austin-resource-recovery"
  }
 }

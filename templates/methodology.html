@@ -4,5 +4,6 @@
 <p>Each city page links to the exact public map layer (ArcGIS REST service) we read. We download the collection-zone polygons and their weekday attributes, simplify the shapes for the browser, and regenerate the site when the data changes.</p>
 <p>The address lookup uses the free <a href="https://geocoding.geo.census.gov/" rel="noopener">US Census Bureau geocoder</a> to turn your address into a coordinate, then tests that point against the zone polygons in your browser. Your address is sent to the Census service only; we do not store it.</p>
 <p>Holiday delays are shown from the 2026 federal calendar plus each city's official notice. Weather delays, route changes and special pickups are not reflected — the city's notice wins.</p>
-<ul>{% for c in cities %}<li><strong>{{ c.city }}, {{ c.state }}</strong>: <a href="{{ c.data_url }}" rel="noopener">{{ c.provider }} layer</a> (fetched {{ c.fetched }})</li>{% endfor %}</ul>
+<p>For cities that publish per-address schedules through ReCollect instead of a zone map (Austin, Fort Worth, Jacksonville, Memphis), we query that service live for the address you type, through a small relay on api.trashweek.com; nothing is stored.</p>
+<ul>{% for c in cities %}<li><strong>{{ c.city }}, {{ c.state }}</strong>: {% if c.kind == 'recollect' %}{{ c.provider }} schedule service (live){% else %}<a href="{{ c.data_url }}" rel="noopener">{{ c.provider }} layer</a> (fetched {{ c.fetched }}){% endif %}</li>{% endfor %}</ul>
 </div>{% endblock %}
