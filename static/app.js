@@ -37,6 +37,7 @@
     const lbl = o => LABEL[o.k];
     let head, cls = 'balanced';
     if (tomorrow.length) head = 'Tomorrow: ' + [...new Set(tomorrow.map(lbl))].join(' + ');
+    else if (today.length) head = 'Today: ' + [...new Set(today.map(lbl))].join(' + ');
     else { const nx = occ[0]; head = nx ? `Next: ${lbl(nx)} ${rel(nx.d)}` : 'No pickup scheduled'; cls = 'quiet'; }
     const sub = today.length ? `Today (${md(now)}): ${[...new Set(today.map(lbl))].join(' + ')} — have it out by 6–7 am.` : `Today (${md(now)}): no pickup.`;
     const upcoming = KINDS.filter(k => sched[k] && sched[k].length).map(k => { const o = next(k); return `<div class="item"><span class="dot" style="background:${COLOR[k]}"></span><span class="txt"><b>${LABEL[k]}</b><span class="tsub">${(sched[k] || []).map(x => LONG[x]).join(' & ')}${k === 'recycling' && sched.recycling_week ? ` · week ${sched.recycling_week}` : ''}</span>${o && o.shifted ? '<span class="tsub">holiday week: one day late</span>' : ''}</span><span class="when">${o ? rel(o.d) : '—'}</span></div>`; }).join('');
