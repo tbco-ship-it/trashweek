@@ -1649,13 +1649,10 @@
   "city": "Phoenix",
   "state": "AZ",
   "provider": "City of Phoenix Public Works",
-  "kind": "arcgis",
-  "url": "https://maps.phoenix.gov/pub/rest/services/Public/GarbagePickUp/MapServer/2",
-  "zone": "OBJECTID",
-  "fields": {
-   "trash": "DOC"
-  },
-  "notes": "Trash and recycling are collected on the same day each week; bulk trash on a quarterly schedule by area.",
+  "kind": "recollect",
+  "area": "PhoenixAZ",
+  "service": 826,
+  "notes": "Phoenix re-routed collection in 2026; schedules come from the city's live service (include your house number).",
   "holiday_url": "https://www.phoenix.gov/publicworks/garbage/holiday-schedule",
   "source_url": "https://www.phoenix.gov/publicworks/garbage"
  },
@@ -1672,7 +1669,11 @@
   },
   "notes": "Citywide garbage service; recycling every other week by Ramsey County.",
   "holiday_url": "https://www.stpaul.gov/departments/public-works/garbage-and-recycling/holiday-schedule",
-  "source_url": "https://www.stpaul.gov/departments/public-works/garbage-and-recycling"
+  "source_url": "https://www.stpaul.gov/departments/public-works/garbage-and-recycling",
+  "aliases": [
+   "saint paul",
+   "st paul"
+  ]
  },
  "san-francisco": {
   "city": "San Francisco",

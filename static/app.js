@@ -72,7 +72,7 @@
   const loadGeo = async slug => geoCache[slug] || (geoCache[slug] = await (await fetch(base + `static/geo/${slug}.json?v=` + v)).json());
   function inRing(pt, ring) { let inside = false; for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) { const [xi, yi] = ring[i], [xj, yj] = ring[j]; if (((yi > pt[1]) !== (yj > pt[1])) && (pt[0] < (xj - xi) * (pt[1] - yi) / (yj - yi) + xi)) inside = !inside; } return inside; }
   function findZone(geo, lng, lat) { for (const z of geo.zones) { let hits = 0; for (const r of z.r) if (inRing([lng, lat], r)) hits++; if (hits % 2 === 1) return z; } return null; }
-  function slugOf(cityState) { const s = (cityState || '').toLowerCase(); return cities.find(c => s.includes(c.city.toLowerCase().split(',')[0]) || s.includes(c.city.toLowerCase().replace(' county', '')))?.slug; }
+  function slugOf(cityState) { const s = (cityState || '').toLowerCase(); return cities.find(c => s.includes(c.city.toLowerCase().split(',')[0]) || s.includes(c.city.toLowerCase().replace(' county', '')) || (c.aliases || []).some(al => s.includes(al)))?.slug; }
   const API = 'https://api.trashweek.com';
   const DAYNAME = { sunday: 'Sun', monday: 'Mon', tuesday: 'Tue', wednesday: 'Wed', thursday: 'Thu', friday: 'Fri', saturday: 'Sat' };
   async function lookupRecollect(c, q) {
@@ -96,7 +96,7 @@
   }
   async function lookup() {
     const q = input.value.trim(); if (!q) return say('Type a street address first.');
-    const rc = input.dataset.kind === 'recollect' ? cities.find(c => c.slug === input.dataset.city) : cities.find(c => c.kind === 'recollect' && new RegExp(c.city.split(' ')[0], 'i').test(q));
+    const rc = input.dataset.kind === 'recollect' ? cities.find(c => c.slug === input.dataset.city) : cities.find(c => c.kind === 'recollect' && (new RegExp('\\b' + c.city.split(' ')[0] + '\\b', 'i').test(q) || (c.aliases || []).some(al => q.toLowerCase().includes(al))));
     if (rc) { try { return await lookupRecollect(rc, q.replace(new RegExp(',?\\s*' + rc.city + '.*$', 'i'), '')); } catch (e) { return say('The schedule service did not answer. Try again in a moment.'); } }
     say('Locating…');
     try {

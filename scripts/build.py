@@ -40,11 +40,13 @@ def main():
     origin = args.origin.rstrip("/")
     today = dt.date.today()
 
+    reg_aliases = {k: v.get("aliases", []) for k, v in json.loads((ROOT / "data/registry.json").read_text()).items()}
     hol_all = json.loads((ROOT / "data/holidays.json").read_text()) if (ROOT / "data/holidays.json").exists() else {}
     cities = []
     for f in sorted((ROOT / "data/normalized").glob("*.json")):
         c = json.loads(f.read_text())
         h = hol_all.get(c["slug"], {})
+        c["aliases"] = reg_aliases.get(c["slug"], [])
         c["holidays"] = {"observed": h.get("observed") or [], "rule": h.get("rule") or "", "source": h.get("source") or c.get("holiday_url"), "checked": h.get("checked")}
         c["kinds"] = [k for k in ("trash", "recycling", "yard", "bulk") if any(z["schedule"].get(k) for z in c["zones"])]
         c["day_counts"] = Counter(d for z in c["zones"] for d in z["schedule"]["trash"])
@@ -75,7 +77,7 @@ def main():
             continue
         geo = {"slug": c["slug"], "holidays": [d for d, _ in c["holidays"]["observed"]], "zones": [{"z": z["zone"], "u": z["slug"], "s": z["schedule"], "r": z["rings"]} for z in c["zones"]]}
         (DIST / "static/geo" / f"{c['slug']}.json").write_text(json.dumps(geo, separators=(",", ":")))
-    (DIST / "static/cities.json").write_text(json.dumps([{"slug": c["slug"], "city": c["city"], "state": c["state"], "n": len(c["zones"]), "kind": c.get("kind", "arcgis"), "area": c.get("area"), "service": c.get("service")} for c in cities], separators=(",", ":")))
+    (DIST / "static/cities.json").write_text(json.dumps([{"slug": c["slug"], "city": c["city"], "state": c["state"], "n": len(c["zones"]), "kind": c.get("kind", "arcgis"), "area": c.get("area"), "service": c.get("service"), "aliases": c.get("aliases", [])} for c in cities], separators=(",", ":")))
 
     urls = []
 
