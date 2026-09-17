@@ -82,11 +82,11 @@
       const cname = cities.find(c => c.slug === slug);
       if (!z) return say(`${m.matchedAddress} is outside ${cname.city}'s published collection zones (unincorporated area or private hauler).`);
       say(`Matched ${m.matchedAddress}`);
-      render(z.s, `${cname.city} · zone ${z.z}`, out, `${base}${slug}/zone/${z.z.toLowerCase().replace(/ /g, '-')}/`);
+      render(z.s, `${cname.city} · zone ${z.z}`, out, `${base}${slug}/zone/${z.u}/`);
       localStorage.setItem('trashweek.last', JSON.stringify({ slug, z: z.z }));
     } catch (e) { say('The geocoder did not answer. Try again in a moment.'); }
   }
   go.addEventListener('click', lookup); input.addEventListener('keydown', e => { if (e.key === 'Enter') lookup(); });
   const last = JSON.parse(localStorage.getItem('trashweek.last') || 'null');
-  if (last && (!input.dataset.city || input.dataset.city === last.slug)) { const geo = await loadGeo(last.slug); const z = geo.zones.find(x => x.z === last.z); const c = cities.find(x => x.slug === last.slug); if (z && c) render(z.s, `${c.city} · zone ${z.z}`, out, `${base}${last.slug}/zone/${z.z.toLowerCase().replace(/ /g, '-')}/`); }
+  if (last && (!input.dataset.city || input.dataset.city === last.slug)) { const geo = await loadGeo(last.slug); const z = geo.zones.find(x => x.z === last.z); const c = cities.find(x => x.slug === last.slug); if (z && c) render(z.s, `${c.city} · zone ${z.z}`, out, `${base}${last.slug}/zone/${z.u}/`); }
 })();

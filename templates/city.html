@@ -22,7 +22,7 @@
 <p class="prose">Check <a href="{{ c.holiday_url }}" rel="noopener" target="_blank">{{ c.city }}'s official holiday notice</a> for the current week. Our <a href="{{ base }}{{ c.slug }}/holidays/">holiday page</a> lists the 2026 dates that commonly shift collection.</p></div>
 {% for d in DAYS if c.day_counts[d] %}
 <div class="sec"><div class="sec-h"><h2>{{ LONG[d] }} zones <span class="muted small">{{ c.day_counts[d] }}</span></h2></div>
-<ul class="list">{% for z in c.zones if d in z.schedule.trash %}<li><a href="{{ base }}{{ c.slug }}/zone/{{ z.zone|lower|replace(' ', '-') }}/">Zone {{ z.zone }}<span class="meta">{{ z.schedule.trash|days_text }}{% if z.schedule.recycling %} · recycling {{ z.schedule.recycling|days_text }}{% endif %}</span></a></li>{% endfor %}</ul></div>
+<ul class="list">{% for z in c.zones if d in z.schedule.trash %}<li><a href="{{ base }}{{ c.slug }}/zone/{{ z.slug }}/">Zone {{ z.zone }}<span class="meta">{{ z.schedule.trash|days_text }}{% if z.schedule.recycling %} · recycling {{ z.schedule.recycling|days_text }}{% endif %}</span></a></li>{% endfor %}</ul></div>
 {% endfor %}
 <p class="muted small" style="margin-top:24px">Source: <a href="{{ c.source_url }}" rel="noopener" target="_blank">{{ c.provider }}</a> route data (<a href="{{ c.data_url }}" rel="noopener" target="_blank">layer</a>, fetched {{ c.fetched }}).</p>
 {% endblock %}

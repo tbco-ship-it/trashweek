@@ -4,6 +4,7 @@ import argparse
 import datetime as dt
 import hashlib
 import json
+import re
 import shutil
 from collections import Counter
 from pathlib import Path
@@ -44,6 +45,8 @@ def main():
         c = json.loads(f.read_text())
         c["kinds"] = [k for k in ("trash", "recycling", "yard", "bulk") if any(z["schedule"].get(k) for z in c["zones"])]
         c["day_counts"] = Counter(d for z in c["zones"] for d in z["schedule"]["trash"])
+        for z in c["zones"]:
+            z["slug"] = re.sub(r"[^a-z0-9]+", "-", z["zone"].lower()).strip("-")
         c["zones"].sort(key=lambda z: (DAYS.index(z["schedule"]["trash"][0]) if z["schedule"]["trash"] else 9, z["zone"]))
         cities.append(c)
     cities.sort(key=lambda c: c["city"])
@@ -65,7 +68,7 @@ def main():
     (DIST / "static/geo").mkdir()
     # per-city geometry for the in-browser address lookup (loaded on demand)
     for c in cities:
-        geo = {"slug": c["slug"], "zones": [{"z": z["zone"], "s": z["schedule"], "r": z["rings"]} for z in c["zones"]]}
+        geo = {"slug": c["slug"], "zones": [{"z": z["zone"], "u": z["slug"], "s": z["schedule"], "r": z["rings"]} for z in c["zones"]]}
         (DIST / "static/geo" / f"{c['slug']}.json").write_text(json.dumps(geo, separators=(",", ":")))
     (DIST / "static/cities.json").write_text(json.dumps([{"slug": c["slug"], "city": c["city"], "state": c["state"], "n": len(c["zones"])} for c in cities], separators=(",", ":")))
 
@@ -85,7 +88,7 @@ def main():
         write(f"{c['slug']}/", "city.html", c=c)
         write(f"{c['slug']}/holidays/", "city_holidays.html", c=c)
         for z in c["zones"]:
-            write(f"{c['slug']}/zone/{z['zone'].lower().replace(' ', '-')}/", "zone.html", c=c, z=z)
+            write(f"{c['slug']}/zone/{z['slug']}/", "zone.html", c=c, z=z)
 
     sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for u in urls:
