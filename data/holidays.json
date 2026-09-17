@@ -46,11 +46,23 @@
   "checked": "2026-09-17"
  },
  "miami-dade": {
-  "observed": [],
-  "rule": "",
-  "source": "https://www.miamidade.gov/global/solidwaste/home.page",
-  "checked": "2026-09-17",
-  "note": "wip entry cited City of Miami (miamigov.com); county rules pending"
+  "observed": [
+   [
+    "2026-01-19",
+    "Martin Luther King, Jr. Day"
+   ],
+   [
+    "2026-07-03",
+    "Independence Day (observed)"
+   ],
+   [
+    "2026-12-25",
+    "Christmas Day"
+   ]
+  ],
+  "rule": "Waste is collected on all holidays (as observed by Miami-Dade County) except Martin Luther King, Jr. Day, Independence Day and Christmas Day. Service after one of these holidays will be provided on your next regularly scheduled collection day.",
+  "source": "https://www.miamidade.gov/global/service.page?Mduid_service=ser1464792744722367",
+  "checked": "2026-09-17"
  },
  "orlando": {
   "observed": [

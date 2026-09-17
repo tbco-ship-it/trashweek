@@ -1,15 +1,348 @@
 {
-  "seattle":       {"city": "Seattle", "state": "WA", "provider": "Seattle Public Utilities", "kind": "arcgis", "url": "https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Residential_Garbage_Routes/FeatureServer/0", "zone": "ROUTE_ID", "fields": {"trash": "PCKUP_DAY"}, "notes": "Recycling and food/yard waste are collected on the same day as garbage; recycling every other week for most homes.", "holiday_url": "https://www.seattle.gov/utilities/your-services/collection-and-disposal/holiday-schedule", "source_url": "https://www.seattle.gov/utilities/your-services/collection-and-disposal/collection-calendar"},
-  "oklahoma-city": {"city": "Oklahoma City", "state": "OK", "provider": "City of Oklahoma City Utilities", "kind": "arcgis", "url": "https://utility.arcgis.com/usrsvcs/servers/45426e5e1b31489db9afea603870f724/rest/services/OpenData/Utilities/FeatureServer/1", "zone": "ROUTE", "fields": {"trash": "PICKUPDAY"}, "notes": "Weekly trash; recycling every other week on the same day.", "holiday_url": "https://www.okc.gov/departments/utilities/solid-waste-management/holiday-schedule", "source_url": "https://www.okc.gov/departments/utilities/solid-waste-management"},
-  "miami-dade":    {"city": "Miami-Dade County", "state": "FL", "provider": "Miami-Dade Solid Waste Management", "kind": "arcgis", "url": "https://services.arcgis.com/8Pc9XBTAsYuxx9Ny/arcgis/rest/services/GarbagePickupRoute_gdb/FeatureServer/0", "zone": "ROUTE", "fields": {"trash": "WEEKDAYS"}, "notes": "Garbage twice a week; recycling every other week.", "holiday_url": "https://www.miamidade.gov/global/service.page?Mduid_service=ser1462903960516371", "source_url": "https://www.miamidade.gov/global/solidwaste/home.page"},
-  "orlando":       {"city": "Orlando", "state": "FL", "provider": "City of Orlando Solid Waste", "kind": "arcgis", "url": "https://services5.arcgis.com/mMuoPCaIYD4wEgDl/arcgis/rest/services/OrlandoSWGarbage/FeatureServer/0", "zone": "GarbageRouteNum", "fields": {"trash": "GarbageDay"}, "notes": "", "holiday_url": "https://www.orlando.gov/Trash-Recycling/Holiday-Collection-Schedule", "source_url": "https://www.orlando.gov/Trash-Recycling"},
-  "richmond":      {"city": "Richmond", "state": "VA", "provider": "City of Richmond DPW", "kind": "arcgis", "url": "https://services1.arcgis.com/k3vhq11XkBNeeOfM/arcgis/rest/services/RefuseCollection/FeatureServer/0", "zone": "RouteName", "fields": {"trash": "Day"}, "notes": "", "holiday_url": "https://www.rva.gov/public-works/refuse-collection", "source_url": "https://www.rva.gov/public-works/refuse-collection"},
-  "irving":        {"city": "Irving", "state": "TX", "provider": "Irving Solid Waste Services", "kind": "arcgis", "url": "https://services3.arcgis.com/OfsJXUlu8pSkbl7B/arcgis/rest/services/SWS_Pickup_Days/FeatureServer/1", "zone": "OBJECTID", "fields": {"trash": "Trash", "recycling": "Recycling", "yard": "Brush", "bulk": "Bulk_"}, "notes": "", "holiday_url": "https://www.cityofirving.org/1108/Holiday-Schedule", "source_url": "https://www.cityofirving.org/280/Solid-Waste-Services"},
-  "honolulu":      {"city": "Honolulu", "state": "HI", "provider": "City & County of Honolulu ENV", "kind": "arcgis", "url": "https://services.arcgis.com/tNJpAOha4mODLkXz/arcgis/rest/services/Refuse_Recycling/FeatureServer/3", "zone": "ROUTE_NAME", "fields": {"trash": "DAY_", "recycling": "RECYCLE_DA"}, "notes": "Gray cart weekly; blue and green carts alternate weeks.", "holiday_url": "https://www.honolulu.gov/opala/refuse/holiday-schedule.html", "source_url": "https://www.honolulu.gov/opala/refuse.html"},
-  "madison":       {"city": "Madison", "state": "WI", "provider": "City of Madison Streets Division", "kind": "arcgis", "url": "https://maps.cityofmadison.com/arcgis/rest/services/Streets/Streets_General_Purpose_Layers/MapServer/0", "zone": "AreaID", "fields": {"trash": "CollectionDay", "calendar_url": "CollectionURL"}, "notes": "Refuse weekly; recycling every other week.", "holiday_url": "https://www.cityofmadison.com/streets/refuse/holiday-collection.cfm", "source_url": "https://www.cityofmadison.com/streets/refuse/"},
-  "huntsville":    {"city": "Huntsville", "state": "AL", "provider": "Huntsville Sanitation", "kind": "arcgis", "url": "https://maps.huntsvilleal.gov/server/rest/services/CityServices/SanitationRoutes/MapServer/0", "zone": "GB_Route", "fields": {"trash": "PickUpDay"}, "notes": "", "holiday_url": "https://www.huntsvilleal.gov/environment/garbage-recycling/", "source_url": "https://www.huntsvilleal.gov/environment/garbage-recycling/"},
-  "long-beach":    {"city": "Long Beach", "state": "CA", "provider": "Long Beach Environmental Services Bureau", "kind": "arcgis", "url": "https://services6.arcgis.com/yCArG7wGXGyWLqav/arcgis/rest/services/Refuse_Collection_Days/FeatureServer/0", "zone": "OBJECTID", "fields": {"trash": "DAY"}, "notes": "", "holiday_url": "https://www.longbeach.gov/lbrs/refuse-services/holiday-collection-schedule/", "source_url": "https://www.longbeach.gov/lbrs/"},
-  "irvine":        {"city": "Irvine", "state": "CA", "provider": "City of Irvine / Waste Management", "kind": "arcgis", "url": "https://services2.arcgis.com/3mkVbLdbLBFHrfbK/arcgis/rest/services/Waste_Management_Pickup_Schedule/FeatureServer/0", "zone": "OBJECTID", "fields": {"trash": "Pickup_Day"}, "notes": "", "holiday_url": "https://www.cityofirvine.org/public-works/trash-and-recycling", "source_url": "https://www.cityofirvine.org/public-works/trash-and-recycling"},
-  "toledo":        {"city": "Toledo", "state": "OH", "provider": "City of Toledo / Republic Services", "kind": "arcgis", "url": "https://services.arcgis.com/2snQ88YUjP9CNEbe/arcgis/rest/services/Trash_and_Recycling/FeatureServer/0", "zone": "OBJECTID_1", "fields": {"trash": "Route_day"}, "notes": "", "holiday_url": "https://toledo.oh.gov/residents/trash-recycling", "source_url": "https://toledo.oh.gov/residents/trash-recycling"},
-  "fort-wayne":    {"city": "Fort Wayne", "state": "IN", "provider": "City of Fort Wayne Solid Waste", "kind": "arcgis", "url": "https://gis.acimap.us/CFWServices/rest/services/CFW_PW_Solid_Waste/Solid_Waste_Trash_Recycle_Boundaries_PW_Solid_Waste/FeatureServer/0", "zone": "ID", "fields": {"trash": "trash_day", "recycling_week": "recycle_week"}, "notes": "Recycling every other week (week A or B) on the trash day.", "holiday_url": "https://www.cityoffortwayne.org/solid-waste.html", "source_url": "https://www.cityoffortwayne.org/solid-waste.html"}
+ "seattle": {
+  "city": "Seattle",
+  "state": "WA",
+  "provider": "Seattle Public Utilities",
+  "kind": "arcgis",
+  "url": "https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Residential_Garbage_Routes/FeatureServer/0",
+  "zone": "ROUTE_ID",
+  "fields": {
+   "trash": "PCKUP_DAY"
+  },
+  "notes": "Recycling and food/yard waste are collected on the same day as garbage; recycling every other week for most homes.",
+  "holiday_url": "https://www.seattle.gov/utilities/your-services/collection-and-disposal/holiday-schedule",
+  "source_url": "https://www.seattle.gov/utilities/your-services/collection-and-disposal/collection-calendar"
+ },
+ "oklahoma-city": {
+  "city": "Oklahoma City",
+  "state": "OK",
+  "provider": "City of Oklahoma City Utilities",
+  "kind": "arcgis",
+  "url": "https://utility.arcgis.com/usrsvcs/servers/45426e5e1b31489db9afea603870f724/rest/services/OpenData/Utilities/FeatureServer/1",
+  "zone": "ROUTE",
+  "fields": {
+   "trash": "PICKUPDAY"
+  },
+  "notes": "Weekly trash; recycling every other week on the same day.",
+  "holiday_url": "https://www.okc.gov/departments/utilities/solid-waste-management/holiday-schedule",
+  "source_url": "https://www.okc.gov/departments/utilities/solid-waste-management"
+ },
+ "miami-dade": {
+  "city": "Miami-Dade County",
+  "state": "FL",
+  "provider": "Miami-Dade Solid Waste Management",
+  "kind": "arcgis",
+  "url": "https://services.arcgis.com/8Pc9XBTAsYuxx9Ny/arcgis/rest/services/GarbagePickupRoute_gdb/FeatureServer/0",
+  "zone": "ROUTE",
+  "fields": {
+   "trash": "WEEKDAYS"
+  },
+  "notes": "Garbage twice a week; recycling every other week.",
+  "holiday_url": "https://www.miamidade.gov/global/service.page?Mduid_service=ser1462903960516371",
+  "source_url": "https://www.miamidade.gov/global/solidwaste/home.page"
+ },
+ "orlando": {
+  "city": "Orlando",
+  "state": "FL",
+  "provider": "City of Orlando Solid Waste",
+  "kind": "arcgis",
+  "url": "https://services5.arcgis.com/mMuoPCaIYD4wEgDl/arcgis/rest/services/OrlandoSWGarbage/FeatureServer/0",
+  "zone": "GarbageRouteNum",
+  "fields": {
+   "trash": "GarbageDay"
+  },
+  "notes": "",
+  "holiday_url": "https://www.orlando.gov/Trash-Recycling/Holiday-Collection-Schedule",
+  "source_url": "https://www.orlando.gov/Trash-Recycling"
+ },
+ "richmond": {
+  "city": "Richmond",
+  "state": "VA",
+  "provider": "City of Richmond DPW",
+  "kind": "arcgis",
+  "url": "https://services1.arcgis.com/k3vhq11XkBNeeOfM/arcgis/rest/services/RefuseCollection/FeatureServer/0",
+  "zone": "RouteName",
+  "fields": {
+   "trash": "Day"
+  },
+  "notes": "",
+  "holiday_url": "https://www.rva.gov/public-works/refuse-collection",
+  "source_url": "https://www.rva.gov/public-works/refuse-collection"
+ },
+ "irving": {
+  "city": "Irving",
+  "state": "TX",
+  "provider": "Irving Solid Waste Services",
+  "kind": "arcgis",
+  "url": "https://services3.arcgis.com/OfsJXUlu8pSkbl7B/arcgis/rest/services/SWS_Pickup_Days/FeatureServer/1",
+  "zone": "OBJECTID",
+  "fields": {
+   "trash": "Trash",
+   "recycling": "Recycling",
+   "yard": "Brush",
+   "bulk": "Bulk_"
+  },
+  "notes": "",
+  "holiday_url": "https://www.cityofirving.org/1108/Holiday-Schedule",
+  "source_url": "https://www.cityofirving.org/280/Solid-Waste-Services"
+ },
+ "honolulu": {
+  "city": "Honolulu",
+  "state": "HI",
+  "provider": "City & County of Honolulu ENV",
+  "kind": "arcgis",
+  "url": "https://services.arcgis.com/tNJpAOha4mODLkXz/arcgis/rest/services/Refuse_Recycling/FeatureServer/3",
+  "zone": "ROUTE_NAME",
+  "fields": {
+   "trash": "DAY_",
+   "recycling": "RECYCLE_DA"
+  },
+  "notes": "Gray cart weekly; blue and green carts alternate weeks.",
+  "holiday_url": "https://www.honolulu.gov/opala/refuse/holiday-schedule.html",
+  "source_url": "https://www.honolulu.gov/opala/refuse.html"
+ },
+ "madison": {
+  "city": "Madison",
+  "state": "WI",
+  "provider": "City of Madison Streets Division",
+  "kind": "arcgis",
+  "url": "https://maps.cityofmadison.com/arcgis/rest/services/Streets/Streets_General_Purpose_Layers/MapServer/0",
+  "zone": "AreaID",
+  "fields": {
+   "trash": "CollectionDay",
+   "calendar_url": "CollectionURL"
+  },
+  "notes": "Refuse weekly; recycling every other week.",
+  "holiday_url": "https://www.cityofmadison.com/streets/refuse/holiday-collection.cfm",
+  "source_url": "https://www.cityofmadison.com/streets/refuse/"
+ },
+ "huntsville": {
+  "city": "Huntsville",
+  "state": "AL",
+  "provider": "Huntsville Sanitation",
+  "kind": "arcgis",
+  "url": "https://maps.huntsvilleal.gov/server/rest/services/CityServices/SanitationRoutes/MapServer/0",
+  "zone": "GB_Route",
+  "fields": {
+   "trash": "PickUpDay"
+  },
+  "notes": "",
+  "holiday_url": "https://www.huntsvilleal.gov/environment/garbage-recycling/",
+  "source_url": "https://www.huntsvilleal.gov/environment/garbage-recycling/"
+ },
+ "long-beach": {
+  "city": "Long Beach",
+  "state": "CA",
+  "provider": "Long Beach Environmental Services Bureau",
+  "kind": "arcgis",
+  "url": "https://services6.arcgis.com/yCArG7wGXGyWLqav/arcgis/rest/services/Refuse_Collection_Days/FeatureServer/0",
+  "zone": "OBJECTID",
+  "fields": {
+   "trash": "DAY"
+  },
+  "notes": "",
+  "holiday_url": "https://www.longbeach.gov/lbrs/refuse-services/holiday-collection-schedule/",
+  "source_url": "https://www.longbeach.gov/lbrs/"
+ },
+ "irvine": {
+  "city": "Irvine",
+  "state": "CA",
+  "provider": "City of Irvine / Waste Management",
+  "kind": "arcgis",
+  "url": "https://services2.arcgis.com/3mkVbLdbLBFHrfbK/arcgis/rest/services/Waste_Management_Pickup_Schedule/FeatureServer/0",
+  "zone": "OBJECTID",
+  "fields": {
+   "trash": "Pickup_Day"
+  },
+  "notes": "",
+  "holiday_url": "https://www.cityofirvine.org/public-works/trash-and-recycling",
+  "source_url": "https://www.cityofirvine.org/public-works/trash-and-recycling"
+ },
+ "toledo": {
+  "city": "Toledo",
+  "state": "OH",
+  "provider": "City of Toledo / Republic Services",
+  "kind": "arcgis",
+  "url": "https://services.arcgis.com/2snQ88YUjP9CNEbe/arcgis/rest/services/Trash_and_Recycling/FeatureServer/0",
+  "zone": "OBJECTID_1",
+  "fields": {
+   "trash": "Route_day"
+  },
+  "notes": "",
+  "holiday_url": "https://toledo.oh.gov/residents/trash-recycling",
+  "source_url": "https://toledo.oh.gov/residents/trash-recycling"
+ },
+ "fort-wayne": {
+  "city": "Fort Wayne",
+  "state": "IN",
+  "provider": "City of Fort Wayne Solid Waste",
+  "kind": "arcgis",
+  "url": "https://gis.acimap.us/CFWServices/rest/services/CFW_PW_Solid_Waste/Solid_Waste_Trash_Recycle_Boundaries_PW_Solid_Waste/FeatureServer/0",
+  "zone": "ID",
+  "fields": {
+   "trash": "trash_day",
+   "recycling_week": "recycle_week"
+  },
+  "notes": "Recycling every other week (week A or B) on the trash day.",
+  "holiday_url": "https://www.cityoffortwayne.org/solid-waste.html",
+  "source_url": "https://www.cityoffortwayne.org/solid-waste.html"
+ },
+ "charlotte": {
+  "city": "Charlotte",
+  "state": "NC",
+  "provider": "Charlotte Solid Waste Services",
+  "kind": "arcgis",
+  "url": "https://services.arcgis.com/9Nl857LBlQVyzq54/arcgis/rest/services/Solid_Waste_Collection/FeatureServer/0",
+  "where": "ROUTE_TYPE='GARB'",
+  "zone": "ROUTE_NAME",
+  "fields": {
+   "trash": "WORK_DAY"
+  },
+  "notes": "Garbage weekly; recycling every other week and yard waste on separate routes.",
+  "holiday_url": "https://www.charlottenc.gov/Services/Trash-and-Recycling/Holiday-Schedule",
+  "source_url": "https://www.charlottenc.gov/Services/Trash-and-Recycling"
+ },
+ "baltimore": {
+  "city": "Baltimore",
+  "state": "MD",
+  "provider": "Baltimore City DPW",
+  "kind": "arcgis",
+  "url": "https://services1.arcgis.com/UWYHeuuJISiGmgXx/arcgis/rest/services/Trash_and_Recycling_Days/FeatureServer/0",
+  "zone": "OBJECTID",
+  "fields": {
+   "trash": "trash_day",
+   "recycling": "recyc_day"
+  },
+  "notes": "",
+  "holiday_url": "https://publicworks.baltimorecity.gov/holiday-schedule",
+  "source_url": "https://publicworks.baltimorecity.gov/trash-recycling"
+ },
+ "tucson": {
+  "city": "Tucson",
+  "state": "AZ",
+  "provider": "Tucson Environmental Services",
+  "kind": "arcgis",
+  "url": "https://mapdata.tucsonaz.gov/arcgis/rest/services/IT/ZoomTucson/MapServer/56",
+  "zone": "OBJECTID",
+  "fields": {
+   "trash": "DOS",
+   "recycling_week": "CollWeek"
+  },
+  "notes": "Trash weekly; recycling every other week (week A or B) on the same day.",
+  "holiday_url": "https://www.tucsonaz.gov/Departments/Environmental-Services/Holiday-Schedule",
+  "source_url": "https://www.tucsonaz.gov/Departments/Environmental-Services"
+ },
+ "los-angeles": {
+  "city": "Los Angeles",
+  "state": "CA",
+  "provider": "LA Sanitation & Environment",
+  "kind": "arcgis",
+  "url": "https://maps.lacity.org/lahub/rest/services/Boundaries/MapServer/22",
+  "zone": "District_Name",
+  "fields": {
+   "trash": "Day"
+  },
+  "notes": "All carts (black, blue, green) are collected on the same day each week.",
+  "holiday_url": "https://www.lacitysan.org/san/faces/home/portal/s-lsh-wwd/s-lsh-wwd-s/s-lsh-wwd-s-cs/s-lsh-wwd-s-cs-hs",
+  "source_url": "https://www.lacitysan.org/"
+ },
+ "dallas": {
+  "city": "Dallas",
+  "state": "TX",
+  "provider": "Dallas Sanitation Services",
+  "kind": "arcgis",
+  "url": "https://services2.arcgis.com/rwnOSbfKSwyTBcwN/arcgis/rest/services/CRMHostedLayers/FeatureServer/19",
+  "zone": "DISTRICT",
+  "fields": {
+   "trash": "DOW"
+  },
+  "notes": "Garbage weekly; recycling every other week on the same day.",
+  "holiday_url": "https://dallascityhall.com/departments/sanitation/Pages/holiday-schedule.aspx",
+  "source_url": "https://dallascityhall.com/departments/sanitation"
+ },
+ "washington-dc": {
+  "city": "Washington",
+  "state": "DC",
+  "provider": "DC Department of Public Works",
+  "kind": "arcgis",
+  "url": "https://maps2.dcgis.dc.gov/dcgis/rest/services/DCGIS_DATA/Public_Service_WebMercator/MapServer/13",
+  "zone": "TRASH_DAY",
+  "fields": {
+   "trash": "TRASH_DAY"
+  },
+  "notes": "Twice-weekly trash in these areas; recycling once a week on the first of the two days.",
+  "holiday_url": "https://dpw.dc.gov/page/holiday-collection-schedule",
+  "source_url": "https://dpw.dc.gov/service/trash-collection"
+ },
+ "bakersfield": {
+  "city": "Bakersfield",
+  "state": "CA",
+  "provider": "City of Bakersfield Solid Waste",
+  "kind": "arcgis",
+  "url": "https://gis.bakersfieldcity.us/webmaps/rest/services/General/Solidwaste/MapServer/2",
+  "zone": "ROUTE",
+  "fields": {
+   "trash": "DAYS",
+   "calendar_url": "CALENDAR"
+  },
+  "notes": "",
+  "holiday_url": "https://www.bakersfieldcity.us/244/Solid-Waste",
+  "source_url": "https://www.bakersfieldcity.us/244/Solid-Waste"
+ },
+ "new-orleans": {
+  "city": "New Orleans",
+  "state": "LA",
+  "provider": "City of New Orleans Sanitation",
+  "kind": "arcgis",
+  "url": "https://services1.arcgis.com/JbKmzpUJDB0d0o8l/arcgis/rest/services/Metro_Sanitation_Routes/FeatureServer/0",
+  "zone": "OBJECTID",
+  "fields": {
+   "trash": "Day"
+  },
+  "notes": "",
+  "holiday_url": "https://nola.gov/sanitation/",
+  "source_url": "https://nola.gov/sanitation/"
+ },
+ "corpus-christi": {
+  "city": "Corpus Christi",
+  "state": "TX",
+  "provider": "Corpus Christi Solid Waste Services",
+  "kind": "arcgis",
+  "url": "https://services.arcgis.com/0J4ZNc4NaTguvRy0/arcgis/rest/services/PickUpDays/FeatureServer/0",
+  "zone": "ID",
+  "fields": {
+   "trash": "Day"
+  },
+  "notes": "",
+  "holiday_url": "https://www.cctexas.com/services/general-government/solid-waste-services",
+  "source_url": "https://www.cctexas.com/services/general-government/solid-waste-services"
+ },
+ "arlington": {
+  "city": "Arlington",
+  "state": "TX",
+  "provider": "City of Arlington / Republic Services",
+  "kind": "arcgis",
+  "url": "https://services8.arcgis.com/vltvrabtjlQsx0YJ/arcgis/rest/services/Garbage_Collection_Schedule/FeatureServer/0",
+  "zone": "FID",
+  "fields": {
+   "trash": "DAY_"
+  },
+  "notes": "",
+  "holiday_url": "https://www.arlingtontx.gov/city_hall/departments/public_works/garbage_recycling",
+  "source_url": "https://www.arlingtontx.gov/city_hall/departments/public_works/garbage_recycling"
+ },
+ "fresno": {
+  "city": "Fresno",
+  "state": "CA",
+  "provider": "City of Fresno Solid Waste",
+  "kind": "arcgis",
+  "url": "https://services2.arcgis.com/WkBUojyNPhsWOk1W/arcgis/rest/services/Solid_Waste_Service_Day_GIS_Hub/FeatureServer/34",
+  "zone": "OBJECTID",
+  "fields": {
+   "trash": "ServiceDay"
+  },
+  "notes": "",
+  "holiday_url": "https://www.fresno.gov/publicutilities/solid-waste/",
+  "source_url": "https://www.fresno.gov/publicutilities/solid-waste/"
+ }
 }

@@ -16,7 +16,7 @@ def parse_days(val):
     """'Monday/Thursday', 'MON', 'Tuesday Friday', 'M/TH' → ['Mon','Thu']. Unknown → []."""
     if val is None:
         return []
-    s = str(val).strip()
+    s = re.sub(r"[^A-Za-z]+", " ", str(val)).strip()  # FRI_VRN_SON, Tuesday/Friday, MON-A → tokens
     found = [m.group(1)[:3].title() for m in DAY_RE.finditer(s)]
     if not found and re.fullmatch(r"[MTWFS]{1,2}(/[MTWFS]{1,2})*", s.upper()):
         code = {"M": "Mon", "T": "Tue", "W": "Wed", "TH": "Thu", "F": "Fri", "S": "Sat"}

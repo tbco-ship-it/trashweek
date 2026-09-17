@@ -23,7 +23,7 @@ def collect(slug, cfg):
     page = int(meta.get("maxRecordCount") or 1000)
     feats, offset = [], 0
     while True:
-        q = fetch(url + "/query", {"where": "1=1", "outFields": "*", "outSR": "4326", "returnGeometry": "true",
+        q = fetch(url + "/query", {"where": cfg.get("where", "1=1"), "outFields": "*", "outSR": "4326", "returnGeometry": "true",
                                    "maxAllowableOffset": "0.0003", "geometryPrecision": "5",
                                    "resultOffset": str(offset), "resultRecordCount": str(page), "f": "json"})
         got = q.get("features", [])
