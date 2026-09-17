@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Is trash pickup delayed this week? 2026 holiday collection schedule by city | {{ site }}{% endblock %}
+{% block description %}Which 2026 holidays delay trash and recycling pickup, how the one-day slide works, and links to each city's official holiday notice.{% endblock %}
+{% block content %}
+<nav class="crumbs"><a href="{{ base }}">Home</a> › Holiday delays</nav>
+<h1>Is trash pickup delayed this week?</h1>
+<div class="prose">
+<p>The usual rule: if your hauler observes a holiday on a weekday, every route from that day to the end of the week moves one day later. A Wednesday holiday means Wednesday routes run Thursday, Thursday on Friday, Friday on Saturday. Routes earlier in the week are not affected. Cities differ on which holidays count — most observe New Year's Day, Memorial Day, Independence Day, Labor Day, Thanksgiving and Christmas; fewer observe MLK Day, Presidents' Day, Juneteenth, Columbus Day or Veterans Day.</p>
+</div>
+<table class="tbl"><thead><tr><th>Date</th><th>Holiday</th><th>Weekday</th></tr></thead><tbody>
+{% for d, name in HOLIDAYS %}<tr><td>{{ d }}</td><td>{{ name }}</td><td class="hday" data-d="{{ d }}"></td></tr>{% endfor %}
+</tbody></table>
+<div class="sec"><div class="sec-h"><h2>Official holiday notices by city</h2></div>
+<ul class="list">{% for c in cities %}<li><a href="{{ base }}{{ c.slug }}/holidays/">{{ c.city }}, {{ c.state }}<span class="meta">{{ c.provider }}</span></a></li>{% endfor %}</ul></div>
+{% endblock %}

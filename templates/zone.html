@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}{{ c.city }} zone {{ z.zone }}: trash pickup {{ z.schedule.trash|days_text }}{% if z.schedule.recycling %}, recycling {{ z.schedule.recycling|days_text }}{% endif %} | {{ site }}{% endblock %}
+{% block description %}Collection days for {{ c.city }}, {{ c.state }} zone {{ z.zone }}: trash {{ z.schedule.trash|days_text }}{% if z.schedule.recycling %}, recycling {{ z.schedule.recycling|days_text }}{% endif %}{% if z.schedule.yard %}, yard waste {{ z.schedule.yard|days_text }}{% endif %}. This week's dates, holiday delays and a calendar file.{% endblock %}
+{% block head %}
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"{{ c.city }}","item":"{{ origin }}{{ base }}{{ c.slug }}/"},{"@type":"ListItem","position":2,"name":"Zone {{ z.zone }}"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What day is trash pickup in {{ c.city }} zone {{ z.zone }}?","acceptedAnswer":{"@type":"Answer","text":"Trash is collected on {{ z.schedule.trash|days_text }}.{% if z.schedule.recycling %} Recycling on {{ z.schedule.recycling|days_text }}.{% endif %}{% if z.schedule.yard %} Yard waste on {{ z.schedule.yard|days_text }}.{% endif %} Collection may run one day late in a holiday week."}}]}</script>
+{% endblock %}
+{% block content %}
+<nav class="crumbs"><a href="{{ base }}">Home</a> › <a href="{{ base }}{{ c.slug }}/">{{ c.city }}</a> › Zone {{ z.zone }}</nav>
+<h1>{{ c.city }} zone {{ z.zone }} pickup days</h1>
+<p class="prose">{{ c.provider }}. Not sure this is your zone? <a href="{{ base }}{{ c.slug }}/">Check by address</a>.</p>
+<section class="sheet balanced" id="today">
+  <p class="sheet-label">Today &amp; tomorrow</p>
+  <div class="sheet-num"><span class="num small-num" id="headline">Loading…</span></div>
+  <p class="sheet-title" id="sub"></p>
+  <div class="stack" id="upcoming"></div>
+  <p class="sheet-actions"><a class="next" id="ics" href="#" download="{{ c.slug }}-zone-{{ z.zone|lower|replace(' ', '-') }}.ics">Add to calendar (.ics)</a><a class="next" href="{{ base }}{{ c.slug }}/holidays/">Holiday delays</a></p>
+</section>
+<div class="week" id="week" aria-label="This week"></div>
+<div class="legend">{% for k in c.kinds if z.schedule[k] %}<span class="chip"><span class="dot" style="background:{{ KIND_COLOR[k] }}"></span>{{ KIND_LABEL[k] }}</span>{% endfor %}</div>
+<div class="ad-slot"><!-- ad: zone --></div>
+<div class="sec"><div class="sec-h"><h2>Schedule</h2></div>
+<div class="card"><ul class="types">{% for k in c.kinds if z.schedule[k] %}<li><span class="dot" style="background:{{ KIND_COLOR[k] }}"></span><span><span class="tname">{{ KIND_LABEL[k] }}</span></span><span class="tdays">{{ z.schedule[k]|days_text }}</span></li>{% endfor %}
+{% if z.schedule.recycling_week %}<li><span class="dot" style="background:{{ KIND_COLOR['recycling'] }}"></span><span><span class="tname">Recycling week</span></span><span class="tdays">Week {{ z.schedule.recycling_week }} (every other week)</span></li>{% endif %}</ul></div>
+{% if c.notes %}<p class="muted small" style="margin-top:10px">{{ c.notes }}</p>{% endif %}
+{% if z.schedule.calendar_url %}<p class="muted small"><a href="{{ z.schedule.calendar_url }}" rel="noopener" target="_blank">City calendar for this zone (PDF)</a></p>{% endif %}
+</div>
+{% set same = c.zones|selectattr('schedule.trash','equalto',z.schedule.trash)|rejectattr('zone','equalto',z.zone)|list %}
+{% if same %}<div class="sec"><div class="sec-h"><h2>Other {{ z.schedule.trash|days_text }} zones</h2><a href="{{ base }}{{ c.slug }}/">All {{ c.city }} zones</a></div>
+<ul class="list">{% for n in same[:8] %}<li><a href="{{ base }}{{ c.slug }}/zone/{{ n.zone|lower|replace(' ', '-') }}/">Zone {{ n.zone }}<span class="meta">{{ n.schedule.trash|days_text }}</span></a></li>{% endfor %}</ul></div>{% endif %}
+<p class="muted small" style="margin-top:24px">Source: <a href="{{ c.data_url }}" rel="noopener" target="_blank">{{ c.provider }} route layer</a> (fetched {{ c.fetched }}). Official notices override this page.</p>
+<script id="sched" type="application/json">{{ {"schedule": z.schedule, "name": c.city ~ " zone " ~ z.zone, "kinds": c.kinds}|tojson }}</script>
+{% endblock %}

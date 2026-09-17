@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}{{ c.city }} trash pickup holiday schedule 2026 — which holidays delay collection | {{ site }}{% endblock %}
+{% block description %}2026 holidays that can delay trash and recycling pickup in {{ c.city }}, {{ c.state }}, with the official {{ c.provider }} holiday notice.{% endblock %}
+{% block content %}
+<nav class="crumbs"><a href="{{ base }}">Home</a> › <a href="{{ base }}{{ c.slug }}/">{{ c.city }}</a> › Holidays</nav>
+<h1>{{ c.city }} holiday pickup schedule 2026</h1>
+<div class="prose">
+<p>When {{ c.provider }} observes a holiday, collection for the rest of that week usually runs one day late (Monday routes on Tuesday, and so on). Which holidays are observed is decided by the city each year — the list below is the 2026 federal calendar that most haulers work from. Confirm the current week on <a href="{{ c.holiday_url }}" rel="noopener" target="_blank">{{ c.city }}'s official holiday page</a>.</p>
+</div>
+<table class="tbl"><thead><tr><th>Date</th><th>Holiday</th><th>Weekday</th></tr></thead><tbody>
+{% for d, name in HOLIDAYS %}<tr><td>{{ d }}</td><td>{{ name }}</td><td class="hday" data-d="{{ d }}"></td></tr>{% endfor %}
+</tbody></table>
+<div class="prose"><p>Find your zone's normal days first: <a href="{{ base }}{{ c.slug }}/">{{ c.city }} zones by address</a>.</p></div>
+{% endblock %}

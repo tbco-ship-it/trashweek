@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}What day is trash pickup at my address? Trash, recycling and yard-waste schedule by city | {{ site }}{% endblock %}
+{% block head %}<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"{{ site }}","applicationCategory":"UtilitiesApplication","inLanguage":"en","url":"{{ origin }}{{ base }}","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>{% endblock %}
+{% block content %}
+<section class="hero">
+  <h1>Is it trash day tomorrow?</h1>
+  <p>Type your street address. We match it to your city's official collection zone and show trash, recycling and yard-waste days for this week — and whether a holiday pushes them back. {{ cities|length }} cities, {{ '{:,}'.format(n_zones) }} zones. Your address stays in your browser.</p>
+</section>
+
+<section class="calc-grid">
+<div class="calc card" id="calc">
+  <h2 class="card-title">Your address</h2>
+  <label class="field">Street address, city
+    <input id="addr" class="pick search" type="text" autocomplete="street-address" placeholder="e.g. 400 Broad St, Seattle WA">
+  </label>
+  <p class="sheet-actions" style="margin-top:12px"><button id="go" class="next" type="button">Find my pickup days</button></p>
+  <p id="msg" class="hint" hidden></p>
+  <p class="hint">Or pick a city below and browse zones. Nothing is sent to the city — we geocode with the free US Census service and check the zone on this page.</p>
+</div>
+<div id="result" class="result" aria-live="polite"></div>
+</section>
+
+<div class="ad-slot"><!-- ad: home --></div>
+
+<div class="sec" id="cities"><div class="sec-h"><h2>Cities</h2></div>
+<div class="cities">{% for c in cities %}<a href="{{ base }}{{ c.slug }}/"><b>{{ c.city }}, {{ c.state }}</b><span>{{ c.zones|length }} zones · {{ c.provider }}</span></a>{% endfor %}</div>
+</div>
+
+<section class="prose">
+  <h2>Why the day depends on your block, not your city</h2>
+  <p>Cities run collection in routes. Your neighbor across a main road can be on a different day, and a single ZIP code usually spans three or four routes. City websites publish this as a map or a lookup tool; we pull the same route data and turn it into one page per zone that you can bookmark or add to your calendar.</p>
+  <h2>Holidays</h2>
+  <p>Most cities skip collection on a handful of holidays and run one day late for the rest of that week. The exact list differs by city — <a href="{{ base }}holidays/">see which holidays delay pickup</a>, then check your city's notice for the current week.</p>
+</section>
+{% endblock %}

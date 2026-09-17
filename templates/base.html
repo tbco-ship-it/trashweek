@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}{{ site }}{% endblock %}</title>
+<meta name="description" content="{% block description %}Type your address and see your trash, recycling and yard-waste pickup days for this week, plus holiday delays. {{ cities|length }} cities, {{ '{:,}'.format(n_zones) }} collection zones, built from each city's official route data.{% endblock %}">
+<link rel="canonical" href="{{ origin }}{{ base }}{{ path }}">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preload" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"></noscript>
+<link rel="stylesheet" href="{{ base }}static/style.css?v={{ v }}">
+<link rel="icon" href="{{ base }}static/favicon.svg?v={{ v }}" type="image/svg+xml">
+{% if adsense_pub %}<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-{{ adsense_pub }}" crossorigin="anonymous"></script>{% endif %}
+{% block head %}{% endblock %}
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="{{ base }}">Trash<em>Week</em></a>
+  <nav>
+    <a href="{{ base }}">Find my pickup day</a>
+    <a href="{{ base }}#cities">Cities</a>
+    <a href="{{ base }}holidays/">Holiday delays</a>
+  </nav>
+</header>
+<main>
+{% block content %}{% endblock %}
+</main>
+<footer>
+  <p><a href="{{ base }}about/">About</a> · <a href="{{ base }}methodology/">Data sources</a> · <a href="{{ base }}privacy/">Privacy</a> · <a href="{{ base }}contact/">Contact</a></p>
+  <p class="muted">Built from each city's published collection-route data (see the source link on every page). Schedules change around holidays and severe weather — the city's own notice wins.</p>
+</footer>
+<script src="{{ base }}static/ui.js?v={{ v }}" defer></script>
+<script src="{{ base }}static/app.js?v={{ v }}" defer></script>
+</body>
+</html>
