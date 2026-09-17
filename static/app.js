@@ -9,7 +9,9 @@
   const LABEL = { trash: 'Trash', recycling: 'Recycling', yard: 'Yard waste', bulk: 'Bulk items' };
   const COLOR = { trash: '#3182f6', recycling: '#00b06f', yard: '#8b5cf6', bulk: '#ff7a00' };
   const TAG = { ...COLOR, recycling: '#00885a', bulk: '#d95d00' };
-  const HOL = new Set(['2026-01-01','2026-05-25','2026-07-04','2026-09-07','2026-11-26','2026-12-25','2027-01-01']); // widely observed; city pages link the official list
+  const DEFAULT_HOL = ['2026-01-01','2026-05-25','2026-07-04','2026-09-07','2026-11-26','2026-12-25','2027-01-01']; // fallback when a city's observed list is unknown
+  let HOL = new Set(DEFAULT_HOL);
+  const setHol = list => { HOL = new Set(list && list.length ? list : DEFAULT_HOL); };
   const now = new Date(); now.setHours(0, 0, 0, 0);
   const addDays = (d, n) => { const x = new Date(d); x.setDate(x.getDate() + n); return x; };
   const iso = d => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
@@ -55,7 +57,7 @@
   document.querySelectorAll('td.hday').forEach(td => { const d = new Date(td.dataset.d + 'T00:00:00'); td.textContent = LONG[DAYS[d.getDay()]]; });
 
   const sched = $('sched');
-  if (sched) { const S = JSON.parse(sched.textContent); render(S.schedule, S.name, null); $('ics').href = ics(S.schedule, S.name); return; }
+  if (sched) { const S = JSON.parse(sched.textContent); setHol(S.holidays); render(S.schedule, S.name, null); $('ics').href = ics(S.schedule, S.name); return; }
 
   const input = $('addr'); if (!input) return;
   const out = $('result'), msg = $('msg'), go = $('go');
@@ -78,7 +80,7 @@
       const { x: lng, y: lat } = m.coordinates;
       const slug = input.dataset.city || slugOf(m.matchedAddress);
       if (!slug) return say(`Found the address (${m.matchedAddress}) but that city isn't covered yet. Cities we have are listed below.`);
-      const geo = await loadGeo(slug), z = findZone(geo, lng, lat);
+      const geo = await loadGeo(slug), z = findZone(geo, lng, lat); setHol(geo.holidays);
       const cname = cities.find(c => c.slug === slug);
       if (!z) return say(`${m.matchedAddress} is outside ${cname.city}'s published collection zones (unincorporated area or private hauler).`);
       say(`Matched ${m.matchedAddress}`);
@@ -88,5 +90,5 @@
   }
   go.addEventListener('click', lookup); input.addEventListener('keydown', e => { if (e.key === 'Enter') lookup(); });
   const last = JSON.parse(localStorage.getItem('trashweek.last') || 'null');
-  if (last && (!input.dataset.city || input.dataset.city === last.slug)) { const geo = await loadGeo(last.slug); const z = geo.zones.find(x => x.z === last.z); const c = cities.find(x => x.slug === last.slug); if (z && c) render(z.s, `${c.city} · zone ${z.z}`, out, `${base}${last.slug}/zone/${z.u}/`); }
+  if (last && (!input.dataset.city || input.dataset.city === last.slug)) { const geo = await loadGeo(last.slug); setHol(geo.holidays); const z = geo.zones.find(x => x.z === last.z); const c = cities.find(x => x.slug === last.slug); if (z && c) render(z.s, `${c.city} · zone ${z.z}`, out, `${base}${last.slug}/zone/${z.u}/`); }
 })();

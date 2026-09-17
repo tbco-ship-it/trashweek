@@ -40,9 +40,12 @@ def main():
     origin = args.origin.rstrip("/")
     today = dt.date.today()
 
+    hol_all = json.loads((ROOT / "data/holidays.json").read_text()) if (ROOT / "data/holidays.json").exists() else {}
     cities = []
     for f in sorted((ROOT / "data/normalized").glob("*.json")):
         c = json.loads(f.read_text())
+        h = hol_all.get(c["slug"], {})
+        c["holidays"] = {"observed": h.get("observed") or [], "rule": h.get("rule") or "", "source": h.get("source") or c.get("holiday_url"), "checked": h.get("checked")}
         c["kinds"] = [k for k in ("trash", "recycling", "yard", "bulk") if any(z["schedule"].get(k) for z in c["zones"])]
         c["day_counts"] = Counter(d for z in c["zones"] for d in z["schedule"]["trash"])
         for z in c["zones"]:
@@ -68,7 +71,7 @@ def main():
     (DIST / "static/geo").mkdir()
     # per-city geometry for the in-browser address lookup (loaded on demand)
     for c in cities:
-        geo = {"slug": c["slug"], "zones": [{"z": z["zone"], "u": z["slug"], "s": z["schedule"], "r": z["rings"]} for z in c["zones"]]}
+        geo = {"slug": c["slug"], "holidays": [d for d, _ in c["holidays"]["observed"]], "zones": [{"z": z["zone"], "u": z["slug"], "s": z["schedule"], "r": z["rings"]} for z in c["zones"]]}
         (DIST / "static/geo" / f"{c['slug']}.json").write_text(json.dumps(geo, separators=(",", ":")))
     (DIST / "static/cities.json").write_text(json.dumps([{"slug": c["slug"], "city": c["city"], "state": c["state"], "n": len(c["zones"])} for c in cities], separators=(",", ":")))
 

@@ -19,7 +19,7 @@
 </section>
 <div class="ad-slot"><!-- ad: city --></div>
 <div class="sec"><div class="sec-h"><h2>Holiday delays</h2><a href="{{ base }}{{ c.slug }}/holidays/">2026 list</a></div>
-<p class="prose">Check <a href="{{ c.holiday_url }}" rel="noopener" target="_blank">{{ c.city }}'s official holiday notice</a> for the current week. Our <a href="{{ base }}{{ c.slug }}/holidays/">holiday page</a> lists the 2026 dates that commonly shift collection.</p></div>
+<p class="prose">{% if c.holidays.observed %}{{ c.provider }} skips collection on {{ c.holidays.observed|length }} holidays in 2026 ({% for d, n in c.holidays.observed[:4] %}{{ n }}{% if not loop.last %}, {% endif %}{% endfor %}{% if c.holidays.observed|length > 4 %}, …{% endif %}) — <a href="{{ base }}{{ c.slug }}/holidays/">full list and the delay rule</a>.{% else %}Check <a href="{{ c.holidays.source }}" rel="noopener" target="_blank">{{ c.city }}'s official holiday notice</a> for the current week; our <a href="{{ base }}{{ c.slug }}/holidays/">holiday page</a> lists the 2026 dates that commonly shift collection.{% endif %}</p></div>
 {% for d in DAYS if c.day_counts[d] %}
 <div class="sec"><div class="sec-h"><h2>{{ LONG[d] }} zones <span class="muted small">{{ c.day_counts[d] }}</span></h2></div>
 <ul class="list">{% for z in c.zones if d in z.schedule.trash %}<li><a href="{{ base }}{{ c.slug }}/zone/{{ z.slug }}/">Zone {{ z.zone }}<span class="meta">{{ z.schedule.trash|days_text }}{% if z.schedule.recycling %} · recycling {{ z.schedule.recycling|days_text }}{% endif %}</span></a></li>{% endfor %}</ul></div>

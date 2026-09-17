@@ -1,0 +1,389 @@
+{
+ "seattle": {
+  "observed": [
+   [
+    "2026-01-01",
+    "New Year's Day"
+   ],
+   [
+    "2026-11-26",
+    "Thanksgiving Day"
+   ],
+   [
+    "2026-12-25",
+    "Christmas Day"
+   ]
+  ],
+  "rule": "There is no garbage, recycling, or food and yard waste collection on Thanksgiving Day, Christmas Day, or New Year's Day. If your regular collection day falls on or after one of these holidays, your service will be delayed by one day for the remainder of the week.",
+  "source": "https://www.seattle.gov/utilities/your-services/collection-and-disposal/your-collection-day/look-up-collection-day",
+  "checked": "2026-09-17"
+ },
+ "oklahoma-city": {
+  "observed": [
+   [
+    "2026-01-01",
+    "New Year's Day"
+   ],
+   [
+    "2026-05-25",
+    "Memorial Day"
+   ],
+   [
+    "2026-09-07",
+    "Labor Day"
+   ],
+   [
+    "2026-11-26",
+    "Thanksgiving Day"
+   ],
+   [
+    "2026-12-25",
+    "Christmas Day"
+   ]
+  ],
+  "rule": "City-observed holidays may affect regular trash and recycling collection schedules. If a holiday falls on a weekday that impacts collection, the City schedules a make-up day (Wednesday for Monday holidays, Saturday for Thursday/Friday holidays). Bulky waste pickup is not affected by holiday schedules.",
+  "source": "https://www.okc.gov/departments/utilities/trash-recycling/holiday-schedule",
+  "checked": "2026-09-17"
+ },
+ "miami-dade": {
+  "observed": [],
+  "rule": "",
+  "source": "https://www.miamidade.gov/global/solidwaste/home.page",
+  "checked": "2026-09-17",
+  "note": "wip entry cited City of Miami (miamigov.com); county rules pending"
+ },
+ "orlando": {
+  "observed": [
+   [
+    "2026-11-26",
+    "Thanksgiving Day"
+   ],
+   [
+    "2026-12-25",
+    "Christmas Day"
+   ]
+  ],
+  "rule": "The Solid Waste Division observes Thanksgiving Day and Christmas Day as the only holidays where residential garbage, recycling, and yard waste collection services are not provided. When these holidays fall on a regularly scheduled collection day, service for the remainder of the week is delayed by one day.",
+  "source": "https://www.orlando.gov/Trash-Recycling/Holiday-Trash-Collection-Schedule",
+  "checked": "2026-09-17"
+ },
+ "richmond": {
+  "observed": [
+   [
+    "2026-01-01",
+    "New Year's Day"
+   ],
+   [
+    "2026-01-19",
+    "Martin Luther King, Jr. Day"
+   ],
+   [
+    "2026-02-16",
+    "Presidents' Day"
+   ],
+   [
+    "2026-03-09",
+    "International Women's Day (observed)"
+   ],
+   [
+    "2026-04-03",
+    "Spring Holiday"
+   ],
+   [
+    "2026-05-25",
+    "Memorial Day"
+   ],
+   [
+    "2026-06-19",
+    "Juneteenth"
+   ],
+   [
+    "2026-07-03",
+    "Independence Day (observed)"
+   ],
+   [
+    "2026-09-07",
+    "Labor Day"
+   ],
+   [
+    "2026-10-12",
+    "Richmond Indigenous Peoples' Day"
+   ],
+   [
+    "2026-11-03",
+    "Election Day"
+   ],
+   [
+    "2026-11-11",
+    "Veterans Day"
+   ],
+   [
+    "2026-11-25",
+    "Day before Thanksgiving"
+   ],
+   [
+    "2026-11-26",
+    "Thanksgiving Day"
+   ],
+   [
+    "2026-11-27",
+    "Day after Thanksgiving"
+   ],
+   [
+    "2026-12-24",
+    "Christmas Eve"
+   ],
+   [
+    "2026-12-25",
+    "Winter Holiday / Christmas Day"
+   ]
+  ],
+  "rule": "There’s no pickup on City holidays. Collection resumes the day after the holiday and continues through Friday.",
+  "source": "https://www.rva.gov/public-works/holiday-schedule",
+  "checked": "2026-09-17"
+ },
+ "irving": {
+  "observed": [
+   [
+    "2026-01-01",
+    "New Year's Day"
+   ],
+   [
+    "2026-01-19",
+    "Martin Luther King Jr. Day"
+   ],
+   [
+    "2026-05-25",
+    "Memorial Day"
+   ],
+   [
+    "2026-06-19",
+    "Juneteenth"
+   ],
+   [
+    "2026-07-03",
+    "Independence Day (observed)"
+   ],
+   [
+    "2026-09-07",
+    "Labor Day"
+   ],
+   [
+    "2026-11-26",
+    "Thanksgiving Day"
+   ],
+   [
+    "2026-11-27",
+    "Day after Thanksgiving"
+   ],
+   [
+    "2026-12-25",
+    "Christmas Day"
+   ]
+  ],
+  "rule": "If a residential collection day (trash, recycling, or brush/bulky items) falls on a city holiday, collection typically shifts to the next day for each service day within that holiday week (e.g., Monday moves to Tuesday, Tuesday to Wednesday, etc.).",
+  "source": "https://www.cityofirving.org/3116/Holiday-Trash-Schedule",
+  "checked": "2026-09-17"
+ },
+ "honolulu": {
+  "observed": [
+   [
+    "2026-01-01",
+    "New Year's Day"
+   ],
+   [
+    "2026-12-25",
+    "Christmas Day"
+   ]
+  ],
+  "rule": "Christmas Day and New Year’s Day are the only holidays when refuse, recycling, green waste, and bulky items are not collected. If your scheduled gray cart collection day falls on one of these holidays, please leave your cart at the curb; it will be serviced within the following days. Recycling (blue cart) and green waste (green cart) will not be made up; hold items until the next regularly scheduled pickup date.",
+  "source": "https://www.honolulu.gov/opala/trash-collection-services/holiday-schedule.html",
+  "checked": "2026-09-17"
+ },
+ "madison": {
+  "observed": [
+   [
+    "2026-01-01",
+    "New Year's Day"
+   ],
+   [
+    "2026-01-19",
+    "Martin Luther King Jr. Day"
+   ],
+   [
+    "2026-05-25",
+    "Memorial Day"
+   ],
+   [
+    "2026-06-19",
+    "Juneteenth"
+   ],
+   [
+    "2026-07-03",
+    "Independence Day (observed)"
+   ],
+   [
+    "2026-09-07",
+    "Labor Day"
+   ],
+   [
+    "2026-11-26",
+    "Thanksgiving Day"
+   ],
+   [
+    "2026-11-27",
+    "Ho-Chunk Day"
+   ],
+   [
+    "2026-12-24",
+    "Christmas Eve"
+   ],
+   [
+    "2026-12-25",
+    "Christmas Day"
+   ],
+   [
+    "2026-12-31",
+    "New Year's Eve"
+   ]
+  ],
+  "rule": "The City of Madison Streets Division does not perform trash, recycling, brush, or large item collections on City-observed holidays. When a holiday falls on a weekday, collection services are typically delayed (for example, Monday collections moved to Tuesday). Drop-off sites and Streets Division offices are also closed.",
+  "source": "https://www.cityofmadison.com/streets/refuse/collectionSchedule.cfm",
+  "checked": "2026-09-17"
+ },
+ "huntsville": {
+  "observed": [
+   [
+    "2026-01-01",
+    "New Year's Day"
+   ],
+   [
+    "2026-01-19",
+    "Martin Luther King Jr. Day"
+   ],
+   [
+    "2026-05-25",
+    "Memorial Day"
+   ],
+   [
+    "2026-09-07",
+    "Labor Day"
+   ],
+   [
+    "2026-11-11",
+    "Veterans Day"
+   ],
+   [
+    "2026-11-26",
+    "Thanksgiving Day"
+   ]
+  ],
+  "rule": "On observed holidays, residential garbage, recycling, and yard waste collection is generally delayed by one day for the remainder of the week (e.g., regular Monday pickup would occur on Tuesday). If your collection date falls on a holiday, place your cans at the curb the evening before the next business day.",
+  "source": "https://www.huntsvilleal.gov/residents/trash-recycling/holiday-schedule/",
+  "checked": "2026-09-17"
+ },
+ "long-beach": {
+  "observed": [
+   [
+    "2026-01-01",
+    "New Year's Day"
+   ],
+   [
+    "2026-12-25",
+    "Christmas Day"
+   ]
+  ],
+  "rule": "Collection services are interrupted only on Christmas Day (December 25) and New Year's Day (January 1). For all other holidays, refuse, recycling, and organics are collected on your regular schedule. When Christmas Day and New Year’s Day fall on a weekday, collection for the holiday and the remainder of that week will be delayed by one day, with the final collection occurring on Saturday. If the holiday falls on a Saturday, collection will occur on the Friday before the holiday.",
+  "source": "https://www.longbeach.gov/energyresources/services/trash-and-recycling/refuse-collection-services/holiday-schedule/",
+  "checked": "2026-09-17"
+ },
+ "irvine": {
+  "observed": [
+   [
+    "2026-01-01",
+    "New Year's Day"
+   ],
+   [
+    "2026-05-25",
+    "Memorial Day"
+   ],
+   [
+    "2026-07-04",
+    "Independence Day"
+   ],
+   [
+    "2026-09-07",
+    "Labor Day"
+   ],
+   [
+    "2026-11-26",
+    "Thanksgiving Day"
+   ],
+   [
+    "2026-12-25",
+    "Christmas Day"
+   ]
+  ],
+  "rule": "If your regular service day falls on or follows one of the observed holidays during the week (Monday–Friday), your pickup will be delayed by one day for that week only. If an observed holiday falls on a Saturday or Sunday, there is no delay to your service.",
+  "source": "https://www.cityofirvine.org/environmental-programs/residential-trash-recycling",
+  "checked": "2026-09-17"
+ },
+ "toledo": {
+  "observed": [
+   [
+    "2026-01-01",
+    "New Year's Day"
+   ],
+   [
+    "2026-05-25",
+    "Memorial Day"
+   ],
+   [
+    "2026-09-07",
+    "Labor Day"
+   ],
+   [
+    "2026-11-26",
+    "Thanksgiving Day"
+   ],
+   [
+    "2026-12-25",
+    "Christmas Day"
+   ]
+  ],
+  "rule": "Trash collection is delayed by one day for the following holidays: New Year's Day, Memorial Day, Labor Day, Thanksgiving, Christmas.",
+  "source": "https://toledo.oh.gov/services/trash-recycling",
+  "checked": "2026-09-17"
+ },
+ "fort-wayne": {
+  "observed": [
+   [
+    "2026-01-01",
+    "New Year's Day"
+   ],
+   [
+    "2026-05-25",
+    "Memorial Day"
+   ],
+   [
+    "2026-07-04",
+    "Independence Day"
+   ],
+   [
+    "2026-09-07",
+    "Labor Day"
+   ],
+   [
+    "2026-11-26",
+    "Thanksgiving Day"
+   ],
+   [
+    "2026-12-25",
+    "Christmas Day"
+   ]
+  ],
+  "rule": "The City of Fort Wayne observes federal holidays annually that affect solid waste and recycling collection. During these holiday weeks, collection services run one day behind for the remainder of the week. If a holiday falls on a weekday, collections for that day and all subsequent days that week are delayed by one day.",
+  "source": "https://www.cityoffortwayne.org/publicworks/solid-waste-management/holiday-schedule.html",
+  "checked": "2026-09-17"
+ }
+}
