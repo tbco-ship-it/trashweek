@@ -54,7 +54,10 @@ def main():
             if not sched.get("trash"):
                 skipped += 1
                 continue
-            zid = str(a.get(cfg["zone"]) or "").strip() or str(a.get("OBJECTID"))
+            oid = next((a[k] for k in a if k.upper().startswith("OBJECTID") or k.upper() in ("FID", "ID")), None)
+            zid = str(a.get(cfg["zone"]) or "").strip()
+            if not zid or zid == "None":
+                zid = str(oid) if oid is not None else "/".join(sched["trash"])
             zones.append({"zone": zid, "schedule": sched, "raw": {k: a.get(k) for k in cfg["fields"].values() if k in a},
                           "rings": rings})
         # merge zones that share id + schedule (many layers split one route into several polygons)

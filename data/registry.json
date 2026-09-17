@@ -260,20 +260,6 @@
   "holiday_url": "https://dallascityhall.com/departments/sanitation/Pages/holiday-schedule.aspx",
   "source_url": "https://dallascityhall.com/departments/sanitation"
  },
- "washington-dc": {
-  "city": "Washington",
-  "state": "DC",
-  "provider": "DC Department of Public Works",
-  "kind": "arcgis",
-  "url": "https://maps2.dcgis.dc.gov/dcgis/rest/services/DCGIS_DATA/Public_Service_WebMercator/MapServer/13",
-  "zone": "TRASH_DAY",
-  "fields": {
-   "trash": "TRASH_DAY"
-  },
-  "notes": "Twice-weekly trash in these areas; recycling once a week on the first of the two days.",
-  "holiday_url": "https://dpw.dc.gov/page/holiday-collection-schedule",
-  "source_url": "https://dpw.dc.gov/service/trash-collection"
- },
  "bakersfield": {
   "city": "Bakersfield",
   "state": "CA",

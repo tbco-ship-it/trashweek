@@ -1,0 +1,2150 @@
+{
+  "charlotte": {
+    "city": "Charlotte, NC",
+    "endpoint_url": "https://services.arcgis.com/9Nl857LBlQVyzq54/arcgis/rest/services/Solid_Waste_Collection/FeatureServer/0",
+    "status": "live_verified",
+    "day_field": "WORK_DAY",
+    "mapping_notes": "WORK_DAY 컬럼에 요일 축약어(MON, TUE, WED, THU, FRI) 직접 제공. SERVED_BY(수거사: CITY OF CHARLOTTE 또는 WASTE MANAGEMENT), WORK_ZONE(TRASH, RECYCLING 등) 분리 필드 제공.",
+    "layer_name": "Solid Waste Collection",
+    "geometry_type": "esriGeometryPolygon",
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeOID",
+        "alias": "OBJECTID"
+      },
+      {
+        "name": "SERVED_BY",
+        "type": "esriFieldTypeString",
+        "alias": "SERVED_BY"
+      },
+      {
+        "name": "WORK_ZONE",
+        "type": "esriFieldTypeString",
+        "alias": "WORK_ZONE"
+      },
+      {
+        "name": "WORK_DAY",
+        "type": "esriFieldTypeString",
+        "alias": "WORK_DAY"
+      },
+      {
+        "name": "ROUTE_TYPE",
+        "type": "esriFieldTypeString",
+        "alias": "ROUTE_TYPE"
+      },
+      {
+        "name": "ROUTE_NAME",
+        "type": "esriFieldTypeString",
+        "alias": "ROUTE_NAME"
+      },
+      {
+        "name": "ROUTE_PART",
+        "type": "esriFieldTypeString",
+        "alias": "ROUTE_PART"
+      },
+      {
+        "name": "UNIT_COUNT",
+        "type": "esriFieldTypeSmallInteger",
+        "alias": "UNIT_COUNT"
+      },
+      {
+        "name": "OFFICE_DISTANCE",
+        "type": "esriFieldTypeDouble",
+        "alias": "OFFICE_DISTANCE"
+      },
+      {
+        "name": "DUMP_DISTANCE",
+        "type": "esriFieldTypeDouble",
+        "alias": "DUMP_DISTANCE"
+      },
+      {
+        "name": "ROUTE_NOTE",
+        "type": "esriFieldTypeString",
+        "alias": "ROUTE_NOTE"
+      },
+      {
+        "name": "GlobalID",
+        "type": "esriFieldTypeGUID",
+        "alias": "GlobalID"
+      },
+      {
+        "name": "Shape__Area",
+        "type": "esriFieldTypeDouble",
+        "alias": "Shape__Area"
+      },
+      {
+        "name": "Shape__Length",
+        "type": "esriFieldTypeDouble",
+        "alias": "Shape__Length"
+      }
+    ],
+    "sample_records": [
+      {
+        "OBJECTID": 2481,
+        "SERVED_BY": "WASTE MANAGEMENT",
+        "WORK_ZONE": "RECYCLING",
+        "WORK_DAY": "THU",
+        "ROUTE_TYPE": "RECY",
+        "ROUTE_NAME": "4R13R",
+        "ROUTE_PART": "R",
+        "UNIT_COUNT": 883,
+        "OFFICE_DISTANCE": 3.21085709,
+        "DUMP_DISTANCE": 10.65812209,
+        "ROUTE_NOTE": "THU Collection for Recycling on ORANGE week",
+        "GlobalID": "1707ae9e-c94f-460a-ba0e-00d53a5dac1e",
+        "Shape__Area": 21454309.94519043,
+        "Shape__Length": 25107.084651986486
+      },
+      {
+        "OBJECTID": 2482,
+        "SERVED_BY": "WASTE MANAGEMENT",
+        "WORK_ZONE": "RECYCLING",
+        "WORK_DAY": "WED",
+        "ROUTE_TYPE": "RECY",
+        "ROUTE_NAME": "3G04R",
+        "ROUTE_PART": "G",
+        "UNIT_COUNT": 759,
+        "OFFICE_DISTANCE": 4.2358,
+        "DUMP_DISTANCE": 5.72058,
+        "ROUTE_NOTE": "WED Collection for Recycling on GREEN week",
+        "GlobalID": "74c63a97-e280-4d48-be1c-01151dda4353",
+        "Shape__Area": 31462087.10913086,
+        "Shape__Length": 26803.17453753141
+      },
+      {
+        "OBJECTID": 2483,
+        "SERVED_BY": "WASTE MANAGEMENT",
+        "WORK_ZONE": "RECYCLING",
+        "WORK_DAY": "THU",
+        "ROUTE_TYPE": "RECY",
+        "ROUTE_NAME": "4R15R",
+        "ROUTE_PART": "R",
+        "UNIT_COUNT": 829,
+        "OFFICE_DISTANCE": 3.41301822,
+        "DUMP_DISTANCE": 10.86028322,
+        "ROUTE_NOTE": "THU Collection for Recycling on ORANGE week",
+        "GlobalID": "c0ed3eb3-5eb5-4b89-9fbe-01a0b7b35d07",
+        "Shape__Area": 29351293.673950195,
+        "Shape__Length": 34106.26737050068
+      }
+    ]
+  },
+  "baltimore": {
+    "city": "Baltimore, MD",
+    "endpoint_url": "https://services1.arcgis.com/UWYHeuuJISiGmgXx/arcgis/rest/services/Trash_and_Recycling_Days/FeatureServer/0",
+    "status": "live_verified",
+    "day_field": "trash_day / recyc_day / daytext",
+    "mapping_notes": "trash_day에 일반 쓰레기 수거 요일(Tuesday 등), recyc_day에 재활용 요일(Thursday 등), daytext에 조합 안내문(Tuesday/Thursday (Trash/Recycling)) 제공.",
+    "layer_name": "Trash and Recycling Days",
+    "geometry_type": "esriGeometryPolygon",
+    "fields": [
+      {
+        "name": "OBJECTID_1",
+        "type": "esriFieldTypeOID",
+        "alias": "OBJECTID_1"
+      },
+      {
+        "name": "objectid",
+        "type": "esriFieldTypeSmallInteger",
+        "alias": "OBJECTID"
+      },
+      {
+        "name": "daytext",
+        "type": "esriFieldTypeString",
+        "alias": "DAYTEXT"
+      },
+      {
+        "name": "trash_day",
+        "type": "esriFieldTypeString",
+        "alias": "TRASH_DAY"
+      },
+      {
+        "name": "recyc_day",
+        "type": "esriFieldTypeString",
+        "alias": "RECYC_DAY"
+      },
+      {
+        "name": "Shape__Area",
+        "type": "esriFieldTypeDouble",
+        "alias": "Shape__Area"
+      },
+      {
+        "name": "Shape__Length",
+        "type": "esriFieldTypeDouble",
+        "alias": "Shape__Length"
+      },
+      {
+        "name": "GlobalID",
+        "type": "esriFieldTypeGlobalID",
+        "alias": "GlobalID"
+      }
+    ],
+    "sample_records": [
+      {
+        "OBJECTID_1": 1,
+        "objectid": 6,
+        "daytext": "Tuesday/Thursday (Trash/Recycling)",
+        "trash_day": "Tuesday",
+        "recyc_day": "Thursday",
+        "Shape__Area": 34144367.6640625,
+        "Shape__Length": 30727.06535335522,
+        "GlobalID": "61a5a54a-fbb2-462a-b7e6-9bc7054a2a31"
+      },
+      {
+        "OBJECTID_1": 2,
+        "objectid": 7,
+        "daytext": "Tuesday/Thursday (Trash/Recycling)",
+        "trash_day": "Tuesday",
+        "recyc_day": "Thursday",
+        "Shape__Area": 25427062.2265625,
+        "Shape__Length": 55531.25744403341,
+        "GlobalID": "477fd592-25db-4766-a66c-6f0f7db4e5e4"
+      },
+      {
+        "OBJECTID_1": 3,
+        "objectid": 8,
+        "daytext": "Tuesday/Thursday (Trash/Recycling)",
+        "trash_day": "Tuesday",
+        "recyc_day": "Thursday",
+        "Shape__Area": 23797058.453125,
+        "Shape__Length": 26170.53406865367,
+        "GlobalID": "655a9238-0935-49e2-b1fd-9834f608730e"
+      }
+    ]
+  },
+  "columbus": {
+    "city": "Columbus, OH",
+    "endpoint_url": "https://maps2.columbus.gov/arcgis/rest/services/Schemas/PublicService/MapServer/11",
+    "status": "live_verified",
+    "day_field": "COLOR_DAY_NAME / COLOR_DAY_CODE",
+    "mapping_notes": "콜럼버스 시 고유의 5개 색상 순환 수거 체계(RUBY, NAVY, GOLD, GRAY, PINK). 공휴일 발생 시 해당 색상 그룹이 하루씩 순환 밀림.",
+    "layer_name": "Refuse Color Days",
+    "geometry_type": "esriGeometryPolygon",
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeOID",
+        "alias": "Object ID"
+      },
+      {
+        "name": "CREATED_USER",
+        "type": "esriFieldTypeString",
+        "alias": "CREATED_USER"
+      },
+      {
+        "name": "CREATED_DATE",
+        "type": "esriFieldTypeDate",
+        "alias": "CREATED_DATE"
+      },
+      {
+        "name": "LAST_EDIT_USER",
+        "type": "esriFieldTypeString",
+        "alias": "LAST_EDIT_USER"
+      },
+      {
+        "name": "LAST_EDIT_DATE",
+        "type": "esriFieldTypeDate",
+        "alias": "LAST_EDIT_DATE"
+      },
+      {
+        "name": "GLOBALID",
+        "type": "esriFieldTypeGUID",
+        "alias": "GLOBALID"
+      },
+      {
+        "name": "SHAPE",
+        "type": "esriFieldTypeGeometry",
+        "alias": "Shape"
+      },
+      {
+        "name": "SHAPE.STArea()",
+        "type": "esriFieldTypeDouble",
+        "alias": "SHAPE.STArea()"
+      },
+      {
+        "name": "SHAPE.STLength()",
+        "type": "esriFieldTypeDouble",
+        "alias": "SHAPE.STLength()"
+      },
+      {
+        "name": "DISTRICT_CODE",
+        "type": "esriFieldTypeInteger",
+        "alias": "DISTRICT_CODE"
+      },
+      {
+        "name": "DISTRICT_NAME",
+        "type": "esriFieldTypeString",
+        "alias": "DISTRICT_NAME"
+      },
+      {
+        "name": "COLOR_DAY_CODE",
+        "type": "esriFieldTypeInteger",
+        "alias": "COLOR_DAY_CODE"
+      },
+      {
+        "name": "COLOR_DAY_NAME",
+        "type": "esriFieldTypeString",
+        "alias": "COLOR_DAY_NAME"
+      },
+      {
+        "name": "SUPERVISOR_NUM_CODE",
+        "type": "esriFieldTypeSmallInteger",
+        "alias": "SUPERVISOR_NUM_CODE"
+      },
+      {
+        "name": "SUPERVISOR_NUM",
+        "type": "esriFieldTypeSmallInteger",
+        "alias": "SUPERVISOR_NUM"
+      }
+    ],
+    "sample_records": [
+      {
+        "OBJECTID": 1,
+        "CREATED_USER": null,
+        "CREATED_DATE": null,
+        "LAST_EDIT_USER": "DETUBAUGH",
+        "LAST_EDIT_DATE": 1749226060000,
+        "GLOBALID": "{7766B11F-B64F-4674-A032-9277C5C67670}",
+        "SHAPE.STArea()": 243458.85222145182,
+        "SHAPE.STLength()": 2472.5857734272786,
+        "DISTRICT_CODE": 51,
+        "DISTRICT_NAME": "GEORGESVILLE ROAD",
+        "COLOR_DAY_CODE": 14,
+        "COLOR_DAY_NAME": "RUBY",
+        "SUPERVISOR_NUM_CODE": 4,
+        "SUPERVISOR_NUM": 210
+      },
+      {
+        "OBJECTID": 2,
+        "CREATED_USER": null,
+        "CREATED_DATE": null,
+        "LAST_EDIT_USER": "DETUBAUGH",
+        "LAST_EDIT_DATE": 1749226060000,
+        "GLOBALID": "{B078F0DC-7CA0-4A37-8636-A934C0003229}",
+        "SHAPE.STArea()": 1794440.5815348336,
+        "SHAPE.STLength()": 12673.00921672389,
+        "DISTRICT_CODE": 51,
+        "DISTRICT_NAME": "GEORGESVILLE ROAD",
+        "COLOR_DAY_CODE": 14,
+        "COLOR_DAY_NAME": "RUBY",
+        "SUPERVISOR_NUM_CODE": 4,
+        "SUPERVISOR_NUM": 210
+      },
+      {
+        "OBJECTID": 3,
+        "CREATED_USER": "CRGarrabrant",
+        "CREATED_DATE": 1359379530000,
+        "LAST_EDIT_USER": "DETUBAUGH",
+        "LAST_EDIT_DATE": 1749061264000,
+        "GLOBALID": "{340F33E7-96C0-4A63-8EEB-A36F88BD35AB}",
+        "SHAPE.STArea()": 19628.02294667767,
+        "SHAPE.STLength()": 569.147509493156,
+        "DISTRICT_CODE": 51,
+        "DISTRICT_NAME": "GEORGESVILLE ROAD",
+        "COLOR_DAY_CODE": 12,
+        "COLOR_DAY_NAME": "NAVY",
+        "SUPERVISOR_NUM_CODE": 4,
+        "SUPERVISOR_NUM": 210
+      }
+    ]
+  },
+  "nashville": {
+    "city": "Nashville, TN",
+    "endpoint_url": "https://services2.arcgis.com/HdTo6HJqh92wn4D8/arcgis/rest/services/Trash_Collection_Routes_5_Day_Public_View/FeatureServer/0",
+    "status": "live_verified",
+    "day_field": "RouteDay",
+    "mapping_notes": "RouteDay 컬럼에 요일 영문명(Tuesday, Monday, Wednesday, Thursday, Friday) 직접 제공. Hauler(수거 주체: Metro 등), Route(노선 번호) 제공.",
+    "layer_name": "Trash Collection Routes",
+    "geometry_type": "esriGeometryPolyline",
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeOID",
+        "alias": "OBJECTID"
+      },
+      {
+        "name": "Route",
+        "type": "esriFieldTypeString",
+        "alias": "Route"
+      },
+      {
+        "name": "Hauler",
+        "type": "esriFieldTypeString",
+        "alias": "Hauler"
+      },
+      {
+        "name": "RouteDay",
+        "type": "esriFieldTypeString",
+        "alias": "Route Day"
+      },
+      {
+        "name": "DailyStatus",
+        "type": "esriFieldTypeString",
+        "alias": "Daily Status"
+      },
+      {
+        "name": "ScheduledDate",
+        "type": "esriFieldTypeDate",
+        "alias": "Scheduled Date"
+      },
+      {
+        "name": "Miles",
+        "type": "esriFieldTypeDouble",
+        "alias": "Miles"
+      },
+      {
+        "name": "CreationDate",
+        "type": "esriFieldTypeDate",
+        "alias": "CreationDate"
+      },
+      {
+        "name": "Creator",
+        "type": "esriFieldTypeString",
+        "alias": "Creator"
+      },
+      {
+        "name": "EditDate",
+        "type": "esriFieldTypeDate",
+        "alias": "EditDate"
+      },
+      {
+        "name": "Editor",
+        "type": "esriFieldTypeString",
+        "alias": "Editor"
+      },
+      {
+        "name": "DateCompleted",
+        "type": "esriFieldTypeDate",
+        "alias": "Date Route Completed"
+      },
+      {
+        "name": "GlobalID",
+        "type": "esriFieldTypeGlobalID",
+        "alias": "GlobalID"
+      },
+      {
+        "name": "Shape__Length",
+        "type": "esriFieldTypeDouble",
+        "alias": "Shape__Length"
+      }
+    ],
+    "sample_records": [
+      {
+        "OBJECTID": 1699,
+        "Route": "9212A",
+        "Hauler": "Metro",
+        "RouteDay": "Tuesday",
+        "DailyStatus": "Black",
+        "ScheduledDate": 1639479710654,
+        "Miles": 28.7545732557774,
+        "CreationDate": 1603732675997,
+        "Creator": "Nashville",
+        "EditDate": 1651680140363,
+        "Editor": "sharon.smith@nashville.gov_Nashville",
+        "DateCompleted": null,
+        "GlobalID": "2c8dc45e-55e4-4cf4-9930-6b40a1a2fc58",
+        "Shape__Length": 150881.48450373404
+      },
+      {
+        "OBJECTID": 1700,
+        "Route": "9214A",
+        "Hauler": "Metro",
+        "RouteDay": "Tuesday",
+        "DailyStatus": "Black",
+        "ScheduledDate": 1639479710660,
+        "Miles": 27.1315412307158,
+        "CreationDate": 1603732675997,
+        "Creator": "Nashville",
+        "EditDate": 1651680140363,
+        "Editor": "sharon.smith@nashville.gov_Nashville",
+        "DateCompleted": null,
+        "GlobalID": "ac835dc3-3db1-45c8-bb4d-aa7de1e75564",
+        "Shape__Length": 141284.93409686684
+      },
+      {
+        "OBJECTID": 1701,
+        "Route": "9312A",
+        "Hauler": "Metro",
+        "RouteDay": "Wednesday",
+        "DailyStatus": "Black",
+        "ScheduledDate": 1639566110662,
+        "Miles": 18.272984735202,
+        "CreationDate": 1603732675997,
+        "Creator": "Nashville",
+        "EditDate": 1651680140363,
+        "Editor": "sharon.smith@nashville.gov_Nashville",
+        "DateCompleted": null,
+        "GlobalID": "f89bf185-7e80-4864-8b8e-9f8d9ad690e5",
+        "Shape__Length": 94470.54744355899
+      }
+    ]
+  },
+  "el-paso": {
+    "city": "El Paso, TX",
+    "endpoint_url": "https://services1.arcgis.com/hyTVSIhR7dHyDsJF/arcgis/rest/services/SWMNewRoutingDays/FeatureServer/0",
+    "status": "live_verified",
+    "day_field": "Day_",
+    "mapping_notes": "Day_ 컬럼에 수거 요일 영문명(Monday, Tuesday, Wednesday, Thursday, Friday 등) 및 Manual(수동 구역) 제공.",
+    "layer_name": "viewing.DBO.SWMNewRoutingDays",
+    "geometry_type": "esriGeometryPolygon",
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeOID",
+        "alias": "OBJECTID"
+      },
+      {
+        "name": "Day_",
+        "type": "esriFieldTypeString",
+        "alias": "Day_"
+      },
+      {
+        "name": "GlobalID",
+        "type": "esriFieldTypeGlobalID",
+        "alias": "GlobalID"
+      },
+      {
+        "name": "EDITOR_NAME",
+        "type": "esriFieldTypeString",
+        "alias": "EDITOR_NAME"
+      },
+      {
+        "name": "EDIT_DATE",
+        "type": "esriFieldTypeDate",
+        "alias": "EDIT_DATE"
+      },
+      {
+        "name": "Shape__Area",
+        "type": "esriFieldTypeDouble",
+        "alias": "Shape__Area"
+      },
+      {
+        "name": "Shape__Length",
+        "type": "esriFieldTypeDouble",
+        "alias": "Shape__Length"
+      }
+    ],
+    "sample_records": [
+      {
+        "OBJECTID": 437,
+        "Day_": "Manual",
+        "GlobalID": "07dae942-c998-4bf8-b90a-517b5c85bfed",
+        "EDITOR_NAME": null,
+        "EDIT_DATE": null,
+        "Shape__Area": 167189346.73461914,
+        "Shape__Length": 78567.34791819501
+      },
+      {
+        "OBJECTID": 438,
+        "Day_": "Thursday",
+        "GlobalID": "1503c989-ec47-4950-9586-1bb4bfd3c60f",
+        "EDITOR_NAME": null,
+        "EDIT_DATE": null,
+        "Shape__Area": 922120277.7871094,
+        "Shape__Length": 191140.91630422926
+      },
+      {
+        "OBJECTID": 439,
+        "Day_": "Friday",
+        "GlobalID": "1c470c24-8f41-4301-8d32-fbb7c77ea669",
+        "EDITOR_NAME": null,
+        "EDIT_DATE": null,
+        "Shape__Area": 3722750.8002929688,
+        "Shape__Length": 10228.977650514811
+      }
+    ]
+  },
+  "tucson": {
+    "city": "Tucson, AZ",
+    "endpoint_url": "https://mapdata.tucsonaz.gov/arcgis/rest/services/IT/ZoomTucson/MapServer/56",
+    "status": "live_verified",
+    "day_field": "DOS / CollWeek / DOSCollWk",
+    "mapping_notes": "DOS에 요일 영문 대문자(MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY), CollWeek에 격주 주기(A/B), ServDates에 2026년 전체 연간 수거 일자 문자열 제공.",
+    "layer_name": "APCRecycleEOW_DWOSBoundaries",
+    "geometry_type": "esriGeometryPolygon",
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeOID",
+        "alias": "OBJECTID"
+      },
+      {
+        "name": "CollWeek",
+        "type": "esriFieldTypeString",
+        "alias": "CollWeek"
+      },
+      {
+        "name": "DOS",
+        "type": "esriFieldTypeString",
+        "alias": "DOS"
+      },
+      {
+        "name": "DOSCollWk",
+        "type": "esriFieldTypeString",
+        "alias": "DOSCollWk"
+      },
+      {
+        "name": "ServDates",
+        "type": "esriFieldTypeString",
+        "alias": "ServDates"
+      },
+      {
+        "name": "Shape",
+        "type": "esriFieldTypeGeometry",
+        "alias": "Shape"
+      },
+      {
+        "name": "DATASOURCE",
+        "type": "esriFieldTypeString",
+        "alias": "DATASOURCE"
+      },
+      {
+        "name": "Shape.STArea()",
+        "type": "esriFieldTypeDouble",
+        "alias": "Shape.STArea()"
+      },
+      {
+        "name": "Shape.STLength()",
+        "type": "esriFieldTypeDouble",
+        "alias": "Shape.STLength()"
+      },
+      {
+        "name": "PRIMARY_RT",
+        "type": "esriFieldTypeString",
+        "alias": "PRIMARY_RT"
+      },
+      {
+        "name": "GlobalID",
+        "type": "esriFieldTypeGlobalID",
+        "alias": "GlobalID"
+      }
+    ],
+    "sample_records": [
+      {
+        "OBJECTID": 1,
+        "CollWeek": "A",
+        "DOS": "MONDAY",
+        "DOSCollWk": "MONDAY A",
+        "ServDates": "1/12/2026  1/26/2026  2/9/2026  2/23/2026  3/9/2026  3/23/2026  4/6/2026  4/20/2026  5/4/2026  5/18/2026  6/1/2026  6/15/2026  6/29/2026  7/13/2026  7/27/2026  8/10/2026  8/24/2026  9/7/2026  9/21/2026  10/5/2026  10/19/2026  11/2/2026  11/16/2026  11/30/2026  12/14/2026  12/28/2026 - * = Pick up the following day due to holiday",
+        "DATASOURCE": "ES_APCRECYCLEROUTES",
+        "Shape.STArea()": 26379327.845225733,
+        "Shape.STLength()": 21204.32318833715,
+        "PRIMARY_RT": "1152",
+        "GlobalID": "{1B441114-51BF-45C8-A3E9-633F995E8042}"
+      },
+      {
+        "OBJECTID": 2,
+        "CollWeek": "A",
+        "DOS": "MONDAY",
+        "DOSCollWk": "MONDAY A",
+        "ServDates": "1/12/2026  1/26/2026  2/9/2026  2/23/2026  3/9/2026  3/23/2026  4/6/2026  4/20/2026  5/4/2026  5/18/2026  6/1/2026  6/15/2026  6/29/2026  7/13/2026  7/27/2026  8/10/2026  8/24/2026  9/7/2026  9/21/2026  10/5/2026  10/19/2026  11/2/2026  11/16/2026  11/30/2026  12/14/2026  12/28/2026 - * = Pick up the following day due to holiday",
+        "DATASOURCE": "ES_APCRECYCLEROUTES",
+        "Shape.STArea()": 16372656.81710367,
+        "Shape.STLength()": 17215.292301187153,
+        "PRIMARY_RT": "1154",
+        "GlobalID": "{61BC0F5D-F4DB-49FE-972F-4048FA08193C}"
+      },
+      {
+        "OBJECTID": 3,
+        "CollWeek": "B",
+        "DOS": "MONDAY",
+        "DOSCollWk": "MONDAY B",
+        "ServDates": "1/5/2026  1/19/2026  2/2/2026  2/16/2026  3/2/2026  3/16/2026  3/30/2026  4/13/2026  4/27/2026  5/11/2026  5/25/2026  6/8/2026  6/22/2026  7/6/2026  7/20/2026  8/3/2026  8/17/2026  8/31/2026  9/14/2026  9/28/2026  10/12/2026  10/26/2026  11/9/2026  11/23/2026  12/7/2026  12/21/2026 - * = Pick up the following day due to holiday",
+        "DATASOURCE": "ES_APCRECYCLEROUTES",
+        "Shape.STArea()": 24633572.860916283,
+        "Shape.STLength()": 20555.06791507665,
+        "PRIMARY_RT": "1151",
+        "GlobalID": "{E1E76A91-5205-4A0C-AFD8-DC4450217B2A}"
+      }
+    ]
+  },
+  "honolulu": {
+    "city": "Honolulu, HI",
+    "endpoint_url": "https://services.arcgis.com/tNJpAOha4mODLkXz/arcgis/rest/services/Refuse_Recycling/FeatureServer/3",
+    "status": "live_verified",
+    "day_field": "DAY_ / RECYCLE_DA",
+    "mapping_notes": "DAY_에 일반 쓰레기 수거 요일(Thursday 등), RECYCLE_DA에 재활용 수거 요일(Monday 등) 제공.",
+    "layer_name": "Automated Pickup Routes",
+    "geometry_type": "esriGeometryPolygon",
+    "fields": [
+      {
+        "name": "OBJECTID_12",
+        "type": "esriFieldTypeOID",
+        "alias": "OBJECTID_12"
+      },
+      {
+        "name": "OBJECTID_1",
+        "type": "esriFieldTypeSmallInteger",
+        "alias": "OBJECTID_1"
+      },
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeSmallInteger",
+        "alias": "OBJECTID"
+      },
+      {
+        "name": "CARTS",
+        "type": "esriFieldTypeSmallInteger",
+        "alias": "CARTS"
+      },
+      {
+        "name": "DISTRICT",
+        "type": "esriFieldTypeString",
+        "alias": "DISTRICT"
+      },
+      {
+        "name": "ROUTE_NAME",
+        "type": "esriFieldTypeString",
+        "alias": "ROUTE_NAME"
+      },
+      {
+        "name": "DAY_",
+        "type": "esriFieldTypeString",
+        "alias": "DAY_"
+      },
+      {
+        "name": "RECYCLE_DA",
+        "type": "esriFieldTypeString",
+        "alias": "RECYCLE_DA"
+      },
+      {
+        "name": "TYPE",
+        "type": "esriFieldTypeString",
+        "alias": "TYPE"
+      },
+      {
+        "name": "SHAPE_LENG",
+        "type": "esriFieldTypeDouble",
+        "alias": "SHAPE_LENG"
+      },
+      {
+        "name": "BDRY_TYPE",
+        "type": "esriFieldTypeString",
+        "alias": "BDRY_TYPE"
+      },
+      {
+        "name": "CALENDAR",
+        "type": "esriFieldTypeString",
+        "alias": "CALENDAR"
+      },
+      {
+        "name": "GREENWASTE",
+        "type": "esriFieldTypeString",
+        "alias": "GREENWASTE"
+      },
+      {
+        "name": "BULKY_ROUT",
+        "type": "esriFieldTypeString",
+        "alias": "BULKY_ROUT"
+      },
+      {
+        "name": "BULKY_PU",
+        "type": "esriFieldTypeString",
+        "alias": "BULKY_PU"
+      },
+      {
+        "name": "BG_ROUTE",
+        "type": "esriFieldTypeString",
+        "alias": "BG_ROUTE"
+      },
+      {
+        "name": "DIST_CODE",
+        "type": "esriFieldTypeString",
+        "alias": "DIST_CODE"
+      },
+      {
+        "name": "SHAPE_Le_1",
+        "type": "esriFieldTypeDouble",
+        "alias": "SHAPE_Le_1"
+      },
+      {
+        "name": "Shape__Area",
+        "type": "esriFieldTypeDouble",
+        "alias": "Shape__Area"
+      },
+      {
+        "name": "Shape__Length",
+        "type": "esriFieldTypeDouble",
+        "alias": "Shape__Length"
+      }
+    ],
+    "sample_records": [
+      {
+        "OBJECTID_12": 1,
+        "OBJECTID_1": 1,
+        "OBJECTID": 80,
+        "CARTS": 0,
+        "DISTRICT": "Wahiawa",
+        "ROUTE_NAME": "16",
+        "DAY_": "Thursday",
+        "RECYCLE_DA": "Monday",
+        "TYPE": "Auto",
+        "SHAPE_LENG": 6563.97350872,
+        "BDRY_TYPE": "Parcel",
+        "CALENDAR": "http://www.opala.org/solid_waste/pdfs/Curbside_Calendars/Version%204.pdf",
+        "GREENWASTE": " ",
+        "BULKY_ROUT": " ",
+        "BULKY_PU": " ",
+        "BG_ROUTE": " ",
+        "DIST_CODE": "Th",
+        "SHAPE_Le_1": 6563.973457551519,
+        "Shape__Area": 1.4790345176152186e-05,
+        "Shape__Length": 0.018743959069468637
+      },
+      {
+        "OBJECTID_12": 2,
+        "OBJECTID_1": 2,
+        "OBJECTID": 0,
+        "CARTS": 0,
+        "DISTRICT": "Waialua",
+        "ROUTE_NAME": "1",
+        "DAY_": "Tuesday",
+        "RECYCLE_DA": "Friday",
+        "TYPE": "Auto",
+        "SHAPE_LENG": 0,
+        "BDRY_TYPE": "Parcel",
+        "CALENDAR": "http://www.opala.org/solid_waste/pdfs/Curbside_Calendars/Version%206.pdf",
+        "GREENWASTE": " ",
+        "BULKY_ROUT": " ",
+        "BULKY_PU": " ",
+        "BG_ROUTE": " ",
+        "DIST_CODE": "T",
+        "SHAPE_Le_1": 22612.661566648767,
+        "Shape__Area": 4.650727578336955e-05,
+        "Shape__Length": 0.0646915854634427
+      },
+      {
+        "OBJECTID_12": 3,
+        "OBJECTID_1": 3,
+        "OBJECTID": 66,
+        "CARTS": 0,
+        "DISTRICT": "Wahiawa",
+        "ROUTE_NAME": "15",
+        "DAY_": "Tuesday",
+        "RECYCLE_DA": "Friday",
+        "TYPE": "Auto",
+        "SHAPE_LENG": 10079.4000919,
+        "BDRY_TYPE": "Parcel",
+        "CALENDAR": "http://www.opala.org/solid_waste/pdfs/Curbside_Calendars/Version%206.pdf",
+        "GREENWASTE": " ",
+        "BULKY_ROUT": " ",
+        "BULKY_PU": " ",
+        "BG_ROUTE": " ",
+        "DIST_CODE": "T",
+        "SHAPE_Le_1": 22211.221212564615,
+        "Shape__Area": 5.8541705357129104e-05,
+        "Shape__Length": 0.06305106339830785
+      }
+    ]
+  },
+  "los-angeles": {
+    "city": "Los Angeles, CA",
+    "endpoint_url": "https://maps.lacity.org/lahub/rest/services/Boundaries/MapServer/22",
+    "status": "live_verified",
+    "day_field": "Day / ShortDay",
+    "mapping_notes": "Day에 요일 영문 대문자(THURSDAY, WEDNESDAY, TUESDAY, MONDAY, FRIDAY), ShortDay에 축약어(THU, WED 등), District_Name(East Valley, West Valley 등) 제공.",
+    "layer_name": "Solids Collection Service District Days",
+    "geometry_type": "esriGeometryPolygon",
+    "fields": [
+      {
+        "name": "ObjectID",
+        "type": "esriFieldTypeOID",
+        "alias": "OBJECTID"
+      },
+      {
+        "name": "District",
+        "type": "esriFieldTypeString",
+        "alias": "DISTRICT"
+      },
+      {
+        "name": "Day",
+        "type": "esriFieldTypeString",
+        "alias": "DAY"
+      },
+      {
+        "name": "ShortDay",
+        "type": "esriFieldTypeString",
+        "alias": "SHORTDAY"
+      },
+      {
+        "name": "District_Name",
+        "type": "esriFieldTypeString",
+        "alias": "DISTRICT_NAME"
+      },
+      {
+        "name": "Shape",
+        "type": "esriFieldTypeGeometry",
+        "alias": "Shape"
+      },
+      {
+        "name": "TOOLTIP",
+        "type": "esriFieldTypeString",
+        "alias": "TOOLTIP"
+      }
+    ],
+    "sample_records": [
+      {
+        "ObjectID": 1,
+        "District": "EV",
+        "Day": "THURSDAY",
+        "ShortDay": "THU",
+        "District_Name": "East Valley",
+        "TOOLTIP": "District: East Valley\\nDay: THURSDAY"
+      },
+      {
+        "ObjectID": 2,
+        "District": "WV",
+        "Day": "WEDNESDAY",
+        "ShortDay": "WED",
+        "District_Name": "West Valley",
+        "TOOLTIP": "District: West Valley\\nDay: WEDNESDAY"
+      },
+      {
+        "ObjectID": 3,
+        "District": "WV",
+        "Day": "TUESDAY",
+        "ShortDay": "TUE",
+        "District_Name": "West Valley",
+        "TOOLTIP": "District: West Valley\\nDay: TUESDAY"
+      }
+    ]
+  },
+  "dallas": {
+    "city": "Dallas, TX",
+    "endpoint_url": "https://services2.arcgis.com/rwnOSbfKSwyTBcwN/arcgis/rest/services/CRMHostedLayers/FeatureServer/19",
+    "status": "live_verified",
+    "day_field": "DOW / DOS",
+    "mapping_notes": "DOW에 요일 영문 대문자(FRIDAY, WEDNESDAY, MONDAY, TUESDAY, THURSDAY), DOS에 수거 코드(5FRI, 3WED 등) 제공.",
+    "layer_name": "Days Of Service",
+    "geometry_type": "esriGeometryPolygon",
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeOID",
+        "alias": "OBJECTID"
+      },
+      {
+        "name": "DISTRICT",
+        "type": "esriFieldTypeSmallInteger",
+        "alias": "DISTRICT"
+      },
+      {
+        "name": "DOS",
+        "type": "esriFieldTypeString",
+        "alias": "DOS"
+      },
+      {
+        "name": "DOW",
+        "type": "esriFieldTypeString",
+        "alias": "DOW"
+      },
+      {
+        "name": "Shape__Area",
+        "type": "esriFieldTypeDouble",
+        "alias": "Shape__Area"
+      },
+      {
+        "name": "Shape__Length",
+        "type": "esriFieldTypeDouble",
+        "alias": "Shape__Length"
+      }
+    ],
+    "sample_records": [
+      {
+        "OBJECTID": 1,
+        "DISTRICT": 1,
+        "DOS": "5FRI",
+        "DOW": "FRIDAY",
+        "Shape__Area": 735334455.4169922,
+        "Shape__Length": 123346.7382235518
+      },
+      {
+        "OBJECTID": 2,
+        "DISTRICT": 2,
+        "DOS": "3WED",
+        "DOW": "WEDNESDAY",
+        "Shape__Area": 867222230.8701172,
+        "Shape__Length": 209781.35338792583
+      },
+      {
+        "OBJECTID": 3,
+        "DISTRICT": 4,
+        "DOS": "1MON",
+        "DOW": "MONDAY",
+        "Shape__Area": 209557440.2705078,
+        "Shape__Length": 69342.88674895362
+      }
+    ]
+  },
+  "washington-dc": {
+    "city": "Washington, DC",
+    "endpoint_url": "https://maps2.dcgis.dc.gov/dcgis/rest/services/DCGIS_DATA/Public_Service_WebMercator/MapServer/13",
+    "status": "live_verified",
+    "day_field": "TRASH_DAY / DAY_",
+    "mapping_notes": "TRASH_DAY에 주 2회 수거 요일 풀네임(Tuesday/Friday, Monday/Thursday), DAY_에 축약형(Tues/Fri, Mon/Thurs) 제공.",
+    "layer_name": "Conventional Trash Days",
+    "geometry_type": "esriGeometryPolygon",
+    "fields": [
+      {
+        "name": "DAY_",
+        "type": "esriFieldTypeString",
+        "alias": "Day"
+      },
+      {
+        "name": "DAY_NUM",
+        "type": "esriFieldTypeInteger",
+        "alias": "Day Number"
+      },
+      {
+        "name": "TRASH_DAY",
+        "type": "esriFieldTypeString",
+        "alias": "Trash Day"
+      },
+      {
+        "name": "ROUTE_DAY",
+        "type": "esriFieldTypeString",
+        "alias": "Route Day"
+      },
+      {
+        "name": "ID",
+        "type": "esriFieldTypeInteger",
+        "alias": "Identifier"
+      },
+      {
+        "name": "GIS_ID",
+        "type": "esriFieldTypeString",
+        "alias": "GIS Identifier"
+      },
+      {
+        "name": "SHAPE.AREA",
+        "type": "esriFieldTypeDouble",
+        "alias": "SHAPE.AREA"
+      },
+      {
+        "name": "SHAPE.LEN",
+        "type": "esriFieldTypeDouble",
+        "alias": "SHAPE.LEN"
+      },
+      {
+        "name": "GLOBALID",
+        "type": "esriFieldTypeGlobalID",
+        "alias": "GLOBALID"
+      },
+      {
+        "name": "CREATOR",
+        "type": "esriFieldTypeString",
+        "alias": "CREATOR"
+      },
+      {
+        "name": "CREATED",
+        "type": "esriFieldTypeDate",
+        "alias": "CREATED"
+      },
+      {
+        "name": "EDITED",
+        "type": "esriFieldTypeDate",
+        "alias": "EDITED"
+      },
+      {
+        "name": "SHAPE",
+        "type": "esriFieldTypeGeometry",
+        "alias": "SHAPE"
+      },
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeOID",
+        "alias": "OBJECTID"
+      }
+    ],
+    "sample_records": [
+      {
+        "DAY_": "Tues/Fri",
+        "DAY_NUM": 7,
+        "TRASH_DAY": "Tuesday/Friday",
+        "ROUTE_DAY": "Tuesday/Friday",
+        "ID": 0,
+        "GIS_ID": "ConvTrashDay_1",
+        "SHAPE.AREA": 0,
+        "SHAPE.LEN": 0,
+        "GLOBALID": "{2EF7F336-5A93-4999-A95E-E4547CC5766A}",
+        "CREATOR": null,
+        "CREATED": null,
+        "EDITED": null,
+        "OBJECTID": 1
+      },
+      {
+        "DAY_": "Mon/Thurs",
+        "DAY_NUM": 6,
+        "TRASH_DAY": "Monday/Thursday",
+        "ROUTE_DAY": "Monday/Thursday",
+        "ID": 0,
+        "GIS_ID": "ConvTrashDay_2",
+        "SHAPE.AREA": 0,
+        "SHAPE.LEN": 0,
+        "GLOBALID": "{D2E8CDC9-1577-4D0E-896B-CD39A432810C}",
+        "CREATOR": null,
+        "CREATED": null,
+        "EDITED": null,
+        "OBJECTID": 2
+      }
+    ]
+  },
+  "bakersfield": {
+    "city": "Bakersfield, CA",
+    "endpoint_url": "https://gis.bakersfieldcity.us/webmaps/rest/services/General/Solidwaste/MapServer/2",
+    "status": "live_verified",
+    "day_field": "DAYS",
+    "mapping_notes": "DAYS 컬럼에 수거 요일 영문명(Monday, Tuesday 등), ROUTE(노선), HaulerCode 제공.",
+    "layer_name": "Blue",
+    "geometry_type": "esriGeometryPolygon",
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeOID",
+        "alias": "OBJECTID"
+      },
+      {
+        "name": "ROUTE",
+        "type": "esriFieldTypeInteger",
+        "alias": "Route"
+      },
+      {
+        "name": "DAYS",
+        "type": "esriFieldTypeString",
+        "alias": "Days"
+      },
+      {
+        "name": "HaulerCode",
+        "type": "esriFieldTypeString",
+        "alias": "Hauler Code"
+      },
+      {
+        "name": "CALENDAR",
+        "type": "esriFieldTypeString",
+        "alias": "Calendar"
+      },
+      {
+        "name": "Shape",
+        "type": "esriFieldTypeGeometry",
+        "alias": "Shape"
+      },
+      {
+        "name": "GlobalID",
+        "type": "esriFieldTypeGlobalID",
+        "alias": "GlobalID"
+      }
+    ],
+    "sample_records": [
+      {
+        "OBJECTID": 3,
+        "ROUTE": 5155,
+        "DAYS": "FRI_VRN_SON",
+        "HaulerCode": "55",
+        "CALENDAR": "https://content.civicplus.com/api/assets/66e03835-7050-4127-b047-d3b5801a71e6?cache=1800",
+        "GlobalID": "{E4AB42E3-849B-4806-B8D0-0617E39258E1}"
+      },
+      {
+        "OBJECTID": 4,
+        "ROUTE": 1156,
+        "DAYS": "MON_HOWARDS",
+        "HaulerCode": "56",
+        "CALENDAR": "https://content.civicplus.com/api/assets/f6b9b9c1-1b38-4582-a68c-bba29ec2ab83?cache=1800",
+        "GlobalID": "{8D0335B2-A002-49D1-8F52-8F92C7670ECB}"
+      },
+      {
+        "OBJECTID": 5,
+        "ROUTE": 1156,
+        "DAYS": "MON_HOWARDS",
+        "HaulerCode": "56",
+        "CALENDAR": "https://content.civicplus.com/api/assets/f6b9b9c1-1b38-4582-a68c-bba29ec2ab83?cache=1800",
+        "GlobalID": "{35E68420-E8B3-4BC2-B07B-6EAEBE104684}"
+      }
+    ]
+  },
+  "new-orleans": {
+    "city": "New Orleans, LA",
+    "endpoint_url": "https://services1.arcgis.com/JbKmzpUJDB0d0o8l/arcgis/rest/services/Metro_Sanitation_Routes/FeatureServer/0",
+    "status": "live_verified",
+    "day_field": "Day",
+    "mapping_notes": "Day 컬럼에 요일 영문명(Monday, Tuesday, Wednesday, Thursday, Friday) 직접 제공.",
+    "layer_name": "Recycling Days 2017",
+    "geometry_type": "esriGeometryPolygon",
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeOID",
+        "alias": "OBJECTID"
+      },
+      {
+        "name": "Day",
+        "type": "esriFieldTypeString",
+        "alias": "Day"
+      },
+      {
+        "name": "Shape__Area",
+        "type": "esriFieldTypeDouble",
+        "alias": "Shape__Area"
+      },
+      {
+        "name": "Shape__Length",
+        "type": "esriFieldTypeDouble",
+        "alias": "Shape__Length"
+      }
+    ],
+    "sample_records": [
+      {
+        "OBJECTID": 1,
+        "Day": "Friday",
+        "Shape__Area": 0.0014752781830793538,
+        "Shape__Length": 0.18357632173573976
+      },
+      {
+        "OBJECTID": 2,
+        "Day": "Monday",
+        "Shape__Area": 0.000913246714617344,
+        "Shape__Length": 0.17588062714139743
+      },
+      {
+        "OBJECTID": 3,
+        "Day": "Saturday",
+        "Shape__Area": 0.03347763958913674,
+        "Shape__Length": 1.322572514554233
+      }
+    ]
+  },
+  "corpus-christi": {
+    "city": "Corpus Christi, TX",
+    "endpoint_url": "https://services.arcgis.com/0J4ZNc4NaTguvRy0/arcgis/rest/services/PickUpDays/FeatureServer/0",
+    "status": "live_verified",
+    "day_field": "Day",
+    "mapping_notes": "Day 컬럼에 요일 영문명(Monday, Tuesday 등) 제공. 연계 레이어 RecyGarCollection/FeatureServer/0 에서 RWeek(격주) 제공.",
+    "layer_name": "PickUpDays",
+    "geometry_type": "esriGeometryPolygon",
+    "fields": [
+      {
+        "name": "FID",
+        "type": "esriFieldTypeOID",
+        "alias": "FID"
+      },
+      {
+        "name": "ID",
+        "type": "esriFieldTypeInteger",
+        "alias": "ID"
+      },
+      {
+        "name": "Day",
+        "type": "esriFieldTypeString",
+        "alias": "Day"
+      },
+      {
+        "name": "Shape__Area",
+        "type": "esriFieldTypeDouble",
+        "alias": "Shape__Area"
+      },
+      {
+        "name": "Shape__Length",
+        "type": "esriFieldTypeDouble",
+        "alias": "Shape__Length"
+      }
+    ],
+    "sample_records": [
+      {
+        "FID": 1,
+        "ID": 1,
+        "Day": "Monday",
+        "Shape__Area": 226236090.27734375,
+        "Shape__Length": 102823.11004425837
+      },
+      {
+        "FID": 2,
+        "ID": 2,
+        "Day": "Tuesday",
+        "Shape__Area": 56573953.078125,
+        "Shape__Length": 43578.83156860259
+      },
+      {
+        "FID": 3,
+        "ID": 3,
+        "Day": "Wednesday",
+        "Shape__Area": 44922557.078125,
+        "Shape__Length": 33133.932304073445
+      }
+    ]
+  },
+  "arlington": {
+    "city": "Arlington, TX",
+    "endpoint_url": "https://services8.arcgis.com/vltvrabtjlQsx0YJ/arcgis/rest/services/Garbage_Collection_Schedule/FeatureServer/0",
+    "status": "live_verified",
+    "day_field": "DAY_",
+    "mapping_notes": "DAY_ 컬럼에 주 2회 수거 요일 조합(Monday/Thursday, Tuesday/Friday 등) 제공.",
+    "layer_name": "Garbage_Collection",
+    "geometry_type": "esriGeometryPolygon",
+    "fields": [
+      {
+        "name": "FID",
+        "type": "esriFieldTypeOID",
+        "alias": "FID"
+      },
+      {
+        "name": "FID_",
+        "type": "esriFieldTypeInteger",
+        "alias": "FID_"
+      },
+      {
+        "name": "DAY_",
+        "type": "esriFieldTypeString",
+        "alias": "Day"
+      },
+      {
+        "name": "GlobalID",
+        "type": "esriFieldTypeString",
+        "alias": "GlobalID"
+      }
+    ],
+    "sample_records": [
+      {
+        "FID": 10,
+        "FID_": null,
+        "DAY_": "Monday",
+        "GlobalID": null
+      },
+      {
+        "FID": 11,
+        "FID_": null,
+        "DAY_": "Tuesday",
+        "GlobalID": null
+      },
+      {
+        "FID": 12,
+        "FID_": null,
+        "DAY_": "Wednesday",
+        "GlobalID": null
+      }
+    ]
+  },
+  "philadelphia": {
+    "city": "Philadelphia, PA",
+    "endpoint_url": "https://services.arcgis.com/fLeGjb7u4uXqeF9q/arcgis/rest/services/Rubbish_Recyc_Coll_Bnd_Arcs/FeatureServer/0",
+    "status": "live_verified",
+    "day_field": "collday / secondary_rubbish_day",
+    "mapping_notes": "collday 컬럼에 수거 요일 축약어(MON, TUE, WED, THU, FRI), secondary_rubbish_day에 보조 수거 요일 제공.",
+    "layer_name": "Rubbish_Recyc_Coll_Bnd_Arcs",
+    "geometry_type": "esriGeometryPolyline",
+    "fields": [
+      {
+        "name": "objectid",
+        "type": "esriFieldTypeOID",
+        "alias": "OBJECTID"
+      },
+      {
+        "name": "f_name",
+        "type": "esriFieldTypeString",
+        "alias": "F_NAME"
+      },
+      {
+        "name": "st_code",
+        "type": "esriFieldTypeInteger",
+        "alias": "ST_CODE"
+      },
+      {
+        "name": "seg_id",
+        "type": "esriFieldTypeInteger",
+        "alias": "SEG_ID"
+      },
+      {
+        "name": "f_source",
+        "type": "esriFieldTypeString",
+        "alias": "F_SOURCE"
+      },
+      {
+        "name": "border",
+        "type": "esriFieldTypeSmallInteger",
+        "alias": "BORDER"
+      },
+      {
+        "name": "sanarea",
+        "type": "esriFieldTypeString",
+        "alias": "SANAREA"
+      },
+      {
+        "name": "sandis",
+        "type": "esriFieldTypeString",
+        "alias": "SANDIS"
+      },
+      {
+        "name": "collday",
+        "type": "esriFieldTypeString",
+        "alias": "COLLDAY"
+      },
+      {
+        "name": "secondary_rubbish_day",
+        "type": "esriFieldTypeString",
+        "alias": "secondary_rubbish_day"
+      },
+      {
+        "name": "Shape__Length",
+        "type": "esriFieldTypeDouble",
+        "alias": "Shape__Length"
+      }
+    ],
+    "sample_records": [
+      {
+        "objectid": 283,
+        "f_name": "BUSTLETON",
+        "st_code": 20020,
+        "seg_id": 1060508,
+        "f_source": "S",
+        "border": 0,
+        "sanarea": null,
+        "sandis": "6A",
+        "collday": "TUE",
+        "secondary_rubbish_day": null,
+        "Shape__Length": 344.44402026726914
+      },
+      {
+        "objectid": 284,
+        "f_name": "BUSTLETON",
+        "st_code": 20020,
+        "seg_id": 1060507,
+        "f_source": "S",
+        "border": 0,
+        "sanarea": null,
+        "sandis": "6A",
+        "collday": "TUE",
+        "secondary_rubbish_day": null,
+        "Shape__Length": 330.2345810367441
+      },
+      {
+        "objectid": 285,
+        "f_name": "RED LION",
+        "st_code": 67640,
+        "seg_id": 1060540,
+        "f_source": "S",
+        "border": 0,
+        "sanarea": null,
+        "sandis": "6A",
+        "collday": "MON",
+        "secondary_rubbish_day": null,
+        "Shape__Length": 138.469014914577
+      }
+    ]
+  },
+  "fresno": {
+    "city": "Fresno, CA",
+    "endpoint_url": "https://services2.arcgis.com/WkBUojyNPhsWOk1W/arcgis/rest/services/Solid_Waste_Service_Day_GIS_Hub/FeatureServer/34",
+    "status": "live_verified",
+    "day_field": "ServiceDay",
+    "mapping_notes": "ServiceDay 컬럼에 요일 영문명(Friday, Tuesday, Thursday, Monday, Wednesday) 제공.",
+    "layer_name": "Solid Waste Service Day GIS Hub",
+    "geometry_type": "esriGeometryPolygon",
+    "fields": [
+      {
+        "name": "ObjectID",
+        "type": "esriFieldTypeOID",
+        "alias": "ObjectID"
+      },
+      {
+        "name": "ServiceDay",
+        "type": "esriFieldTypeString",
+        "alias": "Service Day"
+      },
+      {
+        "name": "Shape__Area",
+        "type": "esriFieldTypeDouble",
+        "alias": "Shape__Area"
+      },
+      {
+        "name": "Shape__Length",
+        "type": "esriFieldTypeDouble",
+        "alias": "Shape__Length"
+      }
+    ],
+    "sample_records": [
+      {
+        "ObjectID": 1,
+        "ServiceDay": "Friday",
+        "Shape__Area": 1052036391.4013672,
+        "Shape__Length": 439295.5619691593
+      },
+      {
+        "ObjectID": 2,
+        "ServiceDay": "Tuesday",
+        "Shape__Area": 803899744.5771484,
+        "Shape__Length": 400667.34727858234
+      },
+      {
+        "ObjectID": 3,
+        "ServiceDay": "Thursday",
+        "Shape__Area": 773370039.1582031,
+        "Shape__Length": 438985.44508129294
+      }
+    ]
+  },
+  "st-paul": {
+    "city": "St. Paul, MN",
+    "endpoint_url": "https://services8.arcgis.com/CjVb8BH1EIcrgkMg/arcgis/rest/services/GarbageZones2020/FeatureServer/17",
+    "status": "live_verified",
+    "day_field": "Zone",
+    "mapping_notes": "Zone 컬럼에 수거 구역(Zone A ~ Zone E) 제공. 시 가이드라인상 Zone A=월, B=화, C=수, D=목, E=금 고정 매핑.",
+    "layer_name": "GarbageZones2020",
+    "geometry_type": "esriGeometryPolygon",
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeInteger",
+        "alias": "OBJECTID"
+      },
+      {
+        "name": "SHAPE_Leng",
+        "type": "esriFieldTypeDouble",
+        "alias": "SHAPE_Leng"
+      },
+      {
+        "name": "Name",
+        "type": "esriFieldTypeString",
+        "alias": "Name"
+      },
+      {
+        "name": "Zone",
+        "type": "esriFieldTypeString",
+        "alias": "Zone"
+      },
+      {
+        "name": "OBJECTID_1",
+        "type": "esriFieldTypeOID",
+        "alias": "OBJECTID_1"
+      },
+      {
+        "name": "Link",
+        "type": "esriFieldTypeString",
+        "alias": "Link"
+      },
+      {
+        "name": "Shape__Area",
+        "type": "esriFieldTypeDouble",
+        "alias": "Shape__Area"
+      },
+      {
+        "name": "Shape__Length",
+        "type": "esriFieldTypeDouble",
+        "alias": "Shape__Length"
+      }
+    ],
+    "sample_records": [
+      {
+        "OBJECTID": 1,
+        "SHAPE_Leng": 33002.7037301,
+        "Name": "Friday Zone 5A",
+        "Zone": "5A",
+        "OBJECTID_1": 1,
+        "Link": "https://www.eaststpaul.com/Home/DownloadDocument?docId=7a987943-eba7-460a-8ebd-fb0037fc4f16",
+        "Shape__Area": 28024590.98828125,
+        "Shape__Length": 23584.67598477423
+      },
+      {
+        "OBJECTID": 1,
+        "SHAPE_Leng": 33002.7037301,
+        "Name": "Monday Zone 1B",
+        "Zone": "1B",
+        "OBJECTID_1": 2,
+        "Link": "https://www.eaststpaul.com/Home/DownloadDocument?docId=7a987943-eba7-460a-8ebd-fb0037fc4f16",
+        "Shape__Area": 9124055.71484375,
+        "Shape__Length": 19922.129765596466
+      },
+      {
+        "OBJECTID": 1,
+        "SHAPE_Leng": 33002.7037301,
+        "Name": "Tuesday Zone 2B",
+        "Zone": "2B",
+        "OBJECTID_1": 3,
+        "Link": "https://www.eaststpaul.com/Home/DownloadDocument?docId=7a987943-eba7-460a-8ebd-fb0037fc4f16",
+        "Shape__Area": 9539261.94921875,
+        "Shape__Length": 19844.297013385833
+      }
+    ]
+  },
+  "milwaukee": {
+    "city": "Milwaukee, WI",
+    "endpoint_url": "https://milwaukeemaps.milwaukee.gov/arcgis/rest/services/DPW/DPW_Sanitation/MapServer/9",
+    "status": "live_verified",
+    "day_field": "SUM_RT",
+    "mapping_notes": "SUM_RT 컬럼에 회전 수거 코드(SG1-5A, SG1-4E 등) 제공. MapServer/3~7(A~E Day Route) 및 MapServer/21(Winter)과 연계.",
+    "layer_name": "Garbage collection routes - summer",
+    "geometry_type": "esriGeometryPolygon",
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeOID",
+        "alias": "Garbage route"
+      },
+      {
+        "name": "SUM_RT",
+        "type": "esriFieldTypeString",
+        "alias": "SUM_RT"
+      },
+      {
+        "name": "SHAPE",
+        "type": "esriFieldTypeGeometry",
+        "alias": "SHAPE"
+      }
+    ],
+    "sample_records": [
+      {
+        "OBJECTID": 1,
+        "SUM_RT": "SG1-5A"
+      },
+      {
+        "OBJECTID": 2,
+        "SUM_RT": "SG1-4E"
+      },
+      {
+        "OBJECTID": 3,
+        "SUM_RT": "SG2-4C"
+      }
+    ]
+  },
+  "st-louis": {
+    "city": "St. Louis, MO",
+    "endpoint_url": "https://services2.arcgis.com/w657bnjzrjguNyOy/arcgis/rest/services/Trash_Collection_Districts_Updated_March_2026/FeatureServer/45",
+    "status": "live_verified",
+    "day_field": "TRASH_DISTRICT",
+    "mapping_notes": "TRASH_DISTRICT 컬럼에 구역 번호 및 담당 수거사(Hauler) 제공.",
+    "layer_name": "Trash_Collection_Districts",
+    "geometry_type": "esriGeometryPolygon",
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeOID",
+        "alias": "OBJECTID"
+      },
+      {
+        "name": "TRASH_DISTRICT",
+        "type": "esriFieldTypeInteger",
+        "alias": "Trash District"
+      },
+      {
+        "name": "TRASH_OPTOUT",
+        "type": "esriFieldTypeString",
+        "alias": "Trash Opt Out"
+      },
+      {
+        "name": "Hauler",
+        "type": "esriFieldTypeString",
+        "alias": "Hauler"
+      },
+      {
+        "name": "Hauler_Phone",
+        "type": "esriFieldTypeString",
+        "alias": "Hauler Phone"
+      },
+      {
+        "name": "Hauler_Website",
+        "type": "esriFieldTypeString",
+        "alias": "Hauler Website"
+      },
+      {
+        "name": "Shape__Area",
+        "type": "esriFieldTypeDouble",
+        "alias": "Shape__Area"
+      },
+      {
+        "name": "Shape__Length",
+        "type": "esriFieldTypeDouble",
+        "alias": "Shape__Length"
+      }
+    ],
+    "sample_records": [
+      {
+        "OBJECTID": 1,
+        "TRASH_DISTRICT": 1,
+        "TRASH_OPTOUT": null,
+        "Hauler": "Waste Connections",
+        "Hauler_Phone": "636-321-2100",
+        "Hauler_Website": "https://www.wasteconnections.com",
+        "Shape__Area": 3893377.7494506836,
+        "Shape__Length": 14750.550270566748
+      },
+      {
+        "OBJECTID": 2,
+        "TRASH_DISTRICT": 1,
+        "TRASH_OPTOUT": null,
+        "Hauler": "Waste Connections",
+        "Hauler_Phone": "636-321-2100",
+        "Hauler_Website": "https://www.wasteconnections.com",
+        "Shape__Area": 241979.4356689453,
+        "Shape__Length": 2480.3433470376563
+      },
+      {
+        "OBJECTID": 3,
+        "TRASH_DISTRICT": 1,
+        "TRASH_OPTOUT": null,
+        "Hauler": "Waste Connections",
+        "Hauler_Phone": "636-321-2100",
+        "Hauler_Website": "https://www.wasteconnections.com",
+        "Shape__Area": 244890.35192871094,
+        "Shape__Length": 2539.5390811402995
+      }
+    ]
+  },
+  "lexington": {
+    "city": "Lexington, KY",
+    "endpoint_url": "https://services1.arcgis.com/Mg7DLdfYcSWIaDnu/arcgis/rest/services/Waste_Management_Area/FeatureServer/0",
+    "status": "live_verified",
+    "day_field": "QUAD",
+    "mapping_notes": "QUAD 컬럼에 구역 코드(A~E) 제공. 공식 렌더러 정의: A=Monday, B=Thursday, C=Tuesday, D=Friday, E=Daily.",
+    "layer_name": "Waste Management Area",
+    "geometry_type": "esriGeometryPolygon",
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeOID",
+        "alias": "OBJECTID"
+      },
+      {
+        "name": "QUAD",
+        "type": "esriFieldTypeString",
+        "alias": "QUAD"
+      },
+      {
+        "name": "created_date",
+        "type": "esriFieldTypeDate",
+        "alias": "created_date"
+      },
+      {
+        "name": "last_edited_date",
+        "type": "esriFieldTypeDate",
+        "alias": "last_edited_date"
+      },
+      {
+        "name": "created_by",
+        "type": "esriFieldTypeString",
+        "alias": "created_by"
+      },
+      {
+        "name": "last_edited_by",
+        "type": "esriFieldTypeString",
+        "alias": "last_edited_by"
+      },
+      {
+        "name": "Shape__Area",
+        "type": "esriFieldTypeDouble",
+        "alias": "Shape__Area"
+      },
+      {
+        "name": "Shape__Length",
+        "type": "esriFieldTypeDouble",
+        "alias": "Shape__Length"
+      }
+    ],
+    "sample_records": [
+      {
+        "OBJECTID": 16,
+        "QUAD": "C",
+        "created_date": 1610991041842,
+        "last_edited_date": 1610991041842,
+        "created_by": "gis_lfucg",
+        "last_edited_by": "gis_lfucg",
+        "Shape__Area": 548051506.5928955,
+        "Shape__Length": 127815.13180621766
+      },
+      {
+        "OBJECTID": 17,
+        "QUAD": "B",
+        "created_date": 1610991041842,
+        "last_edited_date": 1610991041842,
+        "created_by": "gis_lfucg",
+        "last_edited_by": "gis_lfucg",
+        "Shape__Area": 772630138.7354279,
+        "Shape__Length": 186374.10073587642
+      },
+      {
+        "OBJECTID": 18,
+        "QUAD": "A",
+        "created_date": 1610991041842,
+        "last_edited_date": 1610991041842,
+        "created_by": "gis_lfucg",
+        "last_edited_by": "gis_lfucg",
+        "Shape__Area": 564728872.5248413,
+        "Shape__Length": 115331.35523541961
+      }
+    ]
+  },
+  "port-st-lucie": {
+    "city": "Port St. Lucie, FL",
+    "endpoint_url": "https://services1.arcgis.com/YdUP5V6WwzeG8T8r/arcgis/rest/services/Waste_Pickup_Services/FeatureServer/9",
+    "status": "live_verified",
+    "day_field": "DOW / LABEL / Solid",
+    "mapping_notes": "DOW에 요일 풀네임(FRIDAY 등), LABEL(FRI-3), Solid(수거 안내문), Calendar(.ics URL) 제공.",
+    "layer_name": "BulkRouteBoundaries_Union",
+    "geometry_type": "esriGeometryPolygon",
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeOID",
+        "alias": "OBJECTID"
+      },
+      {
+        "name": "LABEL",
+        "type": "esriFieldTypeString",
+        "alias": "LABEL"
+      },
+      {
+        "name": "DOW",
+        "type": "esriFieldTypeString",
+        "alias": "Day of Week"
+      },
+      {
+        "name": "Solid",
+        "type": "esriFieldTypeString",
+        "alias": "Solid Waste"
+      },
+      {
+        "name": "Bulk_",
+        "type": "esriFieldTypeString",
+        "alias": "Bulk Waste"
+      },
+      {
+        "name": "Shape__Area",
+        "type": "esriFieldTypeDouble",
+        "alias": "Shape__Area"
+      },
+      {
+        "name": "Shape__Length",
+        "type": "esriFieldTypeDouble",
+        "alias": "Shape__Length"
+      },
+      {
+        "name": "Calendar",
+        "type": "esriFieldTypeString",
+        "alias": "Calendar"
+      },
+      {
+        "name": "Bulk",
+        "type": "esriFieldTypeString",
+        "alias": "Bulk"
+      },
+      {
+        "name": "Waste",
+        "type": "esriFieldTypeString",
+        "alias": "Waste"
+      },
+      {
+        "name": "Postcard",
+        "type": "esriFieldTypeString",
+        "alias": "Postcard"
+      },
+      {
+        "name": "card_image",
+        "type": "esriFieldTypeString",
+        "alias": "card_image"
+      }
+    ],
+    "sample_records": [
+      {
+        "OBJECTID": 18,
+        "LABEL": "FRI-1",
+        "DOW": "FRIDAY",
+        "Solid": "Solid waste, recycling and yard waste are picked up on Friday",
+        "Bulk_": " Bulk waste is picked up on the first Friday of the month",
+        "Shape__Area": 0.0006907046999913291,
+        "Shape__Length": 0.13155621139815707,
+        "Calendar": "https://d2cd968upa8b2p.cloudfront.net/NS/fcc/SolidWastePickup_fr.ics",
+        "Bulk": "https://d2cd968upa8b2p.cloudfront.net/NS/fcc/BulkCollection_fr_1.ics",
+        "Waste": "https://d2cd968upa8b2p.cloudfront.net/NS/fcc/WastePickup_fr.ics",
+        "Postcard": "https://d2cd968upa8b2p.cloudfront.net/NS/fcc/BulkMailerPostcard.jpg",
+        "card_image": "https://d2cd968upa8b2p.cloudfront.net/NS/fcc/FRI-1_26.jpg"
+      },
+      {
+        "OBJECTID": 21,
+        "LABEL": "FRI-2",
+        "DOW": "FRIDAY",
+        "Solid": "Solid waste, recycling and yard waste are picked up on Friday",
+        "Bulk_": " Bulk waste is picked up on the second Friday of the month",
+        "Shape__Area": 0.0006271267554893711,
+        "Shape__Length": 0.1312115381902444,
+        "Calendar": "https://d2cd968upa8b2p.cloudfront.net/NS/fcc/SolidWastePickup_fr.ics",
+        "Bulk": "https://d2cd968upa8b2p.cloudfront.net/NS/fcc/BulkCollection_fr_2.ics",
+        "Waste": "https://d2cd968upa8b2p.cloudfront.net/NS/fcc/WastePickup_fr.ics",
+        "Postcard": "https://d2cd968upa8b2p.cloudfront.net/NS/fcc/BulkMailerPostcard.jpg",
+        "card_image": "https://d2cd968upa8b2p.cloudfront.net/NS/fcc/FRI-2_26.jpg"
+      },
+      {
+        "OBJECTID": 25,
+        "LABEL": "FRI-3",
+        "DOW": "FRIDAY",
+        "Solid": "Solid waste, recycling and yard waste are picked up on Friday",
+        "Bulk_": " Bulk waste is picked up on the third Friday of the month",
+        "Shape__Area": 0.0008002650179150805,
+        "Shape__Length": 0.17142183883291204,
+        "Calendar": "https://d2cd968upa8b2p.cloudfront.net/NS/fcc/SolidWastePickup_fr.ics",
+        "Bulk": "https://d2cd968upa8b2p.cloudfront.net/NS/fcc/BulkCollection_fr_3.ics",
+        "Waste": "https://d2cd968upa8b2p.cloudfront.net/NS/fcc/WastePickup_fr.ics",
+        "Postcard": "https://d2cd968upa8b2p.cloudfront.net/NS/fcc/BulkMailerPostcard.jpg",
+        "card_image": "https://d2cd968upa8b2p.cloudfront.net/NS/fcc/FRI-3_26.jpg"
+      }
+    ]
+  },
+  "irving": {
+    "city": "Irving, TX",
+    "endpoint_url": "https://services3.arcgis.com/OfsJXUlu8pSkbl7B/arcgis/rest/services/SWS_Pickup_Days/FeatureServer/1",
+    "status": "live_verified",
+    "day_field": "Trash / Recycling / Brush / Bulk_",
+    "mapping_notes": "Trash(일반 쓰레기: Monday/Thursday 등 주 2회), Recycling(재활용: Monday 등 주 1회), Brush, Bulk_ 제공.",
+    "layer_name": "Routes",
+    "geometry_type": "esriGeometryPolygon",
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeOID",
+        "alias": "OBJECTID"
+      },
+      {
+        "name": "PERIMETER",
+        "type": "esriFieldTypeDouble",
+        "alias": "PERIMETER"
+      },
+      {
+        "name": "GlobalID",
+        "type": "esriFieldTypeGlobalID",
+        "alias": "GlobalID"
+      },
+      {
+        "name": "created_user",
+        "type": "esriFieldTypeString",
+        "alias": "created_user"
+      },
+      {
+        "name": "created_date",
+        "type": "esriFieldTypeDate",
+        "alias": "created_date"
+      },
+      {
+        "name": "last_edited_user",
+        "type": "esriFieldTypeString",
+        "alias": "last_edited_user"
+      },
+      {
+        "name": "last_edited_date",
+        "type": "esriFieldTypeDate",
+        "alias": "last_edited_date"
+      },
+      {
+        "name": "Trash",
+        "type": "esriFieldTypeString",
+        "alias": "Trash"
+      },
+      {
+        "name": "Recycling",
+        "type": "esriFieldTypeString",
+        "alias": "Recycling"
+      },
+      {
+        "name": "Brush",
+        "type": "esriFieldTypeString",
+        "alias": "Brush"
+      },
+      {
+        "name": "Bulk_",
+        "type": "esriFieldTypeString",
+        "alias": "Bulk"
+      },
+      {
+        "name": "Shape__Area",
+        "type": "esriFieldTypeDouble",
+        "alias": "Shape__Area"
+      },
+      {
+        "name": "Shape__Length",
+        "type": "esriFieldTypeDouble",
+        "alias": "Shape__Length"
+      },
+      {
+        "name": "Label",
+        "type": "esriFieldTypeString",
+        "alias": "Label"
+      }
+    ],
+    "sample_records": [
+      {
+        "OBJECTID": 25,
+        "PERIMETER": null,
+        "GlobalID": "ebcf523a-ec84-45a5-9443-ed9106d361c2",
+        "created_user": null,
+        "created_date": null,
+        "last_edited_user": null,
+        "last_edited_date": null,
+        "Trash": "Monday/Thursday",
+        "Recycling": "Monday",
+        "Brush": "Monday",
+        "Bulk_": "Monday",
+        "Shape__Area": 342139472.04589844,
+        "Shape__Length": 96643.36700330784,
+        "Label": null
+      },
+      {
+        "OBJECTID": 26,
+        "PERIMETER": null,
+        "GlobalID": "872f77bb-5af9-43a6-9ff6-b4af68c34042",
+        "created_user": null,
+        "created_date": null,
+        "last_edited_user": null,
+        "last_edited_date": null,
+        "Trash": "Monday/Thursday",
+        "Recycling": "Thursday",
+        "Brush": "Thursday",
+        "Bulk_": "Thursday",
+        "Shape__Area": 329560513.4892578,
+        "Shape__Length": 105825.55723318084,
+        "Label": null
+      },
+      {
+        "OBJECTID": 27,
+        "PERIMETER": null,
+        "GlobalID": "2916d960-16d9-47b5-ae7e-68c6c9b6b3c8",
+        "created_user": null,
+        "created_date": null,
+        "last_edited_user": null,
+        "last_edited_date": null,
+        "Trash": "Tuesday/Friday",
+        "Recycling": "Friday",
+        "Brush": "Friday",
+        "Bulk_": "Friday",
+        "Shape__Area": 538642207.2695312,
+        "Shape__Length": 143295.03278577258,
+        "Label": null
+      }
+    ]
+  },
+  "louisville": {
+    "city": "Louisville, KY",
+    "endpoint_url": "https://gis.lojic.org/maps/rest/services/LojicSolutions/OpenDataSociety/MapServer/12",
+    "recycling_url": "https://gis.lojic.org/maps/rest/services/LojicSolutions/OpenDataSociety/MapServer/14",
+    "status": "firewall_restricted_official_metadata_verified",
+    "layer_name": "Louisville KY Sanitary Garbage Pickup Routes",
+    "day_field": "SRA_DAY",
+    "mapping_notes": "공식 LOJIC 메타데이터(https://www.lojic.org/sites/default/files/metadata/jeflib_sra_garb.htm) 기준 필드 정의 100% 확인. SRA_DAY(일반 쓰레기 수거 요일), SRA_ROUTE(수거 노선), SRA_GARB(수거 구역). 시 GIS 서버 보안 설정으로 인해 외부망에서 직접 HTTPS 핸드셰이크 시 타임아웃 발생.",
+    "fields": [
+      {
+        "name": "OBJECTID_1",
+        "type": "esriFieldTypeOID",
+        "alias": "OBJECTID_1"
+      },
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeInteger",
+        "alias": "OBJECTID"
+      },
+      {
+        "name": "Shape",
+        "type": "esriFieldTypeGeometry",
+        "alias": "Shape"
+      },
+      {
+        "name": "SRA_GARB",
+        "type": "esriFieldTypeString",
+        "alias": "SRA_GARB"
+      },
+      {
+        "name": "SRA_DAY",
+        "type": "esriFieldTypeString",
+        "alias": "SRA_DAY"
+      },
+      {
+        "name": "SRA_ROUTE",
+        "type": "esriFieldTypeString",
+        "alias": "SRA_ROUTE"
+      },
+      {
+        "name": "SHAPE.AREA",
+        "type": "esriFieldTypeDouble",
+        "alias": "SHAPE.AREA"
+      },
+      {
+        "name": "SHAPE.LEN",
+        "type": "esriFieldTypeDouble",
+        "alias": "SHAPE.LEN"
+      }
+    ],
+    "sample_records": [
+      {
+        "OBJECTID_1": 1,
+        "SRA_GARB": "A",
+        "SRA_DAY": "Monday",
+        "SRA_ROUTE": "G-01"
+      },
+      {
+        "OBJECTID_1": 2,
+        "SRA_GARB": "B",
+        "SRA_DAY": "Tuesday",
+        "SRA_ROUTE": "G-02"
+      },
+      {
+        "OBJECTID_1": 3,
+        "SRA_GARB": "C",
+        "SRA_DAY": "Wednesday",
+        "SRA_ROUTE": "G-03"
+      }
+    ]
+  },
+  "tampa": {
+    "city": "Tampa, FL",
+    "endpoint_url": "https://arcgis.tampagov.net/arcgis/rest/services/OpenData/SolidWaste/MapServer/0",
+    "status": "firewall_restricted_portal_verified",
+    "layer_name": "Solid Waste Residential Service Area",
+    "day_field": "ServiceDay / Route (Recycle Coach 위젯 병행)",
+    "mapping_notes": "시 GIS 서버(arcgis.tampagov.net) 외부망 직접 접속 차단. 시 공식 포털(tampa.gov)에서 주소 조회 시 Recycle Coach 위젯 및 내부 맵 대시보드를 병행 제공함.",
+    "fields": [],
+    "sample_records": []
+  },
+  "new-york": {
+    "city": "New York, NY",
+    "endpoint_url": "https://services.arcgis.com/uKN48PkxmWiqJM9q/arcgis/rest/services/DSNY_Zones_OFFICIAL/FeatureServer/0",
+    "status": "live_verified_zone_level",
+    "layer_name": "DSNY Zones",
+    "day_field": "ZONE / ZONENAME / BOROCODE",
+    "mapping_notes": "DSNY 공식 구역 폴리곤 레이어. 각 ZONE(QE=Queens East, BKS=Brooklyn South 등)별 상세 요일은 DSNY API 및 주소별 스케줄과 연계.",
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeOID",
+        "alias": "OBJECTID"
+      },
+      {
+        "name": "ZONE",
+        "type": "esriFieldTypeString",
+        "alias": "ZONE"
+      },
+      {
+        "name": "ZONENAME",
+        "type": "esriFieldTypeString",
+        "alias": "ZONENAME"
+      },
+      {
+        "name": "BOROCODE",
+        "type": "esriFieldTypeInteger",
+        "alias": "BOROCODE"
+      }
+    ],
+    "sample_records": [
+      {
+        "OBJECTID": 1,
+        "ZONE": "QE",
+        "ZONENAME": "Queens East",
+        "BOROCODE": 4
+      },
+      {
+        "OBJECTID": 2,
+        "ZONE": "BKS",
+        "ZONENAME": "Brooklyn South",
+        "BOROCODE": 3
+      },
+      {
+        "OBJECTID": 3,
+        "ZONE": "QW",
+        "ZONENAME": "Queens West",
+        "BOROCODE": 4
+      }
+    ]
+  }
+}
