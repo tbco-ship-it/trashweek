@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 {% block title %}What day is trash pickup at my address? Trash, recycling and yard-waste schedule by city | {{ site }}{% endblock %}
-{% block head %}<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"{{ site }}","applicationCategory":"UtilitiesApplication","inLanguage":"en","url":"{{ origin }}{{ base }}","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>{% endblock %}
+{% block head %}<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"{{ site }}","applicationCategory":"UtilitiesApplication","inLanguage":"en","url":"{{ origin }}{{ base }}","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script>if(!location.hash)document.documentElement.classList.add('landing')</script>{% endblock %}
 {% block content %}
+<div class="stage" id="stage">
 <section class="hero">
   <h1>Is it trash day tomorrow?</h1>
   <p>Type your street address. We match it to your city's official collection zone and show trash, recycling and yard-waste days for this week — and whether a holiday pushes them back. {{ cities|length }} cities, {{ '{:,}'.format(n_zones) }} zones. Your address stays in your browser.</p>
@@ -15,11 +17,14 @@
   </label>
   <p class="sheet-actions" style="margin-top:12px"><button id="go" class="next" type="button">Find my pickup days</button></p>
   <p id="msg" class="hint" hidden></p>
-  <p class="hint">Or pick a city below and browse zones. Nothing is sent to the city — we geocode with the free US Census service and check the zone on this page.</p>
+  <p class="hint">Or <a href="#cities">browse by city</a> and pick your zone. Nothing is sent to the city — we geocode with the free US Census service and check the zone on this page.</p>
+  <button type="button" class="last" id="last" hidden><span>Last lookup</span><b id="last-name"></b></button>
 </div>
 <div id="result" class="result" aria-live="polite"></div>
 </section>
+</div>
 
+<div class="more" id="more">
 <div class="ad-slot"><!-- ad: home --></div>
 
 <div class="sec" id="cities"><div class="sec-h"><h2>Cities</h2><a href="{{ base }}coverage/">Why some cities are missing</a></div>
@@ -32,4 +37,5 @@
   <h2>Holidays</h2>
   <p>Most cities skip collection on a handful of holidays and run one day late for the rest of that week. The exact list differs by city — <a href="{{ base }}holidays/">see which holidays delay pickup</a>, then check your city's notice for the current week.</p>
 </section>
+</div>
 {% endblock %}

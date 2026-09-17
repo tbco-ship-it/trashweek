@@ -33,6 +33,22 @@
     }
     return out;
   }
+  // Home: the first result ends the landing state — hero + card glide up from centre (FLIP on padding-top) while the hidden sections below are armed to reveal.
+  function leaveLanding() {
+    const html = document.documentElement; if (!html.classList.contains('landing')) return;
+    const stage = $('stage'), hero = stage.firstElementChild;
+    const y0 = hero.getBoundingClientRect().top;
+    html.classList.remove('landing');
+    const dy = y0 - hero.getBoundingClientRect().top;
+    if (dy > 0 && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      stage.style.transition = 'none'; stage.style.paddingTop = dy + 'px'; void stage.offsetHeight;
+      stage.style.transition = 'padding-top 1s cubic-bezier(.16,1,.3,1)'; stage.style.paddingTop = '0px';
+      stage.addEventListener('transitionend', () => { stage.style.transition = ''; stage.style.paddingTop = ''; }, { once: true });
+    }
+    if (window.__reveal) window.__reveal($('more'), true, 500);
+  }
+  // In-page links into the hidden part (nav "Cities", the hint) end the landing state first so the anchor jump has a target.
+  document.addEventListener('click', e => { const a = e.target.closest('a[href*="#"]'); if (!a || a.origin !== location.origin || a.pathname !== location.pathname) return; const t = document.getElementById(a.hash.slice(1)); if (t && t.closest('#more')) leaveLanding(); });
   function render(sched, name, root, link) {
     const occ = occurrences(sched, now, 14).sort((a, b) => a.d - b.d);
     const occFar = occurrences(sched, now, 60).sort((a, b) => a.d - b.d);
@@ -47,8 +63,14 @@
     const sub = today.length ? `Today (${md(now)}): ${[...new Set(today.map(lbl))].join(' + ')} — have it out by 6–7 am.` : `Today (${md(now)}): no pickup.`;
     const upcoming = KINDS_SHOWN.map(k => { const o = next(k); return `<div class="item"><span class="dot" style="background:${COLOR[k]}"></span><span class="txt"><b>${LABEL[k]}</b><span class="tsub">${(sched[k] || []).map(x => LONG[x]).join(' & ')}${k === 'recycling' && sched.recycling_week ? ` · week ${sched.recycling_week}` : ''}</span>${o && o.shifted ? '<span class="tsub">holiday week: one day late</span>' : ''}</span><span class="when">${o ? rel(o.d) : '—'}</span></div>`; }).join('');
     const week = Array.from({ length: 7 }, (_, i) => { const d = addDays(now, i); const ks = [...new Set(occ.filter(o => iso(o.d) === iso(d)).map(o => o.k))]; return `<div class="day${i === 0 ? ' today' : ''}"><span class="dow">${i === 0 ? 'Today' : DAYS[d.getDay()]}</span><span class="dnum">${d.getDate()}</span><span class="dots">${ks.map(k => `<span class="tag" style="background:${TAG[k]}">${LABEL[k].split(' ')[0]}</span>`).join('')}</span></div>`; }).join('');
-    if (root) root.innerHTML = `<section class="sheet ${cls}"><p class="sheet-label">${name}</p><div class="sheet-num"><span class="num small-num">${head}</span></div><p class="sheet-title">${sub}</p><div class="stack">${upcoming}</div><p class="sheet-actions"><a class="next" href="${link}">Zone page &amp; calendar file</a></p></section><div class="week">${week}</div>`;
-    else { const sheet = $('today'); sheet.classList.remove('balanced', 'quiet'); sheet.classList.add(cls); $('headline').textContent = head; $('sub').textContent = sub; $('upcoming').innerHTML = upcoming; $('week').innerHTML = week; }
+    if (root) {
+      leaveLanding();
+      root.innerHTML = `<section class="sheet ${cls}"><p class="sheet-label">${name}</p><div class="sheet-num"><span class="num small-num">${head}</span></div><p class="sheet-title">${sub}</p><div class="stack">${upcoming}</div><p class="sheet-actions"><a class="next" href="${link}">Zone page &amp; calendar file</a></p></section><div class="week">${week}</div>`;
+      // Result rises in Toss-style: label → headline → sub → items → link → week, 90ms apart.
+      root.classList.remove('is-in'); root.classList.add('reveal');
+      [root.querySelector('.sheet'), ...root.querySelector('.sheet').children, root.querySelector('.week')].forEach((el, i) => { el.classList.add('rv'); el.style.setProperty('--d', (i * 90) + 'ms'); });
+      void root.offsetHeight; root.classList.add('is-in');
+    } else { const sheet = $('today'); sheet.classList.remove('balanced', 'quiet'); sheet.classList.add(cls); $('headline').textContent = head; $('sub').textContent = sub; $('upcoming').innerHTML = upcoming; $('week').innerHTML = week; }
   }
   function ics(sched, name) {
     const L = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//TrashWeek//EN', 'CALSCALE:GREGORIAN', `X-WR-CALNAME:${name} pickup days`];
@@ -114,7 +136,18 @@
       localStorage.setItem('trashweek.last', JSON.stringify({ slug, z: z.z }));
     } catch (e) { say('The geocoder did not answer. Try again in a moment.'); }
   }
-  go.addEventListener('click', lookup); input.addEventListener('keydown', e => { if (e.key === 'Enter') lookup(); });
+  const goIdle = go.textContent;
+  const busy = on => { go.disabled = on; go.classList.toggle('busy', on); go.textContent = on ? 'Locating…' : goIdle; };
+  const run = async () => { if (go.disabled) return; busy(true); try { await lookup(); } finally { busy(false); } };
+  go.addEventListener('click', run); input.addEventListener('keydown', e => { if (e.key === 'Enter') run(); });
   const last = JSON.parse(localStorage.getItem('trashweek.last') || 'null');
-  if (last && last.z && (!input.dataset.city || input.dataset.city === last.slug)) { const geo = await loadGeo(last.slug); setHol(geo.holidays); const z = geo.zones.find(x => x.z === last.z); const c = cities.find(x => x.slug === last.slug); if (z && c) render(z.s, `${c.city} · zone ${z.z}`, out, `${base}${last.slug}/zone/${z.u}/`); }
+  if (last && last.z && (!input.dataset.city || input.dataset.city === last.slug)) {
+    const geo = await loadGeo(last.slug); setHol(geo.holidays); const z = geo.zones.find(x => x.z === last.z); const c = cities.find(x => x.slug === last.slug);
+    if (z && c) {
+      const show = () => render(z.s, `${c.city} · zone ${z.z}`, out, `${base}${last.slug}/zone/${z.u}/`);
+      const chip = $('last');
+      // Home: nothing pre-filled — the remembered zone is offered as a one-tap chip. City pages show it right away as before.
+      if (chip) { $('last-name').textContent = `${c.city} · zone ${z.z}`; chip.hidden = false; chip.addEventListener('click', show); } else show();
+    }
+  }
 })();
