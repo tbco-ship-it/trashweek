@@ -1644,5 +1644,45 @@
   "notes": "Trash and composting weekly; recycling every other week (week A or B).",
   "holiday_url": "https://www.austintexas.gov/department/holiday-collection-schedule",
   "source_url": "https://www.austintexas.gov/department/austin-resource-recovery"
+ },
+ "phoenix": {
+  "city": "Phoenix",
+  "state": "AZ",
+  "provider": "City of Phoenix Public Works",
+  "kind": "arcgis",
+  "url": "https://maps.phoenix.gov/pub/rest/services/Public/GarbagePickUp/MapServer/2",
+  "zone": "OBJECTID",
+  "fields": {
+   "trash": "DOC"
+  },
+  "notes": "Trash and recycling are collected on the same day each week; bulk trash on a quarterly schedule by area.",
+  "holiday_url": "https://www.phoenix.gov/publicworks/garbage/holiday-schedule",
+  "source_url": "https://www.phoenix.gov/publicworks/garbage"
+ },
+ "st-paul": {
+  "city": "St. Paul",
+  "state": "MN",
+  "provider": "City of Saint Paul Garbage Service",
+  "kind": "arcgis",
+  "url": "https://services1.arcgis.com/9meaaHE3uiba0zr8/arcgis/rest/services/GarbageCollection/FeatureServer/0",
+  "zone": "OBJECTID",
+  "fields": {
+   "trash": "DAY",
+   "hauler": "HAULER"
+  },
+  "notes": "Citywide garbage service; recycling every other week by Ramsey County.",
+  "holiday_url": "https://www.stpaul.gov/departments/public-works/garbage-and-recycling/holiday-schedule",
+  "source_url": "https://www.stpaul.gov/departments/public-works/garbage-and-recycling"
+ },
+ "san-francisco": {
+  "city": "San Francisco",
+  "state": "CA",
+  "provider": "Recology San Francisco",
+  "kind": "recollect",
+  "area": "recology-1051",
+  "service": 265,
+  "notes": "Type the house number and street (e.g. 100 25th Ave).",
+  "holiday_url": "https://www.recology.com/recology-san-francisco/holiday-schedule/",
+  "source_url": "https://www.recology.com/recology-san-francisco/"
  }
 }
