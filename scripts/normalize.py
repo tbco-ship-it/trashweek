@@ -102,7 +102,15 @@ def main():
         seen = Counter(r["zone"] for r in recs)
         for r in recs:
             if seen[r["zone"]] > 1:
-                r["zone"] = f"{r['zone']} ({'/'.join(r['schedule']['trash'])})"
+                rw = r["schedule"].get("recycling_week")
+                r["zone"] = f"{r['zone']} ({'/'.join(r['schedule']['trash'])}{' week ' + str(rw) if rw else ''})"
+        # still colliding (same id, same trash days, other kinds differ) → number them so every zone keeps its own page
+        seen2 = Counter(r["zone"] for r in recs)
+        nth = Counter()
+        for r in recs:
+            if seen2[r["zone"]] > 1:
+                nth[r["zone"]] += 1
+                r["zone"] = f"{r['zone']} #{nth[r['zone']]}"
         out = {"slug": slug, "city": cfg["city"], "state": cfg["state"], "provider": cfg["provider"], "notes": cfg.get("notes", ""),
                "holiday_url": cfg.get("holiday_url"), "source_url": cfg.get("source_url"), "data_url": cfg["url"], "fetched": raw["fetched"],
                "normalized": today, "zones": recs}
