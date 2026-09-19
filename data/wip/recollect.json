@@ -1,0 +1,800 @@
+{
+  "phoenix": {
+    "city": "Phoenix, AZ",
+    "area_name": "PhoenixAZ",
+    "suggest_endpoint": "https://api.recollect.net/api/areas/PhoenixAZ/services/waste/address-suggest?q=1000",
+    "suggest_http_status": 200,
+    "service_id": 826,
+    "sample_place": {
+      "place_id": "13A8C88C-24E6-11F1-98E7-2B9165B36D24",
+      "address": "10007 N 18th Ave Unit 1 3 And 4, Phoenix"
+    },
+    "events_endpoint": "https://api.recollect.net/api/places/13A8C88C-24E6-11F1-98E7-2B9165B36D24/services/826/events?after=2026-09-01&before=2026-09-30",
+    "zone_route_name_fields": [
+      "zones.<id>.name",
+      "zones.<id>.title",
+      "zones.<id>.loc_title.en / en-US",
+      "zones.<id>.colour_name"
+    ],
+    "sample_response": {
+      "event": {
+        "is_approved": 1,
+        "day": "2026-09-07",
+        "flags": [
+          {
+            "subject": null,
+            "id": 20251,
+            "is_week_long": 0,
+            "short_text_message": null,
+            "event_type": "pickup",
+            "html_message": "",
+            "backgroundColor": "#6E19E9",
+            "icon": "chair:rgb(0,0,0)",
+            "opts": {
+              "event_type": "pickup",
+              "event_proto": {
+                "calendar_only": 1,
+                "bic_slot_count": "999",
+                "reminder_only": "1"
+              }
+            },
+            "area_name": "PhoenixAZ",
+            "voice_message": null,
+            "service_name": "waste",
+            "borderColor": "#6E19E9",
+            "sort_order": 2,
+            "icon_uri_fragment": "0,0,0/chair",
+            "plain_text_message": null,
+            "color": "#6E19E9",
+            "name": "bulk"
+          }
+        ],
+        "custom_message": "",
+        "id": 31290161,
+        "options": {},
+        "opts": {
+          "reminder_only": "1",
+          "calendar_only": 1,
+          "bic_slot_count": "175"
+        },
+        "zone_id": 364391,
+        "custom_subject": ""
+      },
+      "matched_zones": {
+        "364391": {
+          "has_unapproved_future_events": 0,
+          "pdf_uri": {},
+          "show_when_empty": 1,
+          "has_geom": 0,
+          "line_colour": "#FFFFFF",
+          "opts": {
+            "connector_created": "2026-03-20 21:53:01-0700"
+          },
+          "has_parcels": 1,
+          "priority": 0,
+          "id": 364391,
+          "link_text": {},
+          "link_uri": {},
+          "loc_title": {
+            "en-US": "west monday"
+          },
+          "name": "phoenixaz-west-monday",
+          "service_id": 826,
+          "colour_name": "phoenixaz-west-monday",
+          "poly_colour": "#FFFFFF",
+          "title": "west monday",
+          "description": {},
+          "is_empty": 1
+        }
+      }
+    },
+    "active_service_id": 826,
+    "query_rules": "Query must include house number prefix (e.g. 15202 N 10th Pl). Events only scheduled from March 2026 onwards.",
+    "events_endpoint_verified": "https://api.recollect.net/api/places/E8010B30-24EB-11F1-96D6-4C9165B36D24/services/826/events?after=2026-09-01&before=2026-09-30"
+  },
+  "jacksonville": {
+    "city": "Jacksonville, FL",
+    "area_name": "CityofJacksonvilleFL",
+    "suggest_endpoint": "https://api.recollect.net/api/areas/CityofJacksonvilleFL/services/waste/address-suggest?q=1000",
+    "suggest_http_status": 200,
+    "service_id": 1405,
+    "sample_place": {
+      "place_id": "CB66E23A-6142-11ED-8B2D-2B45E7563B08",
+      "address": "1000 Island Point Dr, Jacksonville"
+    },
+    "events_endpoint": "https://api.recollect.net/api/places/CB66E23A-6142-11ED-8B2D-2B45E7563B08/services/1405/events?after=2026-09-01&before=2026-09-30",
+    "zone_route_name_fields": [
+      "zones.<id>.name",
+      "zones.<id>.title",
+      "zones.<id>.loc_title.en / en-US",
+      "zones.<id>.colour_name"
+    ],
+    "sample_response": {
+      "event": {
+        "opts": {
+          "connector_id": 3817,
+          "connector_created": "2026-09-03"
+        },
+        "id": 30500372,
+        "options": {},
+        "day": "2026-09-03",
+        "zone_id": 247290,
+        "is_approved": 1,
+        "flags": [
+          {
+            "color": "#1972ae",
+            "event_type": "pickup",
+            "area_name": "CityofJacksonvilleFL",
+            "is_week_long": 0,
+            "short_text_message": null,
+            "subject": null,
+            "opts": {},
+            "id": 18648,
+            "backgroundColor": "#1972ae",
+            "icon_uri_fragment": "25,114,174/recycle",
+            "sort_order": 0,
+            "service_name": "waste",
+            "icon": "recycle:rgb(25,114,174)",
+            "html_message": "",
+            "voice_message": null,
+            "name": "recycling",
+            "borderColor": "#1972ae",
+            "plain_text_message": null
+          }
+        ],
+        "custom_message": "",
+        "custom_subject": ""
+      },
+      "matched_zones": {
+        "247290": {
+          "poly_colour": "FFFFFF",
+          "name": "cityofjacksonvillefl-recycle-thursday-b",
+          "title": "recycle-thursday-b",
+          "has_geom": 0,
+          "link_uri": {},
+          "service_id": 1405,
+          "pdf_uri": {},
+          "show_when_empty": 0,
+          "priority": 0,
+          "has_unapproved_future_events": 0,
+          "link_text": {},
+          "line_colour": "FFFFFF",
+          "is_empty": 0,
+          "id": 247290,
+          "opts": {
+            "connector_created": "2022-11-10 15:21:12-0500"
+          },
+          "loc_title": {
+            "en-US": "recycle-thursday-b"
+          },
+          "description": {},
+          "colour_name": "cityofjacksonvillefl-recycle-thursday-b",
+          "has_parcels": 1
+        }
+      }
+    }
+  },
+  "fort_worth": {
+    "city": "Fort Worth, TX",
+    "area_name": "FortWorth",
+    "suggest_endpoint": "https://api.recollect.net/api/areas/FortWorth/services/waste/address-suggest?q=1000",
+    "suggest_http_status": 200,
+    "service_id": 314,
+    "sample_place": {
+      "place_id": "F02F3950-A4B5-11F0-854A-604C7C5DCABC",
+      "address": "10000 LEEWAY TR, Fort Worth"
+    },
+    "events_endpoint": "https://api.recollect.net/api/places/F02F3950-A4B5-11F0-854A-604C7C5DCABC/services/314/events?after=2026-09-01&before=2026-09-30",
+    "zone_route_name_fields": [
+      "zones.<id>.name",
+      "zones.<id>.title",
+      "zones.<id>.loc_title.en / en-US",
+      "zones.<id>.colour_name"
+    ],
+    "sample_response": {
+      "event": {
+        "options": {},
+        "opts": {
+          "connector_id": 119,
+          "connector_created": "2026-09-01"
+        },
+        "id": 30233677,
+        "zone_id": 4781,
+        "day": "2026-09-01",
+        "is_approved": 1,
+        "flags": [
+          {
+            "icon": "garbage_bag2:rgb(107,67,42)",
+            "service_name": "waste",
+            "borderColor": "#6b432a",
+            "plain_text_message": null,
+            "html_message": "",
+            "voice_message": null,
+            "name": "Garbage",
+            "is_week_long": 0,
+            "area_name": "FortWorth",
+            "short_text_message": null,
+            "color": "#6b432a",
+            "event_type": "pickup",
+            "opts": {},
+            "subject": null,
+            "id": 471,
+            "backgroundColor": "#6b432a",
+            "sort_order": 0,
+            "icon_uri_fragment": "107,67,42/garbage_bag2"
+          },
+          {
+            "plain_text_message": null,
+            "borderColor": "#224292",
+            "zone_id": 4786,
+            "html_message": "",
+            "voice_message": null,
+            "name": "Recycling",
+            "icon": "recycle:rgb(34,66,146)",
+            "service_name": "waste",
+            "opts": {},
+            "id": 472,
+            "subject": null,
+            "icon_uri_fragment": "34,66,146/recycle",
+            "backgroundColor": "#224292",
+            "sort_order": 0,
+            "event_id": 30233625,
+            "is_week_long": 0,
+            "area_name": "FortWorth",
+            "short_text_message": null,
+            "color": "#224292",
+            "event_type": "pickup"
+          },
+          {
+            "plain_text_message": null,
+            "borderColor": "#41a248",
+            "voice_message": null,
+            "html_message": "",
+            "zone_id": 4791,
+            "name": "YardTrimmings",
+            "icon": "leaf:rgb(65,162,72)",
+            "service_name": "waste",
+            "sort_order": 0,
+            "icon_uri_fragment": "65,162,72/leaf",
+            "backgroundColor": "#41a248",
+            "opts": {},
+            "id": 473,
+            "subject": null,
+            "event_id": 30233729,
+            "short_text_message": null,
+            "is_week_long": 0,
+            "area_name": "FortWorth",
+            "event_type": "pickup",
+            "color": "#41a248"
+          }
+        ],
+        "custom_message": "",
+        "custom_subject": ""
+      },
+      "matched_zones": {
+        "4791": {
+          "has_parcels": 1,
+          "colour_name": "fortworth-yard-tuesday",
+          "description": {},
+          "loc_title": {
+            "en": "Yard Trimmings Tuesday"
+          },
+          "is_empty": 0,
+          "opts": {},
+          "id": 4791,
+          "line_colour": "FFFFFF",
+          "link_text": {},
+          "has_unapproved_future_events": 0,
+          "priority": 0,
+          "show_when_empty": 0,
+          "pdf_uri": {},
+          "service_id": 314,
+          "link_uri": {},
+          "has_geom": 0,
+          "title": "Yard Trimmings Tuesday",
+          "name": "fortworth-yard-tuesday",
+          "poly_colour": "FFFFFF"
+        },
+        "4786": {
+          "description": {},
+          "loc_title": {
+            "en": "Recycling Tuesday"
+          },
+          "colour_name": "fortworth-recycling-tuesday",
+          "has_parcels": 1,
+          "link_text": {},
+          "has_unapproved_future_events": 0,
+          "line_colour": "FFFFFF",
+          "id": 4786,
+          "opts": {},
+          "is_empty": 0,
+          "link_uri": {},
+          "service_id": 314,
+          "pdf_uri": {},
+          "title": "Recycling Tuesday",
+          "has_geom": 0,
+          "show_when_empty": 0,
+          "priority": 0,
+          "poly_colour": "FFFFFF",
+          "name": "fortworth-recycling-tuesday"
+        },
+        "4781": {
+          "has_parcels": 1,
+          "colour_name": "fortworth-garbage-tuesday",
+          "description": {},
+          "loc_title": {
+            "en": "Garbage Tuesday"
+          },
+          "id": 4781,
+          "is_empty": 0,
+          "opts": {},
+          "line_colour": "FFFFFF",
+          "link_text": {},
+          "has_unapproved_future_events": 0,
+          "priority": 0,
+          "show_when_empty": 0,
+          "pdf_uri": {},
+          "service_id": 314,
+          "link_uri": {},
+          "has_geom": 0,
+          "title": "Garbage Tuesday",
+          "name": "fortworth-garbage-tuesday",
+          "poly_colour": "FFFFFF"
+        }
+      }
+    }
+  },
+  "memphis": {
+    "city": "Memphis, TN",
+    "area_name": "MemphisTN",
+    "suggest_endpoint": "https://api.recollect.net/api/areas/MemphisTN/services/waste/address-suggest?q=1000",
+    "suggest_http_status": 200,
+    "service_id": 842,
+    "sample_place": {
+      "place_id": "9B939612-02EF-11E9-9281-CB487C3817F6",
+      "address": "1000 Weaver Cv, Memphis"
+    },
+    "events_endpoint": "https://api.recollect.net/api/places/9B939612-02EF-11E9-9281-CB487C3817F6/services/842/events?after=2026-09-01&before=2026-09-30",
+    "zone_route_name_fields": [
+      "zones.<id>.name",
+      "zones.<id>.title",
+      "zones.<id>.loc_title.en / en-US",
+      "zones.<id>.colour_name"
+    ],
+    "sample_response": {
+      "event": {
+        "flags": [
+          {
+            "html_message": "",
+            "id": 6779,
+            "icon": "yardwastebag:rgb(105,77,4)",
+            "textColor": "#ffffff",
+            "short_text_message": null,
+            "is_week_long": 0,
+            "backgroundColor": "#694d04",
+            "subject": null,
+            "service_name": "waste",
+            "sort_order": 0,
+            "color": "#694d04",
+            "voice_message": null,
+            "icon_uri_fragment": "105,77,4/yardwastebag",
+            "plain_text_message": null,
+            "area_name": "MemphisTN",
+            "opts": {
+              "event_type": "pickup"
+            },
+            "name": "yardwaste",
+            "borderColor": "#e8c547",
+            "event_type": "pickup"
+          },
+          {
+            "sort_order": 0,
+            "service_name": "waste",
+            "color": "#4a4a4a",
+            "voice_message": null,
+            "plain_text_message": null,
+            "icon_uri_fragment": "74,74,74/recycle",
+            "event_id": 30194913,
+            "name": "recycling",
+            "opts": {
+              "event_type": "pickup"
+            },
+            "area_name": "MemphisTN",
+            "zone_id": 58883,
+            "borderColor": "#008400",
+            "event_type": "pickup",
+            "id": 6777,
+            "html_message": "",
+            "icon": "recycle:rgb(74,74,74)",
+            "textColor": "#ffffff",
+            "short_text_message": null,
+            "backgroundColor": "#4a4a4a",
+            "is_week_long": 0,
+            "subject": null
+          },
+          {
+            "event_id": 30194871,
+            "plain_text_message": null,
+            "icon_uri_fragment": "65,144,87/garbage_bag2",
+            "voice_message": null,
+            "color": "#419057",
+            "sort_order": 0,
+            "service_name": "waste",
+            "event_type": "pickup",
+            "borderColor": "#675e4a",
+            "opts": {
+              "event_type": "pickup"
+            },
+            "name": "garbage",
+            "zone_id": 58883,
+            "area_name": "MemphisTN",
+            "short_text_message": null,
+            "textColor": "#ffffff",
+            "icon": "garbage_bag2:rgb(65,144,87)",
+            "id": 6778,
+            "html_message": "",
+            "subject": null,
+            "is_week_long": 0,
+            "backgroundColor": "#419057"
+          }
+        ],
+        "id": 30194955,
+        "custom_subject": "",
+        "day": "2026-09-04",
+        "custom_message": "",
+        "opts": {
+          "connector_created": "2026-09-04",
+          "connector_id": 3142
+        },
+        "zone_id": 58883,
+        "is_approved": 1,
+        "options": {}
+      },
+      "matched_zones": {
+        "58883": {
+          "service_id": 842,
+          "line_colour": "FFFFFF",
+          "link_text": {},
+          "has_unapproved_future_events": 0,
+          "loc_title": {
+            "en-US": "friday-d1"
+          },
+          "pdf_uri": {},
+          "is_empty": 0,
+          "colour_name": "memphistn-friday-d1",
+          "title": "friday-d1",
+          "id": 58883,
+          "description": {},
+          "has_parcels": 1,
+          "name": "memphistn-friday-d1",
+          "opts": {
+            "connector_created": "2018-12-18 11:25:24-0600"
+          },
+          "has_geom": 0,
+          "show_when_empty": 1,
+          "poly_colour": "FFFFFF",
+          "priority": 0,
+          "link_uri": {}
+        }
+      }
+    }
+  },
+  "austin": {
+    "city": "Austin, TX",
+    "area_name": "Austin",
+    "suggest_endpoint": "https://api.recollect.net/api/areas/Austin/services/waste/address-suggest?q=1000",
+    "suggest_http_status": 200,
+    "service_id": 323,
+    "sample_place": {
+      "place_id": "3B4FFD66-F51B-11E5-8F49-6977D4C29A30",
+      "address": "1000 Cedar Gln, Austin"
+    },
+    "events_endpoint": "https://api.recollect.net/api/places/3B4FFD66-F51B-11E5-8F49-6977D4C29A30/services/323/events?after=2026-09-01&before=2026-09-30",
+    "zone_route_name_fields": [
+      "zones.<id>.name",
+      "zones.<id>.title",
+      "zones.<id>.loc_title.en / en-US",
+      "zones.<id>.colour_name"
+    ],
+    "sample_response": {
+      "event": {
+        "zone_id": 5032,
+        "custom_subject": "",
+        "opts": {
+          "connector_created": "2026-09-01",
+          "connector_id": 128
+        },
+        "options": {},
+        "custom_message": "",
+        "id": 29878007,
+        "day": "2026-09-01",
+        "flags": [
+          {
+            "area_name": "Austin",
+            "voice_message": null,
+            "service_name": "waste",
+            "opts": {
+              "event_type": "pickup"
+            },
+            "icon": "icon_2119:rgb(143,82,1)",
+            "backgroundColor": "#8F5201",
+            "html_message": "Extra bags of trash that do not fit in your trash cart with the lid closed must be placed next to the trash cart and tagged with an Extra Trash Sticker, which can be purchased at most local grocery.",
+            "event_type": "pickup",
+            "short_text_message": null,
+            "is_week_long": 0,
+            "subject": null,
+            "id": 521,
+            "name": "Trash",
+            "color": "#8F5201",
+            "icon_uri_fragment": "143,82,1/icon_2119",
+            "plain_text_message": null,
+            "sort_order": 2,
+            "borderColor": "#626c76"
+          },
+          {
+            "icon_uri_fragment": "0,159,77/icon_2119",
+            "plain_text_message": null,
+            "event_id": 29877929,
+            "sort_order": 3,
+            "borderColor": "#1ba555",
+            "name": "compost",
+            "color": "#009F4D",
+            "is_week_long": 0,
+            "subject": null,
+            "id": 1832,
+            "voice_message": null,
+            "service_name": "waste",
+            "area_name": "Austin",
+            "opts": {
+              "event_type": "pickup"
+            },
+            "icon": "icon_2119:rgb(0,159,77)",
+            "zone_id": 23596,
+            "backgroundColor": "#009F4D",
+            "html_message": "",
+            "event_type": "pickup",
+            "short_text_message": null
+          }
+        ],
+        "is_approved": 1
+      },
+      "matched_zones": {
+        "23596": {
+          "show_when_empty": 0,
+          "has_parcels": 1,
+          "line_colour": "#ffffff",
+          "has_geom": 0,
+          "opts": {},
+          "has_unapproved_future_events": 0,
+          "pdf_uri": {},
+          "priority": 0,
+          "link_uri": {},
+          "link_text": {},
+          "id": 23596,
+          "loc_title": {
+            "en-US": "Compost Tuesday"
+          },
+          "service_id": 323,
+          "name": "austin-organics-tuesday",
+          "is_empty": 0,
+          "colour_name": "austin-organics-tuesday",
+          "poly_colour": "#ffffff",
+          "description": {},
+          "title": "Compost Tuesday"
+        },
+        "5032": {
+          "priority": 0,
+          "link_uri": {},
+          "link_text": {},
+          "id": 5032,
+          "show_when_empty": 0,
+          "has_parcels": 1,
+          "line_colour": "FFFFFF",
+          "has_geom": 0,
+          "opts": {},
+          "has_unapproved_future_events": 0,
+          "pdf_uri": {},
+          "is_empty": 0,
+          "poly_colour": "FFFFFF",
+          "colour_name": "austin-garbage-tuesday",
+          "description": {},
+          "title": "Trash Tuesday",
+          "loc_title": {
+            "en": "Trash Tuesday"
+          },
+          "service_id": 323,
+          "name": "austin-garbage-tuesday"
+        }
+      }
+    }
+  },
+  "san_francisco": {
+    "city": "San Francisco, CA",
+    "area_name": "recology-1051",
+    "suggest_endpoint": "https://api.recollect.net/api/areas/recology-1051/services/waste/address-suggest?q=1000",
+    "suggest_http_status": 200,
+    "service_id": 265,
+    "sample_place": {
+      "place_id": "CD19DBBC-35AD-11E7-9FA4-93294BBEE861",
+      "address": "1000 WISCONSIN STREET #1-2-3, San Francisco"
+    },
+    "events_endpoint": "https://api.recollect.net/api/places/CD19DBBC-35AD-11E7-9FA4-93294BBEE861/services/265/events?after=2026-09-01&before=2026-09-30",
+    "zone_route_name_fields": [
+      "zones.<id>.name",
+      "zones.<id>.title",
+      "zones.<id>.loc_title.en / en-US",
+      "zones.<id>.colour_name"
+    ],
+    "sample_response": {
+      "event": {
+        "options": {},
+        "id": 29439565,
+        "opts": {
+          "connector_id": 74,
+          "connector_created": "2026-09-04"
+        },
+        "custom_subject": "",
+        "zone_id": 2517,
+        "day": "2026-09-04",
+        "flags": [
+          {
+            "opts": {},
+            "html_message": "",
+            "service_name": "waste",
+            "color": "#000000",
+            "subject": null,
+            "short_text_message": null,
+            "icon_uri_fragment": "garbage",
+            "voice_message": null,
+            "event_type": "pickup",
+            "icon": "garbage",
+            "id": 277,
+            "backgroundColor": "#000000",
+            "name": "garbage",
+            "plain_text_message": null,
+            "borderColor": "#000000",
+            "sort_order": 0,
+            "is_week_long": 0,
+            "area_name": "recology-1051"
+          },
+          {
+            "textColor": "#FFFFFF",
+            "subject": null,
+            "icon_uri_fragment": "0,142,191/recycle",
+            "short_text_message": null,
+            "html_message": "",
+            "service_name": "waste",
+            "zone_id": 2531,
+            "opts": {},
+            "color": "#008ebf",
+            "plain_text_message": null,
+            "name": "recycling",
+            "backgroundColor": "#008ebf",
+            "borderColor": "#008EBF",
+            "event_id": 29441669,
+            "area_name": "recology-1051",
+            "is_week_long": 0,
+            "sort_order": 0,
+            "voice_message": null,
+            "id": 276,
+            "event_type": "pickup",
+            "icon": "recycle:rgb(0,142,191)"
+          },
+          {
+            "id": 280,
+            "icon": "apple_core:rgb(120,204,62)",
+            "event_type": "pickup",
+            "voice_message": null,
+            "area_name": "recology-1051",
+            "is_week_long": 0,
+            "sort_order": 0,
+            "borderColor": "#78CC3E",
+            "plain_text_message": null,
+            "name": "organics",
+            "backgroundColor": "#78cc3e",
+            "event_id": 29440667,
+            "color": "#78cc3e",
+            "html_message": "",
+            "service_name": "waste",
+            "opts": {},
+            "zone_id": 2524,
+            "icon_uri_fragment": "120,204,62/apple_core",
+            "short_text_message": null,
+            "subject": null
+          }
+        ],
+        "is_approved": 1,
+        "custom_message": ""
+      },
+      "matched_zones": {
+        "2524": {
+          "has_unapproved_future_events": 0,
+          "show_when_empty": 0,
+          "has_geom": 0,
+          "pdf_uri": {},
+          "description": {},
+          "line_colour": "rgba(0,221,0,255)",
+          "title": "Organics Friday",
+          "is_empty": 0,
+          "opts": {},
+          "colour_name": "recology-sunset-organics-friday",
+          "has_parcels": 1,
+          "name": "recology-1051-organics-friday",
+          "link_text": {},
+          "loc_title": {
+            "en": "Organics Friday"
+          },
+          "service_id": 265,
+          "id": 2524,
+          "poly_colour": "rgba(0,221,0,153)",
+          "link_uri": {},
+          "priority": 0
+        },
+        "2531": {
+          "poly_colour": "rgba(0,221,0,153)",
+          "id": 2531,
+          "service_id": 265,
+          "priority": 0,
+          "link_uri": {},
+          "colour_name": "recology-sunset-recycling-friday",
+          "has_parcels": 1,
+          "name": "recology-1051-recycling-friday",
+          "link_text": {},
+          "loc_title": {
+            "en": "Recycling Friday"
+          },
+          "pdf_uri": {},
+          "has_geom": 0,
+          "description": {},
+          "line_colour": "rgba(0,221,0,255)",
+          "title": "Recycling Friday",
+          "opts": {},
+          "is_empty": 0,
+          "has_unapproved_future_events": 0,
+          "show_when_empty": 0
+        },
+        "2517": {
+          "has_parcels": 1,
+          "colour_name": "recology-sunset-garbage-friday",
+          "name": "recology-1051-garbage-friday",
+          "loc_title": {
+            "en": "Garbage Friday"
+          },
+          "link_text": {},
+          "service_id": 265,
+          "poly_colour": "rgba(0,221,0,153)",
+          "id": 2517,
+          "link_uri": {},
+          "priority": 0,
+          "has_unapproved_future_events": 0,
+          "show_when_empty": 0,
+          "has_geom": 0,
+          "pdf_uri": {},
+          "line_colour": "rgba(0,221,0,255)",
+          "title": "Garbage Friday",
+          "description": {},
+          "is_empty": 0,
+          "opts": {}
+        }
+      }
+    },
+    "query_rules": "Query format: [House Number] [Street Name] (e.g. 100 25th Ave, 200 Sea Cliff Ave, 1000 Wisconsin St). Case-insensitive. Street name alone returns 0 results.",
+    "verified_examples": [
+      {
+        "query": "100 25th Ave",
+        "place_id": "2F016CCA-7283-11E7-87AE-98835C57E822",
+        "matched_name": "100 25TH AVENUE, San Francisco"
+      },
+      {
+        "query": "200 Sea Cliff Ave",
+        "place_id": "08915734-D912-11E8-A408-30F4AF88FEB0",
+        "matched_name": "200 SEA CLIFF AVE, San Francisco"
+      },
+      {
+        "query": "1000 Wisconsin St",
+        "place_id": "CD19DBBC-35AD-11E7-9FA4-93294BBEE861",
+        "matched_name": "1000 WISCONSIN STREET #1-2-3, San Francisco"
+      }
+    ]
+  }
+}

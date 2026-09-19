@@ -29,5 +29,5 @@
 {% if same %}<div class="sec"><div class="sec-h"><h2>Other {{ z.schedule.trash|days_text }} zones</h2><a href="{{ base }}{{ c.slug }}/">All {{ c.city }} zones</a></div>
 <ul class="list">{% for n in same[:8] %}<li><a href="{{ base }}{{ c.slug }}/zone/{{ n.slug }}/">Zone {{ n.zone }}<span class="meta">{{ n.schedule.trash|days_text }}</span></a></li>{% endfor %}</ul></div>{% endif %}
 <p class="muted small" style="margin-top:24px">Source: <a href="{{ c.data_url }}" rel="noopener" target="_blank">{{ c.provider }} route layer</a> (fetched {{ c.fetched }}). Official notices override this page.</p>
-<script id="sched" type="application/json">{{ {"schedule": z.schedule, "name": c.city ~ " zone " ~ z.zone, "kinds": c.kinds, "holidays": c.holidays.observed|map(attribute=0)|list}|tojson }}</script>
+<script id="sched" type="application/json">{{ {"schedule": z.schedule, "name": c.city ~ " zone " ~ z.zone, "kinds": c.kinds, "holidays": c.holidays.observed|map(attribute=0)|list, "hol": c.hol}|tojson }}</script>
 {% endblock %}

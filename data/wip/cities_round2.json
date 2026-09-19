@@ -1483,84 +1483,239 @@
   },
   "st-paul": {
     "city": "St. Paul, MN",
-    "endpoint_url": "https://services8.arcgis.com/CjVb8BH1EIcrgkMg/arcgis/rest/services/GarbageZones2020/FeatureServer/17",
+    "endpoint_url": "https://services1.arcgis.com/9meaaHE3uiba0zr8/arcgis/rest/services/GarbageCollection/FeatureServer/0",
     "status": "live_verified",
-    "day_field": "Zone",
-    "mapping_notes": "Zone 컬럼에 수거 구역(Zone A ~ Zone E) 제공. 시 가이드라인상 Zone A=월, B=화, C=수, D=목, E=금 고정 매핑.",
-    "layer_name": "GarbageZones2020",
+    "day_field": "DAY",
+    "mapping_notes": "DAY 컬럼에 실제 수거 요일(Monday, Tuesday, Wednesday, Thursday, Friday) 직접 제공. Ramsey County/St. Paul 실제 좌표(경도 -93.1도, 위도 44.9도) 폴리곤 16개로 구성. HAULER(City of Saint Paul, FCC Environmental) 및 HAUL_DAY 필드 포함.",
+    "layer_name": "Garbage",
     "geometry_type": "esriGeometryPolygon",
     "fields": [
       {
         "name": "OBJECTID",
-        "type": "esriFieldTypeInteger",
-        "alias": "OBJECTID"
-      },
-      {
-        "name": "SHAPE_Leng",
-        "type": "esriFieldTypeDouble",
-        "alias": "SHAPE_Leng"
-      },
-      {
-        "name": "Name",
-        "type": "esriFieldTypeString",
-        "alias": "Name"
-      },
-      {
-        "name": "Zone",
-        "type": "esriFieldTypeString",
-        "alias": "Zone"
-      },
-      {
-        "name": "OBJECTID_1",
         "type": "esriFieldTypeOID",
-        "alias": "OBJECTID_1"
+        "alias": "OBJECTID",
+        "sqlType": "sqlTypeOther",
+        "nullable": false,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null
       },
       {
-        "name": "Link",
+        "name": "id",
+        "type": "esriFieldTypeInteger",
+        "alias": "id",
+        "sqlType": "sqlTypeOther",
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "HAULER",
         "type": "esriFieldTypeString",
-        "alias": "Link"
+        "alias": "HAULER",
+        "sqlType": "sqlTypeOther",
+        "length": 80,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "DAY",
+        "type": "esriFieldTypeString",
+        "alias": "DAY",
+        "sqlType": "sqlTypeOther",
+        "length": 10,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "LIFTS",
+        "type": "esriFieldTypeInteger",
+        "alias": "LIFTS",
+        "sqlType": "sqlTypeOther",
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "HAUL_DAY",
+        "type": "esriFieldTypeString",
+        "alias": "HAUL_DAY",
+        "sqlType": "sqlTypeOther",
+        "length": 40,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "Haul_Day_R",
+        "type": "esriFieldTypeString",
+        "alias": "Haul_Day_R",
+        "sqlType": "sqlTypeOther",
+        "length": 25,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "HaulerEmail",
+        "type": "esriFieldTypeString",
+        "alias": "Hauler Email",
+        "sqlType": "sqlTypeOther",
+        "length": 50,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "HaulerAddress",
+        "type": "esriFieldTypeString",
+        "alias": "Hauler Address",
+        "sqlType": "sqlTypeOther",
+        "length": 50,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "HaulerFax",
+        "type": "esriFieldTypeString",
+        "alias": "Hauler Fax",
+        "sqlType": "sqlTypeOther",
+        "length": 15,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "HaulerCustomerServicePhone",
+        "type": "esriFieldTypeString",
+        "alias": "Hauler Customer Service Phone",
+        "sqlType": "sqlTypeOther",
+        "length": 15,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "ImgPath",
+        "type": "esriFieldTypeString",
+        "alias": "ImgPath",
+        "sqlType": "sqlTypeOther",
+        "length": 100,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "HaulerWebsite",
+        "type": "esriFieldTypeString",
+        "alias": "Hauler Website",
+        "sqlType": "sqlTypeOther",
+        "length": 75,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
       },
       {
         "name": "Shape__Area",
         "type": "esriFieldTypeDouble",
-        "alias": "Shape__Area"
+        "alias": "Shape__Area",
+        "sqlType": "sqlTypeDouble",
+        "nullable": true,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null
       },
       {
         "name": "Shape__Length",
         "type": "esriFieldTypeDouble",
-        "alias": "Shape__Length"
+        "alias": "Shape__Length",
+        "sqlType": "sqlTypeDouble",
+        "nullable": true,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "SupportWebsite",
+        "type": "esriFieldTypeString",
+        "alias": "SupportWebsite",
+        "sqlType": "sqlTypeOther",
+        "length": 500,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
       }
     ],
     "sample_records": [
       {
-        "OBJECTID": 1,
-        "SHAPE_Leng": 33002.7037301,
-        "Name": "Friday Zone 5A",
-        "Zone": "5A",
-        "OBJECTID_1": 1,
-        "Link": "https://www.eaststpaul.com/Home/DownloadDocument?docId=7a987943-eba7-460a-8ebd-fb0037fc4f16",
-        "Shape__Area": 28024590.98828125,
-        "Shape__Length": 23584.67598477423
+        "OBJECTID": 63,
+        "id": null,
+        "HAULER": "City of Saint Paul",
+        "DAY": "Monday",
+        "LIFTS": null,
+        "HAUL_DAY": "Monday",
+        "Haul_Day_R": null,
+        "HaulerEmail": "mailto:garbage@ci.stpaul.mn.us",
+        "HaulerAddress": null,
+        "HaulerFax": null,
+        "HaulerCustomerServicePhone": "651-266-6101",
+        "ImgPath": "https://www.stpaul.gov/sites/default/files/2020-11/stpaul-logo-horiztonal-3color.png",
+        "HaulerWebsite": "https://www.stpaul.gov/garbageandrecycling",
+        "Shape__Area": 3468170.2265625,
+        "Shape__Length": 11434.62215973116,
+        "SupportWebsite": "https://saintpaul.zendesk.com/hc/en-us/requests/new?ticket_form_id=33723561590669"
       },
       {
-        "OBJECTID": 1,
-        "SHAPE_Leng": 33002.7037301,
-        "Name": "Monday Zone 1B",
-        "Zone": "1B",
-        "OBJECTID_1": 2,
-        "Link": "https://www.eaststpaul.com/Home/DownloadDocument?docId=7a987943-eba7-460a-8ebd-fb0037fc4f16",
-        "Shape__Area": 9124055.71484375,
-        "Shape__Length": 19922.129765596466
+        "OBJECTID": 64,
+        "id": null,
+        "HAULER": "FCC Environmental",
+        "DAY": "Thursday",
+        "LIFTS": null,
+        "HAUL_DAY": "Thursday",
+        "Haul_Day_R": null,
+        "HaulerEmail": "mailto:garbage@ci.stpaul.mn.us",
+        "HaulerAddress": null,
+        "HaulerFax": null,
+        "HaulerCustomerServicePhone": "651-266-6101",
+        "ImgPath": "https://www.stpaul.gov/sites/default/files/2020-11/stpaul-logo-horiztonal-3color.png",
+        "HaulerWebsite": "https://www.stpaul.gov/garbageandrecycling",
+        "Shape__Area": 12386426.9375,
+        "Shape__Length": 18317.770755437647,
+        "SupportWebsite": "https://saintpaul.zendesk.com/hc/en-us/requests/new?ticket_form_id=33723561590669"
       },
       {
-        "OBJECTID": 1,
-        "SHAPE_Leng": 33002.7037301,
-        "Name": "Tuesday Zone 2B",
-        "Zone": "2B",
-        "OBJECTID_1": 3,
-        "Link": "https://www.eaststpaul.com/Home/DownloadDocument?docId=7a987943-eba7-460a-8ebd-fb0037fc4f16",
-        "Shape__Area": 9539261.94921875,
-        "Shape__Length": 19844.297013385833
+        "OBJECTID": 65,
+        "id": null,
+        "HAULER": "FCC Environmental",
+        "DAY": "Monday",
+        "LIFTS": null,
+        "HAUL_DAY": "Monday",
+        "Haul_Day_R": null,
+        "HaulerEmail": "mailto:garbage@ci.stpaul.mn.us",
+        "HaulerAddress": null,
+        "HaulerFax": null,
+        "HaulerCustomerServicePhone": "651-266-6101",
+        "ImgPath": "https://www.stpaul.gov/sites/default/files/2020-11/stpaul-logo-horiztonal-3color.png",
+        "HaulerWebsite": "https://www.stpaul.gov/garbageandrecycling",
+        "Shape__Area": 24716934.734375,
+        "Shape__Length": 24154.102746069853,
+        "SupportWebsite": "https://saintpaul.zendesk.com/hc/en-us/requests/new?ticket_form_id=33723561590669"
       }
     ]
   },

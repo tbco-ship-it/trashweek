@@ -9,29 +9,33 @@
   const LABEL = { trash: 'Trash', recycling: 'Recycling', yard: 'Yard waste', bulk: 'Bulk items' };
   const COLOR = { trash: '#3182f6', recycling: '#00b06f', yard: '#8b5cf6', bulk: '#ff7a00' };
   const TAG = { ...COLOR, recycling: '#00885a', bulk: '#d95d00' };
-  const DEFAULT_HOL = ['2026-01-01','2026-05-25','2026-07-04','2026-09-07','2026-11-26','2026-12-25','2027-01-01']; // fallback when a city's observed list is unknown
-  let HOL = new Set(DEFAULT_HOL);
-  const setHol = list => { HOL = new Set(list && list.length ? list : DEFAULT_HOL); };
+  // Holiday state per city: verified policy from data/holidays.json, or 'unknown' → regular weekdays only, flagged as unverified (never a guessed federal list)
+  let HOL = { policy: 'unknown', dates: new Set(), overrides: new Map() };
+  const setHol = (list, hol) => { const h = hol || {}; HOL = { policy: h.policy || (list && list.length ? 'next_day' : 'unknown'), dates: new Set(h.dates || list || []), overrides: new Map((h.overrides || []).map(([a, b]) => [a, b])) }; };
+  const holVerified = () => HOL.policy !== 'unknown';
   const now = new Date(); now.setHours(0, 0, 0, 0);
   const addDays = (d, n) => { const x = new Date(d); x.setDate(x.getDate() + n); return x; };
   const iso = d => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
   const md = d => `${DAYS[d.getDay()]} ${d.getMonth() + 1}/${d.getDate()}`;
   const rel = d => { const n = Math.round((d - now) / 864e5); return n === 0 ? 'Today' : n === 1 ? 'Tomorrow' : md(d); };
-  // holiday slide: if a widely observed holiday falls earlier in the same week (Mon..that day), pickup is one day later
-  function holidayShift(d) {
-    const dow = d.getDay(); if (dow === 0) return 0;
-    for (let i = 1; i <= dow; i++) { const x = addDays(d, -(dow - i)); if (HOL.has(iso(x))) return 1; }
-    return 0;
+  // Apply the city's verified holiday policy to one regular pickup date. Returns the actual date (or null = no pickup that turn).
+  function applyHoliday(d) {
+    const key = iso(d);
+    if (HOL.policy === 'overrides') { const to = HOL.overrides.get(key); return to ? new Date(to + 'T00:00:00') : d; }
+    if (HOL.policy === 'skip') return HOL.dates.has(key) ? null : d;
+    if (HOL.policy === 'next_day') { const dow = d.getDay(); if (dow === 0) return d; for (let i = 1; i <= dow; i++) if (HOL.dates.has(iso(addDays(d, -(dow - i))))) return addDays(d, 1); return d; }
+    return d;  // unknown: regular weekday, flagged unverified in the UI
   }
   const on = (days, d) => (days || []).includes(DAYS[d.getDay()]);
+  // Regular weekdays from a week *before* the window so a pickup moved into the window (e.g. Thu holiday → Fri) is not lost, then cut to [from, from+n)
   function occurrences(sched, from, n) {
-    const out = [];
-    if (sched.__events) { const end = addDays(from, n); return sched.__events.filter(o => o.d >= from && o.d < end).map(o => ({ k: o.k, d: o.d, shifted: 0, base: o.d })); }
-    for (let i = 0; i < n; i++) {
-      const d = addDays(from, i);
-      for (const k of KINDS) if (sched[k] && on(sched[k], d)) { const s = holidayShift(d); out.push({ k, d: addDays(d, s), shifted: s, base: d }); }
+    const out = [], end = addDays(from, n);
+    if (sched.__events) return sched.__events.filter(o => o.d >= from && o.d < end).map(o => ({ k: o.k, d: o.d, shifted: 0, base: o.d }));
+    for (let i = -7; i < n; i++) {
+      const base = addDays(from, i);
+      for (const k of KINDS) if (sched[k] && on(sched[k], base)) { const d = applyHoliday(base); if (!d || d < from || d >= end) continue; out.push({ k, d, shifted: iso(d) !== iso(base) ? 1 : 0, base }); }
     }
-    return out;
+    return out.sort((a, b) => a.d - b.d);
   }
   // Home: the first result ends the landing state — hero + card glide up from centre (FLIP on transform) while the hidden sections below are armed to reveal.
   function leaveLanding() {
@@ -61,12 +65,12 @@
     if (tomorrow.length) head = 'Tomorrow: ' + [...new Set(tomorrow.map(lbl))].join(' + ');
     else if (today.length) head = 'Today: ' + [...new Set(today.map(lbl))].join(' + ');
     else { const nx = occ[0]; head = nx ? `Next: ${lbl(nx)} ${rel(nx.d)}` : 'No pickup scheduled'; cls = 'quiet'; }
-    const sub = today.length ? `Today (${md(now)}): ${[...new Set(today.map(lbl))].join(' + ')} — have it out by 6–7 am.` : `Today (${md(now)}): no pickup.`;
-    const upcoming = KINDS_SHOWN.map(k => { const o = next(k); return `<div class="item"><span class="dot" style="background:${COLOR[k]}"></span><span class="txt"><b>${LABEL[k]}</b><span class="tsub">${(sched[k] || []).map(x => LONG[x]).join(' & ')}${k === 'recycling' && sched.recycling_week ? ` · week ${sched.recycling_week}` : ''}</span>${o && o.shifted ? '<span class="tsub">holiday week: one day late</span>' : ''}</span><span class="when">${o ? rel(o.d) : '—'}</span></div>`; }).join('');
+    const sub = (today.length ? `Today (${md(now)}): ${[...new Set(today.map(lbl))].join(' + ')} — have it out by 6–7 am.` : `Today (${md(now)}): no pickup.`) + (!sched.__events && !holVerified() ? ' Holiday changes not verified for this city — regular weekdays shown.' : '');
+    const upcoming = KINDS_SHOWN.map(k => { const o = next(k); return `<div class="item"><span class="dot" style="background:${COLOR[k]}"></span><span class="txt"><b>${LABEL[k]}</b><span class="tsub">${(sched[k] || []).map(x => LONG[x]).join(' & ')}${k === 'recycling' && sched.recycling_week ? ` · every other week (week ${sched.recycling_week}) — the city calendar says which week is current` : ''}</span>${o && o.shifted ? `<span class="tsub">holiday change: regular ${md(o.base)} → ${md(o.d)}</span>` : ''}</span><span class="when">${o ? rel(o.d) : '—'}</span></div>`; }).join('');
     const week = Array.from({ length: 7 }, (_, i) => { const d = addDays(now, i); const ks = [...new Set(occ.filter(o => iso(o.d) === iso(d)).map(o => o.k))]; return `<div class="day${i === 0 ? ' today' : ''}"><span class="dow">${i === 0 ? 'Today' : DAYS[d.getDay()]}</span><span class="dnum">${d.getDate()}</span><span class="dots">${ks.map(k => `<span class="tag" style="background:${TAG[k]}">${LABEL[k].split(' ')[0]}</span>`).join('')}</span></div>`; }).join('');
     if (root) {
       leaveLanding();
-      root.innerHTML = `<section class="sheet ${cls}"><p class="sheet-label">${name}</p><div class="sheet-num"><span class="num small-num">${head}</span></div><p class="sheet-title">${sub}</p><div class="stack">${upcoming}</div><p class="sheet-actions"><a class="next" href="${link}">Zone page &amp; calendar file</a></p></section><div class="week">${week}</div>`;
+      root.innerHTML = `<section class="sheet ${cls}"><p class="sheet-label">${name}</p><div class="sheet-num"><span class="num small-num">${head}</span></div><p class="sheet-title">${sub}</p><div class="stack">${upcoming}</div><p class="sheet-actions"><a class="next" href="${link}">${sched.__events ? 'City page &amp; holiday notice' : 'Zone page &amp; calendar file'}</a></p></section><div class="week">${week}</div>`;
       // Result rises in Toss-style: label → headline → sub → items → link → week, 90ms apart.
       root.classList.remove('is-in'); root.classList.add('reveal');
       [root.querySelector('.sheet'), ...root.querySelector('.sheet').children, root.querySelector('.week')].forEach((el, i) => { el.classList.add('rv'); el.style.setProperty('--d', (i * 90) + 'ms'); });
@@ -75,7 +79,8 @@
   }
   function ics(sched, name) {
     const L = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//TrashWeek//EN', 'CALSCALE:GREGORIAN', `X-WR-CALNAME:${name} pickup days`];
-    for (const o of occurrences(sched, now, 120)) { const y = iso(o.d).replace(/-/g, ''), n = iso(addDays(o.d, 1)).replace(/-/g, ''); L.push('BEGIN:VEVENT', `UID:${y}-${o.k}@trashweek`, `DTSTAMP:${y}T000000Z`, `DTSTART;VALUE=DATE:${y}`, `DTEND;VALUE=DATE:${n}`, `SUMMARY:${LABEL[o.k]} pickup${o.shifted ? ' (holiday delay)' : ''}`, `DESCRIPTION:${name}`, 'END:VEVENT'); }
+    const tag = name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+    for (const o of occurrences(sched, now, 120)) { const y = iso(o.d).replace(/-/g, ''), n = iso(addDays(o.d, 1)).replace(/-/g, ''); L.push('BEGIN:VEVENT', `UID:${tag}-${iso(o.base).replace(/-/g, '')}-${o.k}@trashweek`, `DTSTAMP:${y}T000000Z`, `DTSTART;VALUE=DATE:${y}`, `DTEND;VALUE=DATE:${n}`, `SUMMARY:${LABEL[o.k]} pickup${o.shifted ? ' (holiday change)' : ''}`, `DESCRIPTION:${name}${!sched.__events && !holVerified() ? ' — holiday changes not verified, regular weekdays only' : ''}`, 'END:VEVENT'); }
     L.push('END:VCALENDAR');
     return 'data:text/calendar;charset=utf-8,' + encodeURIComponent(L.join('\r\n'));
   }
@@ -83,7 +88,7 @@
   document.querySelectorAll('td.hday').forEach(td => { const d = new Date(td.dataset.d + 'T00:00:00'); td.textContent = LONG[DAYS[d.getDay()]]; });
 
   const sched = $('sched');
-  if (sched) { const S = JSON.parse(sched.textContent); setHol(S.holidays); render(S.schedule, S.name, null); $('ics').href = ics(S.schedule, S.name); return; }
+  if (sched) { const S = JSON.parse(sched.textContent); setHol(S.holidays, S.hol); render(S.schedule, S.name, null); $('ics').href = ics(S.schedule, S.name); return; }
 
   const input = $('addr'); if (!input) return;
   const out = $('result'), msg = $('msg'), go = $('go');
@@ -133,7 +138,7 @@
       const { x: lng, y: lat } = m.coordinates;
       const slug = input.dataset.city || slugOf(m.matchedAddress);
       if (!slug) return say(`Found the address (${m.matchedAddress}) but that city isn't covered yet. Cities we have are listed below.`);
-      const geo = await loadGeo(slug), z = findZone(geo, lng, lat); setHol(geo.holidays);
+      const geo = await loadGeo(slug), z = findZone(geo, lng, lat); setHol(geo.holidays, geo.hol);
       const cname = cities.find(c => c.slug === slug);
       if (!z) return say(`${m.matchedAddress} is outside ${cname.city}'s published collection zones (unincorporated area or private hauler).`);
       say(`Matched ${m.matchedAddress}`);
@@ -147,7 +152,7 @@
   go.addEventListener('click', run); input.addEventListener('keydown', e => { if (e.key === 'Enter') run(); });
   const last = JSON.parse(localStorage.getItem('trashweek.last') || 'null');
   if (last && last.z && (!input.dataset.city || input.dataset.city === last.slug)) {
-    const geo = await loadGeo(last.slug); setHol(geo.holidays); const z = geo.zones.find(x => x.z === last.z); const c = cities.find(x => x.slug === last.slug);
+    const geo = await loadGeo(last.slug); setHol(geo.holidays, geo.hol); const z = geo.zones.find(x => x.z === last.z); const c = cities.find(x => x.slug === last.slug);
     if (z && c) {
       const show = () => render(z.s, `${c.city} · zone ${z.z}`, out, `${base}${last.slug}/zone/${z.u}/`);
       const chip = $('last');

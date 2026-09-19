@@ -47,11 +47,21 @@ def main():
         c = json.loads(f.read_text())
         h = hol_all.get(c["slug"], {})
         c["aliases"] = reg_aliases.get(c["slug"], [])
-        c["holidays"] = {"observed": h.get("observed") or [], "rule": h.get("rule") or "", "source": h.get("source") or c.get("holiday_url"), "checked": h.get("checked")}
+        # policy: next_day (rest of the week slides one day) · skip (that pickup is missed, next regular day) · overrides (explicit original→actual dates) · unknown (not verified: no shifting)
+        c["holidays"] = {"observed": h.get("observed") or [], "rule": h.get("rule") or "", "source": h.get("source") or c.get("holiday_url"), "checked": h.get("checked"),
+                         "policy": h.get("policy") or ("next_day" if h.get("observed") else "unknown"), "overrides": h.get("overrides") or []}
+        c["hol"] = {"policy": c["holidays"]["policy"], "dates": [d for d, _ in c["holidays"]["observed"]], "overrides": c["holidays"]["overrides"]}
         c["kinds"] = [k for k in ("trash", "recycling", "yard", "bulk") if any(z["schedule"].get(k) for z in c["zones"])]
         c["day_counts"] = Counter(d for z in c["zones"] for d in z["schedule"]["trash"])
         for z in c["zones"]:
             z["slug"] = re.sub(r"[^a-z0-9]+", "-", z["zone"].lower()).strip("-")
+        # zone ids that differ only in case/punctuation (GRAY vs gray) must not share a URL
+        seen_slugs = {}
+        for z in c["zones"]:
+            n = seen_slugs.get(z["slug"], 0) + 1
+            seen_slugs[z["slug"]] = n
+            if n > 1:
+                z["slug"] = f"{z['slug']}-{n}"
         c["zones"].sort(key=lambda z: (DAYS.index(z["schedule"]["trash"][0]) if z["schedule"]["trash"] else 9, z["zone"]))
         cities.append(c)
     cities.sort(key=lambda c: c["city"])
@@ -75,9 +85,15 @@ def main():
     for c in cities:
         if not c["zones"]:
             continue
-        geo = {"slug": c["slug"], "holidays": [d for d, _ in c["holidays"]["observed"]], "zones": [{"z": z["zone"], "u": z["slug"], "s": z["schedule"], "r": z["rings"]} for z in c["zones"]]}
+        geo = {"slug": c["slug"], "holidays": [d for d, _ in c["holidays"]["observed"]], "hol": c["hol"], "zones": [{"z": z["zone"], "u": z["slug"], "s": z["schedule"], "r": z["rings"]} for z in c["zones"]]}
         (DIST / "static/geo" / f"{c['slug']}.json").write_text(json.dumps(geo, separators=(",", ":")))
     (DIST / "static/cities.json").write_text(json.dumps([{"slug": c["slug"], "city": c["city"], "state": c["state"], "n": len(c["zones"]), "kind": c.get("kind", "arcgis"), "area": c.get("area"), "service": c.get("service"), "aliases": c.get("aliases", [])} for c in cities], separators=(",", ":")))
+
+    # ReCollect areas used by the site must be allow-listed in the deployed Worker (deployed by hand): fail loudly if the file drifts
+    worker = (ROOT / "worker/recollect-proxy.mjs").read_text()
+    missing = [c["area"] for c in cities if c.get("kind") == "recollect" and f'"{c["area"]}"' not in worker]
+    if missing:
+        raise SystemExit(f"worker/recollect-proxy.mjs AREAS is missing: {missing}")
 
     urls = []
 

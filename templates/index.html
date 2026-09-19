@@ -6,7 +6,7 @@
 <div class="stage" id="stage">
 <section class="hero">
   <h1>Is it trash day tomorrow?</h1>
-  <p>Type your street address. We match it to your city's official collection zone and show trash, recycling and yard-waste days for this week — and whether a holiday pushes them back. {{ cities|length }} cities, {{ '{:,}'.format(n_zones) }} zones. Your address stays in your browser.</p>
+  <p>Type your street address to find the pickup schedules available for it. We match the address to your city's official collection zone or schedule service; coverage varies by city and waste type, and holiday changes are applied only where the city's rule has been verified. {{ cities|length }} cities, {{ '{:,}'.format(n_zones) }} zones. Your address is sent only to the geocoder or the city's schedule service, never stored by us.</p>
 </section>
 
 <section class="calc-grid">
