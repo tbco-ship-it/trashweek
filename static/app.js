@@ -95,7 +95,8 @@
   const loadGeo = async slug => geoCache[slug] || (geoCache[slug] = await (await fetch(base + `static/geo/${slug}.json?v=` + v)).json());
   function inRing(pt, ring) { let inside = false; for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) { const [xi, yi] = ring[i], [xj, yj] = ring[j]; if (((yi > pt[1]) !== (yj > pt[1])) && (pt[0] < (xj - xi) * (pt[1] - yi) / (yj - yi) + xi)) inside = !inside; } return inside; }
   function findZone(geo, lng, lat) { for (const z of geo.zones) { let hits = 0; for (const r of z.r) if (inRing([lng, lat], r)) hits++; if (hits % 2 === 1) return z; } return null; }
-  function slugOf(cityState) { const s = (cityState || '').toLowerCase(); return cities.find(c => s.includes(c.city.toLowerCase().split(',')[0]) || s.includes(c.city.toLowerCase().replace(' county', '')) || (c.aliases || []).some(al => s.includes(al)))?.slug; }
+  // same city name in two states (Columbus OH / Columbus GA): let the state in the geocoded address decide
+  function slugOf(cityState) { const s = (cityState || '').toLowerCase(); const hits = cities.filter(c => s.includes(c.city.toLowerCase().split(',')[0]) || s.includes(c.city.toLowerCase().replace(' county', '')) || (c.aliases || []).some(al => s.includes(al))); return (hits.find(c => new RegExp('\\b' + c.state.toLowerCase() + '\\b').test(s)) || (hits.length === 1 ? hits[0] : null))?.slug; }
   const API = 'https://api.trashweek.com';
   const DAYNAME = { sunday: 'Sun', monday: 'Mon', tuesday: 'Tue', wednesday: 'Wed', thursday: 'Thu', friday: 'Fri', saturday: 'Sat' };
   async function lookupRecollect(c, q) {
@@ -119,7 +120,10 @@
   }
   async function lookup() {
     const q = input.value.trim(); if (!q) return say('Type a street address first.');
-    const rc = input.dataset.kind === 'recollect' ? cities.find(c => c.slug === input.dataset.city) : cities.find(c => c.kind === 'recollect' && (new RegExp('\\b' + c.city.split(' ')[0] + '\\b', 'i').test(q) || (c.aliases || []).some(al => q.toLowerCase().includes(al))));
+    const st = (q.match(/\b([A-Za-z]{2})\b(?:,?\s*\d{5}(?:-\d{4})?)?\s*$/) || [])[1]?.toUpperCase();
+    const rcs = cities.filter(c => c.kind === 'recollect' && (new RegExp('\\b' + c.city.split(' ')[0] + '\\b', 'i').test(q) || (c.aliases || []).some(al => q.toLowerCase().includes(al))));
+    const sameName = c => cities.some(o => o.slug !== c.slug && o.city.toLowerCase() === c.city.toLowerCase());
+    const rc = input.dataset.kind === 'recollect' ? cities.find(c => c.slug === input.dataset.city) : (rcs.find(c => c.state === st) || (rcs.length === 1 && !sameName(rcs[0]) ? rcs[0] : null));
     if (rc) { try { return await lookupRecollect(rc, q.replace(new RegExp(',?\\s*' + rc.city + '.*$', 'i'), '')); } catch (e) { return say('The schedule service did not answer. Try again in a moment.'); } }
     say('Locating…');
     try {

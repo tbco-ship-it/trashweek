@@ -72,6 +72,8 @@ def main():
                     sched[kind] = cmap.get(code) or cmap.get(code[-1:] if code else "") or parse_days(v)
                 else:
                     sched[kind] = parse_days(v)
+            if cfg.get("day_columns"):
+                sched["trash"] = [d for col, d in cfg["day_columns"].items() if str(a.get(col) or "").strip().lower() in ("yes", "y", "1", "true")]
             if sched.get("trash2"):
                 sched["trash"] = sched["trash"] + [d for d in sched["trash2"] if d not in sched["trash"]]
             sched.pop("trash2", None)

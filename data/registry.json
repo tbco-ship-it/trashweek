@@ -1674,5 +1674,289 @@
   "notes": "Type the house number and street (e.g. 100 25th Ave).",
   "holiday_url": "https://www.recology.com/recology-san-francisco/holiday-schedule/",
   "source_url": "https://www.recology.com/recology-san-francisco/"
+ },
+ "baton-rouge": {
+  "city": "Baton Rouge",
+  "state": "LA",
+  "provider": "City-Parish of East Baton Rouge Garbage Service",
+  "kind": "arcgis",
+  "url": "https://maps.brla.gov/gis/rest/services/Governmental_Units/Garbage_Service/MapServer/0",
+  "zone": "ID",
+  "fields": {
+   "trash": "SERVICEDAY"
+  },
+  "notes": "Twice-weekly garbage on the two days shown; recycling on the first of the two days every other week.",
+  "holiday_url": "https://www.brla.gov/341/Holiday-Schedule",
+  "source_url": "https://www.brla.gov/336/Garbage-Trash-Services"
+ },
+ "worcester": {
+  "city": "Worcester",
+  "state": "MA",
+  "provider": "City of Worcester DPW Sanitation",
+  "kind": "arcgis",
+  "url": "https://services1.arcgis.com/j8dqo2DJE7mVUBU1/arcgis/rest/services/Sanitation_Routes_II/FeatureServer/0",
+  "zone": "Day",
+  "fields": {
+   "trash": "Day"
+  },
+  "notes": "Weekly trash and recycling on the same day (yellow-bag program).",
+  "holiday_url": "https://www.worcesterma.gov/trash-recycling",
+  "source_url": "https://www.worcesterma.gov/trash-recycling"
+ },
+ "rochester": {
+  "city": "Rochester",
+  "state": "NY",
+  "provider": "City of Rochester DES Solid Waste",
+  "kind": "arcgis",
+  "url": "https://maps.cityofrochester.gov/arcgis/rest/services/App_CityServices/City_Services/MapServer/8",
+  "zone": "DISTRICTID",
+  "fields": {},
+  "day_columns": {
+   "MONDAY": "Mon",
+   "TUESDAY": "Tue",
+   "WEDNESDAY": "Wed",
+   "THURSDAY": "Thu",
+   "FRIDAY": "Fri",
+   "SATURDAY": "Sat",
+   "SUNDAY": "Sun"
+  },
+  "notes": "Weekly refuse and recycling on your district day.",
+  "holiday_url": "https://www.cityofrochester.gov/article.aspx?id=8589936611",
+  "source_url": "https://www.cityofrochester.gov/article.aspx?id=8589936611"
+ },
+ "little-rock": {
+  "city": "Little Rock",
+  "state": "AR",
+  "provider": "City of Little Rock Solid Waste Services",
+  "kind": "arcgis",
+  "url": "https://maps.littlerock.gov/server/rest/services/Solid_Waste_New_Collection_Zones/MapServer/2",
+  "zone": "GARBAGE",
+  "fields": {
+   "trash": "GARBAGE"
+  },
+  "notes": "Weekly garbage; recycling every other week on the same day.",
+  "holiday_url": "https://www.littlerock.gov/city-administration/city-departments/public-works/solid-waste-services/",
+  "source_url": "https://www.littlerock.gov/city-administration/city-departments/public-works/solid-waste-services/"
+ },
+ "grand-rapids": {
+  "city": "Grand Rapids",
+  "state": "MI",
+  "provider": "City of Grand Rapids Public Works Refuse",
+  "kind": "arcgis",
+  "url": "https://services2.arcgis.com/L81TiOwAPO1ZvU9b/arcgis/rest/services/Refuse_Route_New/FeatureServer/0",
+  "zone": "ROUTE_NUM",
+  "fields": {
+   "trash": "ROUTE_DAY"
+  },
+  "notes": "Weekly refuse (pay-as-you-throw tags/carts) and recycling on your route day.",
+  "holiday_url": "https://www.grandrapidsmi.gov/Services/Holiday-Refuse-Collection-Schedule",
+  "source_url": "https://www.grandrapidsmi.gov/Services/Find-Your-Trash-and-Recycling-Day"
+ },
+ "montgomery": {
+  "city": "Montgomery",
+  "state": "AL",
+  "provider": "City of Montgomery Sanitation",
+  "kind": "arcgis",
+  "url": "https://services7.arcgis.com/xNUwUjOJqYE54USz/arcgis/rest/services/Sanitation_Data_WFL1/FeatureServer/2",
+  "zone": "OBJECTID",
+  "fields": {
+   "trash": "Day_1",
+   "trash2": "Day_2"
+  },
+  "notes": "Twice-weekly garbage on the two days shown.",
+  "holiday_url": "https://www.montgomeryal.gov/government/city-departments/sanitation",
+  "source_url": "https://www.montgomeryal.gov/government/city-departments/sanitation"
+ },
+ "providence": {
+  "city": "Providence",
+  "state": "RI",
+  "provider": "City of Providence DPW",
+  "kind": "arcgis",
+  "url": "https://services6.arcgis.com/wv9mHoqblhTsnqdG/arcgis/rest/services/Trash_Pick_Up_Days_(View)/FeatureServer/0",
+  "zone": "Name",
+  "fields": {
+   "trash": "Name"
+  },
+  "notes": "Weekly trash; recycling every other week on the same day.",
+  "holiday_url": "https://www.providenceri.gov/public-works/trash-recycling/",
+  "source_url": "https://www.providenceri.gov/public-works/trash-recycling/"
+ },
+ "glendale-ca": {
+  "city": "Glendale",
+  "state": "CA",
+  "provider": "City of Glendale Integrated Waste Management",
+  "kind": "arcgis",
+  "url": "https://services7.arcgis.com/fO3CEftGdEfeEtle/arcgis/rest/services/Glendale_Collection_Areas/FeatureServer/0",
+  "zone": "OBJECTID",
+  "fields": {
+   "trash": "TrashDay",
+   "recycling_week": "RecycleWeek"
+  },
+  "notes": "Weekly trash; recycling and yard waste alternate weeks (A/B).",
+  "aliases": [
+   "glendale ca",
+   "glendale california"
+  ],
+  "holiday_url": "https://www.glendaleca.gov/government/departments/public-works/integrated-waste-management",
+  "source_url": "https://www.glendaleca.gov/government/departments/public-works/integrated-waste-management"
+ },
+ "mobile": {
+  "city": "Mobile",
+  "state": "AL",
+  "provider": "City of Mobile Public Works Sanitation",
+  "kind": "arcgis",
+  "url": "https://services.arcgis.com/8O9UlSTnqjKptoda/arcgis/rest/services/Sanitation_Zone/FeatureServer/0",
+  "zone": "Label",
+  "fields": {
+   "trash": "PickupDay",
+   "recycling_week": "RecycleWeek"
+  },
+  "notes": "Weekly household garbage; recycling every other week.",
+  "holiday_url": "https://www.cityofmobile.org/residents/trash-and-garbage/",
+  "source_url": "https://www.cityofmobile.org/residents/trash-and-garbage/"
+ },
+ "ontario": {
+  "city": "Ontario",
+  "state": "CA",
+  "provider": "City of Ontario Integrated Waste",
+  "kind": "arcgis",
+  "url": "https://services6.arcgis.com/ONZht79c8QWuX759/arcgis/rest/services/Waste_Collection_Zones/FeatureServer/0",
+  "zone": "OBJECTID",
+  "fields": {
+   "trash": "COLLECTDAY"
+  },
+  "notes": "Weekly trash, recycling and green waste on the same day.",
+  "aliases": [
+   "ontario ca",
+   "ontario california"
+  ],
+  "holiday_url": "https://www.ontarioca.gov/IntegratedWaste",
+  "source_url": "https://www.ontarioca.gov/IntegratedWaste"
+ },
+ "shreveport": {
+  "city": "Shreveport",
+  "state": "LA",
+  "provider": "City of Shreveport Solid Waste",
+  "kind": "arcgis",
+  "url": "https://utility.arcgis.com/usrsvcs/servers/986a93e45c2247c7ac5748b0be699c8e/rest/services/COS_Solid_Waste/Garbage_Routes/MapServer/0",
+  "zone": "ROUTE_NO",
+  "fields": {
+   "trash": "PICKUP_DAY"
+  },
+  "code_map": {
+   "1": [
+    "Mon"
+   ],
+   "2": [
+    "Tue"
+   ],
+   "3": [
+    "Wed"
+   ],
+   "4": [
+    "Thu"
+   ],
+   "5": [
+    "Fri"
+   ]
+  },
+  "notes": "Weekly garbage on your route day.",
+  "holiday_url": "https://www.shreveportla.gov/305/Solid-Waste",
+  "source_url": "https://www.shreveportla.gov/305/Solid-Waste"
+ },
+ "aurora-il": {
+  "city": "Aurora",
+  "state": "IL",
+  "provider": "City of Aurora Waste Collection",
+  "kind": "arcgis",
+  "url": "https://services2.arcgis.com/1IylZvXQw11Lg0Zm/arcgis/rest/services/WasteCollectionBoundary_WFL1/FeatureServer/0",
+  "zone": "ID",
+  "fields": {
+   "trash": "WASTE_DAY"
+  },
+  "notes": "Weekly garbage, recycling and yard waste on the same day.",
+  "aliases": [
+   "aurora il",
+   "aurora illinois"
+  ],
+  "holiday_url": "https://www.aurora-il.org/218/Garbage-Recycling",
+  "source_url": "https://www.aurora-il.org/218/Garbage-Recycling"
+ },
+ "salem": {
+  "city": "Salem",
+  "state": "OR",
+  "provider": "City of Salem franchised haulers",
+  "kind": "arcgis",
+  "url": "https://services.arcgis.com/kIA6yS9KDGqZL7U3/arcgis/rest/services/PW_Garbage_Hauler_Routes/FeatureServer/0",
+  "zone": "OBJECTID",
+  "fields": {
+   "trash": "ROUTE_DAY",
+   "hauler": "GARBAGE_COMPANY"
+  },
+  "notes": "Weekly garbage by franchised hauler; recycling every other week.",
+  "holiday_url": "https://www.cityofsalem.net/community/garbage-recycling",
+  "source_url": "https://www.cityofsalem.net/community/garbage-recycling"
+ },
+ "columbus-ga": {
+  "city": "Columbus",
+  "state": "GA",
+  "provider": "Columbus Consolidated Government Public Works",
+  "kind": "recollect",
+  "area": "ColumbusGA",
+  "service": 763,
+  "notes": "Garbage weekly, recycling weekly, yard waste and bulky on your route day.",
+  "holiday_url": "https://www.columbusga.gov/publicworks/wastecollection",
+  "source_url": "https://www.columbusga.gov/publicworks/wastecollection",
+  "aliases": [
+   "columbus ga",
+   "columbus georgia"
+  ]
+ },
+ "augusta": {
+  "city": "Augusta",
+  "state": "GA",
+  "provider": "Augusta-Richmond County Environmental Services",
+  "kind": "recollect",
+  "area": "Augusta",
+  "service": 392,
+  "notes": "Garbage and yard waste weekly, bulky by schedule on your service day.",
+  "holiday_url": "https://www.augustaga.gov/21001/Find-My-Day-of-Service",
+  "source_url": "https://www.augustaga.gov/21001/Find-My-Day-of-Service",
+  "aliases": [
+   "augusta ga"
+  ]
+ },
+ "oxnard": {
+  "city": "Oxnard",
+  "state": "CA",
+  "provider": "City of Oxnard Environmental Resources",
+  "kind": "recollect",
+  "area": "OxnardCA",
+  "service": 1196,
+  "notes": "Trash, recycling and yard waste weekly on the same day.",
+  "holiday_url": "https://www.oxnard.org/city-department/public-works/environmental-resources/",
+  "source_url": "https://www.oxnard.org/city-department/public-works/environmental-resources/"
+ },
+ "akron": {
+  "city": "Akron",
+  "state": "OH",
+  "provider": "City of Akron Public Works",
+  "kind": "recollect",
+  "area": "AkronOH",
+  "service": 1077,
+  "notes": "Garbage weekly, recycling every other week on the same day.",
+  "holiday_url": "https://www.akronohio.gov/departments/service/public_works/trash_recycling.php",
+  "source_url": "https://www.akronohio.gov/departments/service/public_works/trash_recycling.php"
+ },
+ "cary": {
+  "city": "Cary",
+  "state": "NC",
+  "provider": "Town of Cary Public Works",
+  "kind": "recollect",
+  "area": "CaryNC",
+  "service": 1087,
+  "notes": "Garbage weekly, recycling every other week, yard waste weekly.",
+  "holiday_url": "https://www.carync.gov/services-damage/garbage-recycling/holiday-collection-schedule",
+  "source_url": "https://www.carync.gov/services-damage/garbage-recycling"
  }
 }
