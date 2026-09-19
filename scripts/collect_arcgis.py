@@ -31,6 +31,13 @@ def collect(slug, cfg):
         if not q.get("exceededTransferLimit") or not got:
             break
         offset += len(got)
+    # wrong-city layers happen (a 'Glendale' layer in Wisconsin, an 'Ontario' layer in Canada): refuse when the city centre is outside the bbox
+    xs = [x for f in feats for r in (f.get("geometry") or {}).get("rings", []) for x, _ in r]
+    ys = [y for f in feats for r in (f.get("geometry") or {}).get("rings", []) for _, y in r]
+    if xs and cfg.get("center"):
+        cx, cy = cfg["center"]
+        if not (min(xs) - 0.05 <= cx <= max(xs) + 0.05 and min(ys) - 0.05 <= cy <= max(ys) + 0.05):
+            raise RuntimeError(f"bbox {min(xs):.2f},{min(ys):.2f}–{max(xs):.2f},{max(ys):.2f} does not contain city centre {cx},{cy}")
     out = {"slug": slug, "fetched": dt.date.today().isoformat(), "url": url, "geometryType": meta.get("geometryType"),
            "fields": [f["name"] for f in meta.get("fields", [])], "features": feats}
     (ROOT / "data/raw" / f"{slug}.json").write_text(json.dumps(out, separators=(",", ":")))
