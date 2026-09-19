@@ -54,6 +54,10 @@
   }
   // In-page links into the hidden part (nav "Cities", the hint) end the landing state first so the anchor jump has a target.
   document.addEventListener('click', e => { const a = e.target.closest('a[href*="#"]'); if (!a || a.origin !== location.origin || a.pathname !== location.pathname) return; const t = document.getElementById(a.hash.slice(1)); if (t && t.closest('#more')) leaveLanding(); });
+  // On a phone the result sits below the form (often behind the browser's bottom bar): bring it into view so a tap visibly did something.
+  // Layout position (offsetTop chain), not the rendered box: right after the first result the stage is mid-glide (translateY) and
+  // scrollIntoView would land ~100px too far down; scroll-margin-top keeps the target below the sticky header.
+  const bringIntoView = el => { if (innerWidth >= 900) return; setTimeout(() => { let y = 0; for (let e = el; e; e = e.offsetParent) y += e.offsetTop; y -= parseFloat(getComputedStyle(el).scrollMarginTop) || 0; scrollTo({ top: y, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); }, 60); };
   function render(sched, name, root, link) {
     const occ = occurrences(sched, now, 14).sort((a, b) => a.d - b.d);
     const occFar = occurrences(sched, now, 60).sort((a, b) => a.d - b.d);
@@ -75,6 +79,7 @@
       root.classList.remove('is-in'); root.classList.add('reveal');
       [root.querySelector('.sheet'), ...root.querySelector('.sheet').children, root.querySelector('.week')].forEach((el, i) => { el.classList.add('rv'); el.style.setProperty('--d', (i * 90) + 'ms'); });
       void root.offsetHeight; root.classList.add('is-in');
+      bringIntoView(root);
     } else { const sheet = $('today'); sheet.classList.remove('balanced', 'quiet'); sheet.classList.add(cls); $('headline').textContent = head; $('sub').textContent = sub; $('upcoming').innerHTML = upcoming; $('week').innerHTML = week; }
   }
   function ics(sched, name) {
