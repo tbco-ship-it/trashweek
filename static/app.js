@@ -127,7 +127,7 @@
     if (rc) { try { return await lookupRecollect(rc, q.replace(new RegExp(',?\\s*' + rc.city + '.*$', 'i'), '')); } catch (e) { return say('The schedule service did not answer. Try again in a moment.'); } }
     say('Locating…');
     try {
-      const j = await jsonp('https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?benchmark=Public_AR_Current&format=jsonp&address=' + encodeURIComponent(q + (input.dataset.cityname && !/[a-z]{2}\s*$/i.test(q) ? ', ' + input.dataset.cityname : '')));
+      const j = await jsonp('https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?benchmark=Public_AR_Current&format=jsonp&address=' + encodeURIComponent(q + (input.dataset.cityname && !q.toLowerCase().includes(input.dataset.cityname.split(',')[0].toLowerCase()) ? ', ' + input.dataset.cityname : '')));
       const m = j.result?.addressMatches?.[0];
       if (!m) return say('No match from the Census geocoder. Add the city and state, e.g. "123 Main St, Seattle WA".');
       const { x: lng, y: lat } = m.coordinates;
