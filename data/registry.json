@@ -1888,5 +1888,198 @@
   "notes": "Garbage weekly, recycling every other week, yard waste weekly.",
   "holiday_url": "https://www.carync.gov/services-damage/garbage-recycling/holiday-collection-schedule",
   "source_url": "https://www.carync.gov/services-damage/garbage-recycling"
+ },
+ "rancho-cucamonga": {
+  "city": "Rancho Cucamonga",
+  "state": "CA",
+  "provider": "City of Rancho Cucamonga / Burrtec",
+  "kind": "arcgis",
+  "url": "https://services1.arcgis.com/bF44QtfoYZDGo7TK/arcgis/rest/services/TrashPickupSchedule/FeatureServer/0",
+  "zone": "OBJECTID_1",
+  "fields": {
+   "trash": "DAY",
+   "hauler": "COMPANY"
+  },
+  "notes": "Weekly trash, recycling and green waste on the same day (Burrtec).",
+  "center": [
+   -117.59,
+   34.11
+  ],
+  "holiday_url": "https://www.burrtec.com/rancho-cucamonga-holiday-schedule/",
+  "source_url": "https://www.cityofrc.us/community-services/environmental-programs"
+ },
+ "pembroke-pines": {
+  "city": "Pembroke Pines",
+  "state": "FL",
+  "provider": "City of Pembroke Pines Public Services",
+  "kind": "arcgis",
+  "url": "https://services6.arcgis.com/OlJkQnf39yF1a7pM/arcgis/rest/services/Curbside_Trash_Pickup_Zones/FeatureServer/0",
+  "zone": "Zone_Numbe",
+  "fields": {
+   "trash": "Pickup_Day"
+  },
+  "notes": "Twice-weekly garbage on the two days shown; recycling once a week.",
+  "center": [
+   -80.3,
+   26.01
+  ],
+  "holiday_url": "https://www.ppines.com/264/Trash-Recycling",
+  "source_url": "https://www.ppines.com/264/Trash-Recycling"
+ },
+ "macon": {
+  "city": "Macon-Bibb",
+  "state": "GA",
+  "provider": "Macon-Bibb County Solid Waste",
+  "kind": "arcgis",
+  "url": "https://services2.arcgis.com/zPFLSOZ5HzUzzTQb/arcgis/rest/services/RylandTransistionWebMap_WFL1/FeatureServer/0",
+  "zone": "DISTRICTID",
+  "fields": {
+   "trash": "PUDay"
+  },
+  "notes": "Weekly garbage, recycling and yard waste on your district day.",
+  "center": [
+   -83.63,
+   32.84
+  ],
+  "holiday_url": "https://www.maconbibb.us/solidwaste/",
+  "source_url": "https://www.maconbibb.us/solidwaste/",
+  "aliases": [
+   "macon-bibb",
+   "macon bibb"
+  ]
+ },
+ "bellevue": {
+  "city": "Bellevue",
+  "state": "WA",
+  "provider": "City of Bellevue Utilities / Republic Services",
+  "kind": "arcgis",
+  "url": "https://services1.arcgis.com/EYzEZbDhXZjURPbP/arcgis/rest/services/Garbage_Collection_Districts/FeatureServer/0",
+  "zone": "OBJECTID",
+  "fields": {
+   "trash": "CollectionDay"
+  },
+  "notes": "Weekly garbage; recycling and organics on the same day.",
+  "center": [
+   -122.2,
+   47.61
+  ],
+  "holiday_url": "https://www.republicservices.com/municipality/bellevue-wa",
+  "source_url": "https://bellevuewa.gov/city-government/departments/utilities/garbage-and-recycling",
+  "aliases": [
+   "bellevue wa"
+  ]
+ },
+ "gainesville": {
+  "city": "Gainesville",
+  "state": "FL",
+  "provider": "City of Gainesville Public Works / GFL",
+  "kind": "arcgis",
+  "url": "https://services2.arcgis.com/Zzhtlau4ccHkQgTu/arcgis/rest/services/GFL_New_Service_Days_2026/FeatureServer/0",
+  "zone": "fid",
+  "fields": {
+   "trash": "day"
+  },
+  "notes": "Weekly garbage and recycling on your service day (2026 routes).",
+  "center": [
+   -82.32,
+   29.65
+  ],
+  "holiday_url": "https://www.gainesvillefl.gov/Government-Pages/Government/Departments/Public-Works/Holiday-Schedule",
+  "source_url": "https://www.gainesvillefl.gov/Government-Pages/Government/Departments/Public-Works/Residential-Waste-Collection",
+  "aliases": [
+   "gainesville fl"
+  ]
+ },
+ "syracuse": {
+  "city": "Syracuse",
+  "state": "NY",
+  "provider": "City of Syracuse DPW Sanitation",
+  "kind": "arcgis",
+  "url": "https://services6.arcgis.com/bdPqSfflsdgFRVVM/arcgis/rest/services/Trash_Pickup_Day_Schedule_2025/FeatureServer/0",
+  "zone": "Sanitation",
+  "fields": {
+   "trash": "Sanitation",
+   "recycling_week": "RecyclingW"
+  },
+  "notes": "Weekly trash on your route day; recycling every other week (A/B).",
+  "center": [
+   -76.15,
+   43.05
+  ],
+  "holiday_url": "https://www.syr.gov/Departments/Public-Works/Holiday-Trash-Delays",
+  "source_url": "https://www.syr.gov/Departments/Public-Works/Trash-Recycling"
+ },
+ "roseville": {
+  "city": "Roseville",
+  "state": "CA",
+  "provider": "City of Roseville Environmental Utilities",
+  "kind": "recollect",
+  "area": "Roseville",
+  "service": 302,
+  "notes": "Weekly refuse, recycling and green waste on the same day.",
+  "holiday_url": "https://www.roseville.ca.us/government/departments/waste_services/holiday_schedule",
+  "source_url": "https://www.roseville.ca.us/cms/One.aspx?portalId=7964922&pageId=8777123",
+  "aliases": [
+   "roseville ca"
+  ]
+ },
+ "sunnyvale": {
+  "city": "Sunnyvale",
+  "state": "CA",
+  "provider": "City of Sunnyvale / Specialty Solid Waste & Recycling",
+  "kind": "recollect",
+  "area": "Sunnyvale",
+  "service": 329,
+  "notes": "Weekly garbage, recycling and yard trimmings; FoodCycle program.",
+  "holiday_url": "https://www.sunnyvale.ca.gov/homes-streets-and-property/recycling-and-garbage/holiday-schedule",
+  "source_url": "https://www.sunnyvale.ca.gov/homes-streets-and-property/recycling-and-garbage"
+ },
+ "olathe": {
+  "city": "Olathe",
+  "state": "KS",
+  "provider": "City of Olathe Solid Waste",
+  "kind": "recollect",
+  "area": "Olathe",
+  "service": 235,
+  "notes": "Weekly trash and yard waste; recycling every other week.",
+  "holiday_url": "https://www.olatheks.gov/government/public-works/trash-recycling/holiday-schedule",
+  "source_url": "https://www.olatheks.gov/government/public-works/trash-recycling"
+ },
+ "thornton": {
+  "city": "Thornton",
+  "state": "CO",
+  "provider": "City of Thornton Solid Waste",
+  "kind": "recollect",
+  "area": "ThorntonCO",
+  "service": 1083,
+  "notes": "Weekly trash; recycling every other week.",
+  "holiday_url": "https://www.thorntonco.gov/services/trash-recycling/Pages/holiday-schedule.aspx",
+  "source_url": "https://www.thorntonco.gov/services/trash-recycling"
+ },
+ "waco": {
+  "city": "Waco",
+  "state": "TX",
+  "provider": "City of Waco Solid Waste Services",
+  "kind": "recollect",
+  "area": "WacoTX",
+  "service": 1183,
+  "notes": "Weekly trash; recycling every other week.",
+  "holiday_url": "https://www.waco-texas.com/Departments/Solid-Waste/Holiday-Collection-Schedule",
+  "source_url": "https://www.waco-texas.com/Departments/Solid-Waste"
+ },
+ "columbia-sc": {
+  "city": "Columbia",
+  "state": "SC",
+  "provider": "City of Columbia Solid Waste",
+  "kind": "recollect",
+  "area": "Columbia",
+  "service": 325,
+  "notes": "Weekly garbage; recycling every other week; yard trimmings weekly.",
+  "holiday_url": "https://solidwaste.columbiasc.gov/holiday-schedule/",
+  "source_url": "https://solidwaste.columbiasc.gov",
+  "aliases": [
+   "columbia sc",
+   "columbia south carolina"
+  ]
  }
 }
