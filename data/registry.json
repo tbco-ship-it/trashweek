@@ -1781,39 +1781,6 @@
   "holiday_url": "https://www.providenceri.gov/public-works/trash-recycling/",
   "source_url": "https://www.providenceri.gov/public-works/trash-recycling/"
  },
- "mobile": {
-  "city": "Mobile",
-  "state": "AL",
-  "provider": "City of Mobile Public Works Sanitation",
-  "kind": "arcgis",
-  "url": "https://services.arcgis.com/8O9UlSTnqjKptoda/arcgis/rest/services/Sanitation_Zone/FeatureServer/0",
-  "zone": "Label",
-  "fields": {
-   "trash": "PickupDay",
-   "recycling_week": "RecycleWeek"
-  },
-  "notes": "Weekly household garbage; recycling every other week.",
-  "holiday_url": "https://www.cityofmobile.org/residents/trash-and-garbage/",
-  "source_url": "https://www.cityofmobile.org/residents/trash-and-garbage/"
- },
- "ontario": {
-  "city": "Ontario",
-  "state": "CA",
-  "provider": "City of Ontario Integrated Waste",
-  "kind": "arcgis",
-  "url": "https://services6.arcgis.com/ONZht79c8QWuX759/arcgis/rest/services/Waste_Collection_Zones/FeatureServer/0",
-  "zone": "OBJECTID",
-  "fields": {
-   "trash": "COLLECTDAY"
-  },
-  "notes": "Weekly trash, recycling and green waste on the same day.",
-  "aliases": [
-   "ontario ca",
-   "ontario california"
-  ],
-  "holiday_url": "https://www.ontarioca.gov/IntegratedWaste",
-  "source_url": "https://www.ontarioca.gov/IntegratedWaste"
- },
  "shreveport": {
   "city": "Shreveport",
   "state": "LA",
@@ -1844,24 +1811,6 @@
   "notes": "Weekly garbage on your route day.",
   "holiday_url": "https://www.shreveportla.gov/305/Solid-Waste",
   "source_url": "https://www.shreveportla.gov/305/Solid-Waste"
- },
- "aurora-il": {
-  "city": "Aurora",
-  "state": "IL",
-  "provider": "City of Aurora Waste Collection",
-  "kind": "arcgis",
-  "url": "https://services2.arcgis.com/1IylZvXQw11Lg0Zm/arcgis/rest/services/WasteCollectionBoundary_WFL1/FeatureServer/0",
-  "zone": "ID",
-  "fields": {
-   "trash": "WASTE_DAY"
-  },
-  "notes": "Weekly garbage, recycling and yard waste on the same day.",
-  "aliases": [
-   "aurora il",
-   "aurora illinois"
-  ],
-  "holiday_url": "https://www.aurora-il.org/218/Garbage-Recycling",
-  "source_url": "https://www.aurora-il.org/218/Garbage-Recycling"
  },
  "salem": {
   "city": "Salem",
