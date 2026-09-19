@@ -1781,25 +1781,6 @@
   "holiday_url": "https://www.providenceri.gov/public-works/trash-recycling/",
   "source_url": "https://www.providenceri.gov/public-works/trash-recycling/"
  },
- "glendale-ca": {
-  "city": "Glendale",
-  "state": "CA",
-  "provider": "City of Glendale Integrated Waste Management",
-  "kind": "arcgis",
-  "url": "https://services7.arcgis.com/fO3CEftGdEfeEtle/arcgis/rest/services/Glendale_Collection_Areas/FeatureServer/0",
-  "zone": "OBJECTID",
-  "fields": {
-   "trash": "TrashDay",
-   "recycling_week": "RecycleWeek"
-  },
-  "notes": "Weekly trash; recycling and yard waste alternate weeks (A/B).",
-  "aliases": [
-   "glendale ca",
-   "glendale california"
-  ],
-  "holiday_url": "https://www.glendaleca.gov/government/departments/public-works/integrated-waste-management",
-  "source_url": "https://www.glendaleca.gov/government/departments/public-works/integrated-waste-management"
- },
  "mobile": {
   "city": "Mobile",
   "state": "AL",
