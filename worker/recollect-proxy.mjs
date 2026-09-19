@@ -1,7 +1,7 @@
 // trashweek-api: read-only proxy for ReCollect's public widget API (which sends no CORS headers).
 // GET /recollect/suggest?area=FortWorth&q=10000+Leeway
 // GET /recollect/events?area=FortWorth&place=<id>&service=314&after=YYYY-MM-DD&before=YYYY-MM-DD
-const AREAS = new Set(["CityofJacksonvilleFL", "FortWorth", "MemphisTN", "Austin", "recology-1051", "ColumbusGA", "Augusta", "OxnardCA", "AkronOH", "CaryNC", "Roseville", "Sunnyvale", "Olathe", "ThorntonCO", "WacoTX", "Columbia"]);
+const AREAS = new Set(["CityofJacksonvilleFL", "FortWorth", "MemphisTN", "Austin", "recology-1051", "ColumbusGA", "Augusta", "OxnardCA", "AkronOH", "CaryNC", "Roseville", "Sunnyvale", "Olathe", "ThorntonCO", "WacoTX", "Columbia", "Miramar", "DaytonOH", "ColumbiaMO", "CollegeStationTX", "CambridgeMA"]);
 const ORIGINS = new Set(["https://trashweek.com", "https://www.trashweek.com", "https://tbco-ship-it.github.io"]);
 const cors = (req) => { const o = req.headers.get("Origin") || ""; return { "Access-Control-Allow-Origin": ORIGINS.has(o) ? o : "https://trashweek.com", "Vary": "Origin", "Access-Control-Allow-Methods": "GET", "Cache-Control": "public, max-age=600" }; };
 export default {

@@ -2081,5 +2081,238 @@
    "columbia sc",
    "columbia south carolina"
   ]
+ },
+ "hampton": {
+  "city": "Hampton",
+  "state": "VA",
+  "provider": "City of Hampton Solid Waste",
+  "kind": "arcgis",
+  "url": "https://services5.arcgis.com/cA4ofagPaJJ7qhEz/arcgis/rest/services/Trash_Recycle_Days/FeatureServer/0",
+  "zone": "OBJECTID",
+  "fields": {
+   "trash": "PICKUPDAY"
+  },
+  "notes": "Weekly trash and recycling on the same day.",
+  "center": [
+   -76.35,
+   37.03
+  ],
+  "holiday_url": "https://hampton.gov/181/Trash-Recycling",
+  "source_url": "https://hampton.gov/181/Trash-Recycling",
+  "aliases": [
+   "hampton va"
+  ]
+ },
+ "cedar-rapids": {
+  "city": "Cedar Rapids",
+  "state": "IA",
+  "provider": "City of Cedar Rapids Solid Waste & Recycling",
+  "kind": "arcgis",
+  "url": "https://services1.arcgis.com/WvwdtVyp14hinaBs/arcgis/rest/services/SolidWasteDistricts_PublicViewLayer/FeatureServer/0",
+  "zone": "DISTNAME",
+  "fields": {
+   "trash": "DAYWEEK"
+  },
+  "notes": "Weekly garbage, recycling and yard waste on your route day.",
+  "center": [
+   -91.66,
+   41.98
+  ],
+  "holiday_url": "https://www.cedar-rapids.org/residents/utilities/holiday_schedule.php",
+  "source_url": "https://www.cedar-rapids.org/residents/utilities/solid_waste_and_recycling.php"
+ },
+ "new-haven": {
+  "city": "New Haven",
+  "state": "CT",
+  "provider": "City of New Haven Public Works",
+  "kind": "arcgis",
+  "url": "https://gis.newhavenct.gov/server/rest/services/Hosted/Trash_Pickup_Day/FeatureServer/0",
+  "zone": "objectid",
+  "fields": {
+   "trash": "trash_day"
+  },
+  "notes": "Weekly trash; recycling every other week on the same day.",
+  "center": [
+   -72.93,
+   41.31
+  ],
+  "holiday_url": "https://www.newhavenct.gov/gov/depts/pw/refuse_recycling.htm",
+  "source_url": "https://www.newhavenct.gov/gov/depts/pw/refuse_recycling.htm"
+ },
+ "pasadena": {
+  "city": "Pasadena",
+  "state": "CA",
+  "provider": "City of Pasadena Public Works",
+  "kind": "arcgis",
+  "url": "https://services2.arcgis.com/zNjnZafDYCAJAbN0/arcgis/rest/services/Refuse_Service_Areas/FeatureServer/0",
+  "zone": "PICKUP_DAY",
+  "fields": {
+   "trash": "PICKUP_DAY"
+  },
+  "notes": "Weekly refuse, recycling and yard waste on the same day.",
+  "center": [
+   -118.14,
+   34.15
+  ],
+  "holiday_url": "https://www.cityofpasadena.net/public-works/waste-management/refuse-collection-schedule/",
+  "source_url": "https://www.cityofpasadena.net/public-works/waste-management/",
+  "aliases": [
+   "pasadena ca"
+  ]
+ },
+ "lewisville": {
+  "city": "Lewisville",
+  "state": "TX",
+  "provider": "City of Lewisville / Republic Services",
+  "kind": "arcgis",
+  "url": "https://services2.arcgis.com/kXGqZY4GIOcEYxoF/arcgis/rest/services/Trash_and_Recycling/FeatureServer/0",
+  "zone": "Weekday",
+  "fields": {
+   "trash": "Weekday"
+  },
+  "notes": "Weekly trash and recycling on the same day.",
+  "center": [
+   -96.99,
+   33.05
+  ],
+  "holiday_url": "https://www.cityoflewisville.com/city-services/trash-recycling",
+  "source_url": "https://www.cityoflewisville.com/city-services/trash-recycling"
+ },
+ "abilene": {
+  "city": "Abilene",
+  "state": "TX",
+  "provider": "City of Abilene Solid Waste Services",
+  "kind": "arcgis",
+  "url": "https://services6.arcgis.com/iBFmWI3dYPQqS1KF/arcgis/rest/services/Solid_Waste_Collection_Days/FeatureServer/0",
+  "zone": "Name",
+  "fields": {
+   "trash": "Name"
+  },
+  "notes": "Twice-weekly garbage on the two days shown.",
+  "center": [
+   -99.73,
+   32.45
+  ],
+  "holiday_url": "https://www.abilenetx.gov/395/Solid-Waste-Services",
+  "source_url": "https://www.abilenetx.gov/395/Solid-Waste-Services"
+ },
+ "fairfield": {
+  "city": "Fairfield",
+  "state": "CA",
+  "provider": "City of Fairfield / Republic Services",
+  "kind": "arcgis",
+  "url": "https://services1.arcgis.com/A14KNJpxNyBTu19J/arcgis/rest/services/Garbage_Day_Collection_Schedule/FeatureServer/0",
+  "zone": "DISTRICTID",
+  "fields": {
+   "trash": "NAME"
+  },
+  "notes": "Weekly garbage, recycling and organics on the same day.",
+  "center": [
+   -122.04,
+   38.25
+  ],
+  "holiday_url": "https://www.fairfield.ca.gov/gov/depts/pw/garbage/default.asp",
+  "source_url": "https://www.fairfield.ca.gov/gov/depts/pw/garbage/default.asp",
+  "aliases": [
+   "fairfield ca"
+  ]
+ },
+ "hartford": {
+  "city": "Hartford",
+  "state": "CT",
+  "provider": "City of Hartford DPW Sanitation",
+  "kind": "arcgis",
+  "url": "https://utility.arcgis.com/usrsvcs/servers/88f721c78f78414a840074c17ba8e685/rest/services/OpenData_Community/MapServer/9",
+  "zone": "Id",
+  "fields": {
+   "trash": "Day"
+  },
+  "notes": "Weekly trash; recycling every other week.",
+  "center": [
+   -72.68,
+   41.76
+  ],
+  "holiday_url": "https://www.hartfordct.gov/Government/Departments/DPW/Waste-Recycling",
+  "source_url": "https://www.hartfordct.gov/Government/Departments/DPW/Waste-Recycling"
+ },
+ "richardson": {
+  "city": "Richardson",
+  "state": "TX",
+  "provider": "City of Richardson Solid Waste",
+  "kind": "arcgis",
+  "url": "https://maps.cor.gov/arcgis/rest/services/OpenData/TrashDays/MapServer/0",
+  "zone": "TrashDay",
+  "fields": {
+   "trash": "TrashDay"
+  },
+  "notes": "Twice-weekly trash on the two days shown; recycling weekly.",
+  "center": [
+   -96.73,
+   32.95
+  ],
+  "holiday_url": "https://www.cor.net/departments/public-services/trash-recycling/holiday-schedule",
+  "source_url": "https://www.cor.net/departments/public-services/trash-recycling"
+ },
+ "miramar": {
+  "city": "Miramar",
+  "state": "FL",
+  "provider": "City of Miramar Public Works",
+  "kind": "recollect",
+  "area": "Miramar",
+  "service": 333,
+  "notes": "Twice-weekly garbage, recycling weekly, bulk by schedule.",
+  "holiday_url": "https://www.miramarfl.gov/569/Garbage-Collection",
+  "source_url": "https://www.miramarfl.gov/569/Garbage-Collection"
+ },
+ "dayton": {
+  "city": "Dayton",
+  "state": "OH",
+  "provider": "City of Dayton Waste Collection",
+  "kind": "recollect",
+  "area": "DaytonOH",
+  "service": 758,
+  "notes": "Weekly waste and recycling; bulk waste by schedule.",
+  "holiday_url": "https://www.daytonohio.gov/376/Waste-Collection",
+  "source_url": "https://www.daytonohio.gov/376/Waste-Collection"
+ },
+ "columbia-mo": {
+  "city": "Columbia",
+  "state": "MO",
+  "provider": "City of Columbia Solid Waste Utility",
+  "kind": "recollect",
+  "area": "ColumbiaMO",
+  "service": 350,
+  "notes": "Weekly refuse; recycling every other week.",
+  "holiday_url": "https://www.como.gov/utilities/solid-waste-management/holiday-schedule/",
+  "source_url": "https://www.como.gov/utilities/solid-waste-management/",
+  "aliases": [
+   "columbia mo",
+   "columbia missouri"
+  ]
+ },
+ "college-station": {
+  "city": "College Station",
+  "state": "TX",
+  "provider": "City of College Station Solid Waste",
+  "kind": "recollect",
+  "area": "CollegeStationTX",
+  "service": 1074,
+  "notes": "Weekly garbage and recycling; bulk/brush by schedule.",
+  "holiday_url": "https://www.cstx.gov/departments___city_hall/public_works/solid_waste",
+  "source_url": "https://www.cstx.gov/departments___city_hall/public_works/solid_waste"
+ },
+ "cambridge": {
+  "city": "Cambridge",
+  "state": "MA",
+  "provider": "City of Cambridge DPW",
+  "kind": "recollect",
+  "area": "CambridgeMA",
+  "service": 761,
+  "notes": "Weekly trash, recycling, compost and yard waste on the same day.",
+  "holiday_url": "https://www.cambridgema.gov/Services/curbsidecollections",
+  "source_url": "https://www.cambridgema.gov/Services/curbsidecollections",
+  "aliases": [
+   "cambridge ma"
+  ]
  }
 }
