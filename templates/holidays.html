@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Is trash pickup delayed this week? 2026 holiday collection schedule by city | {{ site }}{% endblock %}
+{% block title %}Is Trash Pickup Delayed This Week? 2026 Holiday Collection Schedule for {{ cities|length }} US Cities | {{ site }}{% endblock %}
 {% block description %}Which 2026 holidays delay trash and recycling pickup, how the one-day slide works, and links to each city's official holiday notice.{% endblock %}
 {% block content %}
 <nav class="crumbs"><a href="{{ base }}">Home</a> › Holiday delays</nav>
@@ -10,6 +10,12 @@
 <table class="tbl compact"><thead><tr><th>Date</th><th>Holiday</th><th>Day</th></tr></thead><tbody>
 {% for d, name in HOLIDAYS %}<tr><td>{{ d }}</td><td>{{ name }}</td><td class="hday" data-d="{{ d }}"></td></tr>{% endfor %}
 </tbody></table>
-<div class="sec"><div class="sec-h"><h2>Official holiday notices by city</h2></div>
-<ul class="list">{% for c in cities %}<li><a href="{{ base }}{{ c.slug }}/holidays/">{{ c.city }}, {{ c.state }}<span class="meta">{{ c.provider }}</span></a></li>{% endfor %}</ul></div>
+<div class="sec"><div class="sec-h"><h2>Holiday rules by city <span class="muted small">{{ cities|selectattr('holidays.observed')|list|length }} verified of {{ cities|length }}</span></h2></div>
+<div class="tbl-wrap"><table class="tbl compact hol"><thead><tr><th>City</th><th>Holidays observed 2026</th><th>Rule</th><th>Next</th></tr></thead><tbody>
+{% for c in cities|sort(attribute='city')|sort(attribute='holidays.observed', reverse=True) %}<tr><td><a href="{{ base }}{{ c.slug }}/holidays/">{{ c.city }}, {{ c.state }}</a><br><small class="muted">{{ c.provider }}</small></td>
+<td data-l="">{% if c.holidays.observed %}<b>{{ c.holidays.observed|length }}</b> <small class="muted">verified {{ c.holidays.checked }}</small>{% else %}<span class="muted">not verified — federal calendar</span>{% endif %}</td>
+<td data-l="">{{ {'next_day': 'one-day slide', 'skip': 'pickup skipped, no slide', 'overrides': 'published make-up days', 'unknown': 'unverified'}[c.holidays.policy] }}</td>
+<td data-l="Next">{% if c.hol_next %}{{ c.hol_next.name }} · {{ c.hol_next.iso }}{% else %}—{% endif %}</td></tr>{% endfor %}
+</tbody></table></div>
+<p class="muted small">"Verified" means we read the hauler's own 2026 holiday notice and recorded the dates and rule; zone pages for those cities shift dates automatically. For the others the federal list is shown and dates are not shifted.</p></div>
 {% endblock %}

@@ -25,6 +25,26 @@ HOLIDAYS_2026 = [("2026-01-01", "New Year's Day"), ("2026-01-19", "Martin Luther
                  ("2026-12-25", "Christmas Day"), ("2027-01-01", "New Year's Day")]
 
 
+def shift_text(iso, policy, overrides):
+    """What a holiday does to that week's routes, in the words a resident needs: 'Thursday routes run Friday, Friday routes run Saturday'."""
+    d = dt.date.fromisoformat(iso)
+    wd = d.weekday()
+    if policy == "overrides":
+        to = dict(overrides).get(iso)
+        if to:
+            t = dt.date.fromisoformat(to)
+            return f"{LONG[DAYS[wd]]} pickup moves to {LONG[DAYS[t.weekday()]]} {t.strftime('%b')} {t.day}"
+        return f"No pickup on {LONG[DAYS[wd]]}; see the official notice for the make-up day"
+    if wd >= 5:
+        return f"Falls on a {LONG[DAYS[wd]]} — weekday routes are not affected"
+    if policy == "skip":
+        return f"{LONG[DAYS[wd]]} pickup is skipped; the next pickup is on your regular day"
+    if policy == "next_day":
+        moves = [f"{LONG[DAYS[i]]} routes run {LONG[DAYS[i + 1]]}" for i in range(wd, 5)]
+        return ", ".join(moves)
+    return "Not verified for this city — check the official notice"
+
+
 def days_text(days):
     return " & ".join(LONG[d] for d in days) if days else "—"
 
@@ -51,6 +71,12 @@ def main():
         c["holidays"] = {"observed": h.get("observed") or [], "rule": h.get("rule") or "", "source": h.get("source") or c.get("holiday_url"), "checked": h.get("checked"),
                          "policy": h.get("policy") or ("next_day" if h.get("observed") else "unknown"), "overrides": h.get("overrides") or []}
         c["hol"] = {"policy": c["holidays"]["policy"], "dates": [d for d, _ in c["holidays"]["observed"]], "overrides": c["holidays"]["overrides"]}
+        pol = c["holidays"]["policy"]
+        rows = c["holidays"]["observed"] if c["holidays"]["observed"] else HOLIDAYS_2026
+        c["hol_rows"] = [{"iso": d, "name": n, "wd": LONG[DAYS[dt.date.fromisoformat(d).weekday()]], "shift": shift_text(d, pol, c["holidays"]["overrides"]),
+                          "weekend": dt.date.fromisoformat(d).weekday() >= 5} for d, n in rows]
+        c["hol_next"] = next((r for r in c["hol_rows"] if r["iso"] >= today.isoformat()), None)
+        c["hol_this_week"] = next((r for r in c["hol_rows"] if today - dt.timedelta(days=today.weekday()) <= dt.date.fromisoformat(r["iso"]) <= today + dt.timedelta(days=6 - today.weekday())), None)
         c["kinds"] = [k for k in ("trash", "recycling", "yard", "bulk") if any(z["schedule"].get(k) for z in c["zones"])]
         c["day_counts"] = Counter(d for z in c["zones"] for d in z["schedule"]["trash"])
         for z in c["zones"]:

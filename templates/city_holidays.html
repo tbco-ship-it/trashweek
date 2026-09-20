@@ -1,23 +1,22 @@
 {% extends "base.html" %}
-{% block title %}{{ c.city }} trash pickup holiday schedule 2026 — which holidays delay collection | {{ site }}{% endblock %}
-{% block description %}2026 holidays that can delay trash and recycling pickup in {{ c.city }}, {{ c.state }}, with the official {{ c.provider }} holiday notice.{% endblock %}
+{% set verified = c.holidays.observed|length > 0 %}
+{% block title %}{{ c.city }} Trash Pickup Holiday Schedule 2026 — Which Holidays Delay Collection{% if verified %} ({{ c.holidays.observed|length }} dates, {{ c.provider }}){% endif %} | {{ site }}{% endblock %}
+{% block description %}{% if verified %}{{ c.city }}, {{ c.state }} trash and recycling pickup is delayed on {{ c.holidays.observed|length }} holidays in 2026: {% for d, n in c.holidays.observed[:4] %}{{ n }}{% if not loop.last %}, {% endif %}{% endfor %}{% if c.holidays.observed|length > 4 %} and more{% endif %}. What day your route runs instead, from {{ c.provider }}'s official notice (checked {{ c.holidays.checked }}).{% else %}Which 2026 holidays can delay trash and recycling pickup in {{ c.city }}, {{ c.state }}: the federal calendar most haulers follow, with the one-day slide explained and a link to {{ c.provider }}'s notice.{% endif %}{% endblock %}
+{% block head %}<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is trash pickup delayed this week in {{ c.city }}?","acceptedAnswer":{"@type":"Answer","text":"{% if c.hol_this_week %}Yes — {{ c.hol_this_week.name }} ({{ c.hol_this_week.wd }}, {{ c.hol_this_week.iso }}) is observed this week. {{ c.hol_this_week.shift }}.{% else %}No holiday is observed in {{ c.city }} this week, so pickup runs on the regular days.{% if c.hol_next %} The next holiday that affects pickup is {{ c.hol_next.name }} on {{ c.hol_next.wd }}, {{ c.hol_next.iso }}: {{ c.hol_next.shift }}.{% endif %}{% endif %}{% if not verified %} {{ c.city }}'s 2026 observed list has not been confirmed on this site; this follows the federal calendar most haulers use.{% endif %}"}},{"@type":"Question","name":"Which holidays delay trash pickup in {{ c.city }} in 2026?","acceptedAnswer":{"@type":"Answer","text":"{% if verified %}{{ c.provider }} observes {{ c.holidays.observed|length }} holidays in 2026: {% for d, n in c.holidays.observed %}{{ n }} ({{ d }}){% if not loop.last %}, {% endif %}{% endfor %}. {{ c.holidays.rule|replace('"', '') }}{% else %}Most haulers observe New Year's Day, Memorial Day, Independence Day, Labor Day, Thanksgiving and Christmas; some also observe Martin Luther King Jr. Day, Presidents' Day, Juneteenth, Columbus Day and Veterans Day. {{ c.city }}'s exact list is on {{ c.provider }}'s official holiday notice.{% endif %}"}}]}</script>{% endblock %}
 {% block content %}
 <nav class="crumbs"><a href="{{ base }}">Home</a> › <a href="{{ base }}{{ c.slug }}/">{{ c.city }}</a> › Holidays</nav>
-<h1>{{ c.city }} holiday pickup schedule 2026</h1>
-{% if c.holidays.observed %}
-<div class="prose">
-<p>{{ c.provider }} skips collection on the {{ c.holidays.observed|length }} holidays below. In the provider's words: <em>“{{ c.holidays.rule }}”</em> (<a href="{{ c.holidays.source }}" rel="noopener" target="_blank">official notice</a>, checked {{ c.holidays.checked }}). Zone pages on this site apply the one-day slide automatically for these dates.</p>
-</div>
-<table class="tbl compact"><thead><tr><th>Date</th><th>Holiday observed</th><th>Day</th></tr></thead><tbody>
-{% for d, name in c.holidays.observed %}<tr><td>{{ d }}</td><td>{{ name }}</td><td class="hday" data-d="{{ d }}"></td></tr>{% endfor %}
-</tbody></table>
-{% else %}
-<div class="prose">
-<p>When {{ c.provider }} observes a holiday, collection for the rest of that week usually runs one day late (Monday routes on Tuesday, and so on). We have not yet confirmed {{ c.city }}'s 2026 observed-holiday list — the table below is the federal calendar most haulers work from. Confirm the current week on <a href="{{ c.holidays.source }}" rel="noopener" target="_blank">{{ c.city }}'s official holiday page</a>.</p>
-</div>
-<table class="tbl compact"><thead><tr><th>Date</th><th>Holiday</th><th>Day</th></tr></thead><tbody>
-{% for d, name in HOLIDAYS %}<tr><td>{{ d }}</td><td>{{ name }}</td><td class="hday" data-d="{{ d }}"></td></tr>{% endfor %}
-</tbody></table>
-{% endif %}
-<div class="prose"><p>Find your zone's normal days first: <a href="{{ base }}{{ c.slug }}/">{{ c.city }} zones by address</a>.</p></div>
+<h1>{{ c.city }} trash pickup holiday schedule 2026</h1>
+<section class="sheet {{ 'severe' if c.hol_this_week and not c.hol_this_week.weekend else 'quiet' }}">
+  <p class="sheet-label">{{ c.city }}, {{ c.state }} · {{ c.provider }}</p>
+  <div class="sheet-num"><span class="num{% if c.hol_this_week %}{% else %} small-num{% endif %}">{% if c.hol_this_week %}{{ 'Delayed' if not c.hol_this_week.weekend else 'On time' }}{% else %}On time{% endif %}</span></div>
+  <p class="sheet-title">{% if c.hol_this_week %}{{ c.hol_this_week.name }} is {{ c.hol_this_week.wd }} {{ c.hol_this_week.iso }} — {{ c.hol_this_week.shift }}.{% else %}No holiday this week (as of {{ today }}).{% if c.hol_next %} Next: {{ c.hol_next.name }}, {{ c.hol_next.wd }} {{ c.hol_next.iso }}.{% endif %}{% endif %}</p>
+  <p class="sheet-text">{% if verified %}{{ c.provider }} skips collection on {{ c.holidays.observed|length }} holidays in 2026. In the provider's words: <em>“{{ c.holidays.rule }}”</em> (<a href="{{ c.holidays.source }}" rel="noopener" target="_blank">official notice</a>, checked {{ c.holidays.checked }}). Zone pages on this site apply these dates automatically.{% else %}We have not yet confirmed {{ c.city }}'s 2026 observed-holiday list. The table below is the federal calendar most haulers work from, with the usual one-day slide; confirm the current week on <a href="{{ c.holidays.source }}" rel="noopener" target="_blank">{{ c.city }}'s official holiday notice</a>. Zone pages do not shift dates for this city until the list is verified.{% endif %}</p>
+</section>
+<div class="ad-slot"><!-- ad: city-holidays --></div>
+<div class="sec"><div class="sec-h"><h2>{{ 'Holidays observed' if verified else 'Federal holidays (unverified for this city)' }} <span class="muted small">{{ c.hol_rows|length }}</span></h2></div>
+<div class="tbl-wrap"><table class="tbl compact hol"><thead><tr><th>Date</th><th>Holiday</th><th>Day</th><th>What changes</th></tr></thead><tbody>
+{% for r in c.hol_rows %}<tr{% if r.iso < today %} class="past"{% endif %}><td>{{ r.iso }}</td><td>{{ r.name }}</td><td>{{ r.wd }}</td><td data-l="">{{ r.shift }}</td></tr>{% endfor %}
+</tbody></table></div>
+<p class="muted small">{% if c.holidays.policy == 'next_day' %}One-day slide: routes from the holiday to the end of that week each run one day late; routes earlier in the week are unchanged.{% elif c.holidays.policy == 'skip' %}{{ c.provider }} does not slide routes — a holiday pickup is missed and service resumes on your next regular day.{% elif c.holidays.policy == 'overrides' %}{{ c.provider }} publishes a specific make-up day for each holiday; the table shows them.{% else %}Rule shown is the usual one-day slide; {{ c.city }} may differ.{% endif %} Greyed rows are past.</p></div>
+<div class="prose"><p>Find your zone's normal days first: <a href="{{ base }}{{ c.slug }}/">{{ c.city }} pickup days by address</a>. Other cities: <a href="{{ base }}holidays/">holiday delays by city</a>.</p></div>
 {% endblock %}
