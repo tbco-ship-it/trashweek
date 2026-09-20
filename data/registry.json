@@ -423,18 +423,21 @@
  "detroit": {
   "city": "Detroit",
   "state": "MI",
-  "provider": "City of Detroit DPW / GFL & WM",
+  "provider": "City of Detroit DPW (Priority Waste & WM)",
   "kind": "arcgis",
   "url": "https://services2.arcgis.com/qvkbeam7Wirps6zC/arcgis/rest/services/AllServices/FeatureServer/0",
   "zone": "FID",
   "fields": {
-   "trash": "day",
-   "recycling_week": "week",
-   "hauler": "contractor"
+   "trash": "day"
   },
-  "notes": "Trash weekly; recycling and yard waste every other week (week A or B) on the trash day.",
+  "notes": "Trash, recycling, yard waste and bulk are all collected weekly on the same day since the June 3, 2024 route change — the older every-other-week (week A/B) recycling schedule no longer applies.",
   "holiday_url": "https://detroitmi.gov/departments/department-public-works/solid-waste-division/holiday-schedule",
-  "source_url": "https://detroitmi.gov/departments/department-public-works/solid-waste-division"
+  "source_url": "https://detroitmi.gov/departments/department-public-works/solid-waste-division",
+  "notes_source": "https://detroitmi.gov/news/city-provides-details-upcoming-expansion-solid-waste-collection-begin-june-3",
+  "same_as_trash": [
+   "recycling",
+   "yard"
+  ]
  },
  "columbus": {
   "city": "Columbus",

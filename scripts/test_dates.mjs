@@ -19,6 +19,13 @@ check("seattle fri→sat", occurrences({ trash: ["Fri"] }, day("2025-12-28"), 8)
 // Miami-Dade skip
 setHol(["2026-12-25"], { policy: "skip", dates: ["2026-12-25"] });
 check("miami skip fri", occurrences({ trash: ["Tue", "Fri"] }, day("2026-12-21"), 10).map(o => iso(o.d)), ["2026-12-22", "2026-12-29"]);
+// Richmond next_day with three consecutive holidays 11/25–27: the Wed pickup can't slide onto Thu (holiday) → kept on its
+// regular day and flagged unconfirmed; a single Thanksgiving still moves Thu→Fri
+setHol(["2026-11-25", "2026-11-26", "2026-11-27"], { policy: "next_day", dates: ["2026-11-25", "2026-11-26", "2026-11-27"] });
+check("richmond wed unconfirmed", occurrences({ trash: ["Wed"] }, day("2026-11-22"), 7).map(o => [iso(o.d), o.unconfirmed]), [["2026-11-25", 1]]);
+check("richmond mon unchanged", occurrences({ trash: ["Mon"] }, day("2026-11-22"), 7).map(o => [iso(o.d), o.unconfirmed]), [["2026-11-23", 0]]);
+setHol(["2026-11-26"], { policy: "next_day", dates: ["2026-11-26"] });
+check("thanksgiving thu→fri", occurrences({ trash: ["Thu"] }, day("2026-11-22"), 7).map(o => iso(o.d)), ["2026-11-27"]);
 // unknown: no shifting, no invented federal list
 setHol([], null);
 check("unknown labor day", occurrences({ trash: ["Mon"] }, day("2026-09-06"), 7).map(o => iso(o.d)), ["2026-09-07"]);

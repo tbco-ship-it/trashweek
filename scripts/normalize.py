@@ -74,6 +74,8 @@ def main():
                     sched[kind] = parse_days(v)
             if cfg.get("day_columns"):
                 sched["trash"] = [d for col, d in cfg["day_columns"].items() if str(a.get(col) or "").strip().lower() in ("yes", "y", "1", "true")]
+            for kind in cfg.get("same_as_trash", []):   # services the city collects weekly on the trash day (Detroit since 2024-06-03)
+                sched[kind] = list(sched.get("trash") or [])
             if sched.get("trash2"):
                 sched["trash"] = sched["trash"] + [d for d in sched["trash2"] if d not in sched["trash"]]
             sched.pop("trash2", None)

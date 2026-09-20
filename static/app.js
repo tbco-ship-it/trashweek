@@ -23,7 +23,16 @@
     const key = iso(d);
     if (HOL.policy === 'overrides') { const to = HOL.overrides.get(key); return to ? new Date(to + 'T00:00:00') : d; }
     if (HOL.policy === 'skip') return HOL.dates.has(key) ? null : d;
-    if (HOL.policy === 'next_day') { const dow = d.getDay(); if (dow === 0) return d; for (let i = 1; i <= dow; i++) if (HOL.dates.has(iso(addDays(d, -(dow - i))))) return addDays(d, 1); return d; }
+    if (HOL.policy === 'next_day') {
+      const dow = d.getDay(); if (dow === 0) return d;
+      let n = 0; for (let i = 1; i <= dow; i++) if (HOL.dates.has(iso(addDays(d, -(dow - i))))) n++;
+      if (!n) return d;
+      const to = addDays(d, 1);
+      // Two holidays in one week (Richmond 11/25–27), or the slide lands on another holiday: the city's one-line rule
+      // does not say where that pickup goes — show the regular day as unconfirmed rather than invent a date.
+      if (n > 1 || HOL.dates.has(iso(to))) return { unconfirmed: true };
+      return to;
+    }
     return d;  // unknown: regular weekday, flagged unverified in the UI
   }
   const on = (days, d) => (days || []).includes(DAYS[d.getDay()]);
@@ -33,7 +42,7 @@
     if (sched.__events) return sched.__events.filter(o => o.d >= from && o.d < end).map(o => ({ k: o.k, d: o.d, shifted: 0, base: o.d }));
     for (let i = -7; i < n; i++) {
       const base = addDays(from, i);
-      for (const k of KINDS) if (sched[k] && on(sched[k], base)) { const d = applyHoliday(base); if (!d || d < from || d >= end) continue; out.push({ k, d, shifted: iso(d) !== iso(base) ? 1 : 0, base }); }
+      for (const k of KINDS) if (sched[k] && on(sched[k], base)) { let d = applyHoliday(base), unconfirmed = 0; if (d && d.unconfirmed) { d = base; unconfirmed = 1; } if (!d || d < from || d >= end) continue; out.push({ k, d, shifted: iso(d) !== iso(base) ? 1 : 0, unconfirmed, base }); }
     }
     return out.sort((a, b) => a.d - b.d);
   }
@@ -70,7 +79,7 @@
     else if (today.length) head = 'Today: ' + [...new Set(today.map(lbl))].join(' + ');
     else { const nx = occ[0]; head = nx ? `Next: ${lbl(nx)} ${rel(nx.d)}` : 'No pickup scheduled'; cls = 'quiet'; }
     const sub = (today.length ? `Today (${md(now)}): ${[...new Set(today.map(lbl))].join(' + ')} — have it out by 6–7 am.` : `Today (${md(now)}): no pickup.`) + (!sched.__events && !holVerified() ? ' Holiday changes not verified for this city — regular weekdays shown.' : '');
-    const upcoming = KINDS_SHOWN.map(k => { const o = next(k); return `<div class="item"><span class="dot" style="background:${COLOR[k]}"></span><span class="txt"><b>${LABEL[k]}</b><span class="tsub">${(sched[k] || []).map(x => LONG[x]).join(' & ')}${k === 'recycling' && sched.recycling_week ? ` · every other week (week ${sched.recycling_week}) — the city calendar says which week is current` : ''}</span>${o && o.shifted ? `<span class="tsub">holiday change: regular ${md(o.base)} → ${md(o.d)}</span>` : ''}</span><span class="when">${o ? rel(o.d) : '—'}</span></div>`; }).join('');
+    const upcoming = KINDS_SHOWN.map(k => { const o = next(k); return `<div class="item"><span class="dot" style="background:${COLOR[k]}"></span><span class="txt"><b>${LABEL[k]}</b><span class="tsub">${(sched[k] || []).map(x => LONG[x]).join(' & ')}${k === 'recycling' && sched.recycling_week ? ` · every other week (week ${sched.recycling_week}) — the city calendar says which week is current` : ''}</span>${o && o.shifted ? `<span class="tsub">holiday change: regular ${md(o.base)} → ${md(o.d)}</span>` : ''}${o && o.unconfirmed ? `<span class="tsub">holiday week — the city's rule doesn't say where this pickup moves; check the city notice</span>` : ''}</span><span class="when">${o ? rel(o.d) : '—'}</span></div>`; }).join('');
     const week = Array.from({ length: 7 }, (_, i) => { const d = addDays(now, i); const ks = [...new Set(occ.filter(o => iso(o.d) === iso(d)).map(o => o.k))]; return `<div class="day${i === 0 ? ' today' : ''}"><span class="dow">${i === 0 ? 'Today' : DAYS[d.getDay()]}</span><span class="dnum">${d.getDate()}</span><span class="dots">${ks.map(k => `<span class="tag" style="background:${TAG[k]}">${LABEL[k].split(' ')[0]}</span>`).join('')}</span></div>`; }).join('');
     if (root) {
       leaveLanding();
@@ -85,7 +94,7 @@
   function ics(sched, name) {
     const L = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//TrashWeek//EN', 'CALSCALE:GREGORIAN', `X-WR-CALNAME:${name} pickup days`];
     const tag = name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-    for (const o of occurrences(sched, now, 120)) { const y = iso(o.d).replace(/-/g, ''), n = iso(addDays(o.d, 1)).replace(/-/g, ''); L.push('BEGIN:VEVENT', `UID:${tag}-${iso(o.base).replace(/-/g, '')}-${o.k}@trashweek`, `DTSTAMP:${y}T000000Z`, `DTSTART;VALUE=DATE:${y}`, `DTEND;VALUE=DATE:${n}`, `SUMMARY:${LABEL[o.k]} pickup${o.shifted ? ' (holiday change)' : ''}`, `DESCRIPTION:${name}${!sched.__events && !holVerified() ? ' — holiday changes not verified, regular weekdays only' : ''}`, 'END:VEVENT'); }
+    for (const o of occurrences(sched, now, 120)) { const y = iso(o.d).replace(/-/g, ''), n = iso(addDays(o.d, 1)).replace(/-/g, ''); L.push('BEGIN:VEVENT', `UID:${tag}-${iso(o.base).replace(/-/g, '')}-${o.k}@trashweek`, `DTSTAMP:${y}T000000Z`, `DTSTART;VALUE=DATE:${y}`, `DTEND;VALUE=DATE:${n}`, `SUMMARY:${LABEL[o.k]} pickup${o.shifted ? ' (holiday change)' : ''}${o.unconfirmed ? ' (holiday week — date not confirmed)' : ''}`, `DESCRIPTION:${name}${!sched.__events && !holVerified() ? ' — holiday changes not verified, regular weekdays only' : ''}`, 'END:VEVENT'); }
     L.push('END:VCALENDAR');
     return 'data:text/calendar;charset=utf-8,' + encodeURIComponent(L.join('\r\n'));
   }
