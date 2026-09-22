@@ -171,7 +171,10 @@ def main():
         for z in c["zones"]:
             write(f"{c['slug']}/zone/{z['slug']}/", "zone.html", c=c, z=z)
 
-    write_sitemaps(urls, origin, base, today.isoformat())
+    # lastmod 없음: 빌드했다고 내용이 바뀐 것이 아니다. 구글은 lastmod 를 "consistently and
+    # verifiably accurate" 할 때만 쓴다고 문서에 적어 두었고, 매 빌드마다 전 URL 에 오늘을 찍으면
+    # 그 조건을 못 맞춘다. 정직하게 댈 날짜가 생기면 그때 URL 별로 넣는다.
+    write_sitemaps(urls, origin, base)
     (DIST / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {origin}{base}sitemap.xml\n")
     (DIST / "404.html").write_text(env.get_template("404.html").render(path="404"))
     (DIST / ".nojekyll").write_text("")
