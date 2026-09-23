@@ -46,6 +46,36 @@ def shift_text(iso, policy, overrides):
     return "Not verified for this city — check the official notice"
 
 
+def ordinal(n):
+    return f"{n}{'th' if 10 <= n % 100 <= 20 else {1: 'st', 2: 'nd', 3: 'rd'}.get(n % 10, 'th')}"
+
+
+def median(xs):
+    xs = sorted(xs)
+    return xs[len(xs) // 2] if len(xs) % 2 else (xs[len(xs) // 2 - 1] + xs[len(xs) // 2]) / 2
+
+
+def compare_cities(cities):
+    """City hub 'How X compares': numbers that differ per city, measured against every other city on the site."""
+    zc = [c for c in cities if c["zones"]]
+    by_n = sorted(zc, key=lambda c: -len(c["zones"]))
+    twice_cities = [c for c in zc if sum(1 for z in c["zones"] if len(z["schedule"]["trash"]) >= 2) / len(c["zones"]) >= 0.5]
+    verified = [c for c in cities if c["holidays"]["policy"] != "unknown"]
+    med_h = median([len(c["holidays"]["observed"]) for c in verified]) if verified else None
+    for c in zc:
+        n = len(c["zones"])
+        top, top_n = c["day_counts"].most_common(1)[0]
+        twice = sum(1 for z in c["zones"] if len(z["schedule"]["trash"]) >= 2)
+        rec = sum(1 for z in c["zones"] if z["schedule"].get("recycling"))
+        c["cmp"] = {
+            "n": n, "rank": (f"{ordinal(by_n.index(c) + 1)} most" if by_n.index(c) < len(zc) / 2 else f"{ordinal(len(zc) - by_n.index(c))} fewest"), "of": len(zc), "med_n": median([len(x["zones"]) for x in zc]),
+            "top": LONG[top], "top_pct": round(100 * top_n / n), "no_days": [LONG[d] for d in DAYS[:5] if not c["day_counts"][d]],
+            "twice_pct": round(100 * twice / n), "twice_cities": len(twice_cities),
+            "rec_pct": round(100 * rec / n), "ab_weeks": any(z["schedule"].get("recycling_week") for z in c["zones"]),
+            "hol_n": len(c["holidays"]["observed"]), "med_h": med_h, "n_verified": len(verified),
+        }
+
+
 def days_text(days):
     return " & ".join(LONG[d] for d in days) if days else "—"
 
@@ -122,6 +152,7 @@ def main():
         c["zones"].sort(key=lambda z: (DAYS.index(z["schedule"]["trash"][0]) if z["schedule"]["trash"] else 9, z["zone"]))
         cities.append(c)
     cities.sort(key=lambda c: c["city"])
+    compare_cities(cities)
 
     h = hashlib.md5()
     for f in sorted((ROOT / "static").glob("*")):
