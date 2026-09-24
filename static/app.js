@@ -10,8 +10,8 @@
   const COLOR = { trash: '#3182f6', recycling: '#00b06f', yard: '#8b5cf6', bulk: '#ff7a00' };
   const TAG = { ...COLOR, recycling: '#00885a', bulk: '#d95d00' };
   // Holiday state per city: verified policy from data/holidays.json, or 'unknown' → regular weekdays only, flagged as unverified (never a guessed federal list)
-  let HOL = { policy: 'unknown', dates: new Set(), overrides: new Map() };
-  const setHol = (list, hol) => { const h = hol || {}; HOL = { policy: h.policy || (list && list.length ? 'next_day' : 'unknown'), dates: new Set(h.dates || list || []), overrides: new Map((h.overrides || []).map(([a, b]) => [a, b])) }; };
+  let HOL = { policy: 'unknown', dates: new Set(), overrides: new Map(), pending: new Set() };
+  const setHol = (list, hol) => { const h = hol || {}; HOL = { policy: h.policy || (list && list.length ? 'next_day' : 'unknown'), dates: new Set(h.dates || list || []), overrides: new Map((h.overrides || []).map(([a, b]) => [a, b])), drop2: !!h.drop2, pending: new Set(h.pending || []) }; };
   const holVerified = () => HOL.policy !== 'unknown';
   const now = new Date(); now.setHours(0, 0, 0, 0);
   const addDays = (d, n) => { const x = new Date(d); x.setDate(x.getDate() + n); return x; };
@@ -21,7 +21,9 @@
   // Apply the city's verified holiday policy to one regular pickup date. Returns the actual date (or null = no pickup that turn).
   function applyHoliday(d) {
     const key = iso(d);
-    if (HOL.policy === 'overrides') { const to = HOL.overrides.get(key); return to ? new Date(to + 'T00:00:00') : d; }
+    // a holiday the city has not posted yet, earlier in the same week (or that day): keep the regular day, flagged
+    for (let i = 0; i <= (d.getDay() + 6) % 7; i++) if (HOL.pending.has(iso(addDays(d, -i)))) return { unconfirmed: true };
+    if (HOL.policy === 'overrides') { const to = HOL.overrides.get(key); return to ? new Date(to + 'T00:00:00') : HOL.dates.has(key) ? { unconfirmed: true } : d; }  // listed holiday without a published make-up day
     if (HOL.policy === 'skip') return HOL.dates.has(key) ? null : d;
     if (HOL.policy === 'next_day') {
       const dow = d.getDay(); if (dow === 0) return d;
@@ -30,7 +32,7 @@
       const to = addDays(d, 1);
       // Two holidays in one week (Richmond 11/25–27), or the slide lands on another holiday: the city's one-line rule
       // does not say where that pickup goes — show the regular day as unconfirmed rather than invent a date.
-      if (n > 1 || HOL.dates.has(iso(to))) return { unconfirmed: true };
+      if (n > 1 || HOL.dates.has(iso(to)) || HOL.pending.has(iso(to))) return { unconfirmed: true };
       return to;
     }
     return d;  // unknown: regular weekday, flagged unverified in the UI
@@ -42,7 +44,9 @@
     if (sched.__events) return sched.__events.filter(o => o.d >= from && o.d < end).map(o => ({ k: o.k, d: o.d, shifted: 0, base: o.d }));
     for (let i = -7; i < n; i++) {
       const base = addDays(from, i);
-      for (const k of KINDS) if (sched[k] && on(sched[k], base)) { let d = applyHoliday(base), unconfirmed = 0; if (d && d.unconfirmed) { d = base; unconfirmed = 1; } if (!d || d < from || d >= end) continue; out.push({ k, d, shifted: iso(d) !== iso(base) ? 1 : 0, unconfirmed, base }); }
+      // Philadelphia: twice-weekly areas get no second trash pickup in a week with a city holiday (Mon–Sat of that week)
+      const mon = addDays(base, -((base.getDay() + 6) % 7)), holWeek = HOL.drop2 && [0, 1, 2, 3, 4, 5].some(i => HOL.dates.has(iso(addDays(mon, i))));
+      for (const k of KINDS) if (sched[k] && on(sched[k], base)) { if (holWeek && k === 'trash' && sched.trash.length > 1 && DAYS[base.getDay()] === sched.trash[1]) continue; let d = applyHoliday(base), unconfirmed = 0; if (d && d.unconfirmed) { d = base; unconfirmed = 1; } if (!d || d < from || d >= end) continue; out.push({ k, d, shifted: iso(d) !== iso(base) ? 1 : 0, unconfirmed, base }); }
     }
     return out.sort((a, b) => a.d - b.d);
   }

@@ -26,22 +26,33 @@ HOLIDAYS_2026 = [("2026-01-01", "New Year's Day"), ("2026-01-19", "Martin Luther
                  ("2026-12-25", "Christmas Day"), ("2027-01-01", "New Year's Day")]
 
 
-def shift_text(iso, policy, overrides):
+def shift_text(iso, policy, overrides, observed=(), pending=()):
     """What a holiday does to that week's routes, in the words a resident needs: 'Thursday routes run Friday, Friday routes run Saturday'."""
     d = dt.date.fromisoformat(iso)
     wd = d.weekday()
+    if policy == "no_change":
+        return "Collection runs as usual"
     if policy == "overrides":
         to = dict(overrides).get(iso)
+        # knock-on moves the city lists for later days of the same week (Waco 11/11: Wed→Thu and Thu→Fri)
+        later = [(a, b) for a, b in overrides if a != iso and dt.date.fromisoformat(a) > d and dt.date.fromisoformat(a).isocalendar()[:2] == d.isocalendar()[:2]]
+        also = "".join(f", {LONG[DAYS[dt.date.fromisoformat(a).weekday()]]} pickup moves to {LONG[DAYS[dt.date.fromisoformat(b).weekday()]]} {dt.date.fromisoformat(b).strftime('%b')} {dt.date.fromisoformat(b).day}" for a, b in sorted(later))
         if to:
             t = dt.date.fromisoformat(to)
-            return f"{LONG[DAYS[wd]]} pickup moves to {LONG[DAYS[t.weekday()]]} {t.strftime('%b')} {t.day}"
+            return f"{LONG[DAYS[wd]]} pickup moves to {LONG[DAYS[t.weekday()]]} {t.strftime('%b')} {t.day}{also}"
         return f"No pickup on {LONG[DAYS[wd]]}; see the official notice for the make-up day"
     if wd >= 5:
         return f"Falls on a {LONG[DAYS[wd]]} — weekday routes are not affected"
     if policy == "skip":
         return f"{LONG[DAYS[wd]]} pickup is skipped; the next pickup is on your regular day"
     if policy == "next_day":
-        moves = [f"{LONG[DAYS[i]]} routes run {LONG[DAYS[i + 1]]}" for i in range(wd, 5)]
+        # two weekday holidays in one week (Thanksgiving Thu+Fri): a one-line slide rule doesn't say where pickups land — same as app.js 'unconfirmed'
+        week = [dt.date.fromisoformat(o) for o in observed]
+        if any(o != d and o.isocalendar()[:2] == d.isocalendar()[:2] and o.weekday() < 5 for o in week):
+            return "Two holidays this week — check the official notice for the make-up days"
+        # a slide that lands on a not-yet-posted holiday (Madison 12/31 → Fri 1/1/2027) is not confirmed
+        moves = [f"{LONG[DAYS[i]]} routes run {LONG[DAYS[i + 1]]}" if not {(d + dt.timedelta(days=i - wd)).isoformat(), (d + dt.timedelta(days=i + 1 - wd)).isoformat()} & set(pending)
+                 else f"{LONG[DAYS[i]]} routes: not confirmed — a holiday the city hasn't posted yet" for i in range(wd, 5)]
         return ", ".join(moves)
     return "Not verified for this city — check the official notice"
 
@@ -61,7 +72,7 @@ def compare_cities(cities):
     by_n = sorted(zc, key=lambda c: -len(c["zones"]))
     twice_cities = [c for c in zc if sum(1 for z in c["zones"] if len(z["schedule"]["trash"]) >= 2) / len(c["zones"]) >= 0.5]
     verified = [c for c in cities if c["holidays"]["policy"] != "unknown"]
-    med_h = median([len(c["holidays"]["observed"]) for c in verified]) if verified else None
+    med_h = median([len(c["holidays"]["obs26"]) for c in verified]) if verified else None
     for c in zc:
         n = len(c["zones"])
         top, top_n = c["day_counts"].most_common(1)[0]
@@ -72,7 +83,7 @@ def compare_cities(cities):
             "top": LONG[top], "top_pct": round(100 * top_n / n), "no_days": [LONG[d] for d in DAYS[:5] if not c["day_counts"][d]],
             "twice_pct": round(100 * twice / n), "twice_cities": len(twice_cities),
             "rec_pct": round(100 * rec / n), "ab_weeks": any(z["schedule"].get("recycling_week") for z in c["zones"]),
-            "hol_n": len(c["holidays"]["observed"]), "med_h": med_h, "n_verified": len(verified),
+            "hol_n": len(c["holidays"]["obs26"]), "med_h": med_h, "n_verified": len(verified),
         }
 
 
@@ -130,14 +141,26 @@ def main():
         c["aliases"] = reg_aliases.get(c["slug"], [])
         # policy: next_day (rest of the week slides one day) · skip (that pickup is missed, next regular day) · overrides (explicit original→actual dates) · unknown (not verified: no shifting)
         c["holidays"] = {"observed": h.get("observed") or [], "rule": h.get("rule") or "", "source": h.get("source") or c.get("holiday_url"), "checked": h.get("checked"),
-                         "policy": h.get("policy") or ("next_day" if h.get("observed") else "unknown"), "overrides": h.get("overrides") or []}
-        c["hol"] = {"policy": c["holidays"]["policy"], "dates": [d for d, _ in c["holidays"]["observed"]], "overrides": c["holidays"]["overrides"]}
+                         "policy": h.get("policy") or ("next_day" if h.get("observed") else "unknown"), "overrides": h.get("overrides") or [],
+                         "drop2": bool(h.get("no_second_in_holiday_week"))}
+        c["holidays"]["obs26"] = [o for o in c["holidays"]["observed"] if o[0].startswith("2026")]   # "N holidays in 2026" must not count Jan 2027 rows
+        c["hol"] = {"policy": c["holidays"]["policy"], "dates": [d for d, _ in c["holidays"]["observed"]], "overrides": c["holidays"]["overrides"], "drop2": bool(h.get("no_second_in_holiday_week")),
+                    "pending": [d for d, _ in h.get("pending") or []]}
+        # New Year's 2027 falls inside the 120-day calendar window: a city that observed 1/1/2026 but hasn't posted 2027 gets it as pending, not a confirmed normal pickup
+        obs_d = {d for d, _ in c["holidays"]["observed"]}
+        if "2026-01-01" in obs_d and "2027-01-01" not in obs_d and "2027-01-01" not in c["hol"]["pending"]:
+            h = {**h, "pending": (h.get("pending") or []) + [["2027-01-01", "New Year's Day"]]}
+            c["hol"]["pending"].append("2027-01-01")
         pol = c["holidays"]["policy"]
         rows = c["holidays"]["observed"] if c["holidays"]["observed"] else HOLIDAYS_2026
-        c["hol_rows"] = [{"iso": d, "name": n, "wd": LONG[DAYS[dt.date.fromisoformat(d).weekday()]], "shift": shift_text(d, pol, c["holidays"]["overrides"]),
+        c["hol_rows"] = [{"iso": d, "name": n, "wd": LONG[DAYS[dt.date.fromisoformat(d).weekday()]], "shift": shift_text(d, pol, c["holidays"]["overrides"], [o for o, _ in c["holidays"]["observed"]], c["hol"]["pending"]),
                           "weekend": dt.date.fromisoformat(d).weekday() >= 5} for d, n in rows]
-        c["hol_next"] = next((r for r in c["hol_rows"] if r["iso"] >= today.isoformat()), None)
-        c["hol_this_week"] = next((r for r in c["hol_rows"] if today - dt.timedelta(days=today.weekday()) <= dt.date.fromisoformat(r["iso"]) <= today + dt.timedelta(days=6 - today.weekday())), None)
+        # pending: a holiday the city usually observes but has not posted for this year yet (Detroit 12/25) — shown, never applied as confirmed
+        c["hol_rows"] = sorted(c["hol_rows"] + [{"iso": d, "name": n, "wd": LONG[DAYS[dt.date.fromisoformat(d).weekday()]], "weekend": dt.date.fromisoformat(d).weekday() >= 5, "pending": True,
+                                                  "shift": "Not posted by the city yet — check the official notice closer to the date"} for d, n in h.get("pending") or []], key=lambda r: r["iso"])
+        # no_change cities: the federal rows are shown for reference only — never a "next holiday that affects pickup" or "Delayed"
+        c["hol_next"] = None if pol == "no_change" else next((r for r in c["hol_rows"] if r["iso"] >= today.isoformat()), None)
+        c["hol_this_week"] = None if pol == "no_change" else next((r for r in c["hol_rows"] if today - dt.timedelta(days=today.weekday()) <= dt.date.fromisoformat(r["iso"]) <= today + dt.timedelta(days=6 - today.weekday())), None)
         c["kinds"] = [k for k in ("trash", "recycling", "yard", "bulk") if any(z["schedule"].get(k) for z in c["zones"])]
         c["day_counts"] = Counter(d for z in c["zones"] for d in z["schedule"]["trash"])
         for z in c["zones"]:

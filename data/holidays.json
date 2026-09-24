@@ -440,5 +440,621 @@
   "source": "https://www.cityoffortwayne.org/publicworks/solid-waste-management/holiday-schedule.html",
   "checked": "2026-09-17",
   "policy": "next_day"
+ },
+ "cambridge": {
+  "observed": [
+   [
+    "2026-01-01",
+    "New Year's Day"
+   ],
+   [
+    "2026-01-19",
+    "Martin Luther King Jr. Day"
+   ],
+   [
+    "2026-02-16",
+    "Presidents' Day"
+   ],
+   [
+    "2026-04-20",
+    "Patriots' Day"
+   ],
+   [
+    "2026-05-25",
+    "Memorial Day"
+   ],
+   [
+    "2026-06-19",
+    "Juneteenth"
+   ],
+   [
+    "2026-09-07",
+    "Labor Day"
+   ],
+   [
+    "2026-10-12",
+    "Indigenous Peoples' Day"
+   ],
+   [
+    "2026-11-11",
+    "Veterans Day"
+   ],
+   [
+    "2026-11-26",
+    "Thanksgiving"
+   ],
+   [
+    "2026-12-25",
+    "Christmas Day"
+   ]
+  ],
+  "rule": "Weekly Collections (Note: One day behind schedule following a holiday.)",
+  "source": "https://www.cambridgema.gov/services/curbsidecollections",
+  "checked": "2026-09-24",
+  "policy": "next_day"
+ },
+ "los-angeles": {
+  "observed": [
+   [
+    "2026-01-01",
+    "New Year's Day"
+   ],
+   [
+    "2026-09-07",
+    "Labor Day"
+   ],
+   [
+    "2026-11-26",
+    "Thanksgiving Day"
+   ],
+   [
+    "2026-12-25",
+    "Christmas Day"
+   ]
+  ],
+  "rule": "Most holidays do not change your collection day. For most of the year, you should put your bins out on your normal day. However, for four major holidays in 2026, our Los Angeles Sanitation and Environment (LASAN) crews take a break, which means your pickup will be pushed back by one day. When a major holiday falls on a weekday, everyone’s service is \"bumped\" one day later for the rest of that week.",
+  "source": "https://sanitation.lacity.gov/services/lasan-holiday-collection-delays",
+  "checked": "2026-09-24",
+  "policy": "next_day"
+ },
+ "baton-rouge": {
+  "observed": [
+   [
+    "2026-01-01",
+    "New Year’s Day"
+   ],
+   [
+    "2026-11-26",
+    "Thanksgiving Day"
+   ],
+   [
+    "2026-12-25",
+    "Christmas Day"
+   ],
+   [
+    "2027-01-01",
+    "New Year’s Day"
+   ]
+  ],
+  "rule": "Solid waste collection will not occur on New Year’s Day, Thanksgiving Day, or Christmas Day. If the holiday occurs on a collection day, services will be provided on the next scheduled collection day unless notified otherwise.",
+  "source": "https://www.brla.gov/337/Garbage-Collection",
+  "checked": "2026-09-24",
+  "policy": "skip"
+ },
+ "cedar-rapids": {
+  "observed": [
+   [
+    "2026-01-01",
+    "New Year's Day"
+   ],
+   [
+    "2026-05-25",
+    "Memorial Day"
+   ],
+   [
+    "2026-09-07",
+    "Labor Day"
+   ],
+   [
+    "2026-11-26",
+    "Thanksgiving Day"
+   ],
+   [
+    "2026-12-25",
+    "Christmas Day"
+   ],
+   [
+    "2027-01-01",
+    "New Year's Day"
+   ]
+  ],
+  "rule": "When holidays fall during the week, it may postpone your collection. View our calendar and see if an upcoming holiday will change your collection.",
+  "source": "https://www.cedar-rapids.org/residents/utilities/collection.php",
+  "checked": "2026-09-24",
+  "policy": "next_day"
+ },
+ "denver": {
+  "observed": [
+   [
+    "2026-01-01",
+    "New Year's Day"
+   ],
+   [
+    "2026-05-25",
+    "Memorial Day"
+   ],
+   [
+    "2026-07-03",
+    "Independence Day (Observed)"
+   ],
+   [
+    "2026-09-07",
+    "Labor Day"
+   ],
+   [
+    "2026-11-26",
+    "Thanksgiving Day"
+   ],
+   [
+    "2026-12-25",
+    "Christmas Day"
+   ]
+  ],
+  "rule": "When service falls on or after an observed holiday, your collection will be delayed one day for the rest of that week only (for example, for a Monday holiday, collections will be on Tuesday, Tuesday's collection on Wednesday, etc., with Thursday's collections on Friday for that week only). There will be no delayed scheduled for working holidays.",
+  "source": "https://www.denvergov.org/My-Property/Recycle-Compost-Trash/Trash-Recycle-Compost-Schedules-and-Reminders",
+  "checked": "2026-09-24",
+  "policy": "next_day"
+ },
+ "rancho-cucamonga": {
+  "observed": [
+   [
+    "2026-01-01",
+    "New Year's Day"
+   ],
+   [
+    "2026-05-25",
+    "Memorial Day"
+   ],
+   [
+    "2026-09-07",
+    "Labor Day"
+   ],
+   [
+    "2026-11-26",
+    "Thanksgiving Day"
+   ],
+   [
+    "2026-12-25",
+    "Christmas Day"
+   ],
+   [
+    "2027-01-01",
+    "New Year's Day"
+   ]
+  ],
+  "rule": "When the holiday falls on a weekday, collections for the remainder of the week will be delayed by one day. There is no service interruption or delay when the holiday falls on a Saturday or Sunday.",
+  "source": "https://www.burrtec.com/wp-content/uploads/2022/04/Rancho-Cucamonga-January-2026-5F23-FLAT.pdf",
+  "checked": "2026-09-24",
+  "policy": "next_day"
+ },
+ "baltimore": {
+  "observed": [
+   [
+    "2026-01-01",
+    "New Year's Day"
+   ],
+   [
+    "2026-04-03",
+    "Good Friday"
+   ],
+   [
+    "2026-06-19",
+    "Juneteenth"
+   ],
+   [
+    "2026-11-03",
+    "Election Day"
+   ],
+   [
+    "2026-11-11",
+    "Veterans Day"
+   ],
+   [
+    "2026-11-26",
+    "Thanksgiving"
+   ],
+   [
+    "2026-12-25",
+    "Christmas Day"
+   ]
+  ],
+  "rule": "",
+  "source": "https://www.baltimorecity.gov/publicworks/dpw-2026-calendar",
+  "checked": "2026-09-24",
+  "policy": "overrides",
+  "overrides": [
+   [
+    "2026-01-01",
+    "2026-01-03"
+   ],
+   [
+    "2026-04-03",
+    "2026-04-04"
+   ],
+   [
+    "2026-06-19",
+    "2026-06-20"
+   ],
+   [
+    "2026-11-03",
+    "2026-11-07"
+   ],
+   [
+    "2026-11-11",
+    "2026-11-14"
+   ],
+   [
+    "2026-11-26",
+    "2026-11-28"
+   ],
+   [
+    "2026-12-25",
+    "2026-12-26"
+   ]
+  ]
+ },
+ "corpus-christi": {
+  "observed": [
+   [
+    "2026-01-01",
+    "New Year's Day"
+   ],
+   [
+    "2026-01-19",
+    "Martin Luther King Jr. Day"
+   ],
+   [
+    "2026-06-19",
+    "Juneteenth"
+   ],
+   [
+    "2026-11-26",
+    "Thanksgiving Day"
+   ],
+   [
+    "2026-12-25",
+    "Christmas Day"
+   ]
+  ],
+  "rule": "There will be no collection on the following holidays. Please note alternate collection dates. Solid Waste Services will continue as scheduled for all other federal holidays.",
+  "source": "https://www.corpuschristitx.gov/media/0ezhek1l/sws-guide-english-2026-sm.pdf",
+  "checked": "2026-09-24",
+  "policy": "overrides",
+  "overrides": [
+   [
+    "2026-01-01",
+    "2026-01-03"
+   ],
+   [
+    "2026-01-19",
+    "2026-01-17"
+   ],
+   [
+    "2026-06-19",
+    "2026-06-20"
+   ],
+   [
+    "2026-11-26",
+    "2026-11-28"
+   ],
+   [
+    "2026-12-25",
+    "2026-12-26"
+   ]
+  ]
+ },
+ "tucson": {
+  "observed": [
+   [
+    "2026-01-01",
+    "New Year's Day"
+   ],
+   [
+    "2026-11-26",
+    "Thanksgiving"
+   ],
+   [
+    "2026-12-25",
+    "Christmas Day"
+   ]
+  ],
+  "rule": "The only dates in 2026 that will have delayed service are New Year's Day, Thanksgiving and Christmas.",
+  "source": "https://www.tucsonaz.gov/Departments/Environmental-Services/Residential-Services/Holiday-Collection-Schedule",
+  "checked": "2026-09-24",
+  "policy": "next_day"
+ },
+ "philadelphia": {
+  "observed": [
+   [
+    "2026-01-01",
+    "New Year's Day"
+   ],
+   [
+    "2026-01-19",
+    "Martin Luther King, Jr. Day"
+   ],
+   [
+    "2026-02-16",
+    "Presidents' Day"
+   ],
+   [
+    "2026-04-03",
+    "Good Friday"
+   ],
+   [
+    "2026-05-25",
+    "Memorial Day"
+   ],
+   [
+    "2026-06-19",
+    "Juneteenth"
+   ],
+   [
+    "2026-07-04",
+    "Independence Day"
+   ],
+   [
+    "2026-09-07",
+    "Labor Day"
+   ],
+   [
+    "2026-10-12",
+    "Columbus Day/Indigenous Peoples' Day"
+   ],
+   [
+    "2026-11-11",
+    "Veterans Day"
+   ],
+   [
+    "2026-11-26",
+    "Thanksgiving"
+   ],
+   [
+    "2026-11-27",
+    "Thanksgiving Friday"
+   ],
+   [
+    "2026-12-25",
+    "Christmas Day"
+   ]
+  ],
+  "rule": "Trash and recyclables are not collected on City holidays. Trash and recycling collection will be one day behind schedule for the rest of the week after a holiday.",
+  "source": "https://www.phila.gov/city-holidays-and-closures/",
+  "checked": "2026-09-24",
+  "policy": "next_day",
+  "no_second_in_holiday_week": true
+ },
+ "roseville": {
+  "observed": [],
+  "rule": "Garbage and green waste pick up still occurs on holidays.",
+  "source": "https://www.roseville.ca.gov/Documents/Environmental%20Utilities/At%20Your%20Service/Trash%20and%20Recycling/EU_SW_Green_Waste_Calendar_2026_DoubleSided_4x9.pdf",
+  "checked": "2026-09-24",
+  "policy": "no_change"
+ },
+ "charlotte": {
+  "observed": [
+   [
+    "2026-01-19",
+    "Martin Luther King Jr. Day"
+   ],
+   [
+    "2026-05-25",
+    "Memorial Day"
+   ],
+   [
+    "2026-09-07",
+    "Labor Day"
+   ],
+   [
+    "2026-11-26",
+    "Thanksgiving"
+   ],
+   [
+    "2026-12-25",
+    "Christmas"
+   ]
+  ],
+  "rule": "Starting in January 2026, Martin Luther King Jr. Day, Memorial Day and Labor Day will follow an updated collection pattern. There will be no collection on the holiday (Monday). Crews will begin service on Tuesday and work through Friday to complete all routes. No Saturday collection will occur during these holiday weeks. No yard waste will be collected during these weeks so crews can focus on completing garbage and recycling routes. Residents should set their carts out on their normal collection day and leave them at the curb until they are collected. Pickup may occur later in the week than usual. What’s Staying the Same Thanksgiving and Christmas will continue to operate on a one-day delay, consistent with previous years: During Thanksgiving week, Thursday collection will be serviced Friday and Friday collection will be serviced Saturday. During Christmas week, Friday collection will be serviced Saturday.",
+  "source": "https://www.charlottenc.gov/City-News/Solid-Waste-Services-Announces-2026-Holiday-Collection-Schedule",
+  "checked": "2026-09-24",
+  "policy": "overrides",
+  "overrides": [
+   [
+    "2026-11-26",
+    "2026-11-27"
+   ],
+   [
+    "2026-11-27",
+    "2026-11-28"
+   ],
+   [
+    "2026-12-25",
+    "2026-12-26"
+   ]
+  ]
+ },
+ "fresno": {
+  "observed": [
+   [
+    "2026-11-26",
+    "Thanksgiving Day"
+   ],
+   [
+    "2026-11-27",
+    "Day after Thanksgiving"
+   ],
+   [
+    "2026-12-25",
+    "Christmas Day"
+   ],
+   [
+    "2027-01-01",
+    "New Year’s Day"
+   ]
+  ],
+  "rule": "The Residential Collection Schedule DOES NOT change for the following holidays: Martin Luther King Jr. Day President’s Day Memorial Day Independence Day Labor Day Veterans Day The Residential Collection Schedule DOES change for the following holidays, as outlined below: Thanksgiving Day Day after Thanksgiving Christmas Day New Year’s Day Pickup schedules for these holidays vary depending upon which day of the week the holiday falls.",
+  "source": "https://www.fresno.gov/publicutilities/trash-disposal-recycling/residential-services/",
+  "checked": "2026-09-24",
+  "policy": "overrides",
+  "overrides": [
+   [
+    "2026-11-26",
+    "2026-11-27"
+   ],
+   [
+    "2026-11-27",
+    "2026-11-28"
+   ],
+   [
+    "2026-12-25",
+    "2026-12-26"
+   ],
+   [
+    "2027-01-01",
+    "2027-01-02"
+   ]
+  ]
+ },
+ "waco": {
+  "observed": [
+   [
+    "2026-01-01",
+    "New Year’s Day"
+   ],
+   [
+    "2026-01-19",
+    "Martin Luther King, Jr. Day"
+   ],
+   [
+    "2026-04-03",
+    "Spring Holiday"
+   ],
+   [
+    "2026-05-25",
+    "Memorial Day"
+   ],
+   [
+    "2026-06-19",
+    "Juneteenth"
+   ],
+   [
+    "2026-07-03",
+    "Independence Day"
+   ],
+   [
+    "2026-09-07",
+    "Labor Day"
+   ],
+   [
+    "2026-11-11",
+    "Veteran’s Day"
+   ],
+   [
+    "2026-11-26",
+    "Thanksgiving Day"
+   ],
+   [
+    "2026-12-25",
+    "Christmas Day"
+   ],
+   [
+    "2027-01-01",
+    "New Year’s Day"
+   ]
+  ],
+  "rule": "PICKUPS SCHEDULED ON OR AFTER HOLIDAYS WILL SLIDE ONE DAY FORWARD",
+  "source": "https://www.waco-texas.com/Departments/Solid-Waste/Curbside-Pickup-Schedule",
+  "checked": "2026-09-24",
+  "policy": "overrides",
+  "overrides": [
+   [
+    "2026-01-01",
+    "2025-12-31"
+   ],
+   [
+    "2026-01-19",
+    "2026-01-21"
+   ],
+   [
+    "2026-04-03",
+    "2026-04-01"
+   ],
+   [
+    "2026-05-25",
+    "2026-05-27"
+   ],
+   [
+    "2026-06-19",
+    "2026-06-17"
+   ],
+   [
+    "2026-07-03",
+    "2026-07-01"
+   ],
+   [
+    "2026-09-07",
+    "2026-09-09"
+   ],
+   [
+    "2026-11-11",
+    "2026-11-12"
+   ],
+   [
+    "2026-11-12",
+    "2026-11-13"
+   ],
+   [
+    "2026-11-26",
+    "2026-11-27"
+   ]
+  ]
+ },
+ "detroit": {
+  "observed": [
+   [
+    "2026-01-01",
+    "New Years Day"
+   ],
+   [
+    "2026-01-19",
+    "Martin Luther King Day"
+   ],
+   [
+    "2026-05-25",
+    "Memorial Day"
+   ],
+   [
+    "2026-09-07",
+    "Labor Day"
+   ],
+   [
+    "2026-11-26",
+    "Thanksgiving"
+   ]
+  ],
+  "rule": "Collection will be pushed back one day following a holiday. For example, if a holiday is on Tuesday and your normal collection day is Wednesday, you will be serviced on Thursday. Customers who are normally serviced on Friday will be serviced on Saturday.",
+  "source": "https://detroitmi.gov/sites/detroitmi.localhost/files/2023-05/DPW_Collection_2023_Web_042823-1.pdf",
+  "checked": "2026-09-24",
+  "policy": "next_day",
+  "pending": [
+   [
+    "2026-12-25",
+    "Christmas Day"
+   ],
+   [
+    "2027-01-01",
+    "New Year's Day"
+   ]
+  ]
  }
 }
