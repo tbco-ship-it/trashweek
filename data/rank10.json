@@ -7,11 +7,7 @@
     },
     "tucson": {
       "schedule_url": "https://www.tucsonaz.gov/Departments/Environmental-Services/Residential-Services",
-      "holiday_url": "https://www.tucsonaz.gov/Departments/Environmental-Services/Residential-Services/Holiday-Collection-Schedule",
-      "recycling_cycle": {
-        "anchor_monday": "2026-01-05",
-        "anchor_label": "B"
-      }
+      "holiday_url": "https://www.tucsonaz.gov/Departments/Environmental-Services/Residential-Services/Holiday-Collection-Schedule"
     },
     "milwaukee": {
       "schedule_url": "https://city.milwaukee.gov/sanitation/GarbageRecyclingSchedules",

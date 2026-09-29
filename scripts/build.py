@@ -154,8 +154,6 @@ def main():
                          "drop2": bool(h.get("no_second_in_holiday_week"))}
         c["rank10"] = ({**rank10_cities[c["slug"]], "checked": rank10_data["checked"]}
                        if c["slug"] in rank10_cities else None)
-        if c["rank10"]:
-            c["holidays"]["source"] = c["rank10"]["holiday_url"]
         c["holidays"]["obs26"] = [o for o in c["holidays"]["observed"] if o[0].startswith("2026")]   # "N holidays in 2026" must not count Jan 2027 rows
         c["hol"] = {"policy": c["holidays"]["policy"], "dates": [d for d, _ in c["holidays"]["observed"]], "overrides": c["holidays"]["overrides"], "drop2": bool(h.get("no_second_in_holiday_week")),
                     "pending": [d for d, _ in h.get("pending") or []]}
