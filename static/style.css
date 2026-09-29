@@ -684,3 +684,7 @@ button.next{appearance:none;-webkit-appearance:none;border:0;font-family:inherit
 .tbl.hol td[data-l]:not([data-l=""])::before{content:" · " attr(data-l) " ";color:var(--muted)}
 .tbl.hol td:empty::before{content:none}
 }
+.rank-answer{padding:16px 18px;margin:14px 0 20px}
+.rank-answer .sheet-label{margin-bottom:4px;text-transform:uppercase;letter-spacing:.05em}
+.rank-answer .sheet-title{font-size:1.02rem;margin:.15em 0 .1em}
+.rank-answer .sheet-text{font-size:.9rem;margin-top:.5em}

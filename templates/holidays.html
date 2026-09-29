@@ -10,6 +10,7 @@
 <table class="tbl compact"><thead><tr><th>Date</th><th>Holiday</th><th>Day</th></tr></thead><tbody>
 {% for d, name in HOLIDAYS %}<tr><td>{{ d }}</td><td>{{ name }}</td><td class="hday" data-d="{{ d }}"></td></tr>{% endfor %}
 </tbody></table>
+<div class="sec"><div class="sec-h"><h2>Priority city schedules</h2></div><ul class="list">{% for target in rank10_targets %}<li><a href="{{ base }}{{ target.path }}">{{ target.label }}</a></li>{% endfor %}</ul></div>
 <div class="sec"><div class="sec-h"><h2>Holiday rules by city <span class="muted small">{{ cities|rejectattr('holidays.policy', 'equalto', 'unknown')|list|length }} verified of {{ cities|length }}</span></h2></div>
 <div class="tbl-wrap"><table class="tbl compact hol"><thead><tr><th>City</th><th>Holidays observed 2026</th><th>Rule</th><th>Next</th></tr></thead><tbody>
 {% for c in cities|sort(attribute='city')|sort(attribute='holidays.observed', reverse=True) %}<tr><td><a href="{{ base }}{{ c.slug }}/holidays/">{{ c.city }}, {{ c.state }}</a><br><small class="muted">{{ c.provider }}</small></td>

@@ -24,6 +24,7 @@ HOLIDAYS_2026 = [("2026-01-01", "New Year's Day"), ("2026-01-19", "Martin Luther
                  ("2026-05-25", "Memorial Day"), ("2026-06-19", "Juneteenth"), ("2026-07-03", "Independence Day (observed)"), ("2026-07-04", "Independence Day"),
                  ("2026-09-07", "Labor Day"), ("2026-10-12", "Columbus Day"), ("2026-11-11", "Veterans Day"), ("2026-11-26", "Thanksgiving Day"),
                  ("2026-12-25", "Christmas Day"), ("2027-01-01", "New Year's Day")]
+RANK10_SLUGS = {"philadelphia", "tucson", "milwaukee", "madison", "honolulu", "seattle", "roseville", "baton-rouge", "cambridge"}
 
 
 def shift_text(iso, policy, overrides, observed=(), pending=()):
@@ -134,6 +135,14 @@ def main():
 
     reg_aliases = {k: v.get("aliases", []) for k, v in json.loads((ROOT / "data/registry.json").read_text()).items()}
     hol_all = json.loads((ROOT / "data/holidays.json").read_text()) if (ROOT / "data/holidays.json").exists() else {}
+    rank10_data = json.loads((ROOT / "data/rank10.json").read_text())
+    rank10_cities = rank10_data["cities"]
+    rank10_targets = rank10_data["targets"]
+    if set(rank10_cities) != RANK10_SLUGS:
+        raise SystemExit("data/rank10.json must list exactly the nine approved city slugs")
+    expected_target_paths = {f"{slug}/" for slug in RANK10_SLUGS} | {"philadelphia/holidays/"}
+    if {target["path"] for target in rank10_targets} != expected_target_paths or len(rank10_targets) != 10:
+        raise SystemExit("data/rank10.json targets must use only the 10 existing target URLs")
     cities = []
     for f in sorted((ROOT / "data/normalized").glob("*.json")):
         c = json.loads(f.read_text())
@@ -143,6 +152,10 @@ def main():
         c["holidays"] = {"observed": h.get("observed") or [], "rule": h.get("rule") or "", "source": h.get("source") or c.get("holiday_url"), "checked": h.get("checked"),
                          "policy": h.get("policy") or ("next_day" if h.get("observed") else "unknown"), "overrides": h.get("overrides") or [],
                          "drop2": bool(h.get("no_second_in_holiday_week"))}
+        c["rank10"] = ({**rank10_cities[c["slug"]], "checked": rank10_data["checked"]}
+                       if c["slug"] in rank10_cities else None)
+        if c["rank10"]:
+            c["holidays"]["source"] = c["rank10"]["holiday_url"]
         c["holidays"]["obs26"] = [o for o in c["holidays"]["observed"] if o[0].startswith("2026")]   # "N holidays in 2026" must not count Jan 2027 rows
         c["hol"] = {"policy": c["holidays"]["policy"], "dates": [d for d, _ in c["holidays"]["observed"]], "overrides": c["holidays"]["overrides"], "drop2": bool(h.get("no_second_in_holiday_week")),
                     "pending": [d for d, _ in h.get("pending") or []]}
@@ -159,8 +172,20 @@ def main():
         c["hol_rows"] = sorted(c["hol_rows"] + [{"iso": d, "name": n, "wd": LONG[DAYS[dt.date.fromisoformat(d).weekday()]], "weekend": dt.date.fromisoformat(d).weekday() >= 5, "pending": True,
                                                   "shift": "Not posted by the city yet — check the official notice closer to the date"} for d, n in h.get("pending") or []], key=lambda r: r["iso"])
         # no_change cities: the federal rows are shown for reference only — never a "next holiday that affects pickup" or "Delayed"
+        week_start = today - dt.timedelta(days=today.weekday())
+        week_end = week_start + dt.timedelta(days=6)
         c["hol_next"] = None if pol == "no_change" else next((r for r in c["hol_rows"] if r["iso"] >= today.isoformat()), None)
-        c["hol_this_week"] = None if pol == "no_change" else next((r for r in c["hol_rows"] if today - dt.timedelta(days=today.weekday()) <= dt.date.fromisoformat(r["iso"]) <= today + dt.timedelta(days=6 - today.weekday())), None)
+        c["hol_calendar_this_week"] = next((r for r in c["hol_rows"] if week_start <= dt.date.fromisoformat(r["iso"]) <= week_end), None)
+        c["hol_this_week"] = None if pol == "no_change" else c["hol_calendar_this_week"]
+        if c["rank10"] and c["rank10"].get("recycling_cycle") and today.year == 2026:
+            cycle = c["rank10"]["recycling_cycle"]
+            anchor = dt.date.fromisoformat(cycle["anchor_monday"])
+            if week_start >= anchor:
+                next_monday = week_start + dt.timedelta(days=7)
+                if next_monday.year == anchor.year:
+                    next_index = (next_monday - anchor).days // 7
+                    next_label = cycle["anchor_label"] if next_index % 2 == 0 else ("A" if cycle["anchor_label"] == "B" else "B")
+                    c["rank10"]["next_recycling_week"] = {"label": next_label, "date": f"{next_monday.strftime('%B')} {next_monday.day}, {next_monday.year}"}
         c["kinds"] = [k for k in ("trash", "recycling", "yard", "bulk") if any(z["schedule"].get(k) for z in c["zones"])]
         c["day_counts"] = Counter(d for z in c["zones"] for d in z["schedule"]["trash"])
         for z in c["zones"]:
@@ -185,7 +210,7 @@ def main():
     env.filters["days_text"] = days_text
     env.globals.update(site=SITE, base=base, origin=origin, today=today.isoformat(), v=v, adsense_pub=args.adsense_pub,
                        DAYS=DAYS, LONG=LONG, KIND_LABEL=KIND_LABEL, KIND_COLOR=KIND_COLOR, HOLIDAYS=HOLIDAYS_2026, cities=cities,
-                       n_zones=sum(len(c["zones"]) for c in cities))
+                       n_zones=sum(len(c["zones"]) for c in cities), rank10_targets=rank10_targets)
 
     if DIST.exists():
         shutil.rmtree(DIST)

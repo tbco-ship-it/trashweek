@@ -1,0 +1,57 @@
+{
+  "checked": "2026-09-29",
+  "cities": {
+    "philadelphia": {
+      "schedule_url": "https://www.phila.gov/services/trash-recycling-city-upkeep/find-your-trash-and-recycling-collection-day/",
+      "holiday_url": "https://www.phila.gov/services/trash-recycling-city-upkeep/find-your-trash-and-recycling-collection-day/"
+    },
+    "tucson": {
+      "schedule_url": "https://www.tucsonaz.gov/Departments/Environmental-Services/Residential-Services",
+      "holiday_url": "https://www.tucsonaz.gov/Departments/Environmental-Services/Residential-Services/Holiday-Collection-Schedule",
+      "recycling_cycle": {
+        "anchor_monday": "2026-01-05",
+        "anchor_label": "B"
+      }
+    },
+    "milwaukee": {
+      "schedule_url": "https://city.milwaukee.gov/sanitation/GarbageRecyclingSchedules",
+      "holiday_url": "https://city.milwaukee.gov/sanitation/GarbageRecyclingSchedules"
+    },
+    "madison": {
+      "schedule_url": "https://www.cityofmadison.com/streets/trash-recycling",
+      "holiday_url": "https://www.cityofmadison.com/streets/trash-recycling/guidelines/holiday-schedules"
+    },
+    "honolulu": {
+      "schedule_url": "https://www.honolulu.gov/env/ref/curbside-collection-rules/",
+      "holiday_url": "https://www.honolulu.gov/env/ref/curbside-collection-rules/"
+    },
+    "seattle": {
+      "schedule_url": "https://www.seattle.gov/utilities/your-services/collection-and-disposal/your-collection-day/look-up-collection-day",
+      "holiday_url": "https://www.seattle.gov/utilities/your-services/collection-and-disposal/your-collection-day/look-up-collection-day"
+    },
+    "roseville": {
+      "schedule_url": "https://www.roseville.ca.us/residents/trash___greenwaste",
+      "holiday_url": "https://www.roseville.ca.us/residents/trash___greenwaste"
+    },
+    "baton-rouge": {
+      "schedule_url": "https://www.brla.gov/337/Garbage-Collection",
+      "holiday_url": "https://www.brla.gov/337/Garbage-Collection"
+    },
+    "cambridge": {
+      "schedule_url": "https://www.cambridgema.gov/services/curbsidecollections",
+      "holiday_url": "https://www.cambridgema.gov/services/curbsidecollections"
+    }
+  },
+  "targets": [
+    {"path": "philadelphia/", "label": "Philadelphia pickup schedule"},
+    {"path": "tucson/", "label": "Tucson pickup schedule"},
+    {"path": "milwaukee/", "label": "Milwaukee pickup schedule"},
+    {"path": "madison/", "label": "Madison pickup schedule"},
+    {"path": "honolulu/", "label": "Honolulu pickup schedule"},
+    {"path": "seattle/", "label": "Seattle pickup schedule"},
+    {"path": "philadelphia/holidays/", "label": "Philadelphia holiday schedule"},
+    {"path": "roseville/", "label": "Roseville pickup schedule"},
+    {"path": "baton-rouge/", "label": "Baton Rouge pickup schedule"},
+    {"path": "cambridge/", "label": "Cambridge pickup schedule"}
+  ]
+}
