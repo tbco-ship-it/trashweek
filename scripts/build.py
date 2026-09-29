@@ -155,6 +155,9 @@ def main():
         c["rank10"] = ({**rank10_cities[c["slug"]], "checked": rank10_data["checked"]}
                        if c["slug"] in rank10_cities else None)
         c["holidays"]["obs26"] = [o for o in c["holidays"]["observed"] if o[0].startswith("2026")]   # "N holidays in 2026" must not count Jan 2027 rows
+        if c["slug"] == "philadelphia":
+            c["holidays"]["obs26_weekdays"] = [o for o in c["holidays"]["obs26"] if dt.date.fromisoformat(o[0]).weekday() < 5]
+            c["holidays"]["weekday_count26"] = len(c["holidays"]["obs26_weekdays"])
         c["hol"] = {"policy": c["holidays"]["policy"], "dates": [d for d, _ in c["holidays"]["observed"]], "overrides": c["holidays"]["overrides"], "drop2": bool(h.get("no_second_in_holiday_week")),
                     "pending": [d for d, _ in h.get("pending") or []]}
         # New Year's 2027 falls inside the 120-day calendar window: a city that observed 1/1/2026 but hasn't posted 2027 gets it as pending, not a confirmed normal pickup
