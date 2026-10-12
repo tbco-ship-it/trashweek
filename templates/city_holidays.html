@@ -10,6 +10,8 @@
 {% set faq_first_answer = "Possibly — " ~ c.hol_this_week.name ~ " (" ~ c.hol_this_week.wd ~ ", " ~ c.hol_this_week.iso ~ ") falls this week, but " ~ c.city ~ "'s 2026 holiday list has not been confirmed on this site; check the official notice." %}
 {% elif c.hol_this_week and c.hol_this_week.pending %}
 {% set faq_first_answer = "Possibly — " ~ c.hol_this_week.name ~ " (" ~ c.hol_this_week.wd ~ ", " ~ c.hol_this_week.iso ~ ") falls this week, but the city has not posted this year's schedule for it yet; check the official notice." %}
+{% elif c.hol_this_week and c.hol_this_week.skip %}
+{% set faq_first_answer = "Yes — " ~ c.hol_this_week.name ~ " (" ~ c.hol_this_week.wd ~ ", " ~ c.hol_this_week.iso ~ ") is observed this week and there is no pickup that day: the city lists no make-up day." %}
 {% elif c.hol_this_week %}
 {% set faq_first_answer = "Yes — " ~ c.hol_this_week.name ~ " (" ~ c.hol_this_week.wd ~ ", " ~ c.hol_this_week.iso ~ ") is observed this week. " ~ c.hol_this_week.shift ~ "." %}
 {% elif verified %}
@@ -46,7 +48,7 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {"@type": "Question", "name": "Is trash pickup delayed this week in " ~ c.city ~ "?", "acceptedAnswer": {"@type": "Answer", "text": faq_first_answer}},
+    {"@type": "Question", "name": ("Does a holiday change trash pickup this week in " if c.holidays.skip_rows else "Is trash pickup delayed this week in ") ~ c.city ~ "?", "acceptedAnswer": {"@type": "Answer", "text": faq_first_answer}},
     {"@type": "Question", "name": "Which holidays " ~ ("change" if c.holidays.skip_rows else "delay") ~ " trash pickup in " ~ c.city ~ " in 2026?", "acceptedAnswer": {"@type": "Answer", "text": faq_second_answer}}
   ]
 } %}
