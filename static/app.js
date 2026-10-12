@@ -10,8 +10,8 @@
   const COLOR = { trash: '#3182f6', recycling: '#00b06f', yard: '#8b5cf6', bulk: '#ff7a00' };
   const TAG = { ...COLOR, recycling: '#00885a', bulk: '#d95d00' };
   // Holiday state per city: verified policy from data/holidays.json, or 'unknown' → regular weekdays only, flagged as unverified (never a guessed federal list)
-  let HOL = { policy: 'unknown', dates: new Set(), overrides: new Map(), pending: new Set() };
-  const setHol = (list, hol) => { const h = hol || {}; HOL = { policy: h.policy || (list && list.length ? 'next_day' : 'unknown'), dates: new Set(h.dates || list || []), overrides: new Map((h.overrides || []).map(([a, b]) => [a, b])), drop2: !!h.drop2, pending: new Set(h.pending || []) }; };
+  let HOL = { policy: 'unknown', dates: new Set(), overrides: new Map(), skips: new Set(), pending: new Set() };
+  const setHol = (list, hol) => { const h = hol || {}; HOL = { policy: h.policy || (list && list.length ? 'next_day' : 'unknown'), dates: new Set(h.dates || list || []), overrides: new Map((h.overrides || []).map(([a, b]) => [a, b])), skips: new Set(h.skips || []), drop2: !!h.drop2, pending: new Set(h.pending || []) }; };
   const holVerified = () => HOL.policy !== 'unknown';
   const now = new Date(); now.setHours(0, 0, 0, 0);
   const addDays = (d, n) => { const x = new Date(d); x.setDate(x.getDate() + n); return x; };
@@ -23,7 +23,8 @@
     const key = iso(d);
     // a holiday the city has not posted yet, earlier in the same week (or that day): keep the regular day, flagged
     for (let i = 0; i <= (d.getDay() + 6) % 7; i++) if (HOL.pending.has(iso(addDays(d, -i)))) return { unconfirmed: true };
-    if (HOL.policy === 'overrides') { const to = HOL.overrides.get(key); return to ? new Date(to + 'T00:00:00') : HOL.dates.has(key) ? { unconfirmed: true } : d; }  // listed holiday without a published make-up day
+    if (HOL.policy === 'overrides') { if (HOL.skips.has(key)) return null; const to = HOL.overrides.get(key);  // skips = the city lists the day as no-collection and says no make-up day
+      return to ? new Date(to + 'T00:00:00') : HOL.dates.has(key) ? { unconfirmed: true } : d; }  // listed holiday without a published make-up day
     if (HOL.policy === 'skip') return HOL.dates.has(key) ? null : d;
     if (HOL.policy === 'next_day') {
       const dow = d.getDay(); if (dow === 0) return d;

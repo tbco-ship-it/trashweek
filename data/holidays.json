@@ -1110,7 +1110,8 @@
     "New Year's Day"
    ]
   ],
-  "rule": "The 2026 Holiday Collection Schedule lists a no-collection date and a make-up date for each holiday; the make-up day comes before the holiday. Veteran's Day (Nov. 11) has no make-up day.",
+  "rule": "The makeup day precedes the holiday!",
+  "skips": ["2026-11-11"],
   "source": "https://www.lexingtonky.gov/living/waste-collection/about-recycling",
   "checked": "2026-10-12",
   "policy": "overrides",
@@ -1232,7 +1233,9 @@
     "Christmas Day"
    ]
   ],
-  "rule": "City policy says refuse and recycling run one day later during the weeks following Thanksgiving, Christmas, and New Year's Day; Veterans Day is not in that policy list. The 2026 recycling schedule marks Jan. 2–3, Nov. 27–28, and Dec. 26 as one-day delays.",
+  "rule": "We collect refuse and recycling one day later during the weeks following: Thanksgiving, Christmas, New Year’s Day",
+  "dates_source": "https://media-002-us.cdn.govstack.com/grandrapidsmi-us/media/tfgfbej0/2026-recycling-schedule.pdf",
+  "dates_note": "The 2026 recycling schedule marks Jan. 2–3, Nov. 27–28 and Dec. 26 in red as one-day delays; the dates on this page come from it:",
   "source": "https://www.grandrapidsmi.gov/guides/winter-preparedness-guide/",
   "checked": "2026-10-12",
   "policy": "next_day"
@@ -1248,7 +1251,7 @@
     "Christmas Day"
    ]
   ],
-  "rule": "The 2026 Holiday Solid Waste Service Schedule says only Thanksgiving and Christmas change collection: Thursday pickup moves to Saturday, Nov. 28, and Friday pickup moves to Saturday, Dec. 26. All other holiday collections remain on the normal day.",
+  "rule": "Waste collection schedules change only on Thanksgiving Day and Christmas Day, regardless of how many days City offices are closed for the holiday.",
   "source": "https://www.jacksonville.gov/departments/office-of-administrative-services/solid-waste/holiday-schedules",
   "checked": "2026-10-12",
   "policy": "overrides",

@@ -34,6 +34,11 @@ check("phila mon+thu normal week", occurrences({ trash: ["Mon", "Thu"] }, day("2
 // overrides: a listed holiday without a published make-up day is flagged, not shown as a normal pickup (Charlotte MLK)
 setHol(["2026-01-19"], { policy: "overrides", dates: ["2026-01-19"], overrides: [] });
 check("override no pair unconfirmed", occurrences({ trash: ["Mon"] }, day("2026-01-18"), 7).map(o => [iso(o.d), o.unconfirmed]), [["2026-01-19", 1]]);
+// overrides + skips: the city lists the day as no-collection with no make-up day (Lexington Veterans Day Wed 11/11) — no pickup, not "unconfirmed"
+setHol(["2026-11-11"], { policy: "overrides", dates: ["2026-11-11"], overrides: [], skips: ["2026-11-11"] });
+check("skips wed no pickup", occurrences({ trash: ["Wed"] }, day("2026-11-08"), 7).map(o => [iso(o.d), o.unconfirmed]), []);
+check("skips next wed normal", occurrences({ trash: ["Wed"] }, day("2026-11-08"), 14).map(o => [iso(o.d), o.unconfirmed]), [["2026-11-18", 0]]);
+check("skips mon unchanged", occurrences({ trash: ["Mon"] }, day("2026-11-08"), 7).map(o => [iso(o.d), o.unconfirmed]), [["2026-11-09", 0]]);
 // no_change (Roseville): holidays don't move anything
 setHol([], { policy: "no_change", dates: [] });
 check("no_change thanksgiving", occurrences({ trash: ["Thu"] }, day("2026-11-22"), 7).map(o => iso(o.d)), ["2026-11-26"]);

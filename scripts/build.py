@@ -27,13 +27,15 @@ HOLIDAYS_2026 = [("2026-01-01", "New Year's Day"), ("2026-01-19", "Martin Luther
 RANK10_SLUGS = {"philadelphia", "tucson", "milwaukee", "madison", "honolulu", "seattle", "roseville", "baton-rouge", "cambridge"}
 
 
-def shift_text(iso, policy, overrides, observed=(), pending=()):
+def shift_text(iso, policy, overrides, observed=(), pending=(), skips=()):
     """What a holiday does to that week's routes, in the words a resident needs: 'Thursday routes run Friday, Friday routes run Saturday'."""
     d = dt.date.fromisoformat(iso)
     wd = d.weekday()
     if policy == "no_change":
         return "Collection runs as usual"
     if policy == "overrides":
+        if iso in skips:
+            return f"No pickup on {LONG[DAYS[wd]]}; the city lists no make-up day"
         to = dict(overrides).get(iso)
         # knock-on moves the city lists for later days of the same week (Waco 11/11: Wed→Thu and Thu→Fri)
         later = [(a, b) for a, b in overrides if a != iso and dt.date.fromisoformat(a) > d and dt.date.fromisoformat(a).isocalendar()[:2] == d.isocalendar()[:2]]
@@ -151,7 +153,8 @@ def main():
         # policy: next_day (rest of the week slides one day) · skip (that pickup is missed, next regular day) · overrides (explicit original→actual dates) · unknown (not verified: no shifting)
         c["holidays"] = {"observed": h.get("observed") or [], "rule": h.get("rule") or "", "source": h.get("source") or c.get("holiday_url"), "checked": h.get("checked"),
                          "policy": h.get("policy") or ("next_day" if h.get("observed") else "unknown"), "overrides": h.get("overrides") or [],
-                         "drop2": bool(h.get("no_second_in_holiday_week"))}
+                         "drop2": bool(h.get("no_second_in_holiday_week")),
+                         "dates_source": h.get("dates_source") or "", "dates_note": h.get("dates_note") or ""}
         c["rank10"] = ({**rank10_cities[c["slug"]], "checked": rank10_data["checked"]}
                        if c["slug"] in rank10_cities else None)
         c["holidays"]["obs26"] = [o for o in c["holidays"]["observed"] if o[0].startswith("2026")]   # "N holidays in 2026" must not count Jan 2027 rows
@@ -159,7 +162,7 @@ def main():
             c["holidays"]["obs26_weekdays"] = [o for o in c["holidays"]["obs26"] if dt.date.fromisoformat(o[0]).weekday() < 5]
             c["holidays"]["weekday_count26"] = len(c["holidays"]["obs26_weekdays"])
         c["hol"] = {"policy": c["holidays"]["policy"], "dates": [d for d, _ in c["holidays"]["observed"]], "overrides": c["holidays"]["overrides"], "drop2": bool(h.get("no_second_in_holiday_week")),
-                    "pending": [d for d, _ in h.get("pending") or []]}
+                    "pending": [d for d, _ in h.get("pending") or []], "skips": h.get("skips") or []}
         # New Year's 2027 falls inside the 120-day calendar window: a city that observed 1/1/2026 but hasn't posted 2027 gets it as pending, not a confirmed normal pickup
         obs_d = {d for d, _ in c["holidays"]["observed"]}
         if "2026-01-01" in obs_d and "2027-01-01" not in obs_d and "2027-01-01" not in c["hol"]["pending"]:
@@ -167,7 +170,7 @@ def main():
             c["hol"]["pending"].append("2027-01-01")
         pol = c["holidays"]["policy"]
         rows = c["holidays"]["observed"] if c["holidays"]["observed"] else HOLIDAYS_2026
-        c["hol_rows"] = [{"iso": d, "name": n, "wd": LONG[DAYS[dt.date.fromisoformat(d).weekday()]], "shift": shift_text(d, pol, c["holidays"]["overrides"], [o for o, _ in c["holidays"]["observed"]], c["hol"]["pending"]),
+        c["hol_rows"] = [{"iso": d, "name": n, "wd": LONG[DAYS[dt.date.fromisoformat(d).weekday()]], "shift": shift_text(d, pol, c["holidays"]["overrides"], [o for o, _ in c["holidays"]["observed"]], c["hol"]["pending"], c["hol"]["skips"]),
                           "weekend": dt.date.fromisoformat(d).weekday() >= 5} for d, n in rows]
         # pending: a holiday the city usually observes but has not posted for this year yet (Detroit 12/25) — shown, never applied as confirmed
         c["hol_rows"] = sorted(c["hol_rows"] + [{"iso": d, "name": n, "wd": LONG[DAYS[dt.date.fromisoformat(d).weekday()]], "weekend": dt.date.fromisoformat(d).weekday() >= 5, "pending": True,
