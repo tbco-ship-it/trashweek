@@ -1110,7 +1110,8 @@
     "New Year's Day"
    ]
   ],
-  "rule": "The makeup day precedes the holiday!",
+  "rule": "* Please note: The makeup day precedes the holiday!",
+  "dates_note": "In the city's table the asterisk marks New Year's Day, Juneteenth, Independence Day, Thanksgiving Day, the day after Thanksgiving, Christmas Eve, Christmas Day and New Year's Day 2027: their make-up day is the Wednesday before. Martin Luther King Day, Presidents' Day, Memorial Day and Labor Day are made up the Wednesday after, and Veteran's Day has no make-up day.",
   "skips": ["2026-11-11"],
   "source": "https://www.lexingtonky.gov/living/waste-collection/about-recycling",
   "checked": "2026-10-12",

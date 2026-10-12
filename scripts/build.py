@@ -60,6 +60,14 @@ def shift_text(iso, policy, overrides, observed=(), pending=(), skips=()):
     return "Not verified for this city — check the official notice"
 
 
+def week_moves_earlier(iso, overrides):
+    """True when every listed move for this holiday's week lands on an earlier date (Lexington: Thu/Fri → the Wednesday before); a mixed week stays 'Delayed'."""
+    d = dt.date.fromisoformat(iso)
+    moves = [(dt.date.fromisoformat(a), dt.date.fromisoformat(b)) for a, b in overrides]
+    week = [(a, b) for a, b in moves if a >= d and a.isocalendar()[:2] == d.isocalendar()[:2]]
+    return bool(week) and all(b < a for a, b in week)
+
+
 def ordinal(n):
     return f"{n}{'th' if 10 <= n % 100 <= 20 else {1: 'st', 2: 'nd', 3: 'rd'}.get(n % 10, 'th')}"
 
@@ -158,6 +166,7 @@ def main():
         c["rank10"] = ({**rank10_cities[c["slug"]], "checked": rank10_data["checked"]}
                        if c["slug"] in rank10_cities else None)
         c["holidays"]["obs26"] = [o for o in c["holidays"]["observed"] if o[0].startswith("2026")]   # "N holidays in 2026" must not count Jan 2027 rows
+        c["holidays"]["skip_rows"] = [o for o in c["holidays"]["obs26"] if o[0] in (h.get("skips") or [])]   # observed days the city says have no make-up day
         if c["slug"] == "philadelphia":
             c["holidays"]["obs26_weekdays"] = [o for o in c["holidays"]["obs26"] if dt.date.fromisoformat(o[0]).weekday() < 5]
             c["holidays"]["weekday_count26"] = len(c["holidays"]["obs26_weekdays"])
@@ -171,7 +180,8 @@ def main():
         pol = c["holidays"]["policy"]
         rows = c["holidays"]["observed"] if c["holidays"]["observed"] else HOLIDAYS_2026
         c["hol_rows"] = [{"iso": d, "name": n, "wd": LONG[DAYS[dt.date.fromisoformat(d).weekday()]], "shift": shift_text(d, pol, c["holidays"]["overrides"], [o for o, _ in c["holidays"]["observed"]], c["hol"]["pending"], c["hol"]["skips"]),
-                          "weekend": dt.date.fromisoformat(d).weekday() >= 5} for d, n in rows]
+                          "weekend": dt.date.fromisoformat(d).weekday() >= 5, "skip": d in c["hol"]["skips"],
+                          "earlier": pol == "overrides" and week_moves_earlier(d, c["holidays"]["overrides"])} for d, n in rows]
         # pending: a holiday the city usually observes but has not posted for this year yet (Detroit 12/25) — shown, never applied as confirmed
         c["hol_rows"] = sorted(c["hol_rows"] + [{"iso": d, "name": n, "wd": LONG[DAYS[dt.date.fromisoformat(d).weekday()]], "weekend": dt.date.fromisoformat(d).weekday() >= 5, "pending": True,
                                                   "shift": "Not posted by the city yet — check the official notice closer to the date"} for d, n in h.get("pending") or []], key=lambda r: r["iso"])
