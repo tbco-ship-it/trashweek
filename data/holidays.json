@@ -1054,5 +1054,213 @@
     "New Year's Day"
    ]
   ]
+ },
+ "lexington": {
+  "observed": [
+   [
+    "2026-01-01",
+    "New Year's Day"
+   ],
+   [
+    "2026-01-19",
+    "Martin Luther King Day"
+   ],
+   [
+    "2026-02-16",
+    "President's Day"
+   ],
+   [
+    "2026-05-25",
+    "Memorial Day"
+   ],
+   [
+    "2026-06-19",
+    "Juneteenth"
+   ],
+   [
+    "2026-07-03",
+    "Independence Day"
+   ],
+   [
+    "2026-09-07",
+    "Labor Day"
+   ],
+   [
+    "2026-11-11",
+    "Veteran's Day"
+   ],
+   [
+    "2026-11-26",
+    "Thanksgiving Day"
+   ],
+   [
+    "2026-11-27",
+    "Day after Thanksgiving"
+   ],
+   [
+    "2026-12-24",
+    "Christmas Eve"
+   ],
+   [
+    "2026-12-25",
+    "Christmas Day"
+   ],
+   [
+    "2027-01-01",
+    "New Year's Day"
+   ]
+  ],
+  "rule": "The 2026 Holiday Collection Schedule lists a no-collection date and a make-up date for each holiday; the make-up day comes before the holiday. Veteran's Day (Nov. 11) has no make-up day.",
+  "source": "https://www.lexingtonky.gov/living/waste-collection/about-recycling",
+  "checked": "2026-10-12",
+  "policy": "overrides",
+  "overrides": [
+   [
+    "2026-01-01",
+    "2025-12-31"
+   ],
+   [
+    "2026-01-19",
+    "2026-01-21"
+   ],
+   [
+    "2026-02-16",
+    "2026-02-18"
+   ],
+   [
+    "2026-05-25",
+    "2026-05-27"
+   ],
+   [
+    "2026-06-19",
+    "2026-06-17"
+   ],
+   [
+    "2026-07-03",
+    "2026-07-01"
+   ],
+   [
+    "2026-09-07",
+    "2026-09-09"
+   ],
+   [
+    "2026-11-26",
+    "2026-11-25"
+   ],
+   [
+    "2026-11-27",
+    "2026-11-25"
+   ],
+   [
+    "2026-12-24",
+    "2026-12-23"
+   ],
+   [
+    "2026-12-25",
+    "2026-12-23"
+   ],
+   [
+    "2027-01-01",
+    "2026-12-30"
+   ]
+  ]
+ },
+ "worcester": {
+  "observed": [
+   [
+    "2026-01-01",
+    "New Years Day"
+   ],
+   [
+    "2026-01-19",
+    "Martin Luther King, Jr. Day"
+   ],
+   [
+    "2026-02-16",
+    "Presidents Day"
+   ],
+   [
+    "2026-04-20",
+    "Patriots' Day"
+   ],
+   [
+    "2026-05-25",
+    "Memorial Day"
+   ],
+   [
+    "2026-06-19",
+    "Juneteenth"
+   ],
+   [
+    "2026-09-07",
+    "Labor Day"
+   ],
+   [
+    "2026-10-12",
+    "Columbus Day/Indigenous Peoples Day"
+   ],
+   [
+    "2026-11-11",
+    "Veteran's Day"
+   ],
+   [
+    "2026-11-26",
+    "Thanksgiving Day"
+   ],
+   [
+    "2026-12-25",
+    "Christmas Day"
+   ]
+  ],
+  "rule": "Whenever a scheduled collection day falls on a holiday, that day's collection and all remaining collections for the week will be delayed one day.",
+  "source": "https://www.worcesterma.gov/trash-recycling/schedule",
+  "checked": "2026-10-12",
+  "policy": "next_day"
+ },
+ "grand-rapids": {
+  "observed": [
+   [
+    "2026-01-01",
+    "New Year's Day"
+   ],
+   [
+    "2026-11-26",
+    "Thanksgiving Day"
+   ],
+   [
+    "2026-12-25",
+    "Christmas Day"
+   ]
+  ],
+  "rule": "City policy says refuse and recycling run one day later during the weeks following Thanksgiving, Christmas, and New Year's Day; Veterans Day is not in that policy list. The 2026 recycling schedule marks Jan. 2–3, Nov. 27–28, and Dec. 26 as one-day delays.",
+  "source": "https://www.grandrapidsmi.gov/guides/winter-preparedness-guide/",
+  "checked": "2026-10-12",
+  "policy": "next_day"
+ },
+ "jacksonville": {
+  "observed": [
+   [
+    "2026-11-26",
+    "Thanksgiving Day"
+   ],
+   [
+    "2026-12-25",
+    "Christmas Day"
+   ]
+  ],
+  "rule": "The 2026 Holiday Solid Waste Service Schedule says only Thanksgiving and Christmas change collection: Thursday pickup moves to Saturday, Nov. 28, and Friday pickup moves to Saturday, Dec. 26. All other holiday collections remain on the normal day.",
+  "source": "https://www.jacksonville.gov/departments/office-of-administrative-services/solid-waste/holiday-schedules",
+  "checked": "2026-10-12",
+  "policy": "overrides",
+  "overrides": [
+   [
+    "2026-11-26",
+    "2026-11-28"
+   ],
+   [
+    "2026-12-25",
+    "2026-12-26"
+   ]
+  ]
  }
 }
