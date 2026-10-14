@@ -339,12 +339,16 @@ def main():
         raise SystemExit(f"worker/recollect-proxy.mjs AREAS is missing: {missing}")
 
     urls = []
+    page_count = 0
 
-    def write(path, template, sm=None, **ctx):
+    def write(path, template, sm=None, index=True, **ctx):
+        nonlocal page_count
         out = DIST / path
         out.mkdir(parents=True, exist_ok=True)
         (out / "index.html").write_text(env.get_template(template).render(path=path, **ctx))
-        urls.append((sm or path.split("/")[0] or "core", path))
+        page_count += 1
+        if index:
+            urls.append((sm or path.split("/")[0] or "core", path))
 
     write("", "index.html")
     for page in ("about", "methodology", "privacy", "terms", "contact"):
@@ -355,7 +359,7 @@ def main():
         write(f"{c['slug']}/", "city.html", c=c)
         write(f"{c['slug']}/holidays/", "city_holidays.html", c=c)
         for z in c["zones"]:
-            write(f"{c['slug']}/zone/{z['slug']}/", "zone.html", c=c, z=z)
+            write(f"{c['slug']}/zone/{z['slug']}/", "zone.html", index=False, c=c, z=z)
 
     # lastmod 없음: 빌드했다고 내용이 바뀐 것이 아니다. 구글은 lastmod 를 "consistently and
     # verifiably accurate" 할 때만 쓴다고 문서에 적어 두었고, 매 빌드마다 전 URL 에 오늘을 찍으면
@@ -370,7 +374,7 @@ def main():
         (DIST / "ads.txt").write_text(f"google.com, {args.adsense_pub}, DIRECT, f08c47fec0942fa0\n")
     if args.cname:
         (DIST / "CNAME").write_text(args.cname + "\n")
-    print(f"built {len(urls)} pages ({len(cities)} cities, {sum(len(c['zones']) for c in cities)} zones) -> {DIST}")
+    print(f"built {page_count} pages ({len(cities)} cities, {sum(len(c['zones']) for c in cities)} zones; {len(urls)} sitemap URLs) -> {DIST}")
 
 
 if __name__ == "__main__":

@@ -2,6 +2,7 @@
 {% block title %}{{ c.city }} zone {{ z.zone }}: trash pickup {{ z.schedule.trash|days_text }}{% if z.schedule.recycling %}, recycling {{ z.schedule.recycling|days_text }}{% endif %} | {{ site }}{% endblock %}
 {% block description %}Collection days for {{ c.city }}, {{ c.state }} zone {{ z.zone }}: trash {{ z.schedule.trash|days_text }}{% if z.schedule.recycling %}, recycling {{ z.schedule.recycling|days_text }}{% endif %}{% if z.schedule.yard %}, yard waste {{ z.schedule.yard|days_text }}{% endif %}. This week's dates, holiday delays and a calendar file.{% endblock %}
 {% block head %}
+<meta name="robots" content="noindex,follow">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"{{ c.city }}","item":"{{ origin }}{{ base }}{{ c.slug }}/"},{"@type":"ListItem","position":2,"name":"Zone {{ z.zone }}"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What day is trash pickup in {{ c.city }} zone {{ z.zone }}?","acceptedAnswer":{"@type":"Answer","text":"Trash is collected on {{ z.schedule.trash|days_text }}.{% if z.schedule.recycling %} Recycling on {{ z.schedule.recycling|days_text }}.{% endif %}{% if z.schedule.yard %} Yard waste on {{ z.schedule.yard|days_text }}.{% endif %} Collection may run one day late in a holiday week."}}]}</script>
 {% endblock %}
@@ -11,8 +12,8 @@
 <p class="prose">{{ c.provider }}. Not sure this is your zone? <a href="{{ base }}{{ c.slug }}/">Check by address</a>.</p>
 <section class="sheet balanced" id="today">
   <p class="sheet-label">Today &amp; tomorrow</p>
-  <div class="sheet-num"><span class="num small-num" id="headline">Loading…</span></div>
-  <p class="sheet-title" id="sub"></p>
+  <div class="sheet-num"><span class="num small-num" id="headline">Trash: {{ z.schedule.trash|days_text }}</span></div>
+  <p class="sheet-title" id="sub">Regular weekly schedule for {{ c.city }} Zone {{ z.zone }}{% if z.schedule.recycling %} · Recycling: {{ z.schedule.recycling|days_text }}{% endif %}{% if z.schedule.yard %} · Yard waste: {{ z.schedule.yard|days_text }}{% endif %}</p>
   <div class="stack" id="upcoming"></div>
   <p class="sheet-actions"><a class="next" id="ics" href="#" download="{{ c.slug }}-zone-{{ z.slug }}.ics">Add to calendar (.ics)</a><a class="next" href="{{ base }}{{ c.slug }}/holidays/">Holiday delays</a></p>
 </section>
