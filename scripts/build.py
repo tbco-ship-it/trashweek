@@ -278,6 +278,10 @@ def main():
         rendered_dates = {row["iso"] for row in c["hol_rows"]}
         c["hol_rows"] = sorted(c["hol_rows"] + [{"iso": d, "name": n, "wd": LONG[DAYS[dt.date.fromisoformat(d).weekday()]], "weekend": dt.date.fromisoformat(d).weekday() >= 5, "pending": True,
                                                   "shift": "Not posted by the city yet — check the official notice closer to the date"} for d, n in h.get("pending") or [] if d not in rendered_dates], key=lambda r: r["iso"])
+        fold_reference = (not c["holidays"]["verified"] and not c["holidays"]["partial"]
+                          and not c["holidays"]["verified_rows"])
+        if fold_reference and len(c["hol_rows"]) != 13:
+            raise SystemExit(f"{c['slug']}: folded federal reference calendar must have 13 dates")
         # no_change cities: the federal rows are shown for reference only — never a "next holiday that affects pickup" or "Delayed"
         week_start = today - dt.timedelta(days=today.weekday())
         week_end = week_start + dt.timedelta(days=6)
