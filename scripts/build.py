@@ -12,6 +12,8 @@ from xml.sax.saxutils import escape
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
+import guides_data
+
 ROOT = Path(__file__).resolve().parent.parent
 DIST = ROOT / "dist"
 SITE = "TrashWeek"
@@ -258,6 +260,14 @@ def main():
         write(f"{page}/", f"{page}.html")
     write("holidays/", "holidays.html")
     write("coverage/", "coverage.html")
+    # guides: tables computed from the same processed city data as the city pages (see scripts/guides_data.py)
+    g_hol = guides_data.holiday_guide(cities)
+    g_bulk = guides_data.bulk_leaf_guide(cities, *guides_data.load_bulk_leaf())
+    g_rec = guides_data.recycling_guide(cities)
+    write("guide/", "guides.html", cards=guides_data.hub(cities, g_hol, g_bulk, g_rec))
+    write("guide/holiday-pickup-rules/", "guide_holiday_rules.html", g=g_hol)
+    write("guide/bulk-trash-leaf-collection/", "guide_bulk_leaf.html", g=g_bulk)
+    write("guide/every-other-week-recycling/", "guide_recycling_weeks.html", g=g_rec)
     for c in cities:
         write(f"{c['slug']}/", "city.html", c=c)
         write(f"{c['slug']}/holidays/", "city_holidays.html", c=c)

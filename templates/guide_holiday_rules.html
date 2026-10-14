@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}How Holiday Trash Pickup Delays Work: Thanksgiving, Christmas and New Year's Rules for {{ g.n_verified }} US Cities | {{ site }}{% endblock %}
+{% block description %}The four rules US cities use when a holiday hits trash day — one-day slide, skipped pickup, published make-up days, or no change — and what {{ g.n_verified }} verified cities do on Thanksgiving, Christmas and New Year's Day.{% endblock %}
+{% block head %}
+{% set faq = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": g.faq_ld} %}
+<script type="application/ld+json">{{ faq|tojson }}</script>
+{% endblock %}
+{% block content %}
+<nav class="crumbs"><a href="{{ base }}">Home</a> › <a href="{{ base }}guide/">Guides</a> › Holiday pickup rules</nav>
+<h1>How holiday trash pickup delays work</h1>
+<div class="prose">
+<p>When a holiday lands on a weekday, cities do one of four different things with your pickup. Which one applies depends on the city, not on the holiday. This guide sorts the {{ g.n_verified }} cities whose holiday notice TrashWeek has verified into those four rules and then shows what each does on Thanksgiving, Christmas and New Year's Day.</p>
+{% if g.checked %}<p class="muted small">Latest notice check recorded for these cities: {{ g.checked }}. The city's own notice wins if it changes.</p>{% endif %}
+</div>
+
+<div class="sec"><div class="sec-h"><h2>The four rules</h2></div>
+<div class="prose">
+<h3>1. One-day slide <span class="muted small">{{ g.by_pol.next_day|length }} cities</span></h3>
+<p>The holiday and every later pickup that week run one day later. A Thursday holiday moves Thursday routes to Friday and Friday routes to Saturday; Monday to Wednesday routes are not affected. Cities with this rule: {% for c in g.by_pol.next_day %}<a href="{{ base }}{{ c.slug }}/holidays/">{{ c.city }} ({{ c.state }})</a>{% if not loop.last %}, {% endif %}{% endfor %}.</p>
+{% with ex = g.examples.next_day %}{% if ex %}<p><b>Example — {{ ex.c.city }}.</b> {% if ex.c.holidays.dates_note or ex.c.holidays.rule %}The city's notice: “{{ ex.c.holidays.dates_note or ex.c.holidays.rule }}” {% endif %}{% if ex.cell %}On {{ ex.date }}: {{ ex.cell.detail }}.{% endif %}</p>{% endif %}{% endwith %}
+
+<h3>2. Skipped pickup, no slide <span class="muted small">{{ g.by_pol.skip|length }} cities</span></h3>
+<p>The pickup that falls on the holiday is not made up and the rest of the week stays put. Your next pickup is on your regular day, so a missed pickup means holding the trash until then. Cities with this rule: {% for c in g.by_pol.skip %}<a href="{{ base }}{{ c.slug }}/holidays/">{{ c.city }} ({{ c.state }})</a>{% if not loop.last %}, {% endif %}{% endfor %}.</p>
+{% with ex = g.examples.skip %}{% if ex %}<p><b>Example — {{ ex.c.city }}.</b> {% if ex.c.holidays.rule %}The city's notice: “{{ ex.c.holidays.rule }}” {% endif %}{% if ex.cell %}On {{ ex.date }}: {{ ex.cell.detail }}.{% endif %}</p>{% endif %}{% endwith %}
+
+<h3>3. Published make-up days <span class="muted small">{{ g.by_pol.overrides|length }} cities</span></h3>
+<p>The city lists the exact date each affected pickup moves to, so the move is not always "one day later". {% if g.later %}{% if g.later|length == g.by_pol.overrides|length %}All of these cities{% else %}{{ g.later|length }} of these cities{% endif %} move pickups to a later day{% if g.earlier %}, and {{ g.earlier|length }} {{ 'moves' if g.earlier|length == 1 else 'move' }} some pickups <em>earlier</em> than the holiday{% endif %}.{% elif g.earlier %}{{ g.earlier|length }} of these cities move pickups earlier.{% endif %} Cities with this rule: {% for c in g.by_pol.overrides %}<a href="{{ base }}{{ c.slug }}/holidays/">{{ c.city }} ({{ c.state }})</a>{% if not loop.last %}, {% endif %}{% endfor %}.</p>
+{% if g.earlier %}<p>Moved earlier: {% for c in g.earlier %}<a href="{{ base }}{{ c.slug }}/holidays/">{{ c.city }} ({{ c.state }})</a>{% if not loop.last %}, {% endif %}{% endfor %}. When a pickup moves earlier, the cart has to be at the curb earlier too.</p>{% endif %}
+{% with ex = g.examples.overrides %}{% if ex %}<p><b>Example — {{ ex.c.city }}.</b> {% if ex.c.holidays.dates_note or ex.c.holidays.rule %}The city's notice: “{{ ex.c.holidays.dates_note or ex.c.holidays.rule }}” {% endif %}{% if ex.cell %}On {{ ex.date }}: {{ ex.cell.detail }}.{% endif %}</p>{% endif %}{% endwith %}
+
+<h3>4. Normal collection <span class="muted small">{{ g.normal|length }} {{ 'city' if g.normal|length == 1 else 'cities' }}</span></h3>
+<p>Some haulers collect on holidays as usual. {% if g.normal %}{% for n in g.normal %}<a href="{{ base }}{{ n.c.slug }}/holidays/">{{ n.c.city }} ({{ n.c.state }})</a>{% if n.all %} collects on every holiday{% else %} runs as usual on {{ n.n }} of its listed 2026 holidays{% endif %}{% if not loop.last %}; {% endif %}{% endfor %}.{% else %}None of the verified cities is in this group yet.{% endif %}</p>
+{% with ex = g.examples.no_change %}{% if ex and ex.c.holidays.rule %}<p><b>Example — {{ ex.c.city }}.</b> The city's notice: “{{ ex.c.holidays.rule }}”</p>{% endif %}{% endwith %}
+</div></div>
+
+<div class="sec"><div class="sec-h"><h2>Thanksgiving, Christmas and New Year's Day, city by city</h2></div>
+<p class="muted small">{{ g.n_verified }} verified cities. New Year's Day is the upcoming {{ g.cols[2].long }}; the 2026 date has already passed. Each city name opens its full holiday page.</p>
+<div class="tbl-wrap"><table class="tbl compact hol stack"><thead><tr><th>City</th>{% for col in g.cols %}<th>{{ col.name }}<br><small class="muted">{{ col.long }}</small></th>{% endfor %}</tr></thead><tbody>
+{% for row in g.rows %}<tr><td><a href="{{ base }}{{ row.c.slug }}/holidays/">{{ row.c.city }}, {{ row.c.state }}</a></td>
+{% for cell in row.cells %}<td data-l="{{ g.cols[loop.index0].name }}"><b>{{ cell.label }}</b>{% if cell.detail %} <small class="muted">{{ cell.detail }}</small>{% endif %}</td>{% endfor %}</tr>
+{% endfor %}</tbody></table></div>
+<p class="muted small">{{ g.n_unverified }} more of the {{ g.n_cities }} cities are not in this table because their holiday rule is not fully verified yet; their pages show only the dates that are confirmed and the federal calendar for the rest. See <a href="{{ base }}holidays/">all holiday rules</a>.</p></div>
+
+<div class="sec"><div class="sec-h"><h2>Questions</h2></div>
+<div class="prose">{% for q, a in g.faq %}<h3>{{ q }}</h3><p>{{ a }}</p>{% endfor %}</div></div>
+
+<div class="sec"><div class="sec-h"><h2>More guides</h2></div><ul class="list">
+<li><a href="{{ base }}guide/bulk-trash-leaf-collection/">Bulk trash and fall leaf collection rules by city</a></li>
+<li><a href="{{ base }}guide/every-other-week-recycling/">Every-other-week recycling and twice-weekly trash</a></li></ul></div>
+{% endblock %}
