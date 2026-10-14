@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}TrashWeek Guides: Holiday Pickup Rules, Bulk and Leaf Collection, Recycling Weeks | {{ site }}{% endblock %}
+{% block description %}Plain-language guides built from the same city notices and route data as every TrashWeek city page: how holiday delays work, bulk and leaf rules, and every-other-week recycling.{% endblock %}
+{% block head %}
+{% set faq_page = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": faq_ld} %}
+<script type="application/ld+json">{{ faq_page|tojson }}</script>
+{% endblock %}
+{% block content %}
+<nav class="crumbs"><a href="{{ base }}">Home</a> › Guides</nav>
+<h1>TrashWeek guides</h1>
+<div class="prose">
+<p>The city pages answer "what day is my pickup?". These guides answer the follow-up questions: why a holiday moved your day, what a city allows at the curb, and why your recycling comes every other week. Every table is computed from the same route data and city notices as the {{ cities|length }} city pages, and every city name links to its own page.</p>
+</div>
+<div class="sec"><ul class="list">{% for card in cards %}<li><a href="{{ base }}{{ card.path }}"><span><b>{{ card.title }}</b><br><span class="muted small">{{ card.text }}</span></span><span class="meta">{{ card.stat }}</span></a></li>{% endfor %}</ul></div>
+<div class="sec"><div class="sec-h"><h2>Where the numbers come from</h2></div>
+<div class="prose"><p>Holiday rules come from each hauler's own holiday notice, recorded with the date we checked it. Bulk and leaf rules are quotes from the city page named in each table row. Route and zone counts come from the city's published collection-route data. See <a href="{{ base }}methodology/">Data sources</a> for the full list, and <a href="{{ base }}holidays/">holiday delays</a> for the rule of every verified city.</p></div></div>
+<div class="sec"><div class="sec-h"><h2>Questions</h2></div>
+<div class="prose">{% for q, a in faq %}<h3>{{ q }}</h3><p>{{ a }}</p>{% endfor %}</div></div>
+{% endblock %}

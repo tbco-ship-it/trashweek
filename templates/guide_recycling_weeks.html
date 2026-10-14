@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}Every-Other-Week Recycling and Twice-Weekly Trash: How City Schedules Differ | {{ site }}{% endblock %}
+{% block description %}Which US cities recycle every other week, why the week or day changes from one street to the next, how holidays move an A/B week, and where trash is collected twice a week.{% endblock %}
+{% block head %}
+{% set faq = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": g.faq_ld} %}
+<script type="application/ld+json">{{ faq|tojson }}</script>
+{% endblock %}
+{% block content %}
+<nav class="crumbs"><a href="{{ base }}">Home</a> › <a href="{{ base }}guide/">Guides</a> › Every-other-week recycling</nav>
+<h1>Every-other-week recycling and twice-weekly trash</h1>
+<div class="prose">
+<p>Trash weekly, recycling every other week, and a second trash day in some neighborhoods: city schedules combine the same few patterns in different ways. This guide uses the route data and service notes behind the {{ g.n_cities }} TrashWeek city pages to show which cities use which pattern.</p>
+
+<h2>Why the day or week changes from street to street</h2>
+<p>Collection routes are drawn by the city or its hauler, not by ZIP code. ZIP codes are drawn for mail delivery, so one ZIP code can include several routes, each with its own pickup day and, where recycling alternates, its own week. The route data shows how finely cities cut it: {% for c in g.most_zones %}{{ c.city }} ({{ c.zones|length }} zones){% if loop.revindex == 2 %} and {% elif not loop.last %}, {% endif %}{% endfor %}. That is why TrashWeek asks for your address instead of your city.</p>
+</div>
+
+<div class="sec"><div class="sec-h"><h2>Cities with every-other-week recycling</h2></div>
+<p class="muted small">{{ g.eow|length }} of {{ g.n_cities }} cities describe recycling as every other week. The wording is each city's service note as recorded on its TrashWeek page; cities without a service note are not counted.</p>
+<div class="tbl-wrap"><table class="tbl compact hol stack"><thead><tr><th>City</th><th>Service note</th><th>Week A/B in route data</th><th>Holiday rule</th></tr></thead><tbody>
+{% for x in g.eow %}<tr><td><a href="{{ base }}{{ x.c.slug }}/">{{ x.c.city }}, {{ x.c.state }}</a></td>
+<td data-l="">{{ x.note }}</td>
+<td data-l="Week A/B">{% if x.ab_zones %}{{ x.ab_zones }} of {{ x.c.zones|length }} zones labeled{% elif x.c.zones %}no week label in route data{% else %}address lookup, no zone data{% endif %}</td>
+<td data-l="Holiday"><a href="{{ base }}{{ x.c.slug }}/holidays/">{{ x.hol }}</a></td></tr>
+{% endfor %}</tbody></table></div>
+{% if g.weekly_now %}<div class="prose"><p><b>Not every city that once alternated still does.</b> {% for c in g.weekly_now %}<a href="{{ base }}{{ c.slug }}/">{{ c.city }} ({{ c.state }})</a>: “{{ c.notes }}”{% endfor %}</p></div>{% endif %}
+</div>
+
+<div class="sec"><div class="sec-h"><h2>When a holiday lands in an A/B week</h2></div>
+<div class="prose">
+<p>A holiday changes your pickup <em>day</em>; the city's calendar still decides your <em>week</em>. To work out the date:</p>
+<p><b>1. Find your week.</b> Use the week letter or the dated calendar your city publishes. {% if g.ab_cities %}For {% for x in g.ab_cities %}<a href="{{ base }}{{ x.c.slug }}/">{{ x.c.city }} ({{ x.c.state }})</a>{% if not loop.last %}, {% endif %}{% endfor %} the route data carries the A/B label per zone, so the zone page shows it. {% endif %}TrashWeek's data does not include the date each city's week A starts, so these pages cannot tell you which week it is today — the city calendar can.</p>
+<p><b>2. Apply the city's holiday rule.</b> Open the holiday page for your city: a one-day slide moves your pickup one day later inside the same calendar week; published make-up days name the exact date.</p>
+<p><b>3. Trust the city notice when it differs.</b> If the city posts a specific date for the holiday week, that date wins.</p>
+</div></div>
+
+<div class="sec"><div class="sec-h"><h2>Once or twice a week</h2></div>
+<div class="prose">
+<p>In the route data of the {{ g.n_zoned }} cities with published zones, {{ g.once_only|length }} have every zone on a single weekly trash day. {{ g.freq|length }} have at least one zone with trash on two or more days.</p>
+{% if g.mostly_twice %}<p><b>Two or more trash days in at least half of the zones:</b> {% for x in g.mostly_twice %}<a href="{{ base }}{{ x.c.slug }}/">{{ x.c.city }} ({{ x.c.state }})</a>{% if not loop.last %}, {% endif %}{% endfor %}.</p>{% endif %}
+{% if g.some_twice %}<p><b>Second trash day in some zones only:</b> {% for x in g.some_twice %}<a href="{{ base }}{{ x.c.slug }}/">{{ x.c.city }} ({{ x.c.state }})</a>{% if not loop.last %}, {% endif %}{% endfor %}.</p>{% endif %}
+{% if g.lookup_twice %}<p><b>Address-lookup cities whose note says twice weekly:</b> {% for c in g.lookup_twice %}<a href="{{ base }}{{ c.slug }}/">{{ c.city }} ({{ c.state }})</a>{% if not loop.last %}, {% endif %}{% endfor %}.</p>{% endif %}
+</div>
+<div class="tbl-wrap"><table class="tbl compact hol stack"><thead><tr><th>City</th><th>Zones with 2+ trash days</th><th>Most trash days in one zone</th></tr></thead><tbody>
+{% for x in g.freq %}<tr><td><a href="{{ base }}{{ x.c.slug }}/">{{ x.c.city }}, {{ x.c.state }}</a></td>
+<td data-l="">{{ x.two }} of {{ x.n }} <small class="muted">({{ x.pct }}%)</small></td>
+<td data-l="Up to">{{ x.max_days }} day{{ '' if x.max_days == 1 else 's' }} a week</td></tr>
+{% endfor %}</tbody></table></div>
+{% if g.drop2 %}<div class="prose"><h3>Twice-weekly routes in a holiday week</h3>
+<p>{% for c in g.drop2 %}<a href="{{ base }}{{ c.slug }}/holidays/">{{ c.city }} ({{ c.state }})</a>{% if not loop.last %}, {% endif %}{% endfor %}: TrashWeek's record of the holiday rule drops the second weekly trash pickup of a twice-weekly route in a week that contains a city holiday, while the first pickup slides one day. Plan one trash pickup, not two, in that week.</p></div>{% endif %}
+</div>
+
+<div class="sec"><div class="sec-h"><h2>Questions</h2></div>
+<div class="prose">{% for q, a in g.faq %}<h3>{{ q }}</h3><p>{{ a }}</p>{% endfor %}</div></div>
+
+<div class="sec"><div class="sec-h"><h2>More guides</h2></div><ul class="list">
+<li><a href="{{ base }}guide/holiday-pickup-rules/">How holiday trash pickup delays work</a></li>
+<li><a href="{{ base }}guide/bulk-trash-leaf-collection/">Bulk trash and fall leaf collection rules by city</a></li></ul></div>
+{% endblock %}

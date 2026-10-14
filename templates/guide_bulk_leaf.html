@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}Bulk Trash and Fall Leaf Collection Rules by City: Fees, Limits and Bag Rules | {{ site }}{% endblock %}
+{% block description %}What {{ g.n_cities }} US city notices say about bulky-item pickup fees and limits, fall leaf and yard-waste collection dates, and whether leaves must go in paper bags.{% endblock %}
+{% block head %}
+{% set faq = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": g.faq_ld} %}
+<script type="application/ld+json">{{ faq|tojson }}</script>
+{% endblock %}
+{% macro city_links(cities) %}{% for c in cities %}<a href="{{ base }}{{ c.slug }}/">{{ c.city }} ({{ c.state }})</a>{% if not loop.last %}, {% endif %}{% endfor %}{% endmacro %}
+{% block content %}
+<nav class="crumbs"><a href="{{ base }}">Home</a> › <a href="{{ base }}guide/">Guides</a> › Bulk and leaf collection</nav>
+<h1>Bulk trash and fall leaf collection rules by city</h1>
+<div class="prose">
+<p>Regular pickup days are only half of a city's service. Furniture, appliances and brush follow separate rules, and fall leaves have their own season, bags and limits. This guide quotes what {{ g.n_cities }} city notices say about both: {{ g.bulk_rows|length }} cities state a bulky-item fee or limit and {{ g.leaf_rows|length }} state a leaf or yard-waste period or bag rule. Where a notice is silent the cell stays blank — that means "not stated on the page we captured", not "no rule".</p>
+{% if g.captured %}<p class="muted small">City pages captured {{ g.captured }}. Rules change by season, so confirm on the linked city page before you set anything out.</p>{% endif %}
+</div>
+
+<div class="sec" id="bulk"><div class="sec-h"><h2>Bulky items: what each city says</h2></div>
+<div class="prose">
+<p>{{ g.n_fee_line }} cities say what bulky pickup costs and {{ g.n_limits }} state a limit on items, size or number of pickups.</p>
+{% for grp in g.fee_groups if grp.cities %}<h3>{{ grp.label }} <span class="muted small">{{ grp.cities|length }} {{ 'city' if grp.cities|length == 1 else 'cities' }}</span></h3>
+<p>{{ city_links(grp.cities) }}</p>{% endfor %}
+<p class="muted small">The other {{ g.n_cities - g.n_fee_line }} cities do not state a cost on the page we captured.</p>
+</div>
+<div class="tbl-wrap"><table class="tbl compact hol stack"><thead><tr><th>City</th><th>Cost</th><th>Fee line</th><th>Limits</th><th>Source</th></tr></thead><tbody>
+{% for x in g.bulk_rows %}<tr><td><a href="{{ base }}{{ x.c.slug }}/">{{ x.c.city }}, {{ x.c.state }}</a></td>
+<td data-l="Cost">{% if x.fee_cls %}<b>{{ {'included': 'Free or included', 'allowance_then_fee': 'Free allowance, then a fee', 'amount': 'Fee with amount', 'fee_no_amount': 'Fee, no amount given'}[x.fee_cls] }}</b>{% endif %}</td>
+<td data-l="Fee">{{ x.fee }}</td>
+<td data-l="Limits">{{ x.limits }}</td>
+<td data-l="">{% if x.bulk_src %}<a href="{{ x.bulk_src }}" rel="noopener">City page</a>{% endif %}</td></tr>
+{% endfor %}</tbody></table></div></div>
+
+<div class="sec" id="leaf"><div class="sec-h"><h2>Fall leaves and yard waste: season and bag rules</h2></div>
+<div class="prose">
+<p>{{ g.n_period }} cities state when leaf or yard-waste collection runs and {{ g.n_bags }} state what the leaves must go in.</p>
+<h3>When collection runs</h3>
+{% for grp in g.period_groups if grp.cities %}<p><b>{{ grp.label }}</b> <span class="muted small">{{ grp.cities|length }} {{ 'city' if grp.cities|length == 1 else 'cities' }}</span><br>{{ city_links(grp.cities) }}</p>{% endfor %}
+<h3>What the leaves go in</h3>
+{% for grp in g.bag_groups if grp.cities %}<p><b>{{ grp.label }}</b> <span class="muted small">{{ grp.cities|length }} {{ 'city' if grp.cities|length == 1 else 'cities' }}</span><br>{{ city_links(grp.cities) }}</p>{% endfor %}
+</div>
+<div class="tbl-wrap"><table class="tbl compact hol stack"><thead><tr><th>City</th><th>When</th><th>Period line</th><th>Bag rule</th><th>Source</th></tr></thead><tbody>
+{% for x in g.leaf_rows %}<tr><td><a href="{{ base }}{{ x.c.slug }}/">{{ x.c.city }}, {{ x.c.state }}</a></td>
+<td data-l="When">{% if x.period_cls %}<b>{{ {'program': 'Fall or seasonal program', 'season_window': 'Season with dates', 'regular': 'Regular service', 'appointment': 'By appointment'}[x.period_cls] }}</b>{% endif %}</td>
+<td data-l="">{{ x.period }}</td>
+<td data-l="Bags">{{ x.bags }}</td>
+<td data-l="">{% if x.leaf_src %}<a href="{{ x.leaf_src }}" rel="noopener">City page</a>{% endif %}</td></tr>
+{% endfor %}</tbody></table></div></div>
+
+<div class="sec"><div class="sec-h"><h2>Questions</h2></div>
+<div class="prose">{% for q, a in g.faq %}<h3>{{ q }}</h3><p>{{ a }}</p>{% endfor %}</div></div>
+
+<div class="sec"><div class="sec-h"><h2>More guides</h2></div><ul class="list">
+<li><a href="{{ base }}guide/holiday-pickup-rules/">How holiday trash pickup delays work</a></li>
+<li><a href="{{ base }}guide/every-other-week-recycling/">Every-other-week recycling and twice-weekly trash</a></li></ul></div>
+{% endblock %}
