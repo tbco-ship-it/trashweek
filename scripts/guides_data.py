@@ -321,3 +321,19 @@ def hub(cities, holiday, bulk, recycling):
          "text": f"Why your week A/B and pickup days differ from the next street, which cities recycle every other week, and where trash comes twice a week.",
          "stat": f"{len(recycling['eow'])} every-other-week cities"},
     ]
+
+
+def hub_faq(cities, holiday, bulk, recycling):
+    """The /guide/ hub's FAQ: three answers that point at the guides, with every number taken from the same contexts as the cards."""
+    faq = [
+        ("What are the TrashWeek guides based on?",
+         f"They use the same route data and city notices as the {len(cities)} TrashWeek city pages. Holiday rules come from each hauler's own holiday notice, "
+         f"bulk and leaf rules are quotes from the city page named in each row, and zone counts come from the city's published collection-route data."),
+        ("Will a guide tell me whether my city moves pickup on a holiday?",
+         f"The holiday guide compares what each of the {holiday['n_verified']} cities with a verified notice does on Thanksgiving, Christmas and New Year's Day. "
+         f"For a city without a verified notice, its page says the holiday rule is not confirmed instead of guessing a date."),
+        ("Where can I find bulky-item and leaf rules, or recycling weeks?",
+         f"The bulk and leaf guide quotes {len(bulk['bulk_rows'])} bulky-item rules and {len(bulk['leaf_rows'])} leaf or yard-waste rules, and the recycling guide lists "
+         f"{len(recycling['eow'])} cities that recycle every other week. Each city name links to its own page."),
+    ]
+    return {"faq": faq, "faq_ld": _ld(faq)}

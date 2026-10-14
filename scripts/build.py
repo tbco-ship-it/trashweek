@@ -264,7 +264,7 @@ def main():
     g_hol = guides_data.holiday_guide(cities)
     g_bulk = guides_data.bulk_leaf_guide(cities, *guides_data.load_bulk_leaf())
     g_rec = guides_data.recycling_guide(cities)
-    write("guide/", "guides.html", cards=guides_data.hub(cities, g_hol, g_bulk, g_rec))
+    write("guide/", "guides.html", cards=guides_data.hub(cities, g_hol, g_bulk, g_rec), **guides_data.hub_faq(cities, g_hol, g_bulk, g_rec))
     write("guide/holiday-pickup-rules/", "guide_holiday_rules.html", g=g_hol)
     write("guide/bulk-trash-leaf-collection/", "guide_bulk_leaf.html", g=g_bulk)
     write("guide/every-other-week-recycling/", "guide_recycling_weeks.html", g=g_rec)
