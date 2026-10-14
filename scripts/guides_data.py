@@ -312,7 +312,7 @@ def hub(cities, holiday, bulk, recycling):
     """Cards for /guide/: every number comes from the three contexts above."""
     return [
         {"path": "guide/holiday-pickup-rules/", "title": "How holiday trash pickup delays work",
-         "text": f"The four rules cities use, and what each of the {holiday['n_verified']} cities with a verified notice does on Thanksgiving, Christmas and New Year's Day.",
+         "text": f"The four rules cities use, and the general rule of each of the {holiday['n_verified']} cities with a verified notice, with the Thanksgiving, Christmas and New Year's Day handling each has posted.",
          "stat": f"{holiday['n_verified']} verified cities"},
         {"path": "guide/bulk-trash-leaf-collection/", "title": "Bulk trash and fall leaf collection rules by city",
          "text": f"What {bulk['n_cities']} city notices say about bulky-item fees and limits, leaf-season dates and which bags are accepted.",
@@ -330,7 +330,7 @@ def hub_faq(cities, holiday, bulk, recycling):
          f"They use the same route data and city notices as the {len(cities)} TrashWeek city pages. Holiday rules come from each hauler's own holiday notice, "
          f"bulk and leaf rules are quotes from the city page named in each row, and zone counts come from the city's published collection-route data."),
         ("Will a guide tell me whether my city moves pickup on a holiday?",
-         f"The holiday guide compares what each of the {holiday['n_verified']} cities with a verified notice does on Thanksgiving, Christmas and New Year's Day. "
+         f"The holiday guide compares the general rule of each of the {holiday['n_verified']} cities with a verified notice and shows only the date-specific handling a city has posted for Thanksgiving, Christmas and New Year's Day; a date the city has not posted yet is marked \"Not posted yet\". "
          f"For a city without a verified notice, its page says the holiday rule is not confirmed instead of guessing a date."),
         ("Where can I find bulky-item and leaf rules, or recycling weeks?",
          f"The bulk and leaf guide quotes {len(bulk['bulk_rows'])} bulky-item rules and {len(bulk['leaf_rows'])} leaf or yard-waste rules, and the recycling guide lists "

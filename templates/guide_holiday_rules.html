@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block title %}How Holiday Trash Pickup Delays Work: Thanksgiving, Christmas and New Year's Rules for {{ g.n_verified }} US Cities | {{ site }}{% endblock %}
-{% block description %}The four rules US cities use when a holiday hits trash day — one-day slide, skipped pickup, published make-up days, or no change — and what {{ g.n_verified }} verified cities do on Thanksgiving, Christmas and New Year's Day.{% endblock %}
+{% block description %}The four rules US cities use when a holiday hits trash day — one-day slide, skipped pickup, published make-up days, or no change — and the handling {{ g.n_verified }} verified cities have posted for Thanksgiving, Christmas and New Year's Day.{% endblock %}
 {% block head %}
 {% set faq = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": g.faq_ld} %}
 <script type="application/ld+json">{{ faq|tojson }}</script>
@@ -9,7 +9,7 @@
 <nav class="crumbs"><a href="{{ base }}">Home</a> › <a href="{{ base }}guide/">Guides</a> › Holiday pickup rules</nav>
 <h1>How holiday trash pickup delays work</h1>
 <div class="prose">
-<p>When a holiday lands on a weekday, cities do one of four different things with your pickup. Which one applies depends on the city, not on the holiday. This guide sorts the {{ g.n_verified }} cities whose holiday notice TrashWeek has verified into those four rules and then shows what each does on Thanksgiving, Christmas and New Year's Day.</p>
+<p>When a holiday lands on a weekday, cities do one of four different things with your pickup. Which one applies depends on the city, not on the holiday. This guide sorts the {{ g.n_verified }} cities whose holiday notice TrashWeek has verified into those four rules and then shows the handling each city has posted for Thanksgiving, Christmas and New Year's Day; a date the city has not posted yet is marked "Not posted yet".</p>
 {% if g.checked %}<p class="muted small">Latest notice check recorded for these cities: {{ g.checked }}. The city's own notice wins if it changes.</p>{% endif %}
 </div>
 
