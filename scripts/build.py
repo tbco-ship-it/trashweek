@@ -166,6 +166,12 @@ def main():
     rank10_data = json.loads((ROOT / "data/rank10.json").read_text())
     rank10_cities = rank10_data["cities"]
     rank10_targets = rank10_data["targets"]
+    bulk_leaf_rows = json.loads((ROOT / "data/bulk_leaf.json").read_text())
+    bulk_leaf_by_slug = {}
+    for row in bulk_leaf_rows:
+        if row["slug"] in bulk_leaf_by_slug:
+            raise SystemExit(f"data/bulk_leaf.json contains duplicate city slug {row['slug']!r}")
+        bulk_leaf_by_slug[row["slug"]] = row
     if set(rank10_cities) != RANK10_SLUGS:
         raise SystemExit("data/rank10.json must list exactly the nine approved city slugs")
     expected_target_paths = {f"{slug}/" for slug in RANK10_SLUGS} | {"philadelphia/holidays/"}
@@ -174,6 +180,7 @@ def main():
     cities = []
     for f in sorted((ROOT / "data/normalized").glob("*.json")):
         c = json.loads(f.read_text())
+        c["bulk_leaf"] = bulk_leaf_by_slug.get(c["slug"], {"bulk": {}, "leaf_yard": {}})
         h = hol_all.get(c["slug"], {})
         h = dict(h)
         verified_rows = h.get("verified_rows") or []
