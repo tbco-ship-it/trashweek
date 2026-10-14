@@ -254,7 +254,12 @@ def main():
         c["holidays"]["tbd"] = tbd_rows
         c["holidays"]["unposted"] = [row for row in pending_rows if row[0] not in tbd_dates]
         pol = c["holidays"]["policy"]
-        if partial:
+        fold_reference = (not c["holidays"]["verified"] and not c["holidays"]["partial"]
+                          and not c["holidays"]["verified_rows"])
+        if fold_reference:
+            rows = [tuple(row) for row in HOLIDAYS_2026]
+            known_for_week = []
+        elif partial:
             row_map = {d: n for d, n in HOLIDAYS_2026 if d.startswith("2026-")}
             row_map.update({d: n for d, n in observed})
             row_map.update({d: n for d, n in h.get("pending") or []})
@@ -276,12 +281,12 @@ def main():
                           "earlier": pol == "overrides" and week_moves_earlier(d, c["holidays"]["overrides"])} for d, n in rows]
         # pending: a holiday the city usually observes but has not posted for this year yet (Detroit 12/25) — shown, never applied as confirmed
         rendered_dates = {row["iso"] for row in c["hol_rows"]}
+        pending_for_rows = [] if fold_reference else h.get("pending") or []
         c["hol_rows"] = sorted(c["hol_rows"] + [{"iso": d, "name": n, "wd": LONG[DAYS[dt.date.fromisoformat(d).weekday()]], "weekend": dt.date.fromisoformat(d).weekday() >= 5, "pending": True,
-                                                  "shift": "Not posted by the city yet — check the official notice closer to the date"} for d, n in h.get("pending") or [] if d not in rendered_dates], key=lambda r: r["iso"])
-        fold_reference = (not c["holidays"]["verified"] and not c["holidays"]["partial"]
-                          and not c["holidays"]["verified_rows"])
-        if fold_reference and len(c["hol_rows"]) != 13:
-            raise SystemExit(f"{c['slug']}: folded federal reference calendar must have 13 dates")
+                                                  "shift": "Not posted by the city yet — check the official notice closer to the date"} for d, n in pending_for_rows if d not in rendered_dates], key=lambda r: r["iso"])
+        if fold_reference and (len(c["hol_rows"]) != 13
+                               or [(row["iso"], row["name"]) for row in c["hol_rows"]] != HOLIDAYS_2026):
+            raise SystemExit(f"{c['slug']}: folded federal reference calendar must match the 13 federal dates")
         # no_change cities: the federal rows are shown for reference only — never a "next holiday that affects pickup" or "Delayed"
         week_start = today - dt.timedelta(days=today.weekday())
         week_end = week_start + dt.timedelta(days=6)
