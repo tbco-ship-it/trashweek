@@ -52,4 +52,32 @@ check("slide onto pending", occurrences({ trash: ["Thu"] }, day("2026-12-27"), 7
 // unknown: no shifting, no invented federal list
 setHol([], null);
 check("unknown labor day", occurrences({ trash: ["Mon"] }, day("2026-09-06"), 7).map(o => iso(o.d)), ["2026-09-07"]);
+// Partial coverage: only the exact confirmed holiday shifts; dates outside the findings stay on their regular day.
+setHol([], { policy: "unknown", partial: true, dates: ["2026-11-26"], rules: [["2026-11-26", "next_day"]] });
+check("partial confirmed thu→fri", occurrences({ trash: ["Thu"] }, day("2026-11-22"), 7).map(o => [iso(o.d), o.unconfirmed]), [["2026-11-27", 0]]);
+check("partial earlier weekday unchanged", occurrences({ trash: ["Mon"] }, day("2026-11-22"), 7).map(o => [iso(o.d), o.unconfirmed]), [["2026-11-23", 0]]);
+// Oxnard's Jan. 1 and Thanksgiving notices delay Thursday routes only; Friday routes stay on their normal date.
+setHol(["2026-01-01"], { policy: "next_day", dates: ["2026-01-01"], rules: [["2026-01-01", "thursday_only"]] });
+check("oxnard new year thu→fri only", occurrences({ trash: ["Thu"] }, day("2025-12-28"), 7).map(o => [iso(o.d), o.shifted, o.unconfirmed]), [["2026-01-02", 1, 0]]);
+check("oxnard new year fri stays fri", occurrences({ trash: ["Fri"] }, day("2025-12-28"), 7).map(o => [iso(o.d), o.shifted, o.unconfirmed]), [["2026-01-02", 0, 0]]);
+setHol(["2026-11-26"], { policy: "next_day", dates: ["2026-11-26"], rules: [["2026-11-26", "thursday_only"]] });
+check("oxnard thanksgiving thu→fri only", occurrences({ trash: ["Thu"] }, day("2026-11-22"), 7).map(o => [iso(o.d), o.shifted, o.unconfirmed]), [["2026-11-27", 1, 0]]);
+check("oxnard thanksgiving fri stays fri", occurrences({ trash: ["Fri"] }, day("2026-11-22"), 7).map(o => [iso(o.d), o.shifted, o.unconfirmed]), [["2026-11-27", 0, 0]]);
+// San Francisco's listed TBD date stays scheduled but is not presented as a confirmed pickup change.
+setHol([], { policy: "next_day", pending: ["2026-12-25"], rules: [["2026-12-25", "tbd"]] });
+check("listed TBD date", occurrences({ trash: ["Fri"] }, day("2026-12-20"), 7).map(o => [iso(o.d), o.unconfirmed]), [["2026-12-25", 1]]);
+// Explicit no-change dates do not inherit a city's other date-specific shift rule.
+setHol([], { policy: "unknown", partial: true, rules: [["2026-11-11", "no_change"]], noChanges: ["2026-11-11"] });
+check("partial explicit no-change", occurrences({ trash: ["Wed"] }, day("2026-11-08"), 7).map(o => [iso(o.d), o.unconfirmed]), [["2026-11-11", 0]]);
+// An unresolved date is retained on the regular day and marked unconfirmed.
+setHol([], { policy: "unknown", partial: true, rules: [["2026-12-25", "unverified"]], unverified: ["2026-12-25"] });
+check("partial unverified date", occurrences({ trash: ["Fri"] }, day("2026-12-20"), 7).map(o => [iso(o.d), o.unconfirmed]), [["2026-12-25", 1]]);
+// New Orleans Jan. 1 has a district exception that current weekday zones cannot represent: retain regular dates and flag the holiday week.
+setHol([], { policy: "unknown", partial: true, rules: [["2026-01-01", "unverified"]], unverified: ["2026-01-01"] });
+check("new-orleans thu stays unverified", occurrences({ trash: ["Thu"] }, day("2025-12-28"), 7).map(o => [iso(o.d), o.unconfirmed]), [["2026-01-01", 1]]);
+check("new-orleans fri stays unshifted", occurrences({ trash: ["Fri"] }, day("2025-12-28"), 7).map(o => [iso(o.d), o.unconfirmed]), [["2026-01-02", 1]]);
+// Richardson's confirmed no-service dates map to skip, while its explicit no-change date stays scheduled.
+setHol([], { policy: "unknown", partial: true, rules: [["2026-12-25", "skip"], ["2026-11-11", "no_change"]], skips: ["2026-12-25"], noChanges: ["2026-11-11"] });
+check("partial skip exact date", occurrences({ trash: ["Fri"] }, day("2026-12-20"), 7).map(o => [iso(o.d), o.unconfirmed]), []);
+check("skip city no-change exception", occurrences({ trash: ["Wed"] }, day("2026-11-08"), 7).map(o => [iso(o.d), o.unconfirmed]), [["2026-11-11", 0]]);
 console.log(bad ? `${bad} failures` : "all date tests pass"); process.exit(bad ? 1 : 0);

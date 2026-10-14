@@ -1266,5 +1266,852 @@
     "2026-12-26"
    ]
   ]
+ },
+ "austin": {
+  "source": "https://www.austintexas.gov/communications/news/city-austin-closures-christmas-2025-and-new-years-2026",
+  "checked": "2026-10-14",
+  "policy": "unknown",
+  "coverage": "partial",
+  "confirmed_policy": "next_day",
+  "verified_rows": [
+   {
+    "date": "2026-01-01",
+    "holiday": "New Year's Day",
+    "status": "change",
+    "shift": "+1d",
+    "source_url": "https://www.austintexas.gov/communications/news/city-austin-closures-christmas-2025-and-new-years-2026",
+    "quote": "Austin Resource Recovery Curbside Collections – Trash, recycling, and composting collections for Thursday and Friday will slide forward by one day during the weeks of Christmas and New Year’s. Thursday collections will be picked up on Friday, and Friday collections will be picked up on Saturday. Monday through Wednesday collections will remain unchanged both weeks.",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "single_notice",
+    "verdict_by": "hedgie 판정 PASS 13"
+   }
+  ]
+ },
+ "college-station": {
+  "source": "https://www.cstx.gov/news/posts/holiday-schedule-for-city-offices-and-facilities/",
+  "checked": "2026-10-14",
+  "policy": "unknown",
+  "coverage": "partial",
+  "confirmed_policy": "next_day",
+  "verified_rows": [
+   {
+    "date": "2026-01-01",
+    "holiday": "New Year's Day",
+    "status": "change",
+    "shift": "+1d",
+    "source_url": "https://www.cstx.gov/news/posts/holiday-schedule-for-city-offices-and-facilities/",
+    "quote": "Solid waste will be collected on the usual schedule, except for Dec. 25-26 and Jan. 1-2. The Thursday routes will be collected on Friday, and the Friday routes on Saturday.",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "single_notice",
+    "verdict_by": "hedgie 판정 PASS 13"
+   }
+  ]
+ },
+ "dayton": {
+  "source": "https://daytonohio.gov/1086/Holiday-Schedule",
+  "checked": "2026-10-14",
+  "policy": "next_day",
+  "coverage": "complete",
+  "confirmed_policy": "next_day",
+  "verified_rows": [
+   {
+    "date": "2026-01-01",
+    "holiday": "New Year's Day",
+    "status": "change",
+    "shift": "+1d",
+    "source_url": "https://daytonohio.gov/1086/Holiday-Schedule",
+    "quote": "Trash and recycling are not collected on holidays. On weeks containing a holiday, waste collection service will be moved back one day following the holiday.\nNew Year's Day January 1, 2026",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   },
+   {
+    "date": "2026-01-19",
+    "holiday": "Martin Luther King Jr. Day",
+    "status": "change",
+    "shift": "+1d",
+    "source_url": "https://daytonohio.gov/1086/Holiday-Schedule",
+    "quote": "Trash and recycling are not collected on holidays. On weeks containing a holiday, waste collection service will be moved back one day following the holiday.\nMartin Luther King Jr. Day January 19, 2026",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   },
+   {
+    "date": "2026-04-03",
+    "holiday": "Good Friday",
+    "status": "change",
+    "shift": "+1d",
+    "source_url": "https://daytonohio.gov/1086/Holiday-Schedule",
+    "quote": "Trash and recycling are not collected on holidays. On weeks containing a holiday, waste collection service will be moved back one day following the holiday.\nGood Friday* April 3, 2026",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   },
+   {
+    "date": "2026-05-25",
+    "holiday": "Memorial Day",
+    "status": "change",
+    "shift": "+1d",
+    "source_url": "https://daytonohio.gov/1086/Holiday-Schedule",
+    "quote": "Trash and recycling are not collected on holidays. On weeks containing a holiday, waste collection service will be moved back one day following the holiday.\nMemorial Day May 25, 2026",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   },
+   {
+    "date": "2026-06-19",
+    "holiday": "Juneteenth",
+    "status": "change",
+    "shift": "+1d",
+    "source_url": "https://daytonohio.gov/1086/Holiday-Schedule",
+    "quote": "Trash and recycling are not collected on holidays. On weeks containing a holiday, waste collection service will be moved back one day following the holiday.\nJuneteenth* June 19, 2026",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   },
+   {
+    "date": "2026-07-03",
+    "holiday": "Independence Day",
+    "status": "change",
+    "shift": "+1d",
+    "source_url": "https://daytonohio.gov/1086/Holiday-Schedule",
+    "quote": "Trash and recycling are not collected on holidays. On weeks containing a holiday, waste collection service will be moved back one day following the holiday.\nIndependence Day* July 3, 2026",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   },
+   {
+    "date": "2026-09-07",
+    "holiday": "Labor Day",
+    "status": "change",
+    "shift": "+1d",
+    "source_url": "https://daytonohio.gov/1086/Holiday-Schedule",
+    "quote": "Trash and recycling are not collected on holidays. On weeks containing a holiday, waste collection service will be moved back one day following the holiday.\nLabor Day September 7, 2026",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   },
+   {
+    "date": "2026-11-11",
+    "holiday": "Veterans Day",
+    "status": "no_change",
+    "shift": "not in 2026 delay list",
+    "source_url": "https://daytonohio.gov/1086/Holiday-Schedule",
+    "quote": "Waste Collection and Recycling will be delayed on the following dates:\n2026\nNew Year's Day January 1, 2026\nMartin Luther King Jr. Day January 19, 2026\nGood Friday* April 3, 2026\nMemorial Day May 25, 2026\nJuneteenth* June 19, 2026\nIndependence Day* July 3, 2026\nLabor Day September 7, 2026\nThanksgiving Day November 26, 2026\nChristmas Day December 25, 2026",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   },
+   {
+    "date": "2026-11-26",
+    "holiday": "Thanksgiving Day",
+    "status": "change",
+    "shift": "+1d",
+    "source_url": "https://daytonohio.gov/1086/Holiday-Schedule",
+    "quote": "Trash and recycling are not collected on holidays. On weeks containing a holiday, waste collection service will be moved back one day following the holiday.\nThanksgiving Day November 26, 2026",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   },
+   {
+    "date": "2026-12-25",
+    "holiday": "Christmas Day",
+    "status": "change",
+    "shift": "+1d",
+    "source_url": "https://daytonohio.gov/1086/Holiday-Schedule",
+    "quote": "Trash and recycling are not collected on holidays. On weeks containing a holiday, waste collection service will be moved back one day following the holiday.\nChristmas Day December 25, 2026",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   }
+  ]
+ },
+ "fairfield": {
+  "source": "https://www.fairfield.ca.gov/home/showpublisheddocument/13944/639002629105870000",
+  "checked": "2026-10-14",
+  "policy": "unknown",
+  "coverage": "partial",
+  "confirmed_policy": "next_day",
+  "verified_rows": [
+   {
+    "date": "2026-01-01",
+    "holiday": "New Year's Day",
+    "status": "change",
+    "shift": "+1d",
+    "source_url": "https://www.fairfield.ca.gov/home/showpublisheddocument/13944/639002629105870000",
+    "quote": "New Year's Day: Thursday, January 1, 2026\nService will be one day later. For example: Thursday service will be conducted on Friday, and Friday service will occur on Saturday.",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "single_notice",
+    "verdict_by": "hedgie 판정 PASS 13"
+   }
+  ]
+ },
+ "miramar": {
+  "source": "https://www.wasteprousa.com/miramar/",
+  "checked": "2026-10-14",
+  "policy": "unknown",
+  "coverage": "partial",
+  "confirmed_policy": "skip",
+  "verified_rows": [
+   {
+    "date": "2026-12-25",
+    "holiday": "Christmas Day",
+    "status": "change",
+    "shift": "next scheduled service day",
+    "source_url": "https://www.wasteprousa.com/miramar/",
+    "quote": "Our office will be closed in observance of the Christmas holiday on Friday, December 25th, 2026. Customers will be serviced on their next service day.\nFor example, if Monday and Thursday are your service days, Thursday will not receive service, and your next service day will be Monday.",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "single_notice",
+    "verdict_by": "hedgie 판정 PASS 13"
+   }
+  ]
+ },
+ "olathe": {
+  "source": "https://www.olatheks.gov/Home/Components/News/News/3748/57",
+  "checked": "2026-10-14",
+  "policy": "unknown",
+  "coverage": "partial",
+  "confirmed_policy": "next_day",
+  "verified_rows": [
+   {
+    "date": "2026-01-01",
+    "holiday": "New Year's Day",
+    "status": "change",
+    "shift": "+1d",
+    "source_url": "https://www.olatheks.gov/Home/Components/News/News/3748/57",
+    "quote": "Trash and recycling collection on Thursday and Friday will be delayed one day during the Christmas and New Year weeks.",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "single_notice",
+    "verdict_by": "hedgie 추출 FIX 8"
+   }
+  ]
+ },
+ "oxnard": {
+  "source": "https://www.oxnard.gov/public-works/environmental-resources/trash-pickup",
+  "checked": "2026-10-14",
+  "policy": "next_day",
+  "coverage": "complete",
+  "confirmed_policy": "next_day",
+  "verified_rows": [
+   {
+    "date": "2026-01-01",
+    "holiday": "New Year's Day",
+    "status": "change",
+    "rule": "thursday_only",
+    "shift": "Thursday only to Friday",
+    "source_url": "https://www.oxnard.gov/public-works/environmental-resources/trash-pickup",
+    "quote": "New Year’s Day – Thursday 1/1/26\nTrash delayed Thursday only to Friday 1/2/26, no street sweeping or enforcement 1/1/26-1/2/26.",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   },
+   {
+    "date": "2026-01-19",
+    "holiday": "Martin Luther King Jr. Day",
+    "status": "change",
+    "shift": "+1d all week",
+    "source_url": "https://www.oxnard.gov/public-works/environmental-resources/trash-pickup",
+    "quote": "MLK JR Day – Monday 1/19/26\nTrash delayed all week, no street sweeping or enforcement all week, 1/19/26-1/23/26.",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   },
+   {
+    "date": "2026-02-16",
+    "holiday": "Presidents' Day",
+    "status": "change",
+    "shift": "+1d all week",
+    "source_url": "https://www.oxnard.gov/public-works/environmental-resources/trash-pickup",
+    "quote": "President’s Day – Monday 2/16/26\nTrash delayed all week, no street sweeping or enforcement all week, 2/16/26-2/20/26.",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   },
+   {
+    "date": "2026-03-31",
+    "holiday": "Cesar Chavez Day",
+    "status": "change",
+    "shift": "+1d from Tuesday",
+    "source_url": "https://www.oxnard.gov/public-works/environmental-resources/trash-pickup",
+    "quote": "Cesar Chavez Day – Tuesday 3/31/26\nTrash delayed starting Tuesday 3/31/26, no street sweeping or enforcement 3/31/26-4/3/26.",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   },
+   {
+    "date": "2026-05-25",
+    "holiday": "Memorial Day",
+    "status": "change",
+    "shift": "+1d all week",
+    "source_url": "https://www.oxnard.gov/public-works/environmental-resources/trash-pickup",
+    "quote": "Memorial Day – Monday 5/25/26\nTrash delayed all week, no street sweeping or enforcement all week, 5/25/26-5/29/26.",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   },
+   {
+    "date": "2026-07-03",
+    "holiday": "Independence Day",
+    "status": "no_change",
+    "shift": "no trash delay",
+    "source_url": "https://www.oxnard.gov/public-works/environmental-resources/trash-pickup",
+    "quote": "Independence Day – Friday 7/3/26\nNo trash delay, no street sweeping or enforcement 7/3/26.",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   },
+   {
+    "date": "2026-09-07",
+    "holiday": "Labor Day",
+    "status": "change",
+    "shift": "+1d all week",
+    "source_url": "https://www.oxnard.gov/public-works/environmental-resources/trash-pickup",
+    "quote": "Labor Day – Monday 9/7/26\nTrash delayed all week, no street sweeping or enforcement all week, 9/7/26-9/11/26.",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   },
+   {
+    "date": "2026-11-11",
+    "holiday": "Veterans Day",
+    "status": "change",
+    "shift": "+1d from Wednesday",
+    "source_url": "https://www.oxnard.gov/public-works/environmental-resources/trash-pickup",
+    "quote": "Veteran’s Day – Wednesday 11/11/26\nTrash delayed starting Wednesday 11/11/26, no street sweeping or enforcement 11/11/26-11/13/26.",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   },
+   {
+    "date": "2026-11-26",
+    "holiday": "Thanksgiving Day",
+    "status": "change",
+    "rule": "thursday_only",
+    "shift": "Thursday only to Friday",
+    "source_url": "https://www.oxnard.gov/public-works/environmental-resources/trash-pickup",
+    "quote": "Thanksgiving – Thursday 11/26/26\nTrash delayed Thursday only to Friday 11/27/26, no street sweeping or enforcement 11/26/26-11/27/26.",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   },
+   {
+    "date": "2026-12-25",
+    "holiday": "Christmas Day",
+    "status": "no_change",
+    "shift": "no trash delay",
+    "source_url": "https://www.oxnard.gov/public-works/environmental-resources/trash-pickup",
+    "quote": "Christmas – Friday 12/25/26\nNo trash delay, no street sweeping or enforcement 12/25/26 or the following week, 12/28/26-1/1/27.",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   }
+  ]
+ },
+ "pembroke-pines": {
+  "source": "https://www.ppines.com/m/newsflash/Archive/Item/1978?arcId=3749",
+  "checked": "2026-10-14",
+  "policy": "unknown",
+  "coverage": "partial",
+  "confirmed_policy": "next_day",
+  "verified_rows": [
+   {
+    "date": "2026-01-01",
+    "holiday": "New Year's Day",
+    "status": "no_change",
+    "shift": "no change",
+    "source_url": "https://www.ppines.com/m/newsflash/Archive/Item/1978?arcId=3749",
+    "quote": "There will be no change to the garbage or bulk pickup schedule for New Year’s Day- January 1, 2026.",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "single_notice",
+    "verdict_by": "hedgie 판정 PASS 13"
+   }
+  ]
+ },
+ "providence": {
+  "source": "https://www.providenceri.gov/hr/holidays/",
+  "checked": "2026-10-14",
+  "policy": "next_day",
+  "coverage": "complete",
+  "confirmed_policy": "next_day",
+  "verified_rows": [
+   {
+    "date": "2026-01-01",
+    "holiday": "New Year's Day",
+    "status": "change",
+    "shift": "+1d",
+    "source_url": "https://www.providenceri.gov/hr/holidays/",
+    "quote": "New Year’s Day, Thursday, January 1, 2026 – Collection on Friday, January 2, 2026",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   },
+   {
+    "date": "2026-01-19",
+    "holiday": "Martin Luther King Jr. Day",
+    "status": "change",
+    "shift": "+1d",
+    "source_url": "https://www.providenceri.gov/hr/holidays/",
+    "quote": "Martin Luther King, Jr. Day, Monday, January 19, 2026 – Collection on Tuesday, January 20, 2026",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   },
+   {
+    "date": "2026-05-25",
+    "holiday": "Memorial Day",
+    "status": "change",
+    "shift": "+1d",
+    "source_url": "https://www.providenceri.gov/hr/holidays/",
+    "quote": "Memorial Day, Monday, May 25, 2026 – Collection on Tuesday, May 26, 2026",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   },
+   {
+    "date": "2026-06-19",
+    "holiday": "Juneteenth",
+    "status": "change",
+    "shift": "+1d",
+    "source_url": "https://www.providenceri.gov/hr/holidays/",
+    "quote": "Juneteenth, Friday, June 19, 2026 – Collection on Saturday, June 20, 2026",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   },
+   {
+    "date": "2026-08-10",
+    "holiday": "Victory Day",
+    "status": "change",
+    "shift": "+1d",
+    "source_url": "https://www.providenceri.gov/hr/holidays/",
+    "quote": "Victory Day, Monday, August 10, 2026 – Collection on Tuesday, August 11, 2026",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   },
+   {
+    "date": "2026-09-07",
+    "holiday": "Labor Day",
+    "status": "change",
+    "shift": "+1d",
+    "source_url": "https://www.providenceri.gov/hr/holidays/",
+    "quote": "Labor Day, Monday, September 7, 2026 – Collection on Tuesday, September 8, 2026",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   },
+   {
+    "date": "2026-10-12",
+    "holiday": "Columbus Day",
+    "status": "change",
+    "shift": "+1d",
+    "source_url": "https://www.providenceri.gov/hr/holidays/",
+    "quote": "Columbus Day, Monday, October 12, 2026 – Collection on Tuesday, October 13, 2026",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   },
+   {
+    "date": "2026-11-11",
+    "holiday": "Veterans Day",
+    "status": "change",
+    "shift": "+1d",
+    "source_url": "https://www.providenceri.gov/hr/holidays/",
+    "quote": "Veterans Day, Wednesday, November 11, 2026 – Collection on Thursday, November 12, 2026",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   },
+   {
+    "date": "2026-11-26",
+    "holiday": "Thanksgiving Day",
+    "status": "change",
+    "shift": "+1d",
+    "source_url": "https://www.providenceri.gov/hr/holidays/",
+    "quote": "Thanksgiving Day, Thursday, November 26, 2026 – Collection on Friday, November 27, 2026",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   },
+   {
+    "date": "2026-12-25",
+    "holiday": "Christmas Day",
+    "status": "change",
+    "shift": "+1d",
+    "source_url": "https://www.providenceri.gov/hr/holidays/",
+    "quote": "Christmas Day, Friday, December 25, 2026 – Collection on Saturday, December 26, 2026",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   }
+  ]
+ },
+ "richardson": {
+  "source": "https://www.cor.net/home/showpublisheddocument/45375",
+  "checked": "2026-10-14",
+  "policy": "skip",
+  "coverage": "complete",
+  "confirmed_policy": "skip",
+  "verified_rows": [
+   {
+    "date": "2026-01-01",
+    "holiday": "New Year's Day",
+    "status": "change",
+    "shift": "no collection; no make-up",
+    "source_url": "https://www.cor.net/home/showpublisheddocument/45375",
+    "quote": "There is NO trash collection or BABIC service on City Holidays. There are NO make-up days for trash or BABIC.",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   },
+   {
+    "date": "2026-01-19",
+    "holiday": "Martin Luther King Jr. Day",
+    "status": "change",
+    "shift": "no collection; no make-up",
+    "source_url": "https://www.cor.net/home/showpublisheddocument/45375",
+    "quote": "There is NO trash collection or BABIC service on City Holidays. There are NO make-up days for trash or BABIC.",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   },
+   {
+    "date": "2026-05-25",
+    "holiday": "Memorial Day",
+    "status": "change",
+    "shift": "no collection; no make-up",
+    "source_url": "https://www.cor.net/home/showpublisheddocument/45375",
+    "quote": "There is NO trash collection or BABIC service on City Holidays. There are NO make-up days for trash or BABIC.",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   },
+   {
+    "date": "2026-07-03",
+    "holiday": "Independence Day",
+    "status": "change",
+    "shift": "no collection; no make-up",
+    "source_url": "https://www.cor.net/home/showpublisheddocument/45375",
+    "quote": "There is NO trash collection or BABIC service on City Holidays. There are NO make-up days for trash or BABIC.",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   },
+   {
+    "date": "2026-09-07",
+    "holiday": "Labor Day",
+    "status": "change",
+    "shift": "no collection; no make-up",
+    "source_url": "https://www.cor.net/home/showpublisheddocument/45375",
+    "quote": "There is NO trash collection or BABIC service on City Holidays. There are NO make-up days for trash or BABIC.",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   },
+   {
+    "date": "2026-11-11",
+    "holiday": "Veterans Day",
+    "status": "no_change",
+    "shift": "no change",
+    "source_url": "https://www.cor.net/home/showpublisheddocument/45375",
+    "quote": "There is NO trash collection or BABIC service on City Holidays. There are NO make-up days for trash or BABIC.",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   },
+   {
+    "date": "2026-11-26",
+    "holiday": "Thanksgiving Day",
+    "status": "change",
+    "shift": "no collection; no make-up",
+    "source_url": "https://www.cor.net/home/showpublisheddocument/45375",
+    "quote": "There is NO trash collection or BABIC service on City Holidays. There are NO make-up days for trash or BABIC.",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   },
+   {
+    "date": "2026-11-27",
+    "holiday": "Day after Thanksgiving",
+    "status": "change",
+    "shift": "no collection; no make-up",
+    "source_url": "https://www.cor.net/home/showpublisheddocument/45375",
+    "quote": "There is NO trash collection or BABIC service on City Holidays. There are NO make-up days for trash or BABIC.",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   },
+   {
+    "date": "2026-12-24",
+    "holiday": "Christmas Eve",
+    "status": "change",
+    "shift": "no collection; no make-up",
+    "source_url": "https://www.cor.net/home/showpublisheddocument/45375",
+    "quote": "There is NO trash collection or BABIC service on City Holidays. There are NO make-up days for trash or BABIC.",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   },
+   {
+    "date": "2026-12-25",
+    "holiday": "Christmas Day",
+    "status": "change",
+    "shift": "no collection; no make-up",
+    "source_url": "https://www.cor.net/home/showpublisheddocument/45375",
+    "quote": "There is NO trash collection or BABIC service on City Holidays. There are NO make-up days for trash or BABIC.",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   }
+  ],
+  "decision_note": "Veterans Day reconciled to no-change after independent row audit and owner approval."
+ },
+ "san-francisco": {
+  "source": "https://www.recology.com/recology-san-francisco/holiday-calendar/",
+  "checked": "2026-10-14",
+  "policy": "next_day",
+  "coverage": "complete",
+  "confirmed_policy": "next_day",
+  "verified_rows": [
+   {
+    "date": "2026-01-01",
+    "holiday": "New Year's Day",
+    "status": "change",
+    "shift": "+1d",
+    "source_url": "https://www.recology.com/recology-san-francisco/holiday-calendar/",
+    "quote": "New Year’s Day (2026) | Thursday, January 1 | Thursday (1/1) customers will be serviced on Friday (1/2) Friday (1/2) customers will be serviced on Saturday (1/3)",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   },
+   {
+    "date": "2026-01-19",
+    "holiday": "Martin Luther King Jr. Day",
+    "status": "no_change",
+    "shift": "no change",
+    "source_url": "https://www.recology.com/recology-san-francisco/holiday-calendar/",
+    "quote": "Martin Luther King’s Day | Monday, January 19 | Drivers will service as normal",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   },
+   {
+    "date": "2026-02-16",
+    "holiday": "Presidents' Day",
+    "status": "no_change",
+    "shift": "no change",
+    "source_url": "https://www.recology.com/recology-san-francisco/holiday-calendar/",
+    "quote": "President’s Day | Monday, February 16 | Drivers will service as normal",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   },
+   {
+    "date": "2026-05-25",
+    "holiday": "Memorial Day",
+    "status": "no_change",
+    "shift": "no change",
+    "source_url": "https://www.recology.com/recology-san-francisco/holiday-calendar/",
+    "quote": "Memorial Day | Monday, May 25 | Drivers will service as normal",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   },
+   {
+    "date": "2026-07-03",
+    "holiday": "Independence Day",
+    "status": "no_change",
+    "shift": "no change",
+    "source_url": "https://www.recology.com/recology-san-francisco/holiday-calendar/",
+    "quote": "Independence Day | Friday, July 3 | Drivers will service as normal",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   },
+   {
+    "date": "2026-09-07",
+    "holiday": "Labor Day",
+    "status": "no_change",
+    "shift": "no change",
+    "source_url": "https://www.recology.com/recology-san-francisco/holiday-calendar/",
+    "quote": "Labor Day | Monday, September 7 | Drivers will service as normal",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   },
+   {
+    "date": "2026-10-12",
+    "holiday": "Indigenous Peoples' Day",
+    "status": "no_change",
+    "shift": "no change",
+    "source_url": "https://www.recology.com/recology-san-francisco/holiday-calendar/",
+    "quote": "Indigenous Peoples’ Day | Monday, October 12 | Drivers will service as normal",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   },
+   {
+    "date": "2026-11-11",
+    "holiday": "Veterans Day",
+    "status": "no_change",
+    "shift": "no change",
+    "source_url": "https://www.recology.com/recology-san-francisco/holiday-calendar/",
+    "quote": "Veterans Day | Wednesday, November 11 | Drivers will service as normal",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   },
+   {
+    "date": "2026-11-26",
+    "holiday": "Thanksgiving Day",
+    "status": "no_change",
+    "shift": "no change",
+    "source_url": "https://www.recology.com/recology-san-francisco/holiday-calendar/",
+    "quote": "Thanksgiving Day | Thursday, November 26 | Drivers will service as normal",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   },
+   {
+    "date": "2026-12-25",
+    "holiday": "Christmas Day",
+    "status": "tbd",
+    "shift": "TBD",
+    "source_url": "https://www.recology.com/recology-san-francisco/holiday-calendar/",
+    "quote": "Christmas Day | Friday, December 25 | TBD",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   }
+  ]
+ },
+ "st-paul": {
+  "source": "https://www.stpaul.gov/sites/default/files/public-works/2026-collection-calendar.pdf",
+  "checked": "2026-10-14",
+  "policy": "next_day",
+  "coverage": "complete",
+  "confirmed_policy": "next_day",
+  "verified_rows": [
+   {
+    "date": "2026-01-01",
+    "holiday": "New Year's Day",
+    "status": "change",
+    "shift": "+1d",
+    "source_url": "https://www.stpaul.gov/sites/default/files/public-works/2026-collection-calendar.pdf",
+    "quote": "Recycling and garbage pick-up will be delayed one day if your collection falls on or after the following holidays: New Years Day Memorial Day Juneteenth Labor Day Thanksgiving Day Christmas Day",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   },
+   {
+    "date": "2026-05-25",
+    "holiday": "Memorial Day",
+    "status": "change",
+    "shift": "+1d",
+    "source_url": "https://www.stpaul.gov/sites/default/files/public-works/2026-collection-calendar.pdf",
+    "quote": "Recycling and garbage pick-up will be delayed one day if your collection falls on or after the following holidays: New Years Day Memorial Day Juneteenth Labor Day Thanksgiving Day Christmas Day",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   },
+   {
+    "date": "2026-06-19",
+    "holiday": "Juneteenth",
+    "status": "change",
+    "shift": "+1d",
+    "source_url": "https://www.stpaul.gov/sites/default/files/public-works/2026-collection-calendar.pdf",
+    "quote": "Recycling and garbage pick-up will be delayed one day if your collection falls on or after the following holidays: New Years Day Memorial Day Juneteenth Labor Day Thanksgiving Day Christmas Day",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   },
+   {
+    "date": "2026-09-07",
+    "holiday": "Labor Day",
+    "status": "change",
+    "shift": "+1d",
+    "source_url": "https://www.stpaul.gov/sites/default/files/public-works/2026-collection-calendar.pdf",
+    "quote": "Recycling and garbage pick-up will be delayed one day if your collection falls on or after the following holidays: New Years Day Memorial Day Juneteenth Labor Day Thanksgiving Day Christmas Day",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   },
+   {
+    "date": "2026-11-11",
+    "holiday": "Veterans Day",
+    "status": "no_change",
+    "shift": "no change",
+    "source_url": "https://www.stpaul.gov/sites/default/files/public-works/2026-collection-calendar.pdf",
+    "quote": "Recycling and garbage pick-up will be delayed one day if your collection falls on or after the following holidays: New Years Day Memorial Day Juneteenth Labor Day Thanksgiving Day Christmas Day",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   },
+   {
+    "date": "2026-11-26",
+    "holiday": "Thanksgiving Day",
+    "status": "change",
+    "shift": "+1d",
+    "source_url": "https://www.stpaul.gov/sites/default/files/public-works/2026-collection-calendar.pdf",
+    "quote": "Recycling and garbage pick-up will be delayed one day if your collection falls on or after the following holidays: New Years Day Memorial Day Juneteenth Labor Day Thanksgiving Day Christmas Day",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   },
+   {
+    "date": "2026-12-25",
+    "holiday": "Christmas Day",
+    "status": "change",
+    "shift": "+1d",
+    "source_url": "https://www.stpaul.gov/sites/default/files/public-works/2026-collection-calendar.pdf",
+    "quote": "Recycling and garbage pick-up will be delayed one day if your collection falls on or after the following holidays: New Years Day Memorial Day Juneteenth Labor Day Thanksgiving Day Christmas Day",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 추출 FIX 8"
+   }
+  ],
+  "decision_note": "Veterans Day reconciled to no-change after independent row audit and owner approval."
+ },
+ "thornton": {
+  "source": "https://www.thorntonco.gov/trashrecycling",
+  "checked": "2026-10-14",
+  "policy": "next_day",
+  "coverage": "complete",
+  "confirmed_policy": "next_day",
+  "verified_rows": [
+   {
+    "date": "2026-01-01",
+    "holiday": "New Year's Day",
+    "status": "change",
+    "shift": "+1d",
+    "source_url": "https://www.thorntonco.gov/trashrecycling",
+    "quote": "Trash and recycling collection will be delayed one day on the following holidays:\nNew Year's Day, January 1",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 판정 PASS 13"
+   },
+   {
+    "date": "2026-11-26",
+    "holiday": "Thanksgiving Day",
+    "status": "change",
+    "shift": "+1d",
+    "source_url": "https://www.thorntonco.gov/trashrecycling",
+    "quote": "Trash and recycling collection will be delayed one day on the following holidays:\nThanksgiving Day, November 26",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 판정 PASS 13"
+   },
+   {
+    "date": "2026-12-25",
+    "holiday": "Christmas Day",
+    "status": "change",
+    "shift": "+1d",
+    "source_url": "https://www.thorntonco.gov/trashrecycling",
+    "quote": "Trash and recycling collection will be delayed one day on the following holidays:\nChristmas Day, December 25",
+    "accessed": "2026-10-14T01:32:08Z",
+    "basis": "official_exhaustive_list",
+    "verdict_by": "hedgie 판정 PASS 13"
+   }
+  ]
  }
 }
