@@ -19,6 +19,7 @@
 <meta name="theme-color" content="#17171c" media="(prefers-color-scheme: dark)">
 {% if adsense_pub %}<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-{{ adsense_pub }}" crossorigin="anonymous"></script>{% endif %}
 {% if origin == "https://trashweek.com" %}<script>/* Cloudflare Web Analytics — skipped for automated browsers so our own QA runs don't land in the visitor counts */if(!navigator.webdriver){var b=document.createElement('script');b.defer=true;b.src='https://static.cloudflareinsights.com/beacon.min.js';b.setAttribute('data-cf-beacon','{"token": "469799762e6e463cab7fce0b8918f4e2"}');document.head.appendChild(b);}</script>{% endif %}
+{% if origin == "https://trashweek.com" %}<script>/* Microsoft Clarity heatmaps — same QA skip; the address box and the line that echoes a matched address are masked */if(!navigator.webdriver){(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","z3ne7dh5nv");}</script>{% endif %}
 {% block head %}{% endblock %}
 </head>
 <body>

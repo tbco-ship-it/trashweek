@@ -19,10 +19,10 @@
 <div class="calc card">
   <h2 class="card-title">Find your zone</h2>
   <label class="field">Street address
-    <input id="addr" class="pick search" type="text" autocomplete="street-address" placeholder="e.g. 123 Main St" data-city="{{ c.slug }}" data-cityname="{{ c.city }}, {{ c.state }}"{% if c.kind == 'recollect' %} data-kind="recollect" data-area="{{ c.area }}" data-service="{{ c.service }}"{% endif %}>
+    <input id="addr" data-clarity-mask="True" class="pick search" type="text" autocomplete="street-address" placeholder="e.g. 123 Main St" data-city="{{ c.slug }}" data-cityname="{{ c.city }}, {{ c.state }}"{% if c.kind == 'recollect' %} data-kind="recollect" data-area="{{ c.area }}" data-service="{{ c.service }}"{% endif %}>
   </label>
   <p class="sheet-actions" style="margin-top:12px"><button id="go" class="next" type="button">Find my pickup days</button></p>
-  <p id="msg" class="hint" hidden></p>
+  <p id="msg" class="hint" data-clarity-mask="True" hidden></p>
 </div>
 <div id="result" class="result" aria-live="polite"></div>
 </section>

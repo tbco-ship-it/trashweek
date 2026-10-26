@@ -13,10 +13,10 @@
 <div class="calc card" id="calc">
   <h2 class="card-title">Your address</h2>
   <label class="field">Street address, city
-    <input id="addr" class="pick search" type="text" autocomplete="street-address" placeholder="e.g. 400 Broad St, Seattle WA">
+    <input id="addr" data-clarity-mask="True" class="pick search" type="text" autocomplete="street-address" placeholder="e.g. 400 Broad St, Seattle WA">
   </label>
   <p class="sheet-actions" style="margin-top:12px"><button id="go" class="next" type="button">Find my pickup days</button></p>
-  <p id="msg" class="hint" hidden></p>
+  <p id="msg" class="hint" data-clarity-mask="True" hidden></p>
   <p class="hint">Or <a href="#cities">browse by city</a> and pick your zone. Nothing is sent to the city — we geocode with the free US Census service and check the zone on this page.</p>
   <button type="button" class="last" id="last" hidden><span>Last lookup</span><b id="last-name"></b></button>
 </div>
