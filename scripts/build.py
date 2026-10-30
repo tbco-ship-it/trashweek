@@ -219,6 +219,7 @@ def main():
         c["holidays"] = {"observed": observed, "rule": h.get("rule") or "", "source": h.get("source") or c.get("holiday_url"), "checked": h.get("checked"),
                          "policy": policy, "verified": policy != "unknown" and not partial, "partial": partial,
                          "coverage": h.get("coverage") or ("unknown" if policy == "unknown" else "complete"),
+                         "keep_title": bool(h.get("keep_title")),
                          "overrides": h.get("overrides") or [], "date_rules": date_rules,
                          "no_change_dates": no_change_dates, "unverified": unverified,
                          "pending": h.get("pending") or [],

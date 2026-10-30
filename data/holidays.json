@@ -1269,7 +1269,7 @@
  },
  "austin": {
   "source": "https://www.austintexas.gov/communications/news/city-austin-closures-christmas-2025-and-new-years-2026",
-  "checked": "2026-10-14",
+  "checked": "2026-10-28",
   "policy": "unknown",
   "coverage": "partial",
   "confirmed_policy": "next_day",
@@ -1284,6 +1284,16 @@
     "accessed": "2026-10-14T01:32:08Z",
     "basis": "single_notice",
     "verdict_by": "hedgie 판정 PASS 13"
+   },
+   {
+    "date": "2026-11-11",
+    "holiday": "Veterans Day",
+    "status": "no_change",
+    "shift": "No Veterans Day delay; only Thanksgiving, Christmas, and New Year’s Day weeks are listed for a slide",
+    "source_url": "https://www.austintexas.gov/services/view-your-recycling-composting-and-trash-schedule",
+    "quote": "If your collection day falls on Thanksgiving Day, Christmas Day or New Year's Day – or if it falls after the holiday in the same week – it slides to one day later. If the holiday falls on a Saturday or a Sunday, your collection day will not slide.",
+    "accessed": "2026-10-28T00:41:37Z",
+    "basis": "official_exhaustive_list"
    }
   ]
  },
@@ -2111,6 +2121,317 @@
     "accessed": "2026-10-14T01:32:08Z",
     "basis": "official_exhaustive_list",
     "verdict_by": "hedgie 판정 PASS 13"
+   }
+  ]
+ },
+ "milwaukee": {
+  "source": "https://city.milwaukee.gov/ImageLibrary/MilwaukeeRecycles/PDFs/Media-Room/FINAL_DIGITAL_2025-Fall-Mailer1.pdf",
+  "checked": "2026-10-28",
+  "policy": "unknown",
+  "coverage": "partial",
+  "keep_title": true,
+  "verified_rows": [
+   {
+    "date": "2026-11-11",
+    "holiday": "Veterans Day",
+    "status": "no_change",
+    "shift": "not listed among 2026 no-collection dates",
+    "source_url": "https://city.milwaukee.gov/ImageLibrary/MilwaukeeRecycles/PDFs/Media-Room/FINAL_DIGITAL_2025-Fall-Mailer1.pdf",
+    "quote": "NO COLLECTIONS ON CITY HOLIDAYS",
+    "accessed": "2026-10-28T00:19:42Z",
+    "basis": "official_exhaustive_list"
+   }
+  ]
+ },
+ "new-orleans": {
+  "source": "https://nola.gov/trash/",
+  "checked": "2026-10-28",
+  "policy": "unknown",
+  "coverage": "partial",
+  "keep_title": true,
+  "verified_rows": [
+   {
+    "date": "2026-11-11",
+    "holiday": "Veterans Day",
+    "status": "no_change",
+    "shift": "no service change for Veterans Day; only the listed observed holidays suspend or shift collection",
+    "source_url": "https://nola.gov/trash/",
+    "quote": "The City of New Orleans observes the following holidays, with solid waste and recycling collections suspended outside of the French Quarter and Downtown Development District (DDD).",
+    "accessed": "2026-10-28T00:37:53Z",
+    "basis": "official_exhaustive_list"
+   }
+  ]
+ },
+ "arlington": {
+  "source": "https://www.arlingtontx.gov/News-Articles/2026/September/2026-Labor-Day-Closings-and-Service-Schedules-in-Arlington",
+  "checked": "2026-10-28",
+  "policy": "unknown",
+  "coverage": "partial",
+  "keep_title": true,
+  "verified_rows": [
+   {
+    "date": "2026-11-11",
+    "holiday": "Veterans Day",
+    "status": "no_change",
+    "shift": "not listed among 2026 garbage/recycling closure holidays",
+    "source_url": "https://www.arlingtontx.gov/News-Articles/2026/September/2026-Labor-Day-Closings-and-Service-Schedules-in-Arlington",
+    "quote": "Holiday Garbage and Recycling Schedule: Garbage and recycling will not be picked up New Year’s Day, Fourth of July, Labor Day, Thanksgiving Day and Christmas.",
+    "accessed": "2026-10-28T00:38:09Z",
+    "basis": "official_exhaustive_list"
+   }
+  ]
+ },
+ "columbus": {
+  "source": "https://www.columbus.gov/files/sharedassets/city/v/1/public-service/trash-recycling-amp-bulk-collection/find-my-collection-day/2026-rotating-holiday-calendar.pdf",
+  "checked": "2026-10-28",
+  "policy": "next_day",
+  "coverage": "partial",
+  "keep_title": true,
+  "verified_rows": [
+   {
+    "date": "2026-11-11",
+    "holiday": "Veterans Day",
+    "status": "change",
+    "shift": "No trash collection on Wed Nov 11; eligible color-schedule routes move one day forward after the holiday",
+    "source_url": "https://www.columbus.gov/files/sharedassets/city/v/1/public-service/trash-recycling-amp-bulk-collection/find-my-collection-day/2026-rotating-holiday-calendar.pdf",
+    "quote": "2026 Rotating Holiday Refuse Collection Schedule for Residents Assigned a Collection Color",
+    "accessed": "2026-10-28T00:40:44Z",
+    "basis": "calendar_pdf",
+    "supporting_source_url": "https://www.columbus.gov/Services/Trash-Recycling-Bulk-Collection/Find-My-Collection-Day?lang_update=639273343957491296",
+    "supporting_quote": "There is no trash collection on these city-observed holidays. Your trash collection day moves forward one day after each holiday."
+   }
+  ]
+ },
+ "fort-worth": {
+  "source": "https://www.fortworthtexas.gov/files/assets/public/v/3/environmental-services/solid-waste/documents/envd-solid-waste-holiday-schedule-2026-ada.pdf",
+  "checked": "2026-10-28",
+  "policy": "unknown",
+  "coverage": "partial",
+  "keep_title": true,
+  "verified_rows": [
+   {
+    "date": "2026-11-11",
+    "holiday": "Veterans Day",
+    "status": "no_change",
+    "shift": "NO CHANGE for Monday through Friday collection",
+    "source_url": "https://www.fortworthtexas.gov/files/assets/public/v/3/environmental-services/solid-waste/documents/envd-solid-waste-holiday-schedule-2026-ada.pdf",
+    "quote": "Veterans Day\nWednesday, November 11, 2026\nNO CHANGE",
+    "accessed": "2026-10-28T00:40:59Z",
+    "basis": "calendar_pdf"
+   }
+  ]
+ },
+ "memphis": {
+  "source": "https://memphistn.gov/trash-collection-changes-veterans-day/",
+  "checked": "2026-10-28",
+  "policy": "overrides",
+  "coverage": "partial",
+  "keep_title": true,
+  "overrides": [["2026-11-11", "2026-11-12"]],
+  "verified_rows": [
+   {
+    "date": "2026-11-11",
+    "holiday": "Veterans Day",
+    "status": "change",
+    "shift": "No trash service Wed Nov 11 for city-serviced residents; Wednesday routes move to Thu Nov 12; Thursday and Friday routes stay on regular days",
+    "source_url": "https://memphistn.gov/trash-collection-changes-veterans-day/",
+    "quote": "City of Memphis government offices will be closed on November 11, 2026, for Veterans Day. There will be NO trash collection service for residents serviced by the City of Memphis Solid Waste Management on this day. Wednesday customers should place carts out on Thursday, November 12th, for collection. Thursday and Friday, customers should place their carts out on their regular collection day for service. Excess trash and yard waste services will be limited for customers the week of the holiday.",
+    "accessed": "2026-10-28T00:41:28Z",
+    "basis": "single_notice"
+   }
+  ]
+ },
+ "rochester": {
+  "source": "https://www.cityofrochester.gov/departments/department-environmental-services-des/residential-refuse-collection-information",
+  "checked": "2026-10-28",
+  "policy": "unknown",
+  "coverage": "partial",
+  "keep_title": true,
+  "verified_rows": [
+   {
+    "date": "2026-11-11",
+    "holiday": "Veterans Day",
+    "status": "no_change",
+    "shift": "No delay indicated for Veterans Day; the city’s named delay holidays omit it",
+    "source_url": "https://www.cityofrochester.gov/departments/department-environmental-services-des/residential-refuse-collection-information",
+    "quote": "When certain holidays fall on a weekday, expect refuse and recycling services to be delayed by one day for the remainder of the week. Monday routes will be picked up on Tuesday, etc. Otherwise, refuse and recycling services will be serviced on your normal scheduled weekday.",
+    "accessed": "2026-10-28T00:58:28Z",
+    "basis": "official_exhaustive_list"
+   }
+  ]
+ },
+ "montgomery": {
+  "source": "https://www.montgomeryal.gov/home/showpublisheddocument/19398/639106287840570000",
+  "checked": "2026-10-28",
+  "policy": "unknown",
+  "coverage": "partial",
+  "keep_title": true,
+  "verified_rows": [
+   {
+    "date": "2026-11-11",
+    "holiday": "Veterans Day",
+    "status": "no_change",
+    "shift": "Veterans Day is not in the 2026 sanitation holiday schedule",
+    "source_url": "https://www.montgomeryal.gov/home/showpublisheddocument/19398/639106287840570000",
+    "quote": "2026 SANITATION HOLIDAY SCHEDULE",
+    "accessed": "2026-10-28T00:59:02Z",
+    "basis": "official_exhaustive_list"
+   }
+  ]
+ },
+ "augusta": {
+  "source": "https://www.augustaga.gov/2573/Holiday-Schedule",
+  "checked": "2026-10-28",
+  "policy": "unknown",
+  "coverage": "partial",
+  "keep_title": true,
+  "verified_rows": [
+   {
+    "date": "2026-11-11",
+    "holiday": "Veterans Day",
+    "status": "no_change",
+    "shift": "Veterans Day is not in the Solid Waste Facility observed-holiday list",
+    "source_url": "https://www.augustaga.gov/2573/Holiday-Schedule",
+    "quote": "Please note that the Solid Waste Facility does not observe all City or Federal Holidays. Below is a list of the holidays we do observe.",
+    "accessed": "2026-10-28T00:43:36Z",
+    "basis": "official_exhaustive_list",
+    "supporting_source_url": "https://www.augustaga.gov/DocumentCenter/View/19732/2026-Holiday-Schedule-",
+    "supporting_quote": "Veterans Day      Wednesday, November 11th"
+   }
+  ]
+ },
+ "akron": {
+  "source": "https://cms2.revize.com/revize/akronoh/Documents/Departments/Service/Public%20Works%20Bureau/Trash%20Collection%20Division/2026%20Holiday%20Schedule%20Front.pdf?t=202601071036530",
+  "checked": "2026-10-28",
+  "policy": "unknown",
+  "coverage": "partial",
+  "keep_title": true,
+  "verified_rows": [
+   {
+    "date": "2026-11-11",
+    "holiday": "Veterans Day",
+    "status": "no_change",
+    "shift": "No trash delay for Veterans Day; 2026 delay list omits it",
+    "source_url": "https://cms2.revize.com/revize/akronoh/Documents/Departments/Service/Public%20Works%20Bureau/Trash%20Collection%20Division/2026%20Holiday%20Schedule%20Front.pdf?t=202601071036530",
+    "quote": "Trash collection will not be delayed on any other holiday.",
+    "accessed": "2026-10-28T00:43:44Z",
+    "basis": "official_exhaustive_list"
+   }
+  ]
+ },
+ "bellevue": {
+  "source": "https://bellevuewa.gov/pa/node/70371",
+  "checked": "2026-10-28",
+  "policy": "unknown",
+  "coverage": "partial",
+  "keep_title": true,
+  "verified_rows": [
+   {
+    "date": "2026-11-11",
+    "holiday": "Veterans Day",
+    "status": "no_change",
+    "shift": "No Veterans Day interruption; only Thanksgiving, Christmas, and New Year’s Day are listed",
+    "source_url": "https://bellevuewa.gov/pa/node/70371",
+    "quote": "Republic Services does not collect recycling, garbage, or yard waste on Thanksgiving, Christmas, or New Year's Day. If your normally scheduled pickup day falls on one of these holidays, collection will be the following day. Collection for the rest of that holiday week will be one day later also.",
+    "accessed": "2026-10-28T00:45:23Z",
+    "basis": "official_exhaustive_list"
+   }
+  ]
+ },
+ "gainesville": {
+  "source": "https://www.gainesvillefl.gov/Government-Pages/Government/Departments/Public-Works/Garbage-Recycling/Holiday-Schedule",
+  "checked": "2026-10-28",
+  "policy": "unknown",
+  "coverage": "partial",
+  "keep_title": true,
+  "verified_rows": [
+   {
+    "date": "2026-11-11",
+    "holiday": "Veterans Day",
+    "status": "no_change",
+    "shift": "Normal collection schedule; Veterans Day is not among the 2026 scheduled delay holidays",
+    "source_url": "https://www.gainesvillefl.gov/Government-Pages/Government/Departments/Public-Works/Garbage-Recycling/Holiday-Schedule",
+    "quote": "If a holiday is not listed as a scheduled holiday above, services will occur as scheduled on your normal collection day.",
+    "accessed": "2026-10-28T00:57:37Z",
+    "basis": "official_exhaustive_list"
+   }
+  ]
+ },
+ "sunnyvale": {
+  "source": "https://www.sunnyvale.ca.gov/homes-streets-and-property/recycling-and-garbage",
+  "checked": "2026-10-28",
+  "policy": "unknown",
+  "coverage": "partial",
+  "keep_title": true,
+  "verified_rows": [
+   {
+    "date": "2026-11-11",
+    "holiday": "Veterans Day",
+    "status": "no_change",
+    "shift": "No collection suspension or delay for Veterans Day; listed no-collection holidays are Thanksgiving, Christmas, and New Year’s Day",
+    "source_url": "https://www.sunnyvale.ca.gov/homes-streets-and-property/recycling-and-garbage",
+    "quote": "Holidays with no collection: Thanksgiving, Christmas Day and New Year's Day.",
+    "accessed": "2026-10-28T00:46:09Z",
+    "basis": "official_exhaustive_list"
+   }
+  ]
+ },
+ "pasadena": {
+  "source": "https://www.cityofpasadena.net/city-closures/",
+  "checked": "2026-10-28",
+  "policy": "unknown",
+  "coverage": "partial",
+  "keep_title": true,
+  "verified_rows": [
+   {
+    "date": "2026-11-11",
+    "holiday": "Veterans Day",
+    "status": "no_change",
+    "shift": "Regular schedule on holidays other than the named refuse holidays",
+    "source_url": "https://www.cityofpasadena.net/city-closures/",
+    "quote": "On all other holidays, trash will be collected on the regular schedule.",
+    "accessed": "2026-10-28T00:47:14Z",
+    "basis": "official_exhaustive_list"
+   }
+  ]
+ },
+ "lewisville": {
+  "source": "https://www.cityoflewisville.com/how-do-i/view/city-holidays",
+  "checked": "2026-10-28",
+  "policy": "unknown",
+  "coverage": "partial",
+  "keep_title": true,
+  "verified_rows": [
+   {
+    "date": "2026-11-11",
+    "holiday": "Veterans Day",
+    "status": "no_change",
+    "shift": "Only Thanksgiving, Christmas Day, and New Year’s Day affect pickup",
+    "source_url": "https://www.cityoflewisville.com/how-do-i/view/city-holidays",
+    "quote": "The only holidays that affect pickup are Thanksgiving, Christmas Day, and New Year's Day.",
+    "accessed": "2026-10-28T00:47:29Z",
+    "basis": "official_exhaustive_list"
+   }
+  ]
+ },
+ "abilene": {
+  "source": "https://www.abilenetx.gov/holidays",
+  "checked": "2026-10-28",
+  "policy": "unknown",
+  "coverage": "partial",
+  "keep_title": true,
+  "verified_rows": [
+   {
+    "date": "2026-11-11",
+    "holiday": "Veterans Day",
+    "status": "no_change",
+    "shift": "Residential trash is collecting; collection is as scheduled.",
+    "source_url": "https://www.abilenetx.gov/holidays",
+    "quote": "Collecting Trash Pick-Up Residential",
+    "accessed": "2026-10-28T01:21:56Z",
+    "basis": "single_notice",
+    "supporting_source_url": "https://www.abilenetx.gov/holidays",
+    "supporting_quote": "Collection as Scheduled: MLK Day; Good Friday; Memorial Day; Juneteenth; Independence Day; Veterans Day; Friday after Thanksgiving; Christmas Eve"
    }
   ]
  }
