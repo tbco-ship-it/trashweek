@@ -247,7 +247,7 @@ def main():
         c["holidays"]["unverified_dates"] = [d for d, _ in unverified]
         # Change rows retain their verified wording; no-change rows keep the normalized table wording.
         verified_shift_by_date = {row["date"]: row["shift"] for row in verified_rows
-                                  if row["status"] == "change" and row.get("shift")}
+                                  if row["status"] == "change" and row.get("rule") == "unverified" and row.get("shift")}
         if c["slug"] == "philadelphia":
             c["holidays"]["obs26_weekdays"] = [o for o in c["holidays"]["obs26"] if dt.date.fromisoformat(o[0]).weekday() < 5]
             c["holidays"]["weekday_count26"] = len(c["holidays"]["obs26_weekdays"])
