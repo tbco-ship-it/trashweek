@@ -2124,25 +2124,6 @@
    }
   ]
  },
- "milwaukee": {
-  "source": "https://city.milwaukee.gov/ImageLibrary/MilwaukeeRecycles/PDFs/Media-Room/FINAL_DIGITAL_2025-Fall-Mailer1.pdf",
-  "checked": "2026-10-28",
-  "policy": "unknown",
-  "coverage": "partial",
-  "keep_title": true,
-  "verified_rows": [
-   {
-    "date": "2026-11-11",
-    "holiday": "Veterans Day",
-    "status": "no_change",
-    "shift": "not listed among 2026 no-collection dates",
-    "source_url": "https://city.milwaukee.gov/ImageLibrary/MilwaukeeRecycles/PDFs/Media-Room/FINAL_DIGITAL_2025-Fall-Mailer1.pdf",
-    "quote": "NO COLLECTIONS ON CITY HOLIDAYS",
-    "accessed": "2026-10-28T00:19:42Z",
-    "basis": "official_exhaustive_list"
-   }
-  ]
- },
  "new-orleans": {
   "source": "https://nola.gov/trash/",
   "checked": "2026-10-28",
@@ -2184,7 +2165,6 @@
  "columbus": {
   "source": "https://www.columbus.gov/files/sharedassets/city/v/1/public-service/trash-recycling-amp-bulk-collection/find-my-collection-day/2026-rotating-holiday-calendar.pdf",
   "checked": "2026-10-28",
-  "policy": "next_day",
   "coverage": "partial",
   "keep_title": true,
   "verified_rows": [
@@ -2192,7 +2172,8 @@
     "date": "2026-11-11",
     "holiday": "Veterans Day",
     "status": "change",
-    "shift": "No trash collection on Wed Nov 11; eligible color-schedule routes move one day forward after the holiday",
+    "rule": "unverified",
+    "shift": "No trash collection on Wed Nov 11; color routes rotate one day forward — check the city's 2026 color calendar",
     "source_url": "https://www.columbus.gov/files/sharedassets/city/v/1/public-service/trash-recycling-amp-bulk-collection/find-my-collection-day/2026-rotating-holiday-calendar.pdf",
     "quote": "2026 Rotating Holiday Refuse Collection Schedule for Residents Assigned a Collection Color",
     "accessed": "2026-10-28T00:40:44Z",

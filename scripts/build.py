@@ -189,7 +189,9 @@ def main():
         if verified_rows:
             observed = [[row["date"], row["holiday"]] for row in verified_rows if row["status"] in ("change", "no_change")]
             pending = [[row["date"], row["holiday"]] for row in verified_rows if row["status"] == "tbd"]
-            unverified = [[row["date"], row["holiday"]] for row in verified_rows if row["status"] == "unverified"]
+            # A confirmed date may affect routes we cannot model; keep its schedule handling unverified.
+            unverified = [[row["date"], row["holiday"]] for row in verified_rows
+                          if row["status"] == "unverified" or (row["status"] == "change" and row.get("rule") == "unverified")]
             no_change_dates = [row["date"] for row in verified_rows if row["status"] == "no_change"]
             rule_for_change = h.get("confirmed_policy") or h.get("policy")
             date_rules = {}
@@ -197,16 +199,21 @@ def main():
                 status = row["status"]
                 if status == "change":
                     row_rule = row.get("rule") or rule_for_change
-                    if row_rule not in ("next_day", "skip", "overrides", "thursday_only"):
+                    # Only supported date rules should alter zone schedules; an unverified rule stays on its regular date.
+                    if row_rule == "unverified":
+                        date_rules[row["date"]] = "unverified"
+                    elif row_rule in ("next_day", "skip", "overrides", "thursday_only"):
+                        date_rules[row["date"]] = row_rule
+                    else:
                         raise SystemExit(f"{c['slug']}: unsupported confirmed date policy {row_rule!r}")
-                    date_rules[row["date"]] = row_rule
                 elif status in ("no_change", "tbd", "unverified"):
                     date_rules[row["date"]] = status
             h.update({"observed": observed, "pending": pending, "unverified": unverified,
                       "no_change_dates": no_change_dates, "date_rules": date_rules})
         c["aliases"] = reg_aliases.get(c["slug"], [])
         # policy: next_day (rest of the week slides one day) · skip (that pickup is missed, next regular day) · overrides (explicit original→actual dates) · unknown (not verified: no shifting)
-        policy = h.get("policy") or ("next_day" if h.get("observed") else "unknown")
+        # Observed dates do not imply a citywide policy; only an explicit rule can shift zone schedules.
+        policy = h.get("policy") or "unknown"
         observed = h.get("observed") or []
         partial = h.get("coverage") == "partial" and bool(observed)
         no_change_dates = h.get("no_change_dates") or []
@@ -232,11 +239,15 @@ def main():
         skip_dates = set(h.get("skips") or []) | {d for d, rule in date_rules.items() if rule == "skip"}
         c["holidays"]["skip_rows"] = [o for o in c["holidays"]["obs26"] if o[0] in skip_dates]   # observed days the city says have no make-up day
         if verified_rows:
-            change_dates = {d for d, rule in date_rules.items() if rule in ("next_day", "skip", "overrides", "thursday_only")}
+            # A date can have a confirmed change notice even when no route movement is modeled here.
+            change_dates = {row["date"] for row in verified_rows if row["status"] == "change"}
             c["holidays"]["change_obs26"] = [o for o in c["holidays"]["obs26"] if o[0] in change_dates]
         else:
             c["holidays"]["change_obs26"] = [o for o in c["holidays"]["obs26"] if o[0] not in set(no_change_dates)]
         c["holidays"]["unverified_dates"] = [d for d, _ in unverified]
+        # Change rows retain their verified wording; no-change rows keep the normalized table wording.
+        verified_shift_by_date = {row["date"]: row["shift"] for row in verified_rows
+                                  if row["status"] == "change" and row.get("shift")}
         if c["slug"] == "philadelphia":
             c["holidays"]["obs26_weekdays"] = [o for o in c["holidays"]["obs26"] if dt.date.fromisoformat(o[0]).weekday() < 5]
             c["holidays"]["weekday_count26"] = len(c["holidays"]["obs26_weekdays"])
@@ -277,9 +288,9 @@ def main():
             known_for_week = [d for d, _ in observed if d not in no_change_dates]
         unverified_dates = {d for d, _ in unverified}
         c["hol_rows"] = [{"iso": d, "name": n, "wd": LONG[DAYS[dt.date.fromisoformat(d).weekday()]],
-                          "shift": shift_text(d, pol, c["holidays"]["overrides"], known_for_week, c["hol"]["pending"], c["hol"]["skips"], date_rules.get(d), unverified_dates),
+                          "shift": verified_shift_by_date.get(d) or shift_text(d, pol, c["holidays"]["overrides"], known_for_week, c["hol"]["pending"], c["hol"]["skips"], date_rules.get(d), unverified_dates),
                           "weekend": dt.date.fromisoformat(d).weekday() >= 5, "skip": d in c["hol"]["skips"],
-                          "no_change": date_rules.get(d) == "no_change", "unverified": d in unverified_dates,
+                          "no_change": date_rules.get(d) == "no_change", "unverified": date_rules.get(d) == "unverified" or d in unverified_dates,
                           "pending": date_rules.get(d) == "tbd",
                           "earlier": pol == "overrides" and week_moves_earlier(d, c["holidays"]["overrides"])} for d, n in rows]
         # pending: a holiday the city usually observes but has not posted for this year yet (Detroit 12/25) — shown, never applied as confirmed
