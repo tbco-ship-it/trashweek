@@ -245,9 +245,16 @@ def main():
         else:
             c["holidays"]["change_obs26"] = [o for o in c["holidays"]["obs26"] if o[0] not in set(no_change_dates)]
         c["holidays"]["unverified_dates"] = [d for d, _ in unverified]
-        # Change rows retain their verified wording; no-change rows keep the normalized table wording.
-        verified_shift_by_date = {row["date"]: row["shift"] for row in verified_rows
-                                  if row["status"] == "change" and row.get("rule") == "unverified" and row.get("shift")}
+        # Explicit display copy is authoritative; otherwise only unverified rules may expose source shift text.
+        verified_display_by_date = {row["date"]: row["display"] for row in verified_rows
+                                    if row["status"] == "change" and row.get("display")}
+        verified_shift_by_date = {
+            row["date"]: row.get("display") or row.get("shift")
+            for row in verified_rows
+            if row["status"] == "change" and (
+                row.get("display") or (row.get("rule") == "unverified" and row.get("shift"))
+            )
+        }
         if c["slug"] == "philadelphia":
             c["holidays"]["obs26_weekdays"] = [o for o in c["holidays"]["obs26"] if dt.date.fromisoformat(o[0]).weekday() < 5]
             c["holidays"]["weekday_count26"] = len(c["holidays"]["obs26_weekdays"])
@@ -289,6 +296,7 @@ def main():
         unverified_dates = {d for d, _ in unverified}
         c["hol_rows"] = [{"iso": d, "name": n, "wd": LONG[DAYS[dt.date.fromisoformat(d).weekday()]],
                           "shift": verified_shift_by_date.get(d) or shift_text(d, pol, c["holidays"]["overrides"], known_for_week, c["hol"]["pending"], c["hol"]["skips"], date_rules.get(d), unverified_dates),
+                          "display": verified_display_by_date.get(d),
                           "weekend": dt.date.fromisoformat(d).weekday() >= 5, "skip": d in c["hol"]["skips"],
                           "no_change": date_rules.get(d) == "no_change", "unverified": date_rules.get(d) == "unverified" or d in unverified_dates,
                           "pending": date_rules.get(d) == "tbd",

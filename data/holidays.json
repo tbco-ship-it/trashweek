@@ -2215,8 +2215,10 @@
     "holiday": "Veterans Day",
     "status": "change",
     "shift": "No trash service Wed Nov 11 for city-serviced residents; Wednesday routes move to Thu Nov 12; Thursday and Friday routes stay on regular days",
+    "display": "City of Memphis Solid Waste Management customers: no pickup Wed Nov 11; Wednesday carts go out Thu Nov 12; Thursday and Friday stay on regular days. Residents serviced by Team Waste will not experience any delays during the holiday week.",
     "source_url": "https://memphistn.gov/trash-collection-changes-veterans-day/",
     "quote": "City of Memphis government offices will be closed on November 11, 2026, for Veterans Day. There will be NO trash collection service for residents serviced by the City of Memphis Solid Waste Management on this day. Wednesday customers should place carts out on Thursday, November 12th, for collection. Thursday and Friday, customers should place their carts out on their regular collection day for service. Excess trash and yard waste services will be limited for customers the week of the holiday.",
+    "supporting_quote": "Residents serviced by Team Waste will not experience any delays during the holiday week.",
     "accessed": "2026-10-28T00:41:28Z",
     "basis": "single_notice"
    }
