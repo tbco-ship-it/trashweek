@@ -187,14 +187,30 @@ def main():
         h = dict(h)
         verified_rows = h.get("verified_rows") or []
         if verified_rows:
-            observed = [[row["date"], row["holiday"]] for row in verified_rows if row["status"] in ("change", "no_change")]
-            pending = [[row["date"], row["holiday"]] for row in verified_rows if row["status"] == "tbd"]
+            observed_by_date = {d: n for d, n in h.get("observed") or []}
+            pending_by_date = {d: n for d, n in h.get("pending") or []}
+            unverified_by_date = {d: n for d, n in h.get("unverified") or []}
+            no_change_dates = set(h.get("no_change_dates") or [])
+            date_rules = dict(h.get("date_rules") or {})
+            for row in verified_rows:
+                status, date, holiday = row["status"], row["date"], row["holiday"]
+                if status in ("change", "no_change"):
+                    observed_by_date[date] = holiday
+                elif status == "tbd":
+                    pending_by_date[date] = holiday
+                if status == "no_change":
+                    no_change_dates.add(date)
+                elif status == "change":
+                    no_change_dates.discard(date)
+                if status == "unverified" or (status == "change" and row.get("rule") == "unverified"):
+                    unverified_by_date[date] = holiday
+                elif status in ("change", "no_change", "tbd"):
+                    unverified_by_date.pop(date, None)
             # A confirmed date may affect routes we cannot model; keep its schedule handling unverified.
-            unverified = [[row["date"], row["holiday"]] for row in verified_rows
-                          if row["status"] == "unverified" or (row["status"] == "change" and row.get("rule") == "unverified")]
-            no_change_dates = [row["date"] for row in verified_rows if row["status"] == "no_change"]
+            observed = [[d, n] for d, n in sorted(observed_by_date.items())]
+            pending = [[d, n] for d, n in sorted(pending_by_date.items())]
+            unverified = [[d, n] for d, n in sorted(unverified_by_date.items())]
             rule_for_change = h.get("confirmed_policy") or h.get("policy")
-            date_rules = {}
             for row in verified_rows:
                 status = row["status"]
                 if status == "change":
@@ -209,7 +225,7 @@ def main():
                 elif status in ("no_change", "tbd", "unverified"):
                     date_rules[row["date"]] = status
             h.update({"observed": observed, "pending": pending, "unverified": unverified,
-                      "no_change_dates": no_change_dates, "date_rules": date_rules})
+                      "no_change_dates": sorted(no_change_dates), "date_rules": date_rules})
         c["aliases"] = reg_aliases.get(c["slug"], [])
         # policy: next_day (rest of the week slides one day) · skip (that pickup is missed, next regular day) · overrides (explicit original→actual dates) · unknown (not verified: no shifting)
         # Observed dates do not imply a citywide policy; only an explicit rule can shift zone schedules.
@@ -241,6 +257,10 @@ def main():
         if verified_rows:
             # A date can have a confirmed change notice even when no route movement is modeled here.
             change_dates = {row["date"] for row in verified_rows if row["status"] == "change"}
+            # When a closed observed list and a citywide one-day/skip rule are both verified,
+            # the rule covers the full list even if this batch's per-date rows cover only a subset.
+            if not partial and policy in ("next_day", "skip"):
+                change_dates.update(d for d, _ in observed if d not in set(no_change_dates))
             c["holidays"]["change_obs26"] = [o for o in c["holidays"]["obs26"] if o[0] in change_dates]
         else:
             c["holidays"]["change_obs26"] = [o for o in c["holidays"]["obs26"] if o[0] not in set(no_change_dates)]
@@ -371,7 +391,6 @@ def main():
 
     urls = []
     page_count = 0
-
     def write(path, template, sm=None, index=True, **ctx):
         nonlocal page_count
         out = DIST / path

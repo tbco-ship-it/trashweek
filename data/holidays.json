@@ -287,16 +287,46 @@
   "checked": "2026-09-29",
   "policy": "overrides",
   "overrides": [
-   ["2026-01-01", "2026-01-02"],
-   ["2026-01-19", "2026-01-20"],
-   ["2026-05-25", "2026-05-26"],
-   ["2026-06-19", "2026-06-22"],
-   ["2026-09-07", "2026-09-08"],
-   ["2026-11-26", "2026-11-25"],
-   ["2026-11-27", "2026-11-30"],
-   ["2026-12-24", "2026-12-23"],
-   ["2026-12-25", "2026-12-28"],
-   ["2026-12-31", "2026-12-30"]
+   [
+    "2026-01-01",
+    "2026-01-02"
+   ],
+   [
+    "2026-01-19",
+    "2026-01-20"
+   ],
+   [
+    "2026-05-25",
+    "2026-05-26"
+   ],
+   [
+    "2026-06-19",
+    "2026-06-22"
+   ],
+   [
+    "2026-09-07",
+    "2026-09-08"
+   ],
+   [
+    "2026-11-26",
+    "2026-11-25"
+   ],
+   [
+    "2026-11-27",
+    "2026-11-30"
+   ],
+   [
+    "2026-12-24",
+    "2026-12-23"
+   ],
+   [
+    "2026-12-25",
+    "2026-12-28"
+   ],
+   [
+    "2026-12-31",
+    "2026-12-30"
+   ]
   ]
  },
  "huntsville": {
@@ -310,8 +340,20 @@
     "Martin Luther King Jr. Day"
    ],
    [
+    "2026-04-03",
+    "Good Friday"
+   ],
+   [
     "2026-05-25",
     "Memorial Day"
+   ],
+   [
+    "2026-06-19",
+    "Juneteenth"
+   ],
+   [
+    "2026-07-03",
+    "Independence Day"
    ],
    [
     "2026-09-07",
@@ -323,13 +365,44 @@
    ],
    [
     "2026-11-26",
-    "Thanksgiving Day"
+    "Thanksgiving"
+   ],
+   [
+    "2026-12-25",
+    "Christmas"
    ]
   ],
   "rule": "On observed holidays, residential garbage, recycling, and yard waste collection is generally delayed by one day for the remainder of the week (e.g., regular Monday pickup would occur on Tuesday). If your collection date falls on a holiday, place your cans at the curb the evening before the next business day.",
   "source": "https://www.huntsvilleal.gov/residents/trash-recycling/holiday-schedule/",
-  "checked": "2026-09-17",
-  "policy": "next_day"
+  "checked": "2026-10-30",
+  "policy": "next_day",
+  "dates_source": "https://www.huntsvilleal.gov/schedule-for-residential-collection/",
+  "dates_note": "RANA manages recycling under a separate schedule.",
+  "coverage": "complete",
+  "verified_rows": [
+   {
+    "slug": "huntsville",
+    "date": "2026-11-26",
+    "holiday": "Thanksgiving Day",
+    "status": "change",
+    "shift": "Thursday routes → Friday.",
+    "source_url": "https://www.huntsvilleal.gov/schedule-for-residential-collection/",
+    "quote": "Thanksgiving (Thursday routes will be collected Friday)",
+    "accessed": "2026-10-30T00:36:01Z",
+    "basis": "dated_schedule"
+   },
+   {
+    "slug": "huntsville",
+    "date": "2026-12-25",
+    "holiday": "Christmas Day",
+    "status": "no_change",
+    "shift": "No delay in collection schedules.",
+    "source_url": "https://www.huntsvilleal.gov/schedule-for-residential-collection/",
+    "quote": "Christmas (No delays)",
+    "accessed": "2026-10-30T00:36:01Z",
+    "basis": "dated_schedule"
+   }
+  ]
  },
  "long-beach": {
   "observed": [
@@ -1112,7 +1185,9 @@
   ],
   "rule": "* Please note: The makeup day precedes the holiday!",
   "dates_note": "In the city's table the asterisk marks New Year's Day, Juneteenth, Independence Day, Thanksgiving Day, the day after Thanksgiving, Christmas Eve, Christmas Day and New Year's Day 2027: their make-up day is the Wednesday before. Martin Luther King Day, Presidents' Day, Memorial Day and Labor Day are made up the Wednesday after, and Veteran's Day has no make-up day.",
-  "skips": ["2026-11-11"],
+  "skips": [
+   "2026-11-11"
+  ],
   "source": "https://www.lexingtonky.gov/living/waste-collection/about-recycling",
   "checked": "2026-10-12",
   "policy": "overrides",
@@ -1294,6 +1369,28 @@
     "quote": "If your collection day falls on Thanksgiving Day, Christmas Day or New Year's Day – or if it falls after the holiday in the same week – it slides to one day later. If the holiday falls on a Saturday or a Sunday, your collection day will not slide.",
     "accessed": "2026-10-28T00:41:37Z",
     "basis": "official_exhaustive_list"
+   },
+   {
+    "slug": "austin",
+    "date": "2026-11-26",
+    "holiday": "Thanksgiving Day",
+    "status": "change",
+    "shift": "If collection is on or after the holiday in the same week, it slides one day later.",
+    "source_url": "https://www.austintexas.gov/services/view-your-recycling-composting-and-trash-schedule",
+    "quote": "If your collection day falls on Thanksgiving Day, Christmas Day or New Year’s Day – or if it falls after the holiday in the same week – it slides to one day later. If the holiday falls on a Saturday or a Sunday, your collection day will not slide.",
+    "accessed": "2026-10-30T00:36:01Z",
+    "basis": "official_rule"
+   },
+   {
+    "slug": "austin",
+    "date": "2026-12-25",
+    "holiday": "Christmas Day",
+    "status": "change",
+    "shift": "If collection is on or after the holiday in the same week, it slides one day later.",
+    "source_url": "https://www.austintexas.gov/services/view-your-recycling-composting-and-trash-schedule",
+    "quote": "If your collection day falls on Thanksgiving Day, Christmas Day or New Year’s Day – or if it falls after the holiday in the same week – it slides to one day later. If the holiday falls on a Saturday or a Sunday, your collection day will not slide.",
+    "accessed": "2026-10-30T00:36:01Z",
+    "basis": "official_rule"
    }
   ]
  },
@@ -1464,15 +1561,28 @@
   "confirmed_policy": "skip",
   "verified_rows": [
    {
+    "slug": "miramar",
+    "date": "2026-11-26",
+    "holiday": "Thanksgiving Day",
+    "status": "no_change",
+    "shift": "Regular service; Waste Pro says all other holidays have no service interruptions.",
+    "source_url": "https://www.wasteprousa.com/miramar/",
+    "quote": "For all other holidays, there will be no service interruptions.",
+    "accessed": "2026-10-30T00:36:01Z",
+    "basis": "official_rule",
+    "rule": "skip"
+   },
+   {
+    "slug": "miramar",
     "date": "2026-12-25",
     "holiday": "Christmas Day",
     "status": "change",
-    "shift": "next scheduled service day",
+    "shift": "Customers serviced on the next service day.",
     "source_url": "https://www.wasteprousa.com/miramar/",
-    "quote": "Our office will be closed in observance of the Christmas holiday on Friday, December 25th, 2026. Customers will be serviced on their next service day.\nFor example, if Monday and Thursday are your service days, Thursday will not receive service, and your next service day will be Monday.",
-    "accessed": "2026-10-14T01:32:08Z",
-    "basis": "single_notice",
-    "verdict_by": "hedgie 판정 PASS 13"
+    "quote": "Our office will be closed in observance of the Christmas holiday on Friday, December 25th, 2026. Customers will be serviced on their next service day.",
+    "accessed": "2026-10-30T00:36:01Z",
+    "basis": "dated_schedule",
+    "rule": "skip"
    }
   ]
  },
@@ -1634,6 +1744,30 @@
     "accessed": "2026-10-14T01:32:08Z",
     "basis": "single_notice",
     "verdict_by": "hedgie 판정 PASS 13"
+   },
+   {
+    "slug": "pembroke-pines",
+    "date": "2026-11-26",
+    "holiday": "Thanksgiving Day",
+    "status": "no_change",
+    "shift": "Regular service; Waste Pro states other holidays have no service interruptions.",
+    "source_url": "https://www.wasteprousa.com/office/pembroke-pines/",
+    "quote": "For all other holidays, there will be no service interruptions.",
+    "accessed": "2026-10-30T00:36:01Z",
+    "basis": "official_rule",
+    "rule": "skip"
+   },
+   {
+    "slug": "pembroke-pines",
+    "date": "2026-12-25",
+    "holiday": "Christmas Day",
+    "status": "change",
+    "shift": "Customers serviced on the next service day.",
+    "source_url": "https://www.wasteprousa.com/office/pembroke-pines/",
+    "quote": "Our office will be closed in observance of the Christmas holiday on Friday, December 25th, 2026. Customers will be serviced on their next service day.",
+    "accessed": "2026-10-30T00:36:01Z",
+    "basis": "dated_schedule",
+    "rule": "skip"
    }
   ]
  },
@@ -2126,8 +2260,8 @@
  },
  "new-orleans": {
   "source": "https://nola.gov/trash/",
-  "checked": "2026-10-28",
-  "policy": "unknown",
+  "checked": "2026-10-30",
+  "policy": "next_day",
   "coverage": "partial",
   "keep_title": true,
   "verified_rows": [
@@ -2140,8 +2274,57 @@
     "quote": "The City of New Orleans observes the following holidays, with solid waste and recycling collections suspended outside of the French Quarter and Downtown Development District (DDD).",
     "accessed": "2026-10-28T00:37:53Z",
     "basis": "official_exhaustive_list"
+   },
+   {
+    "slug": "new-orleans",
+    "date": "2026-11-26",
+    "holiday": "Thanksgiving Day",
+    "status": "change",
+    "shift": "Thursday routes → Friday; Friday routes → Saturday.",
+    "source_url": "https://nola.gov/trash/",
+    "quote": "Thanksgiving Day",
+    "accessed": "2026-10-30T00:36:01Z",
+    "basis": "official_rule",
+    "reason": "The city page names Thanksgiving among solid-waste holidays and shifts affected routes forward one day; French Quarter and Downtown Development District collection is excluded.",
+    "date_source_url": "https://nola.gov/nola/media/CAO/CircularMemoranda/26-13-Amended-Holiday-Schedule-for-2026.pdf",
+    "rule": "next_day"
+   },
+   {
+    "slug": "new-orleans",
+    "date": "2026-12-25",
+    "holiday": "Christmas Day",
+    "status": "change",
+    "shift": "Friday routes → Saturday.",
+    "source_url": "https://nola.gov/trash/",
+    "quote": "Christmas Day",
+    "accessed": "2026-10-30T00:36:01Z",
+    "basis": "official_rule",
+    "reason": "The city page names Christmas among solid-waste holidays and shifts affected routes forward one day; French Quarter and Downtown Development District collection is excluded.",
+    "date_source_url": "https://nola.gov/nola/media/CAO/CircularMemoranda/26-13-Amended-Holiday-Schedule-for-2026.pdf",
+    "rule": "next_day"
    }
-  ]
+  ],
+  "rule": "Contractors will implement alternative collection services for those routes affected by observed holidays by shifting all affected collection days forward one day.",
+  "observed": [
+   [
+    "2026-01-01",
+    "New Year's Day"
+   ],
+   [
+    "2026-02-17",
+    "Mardi Gras Day"
+   ],
+   [
+    "2026-11-26",
+    "Thanksgiving Day"
+   ],
+   [
+    "2026-12-25",
+    "Christmas Day"
+   ]
+  ],
+  "dates_source": "https://nola.gov/nola/media/CAO/CircularMemoranda/26-13-Amended-Holiday-Schedule-for-2026.pdf",
+  "dates_note": "The city holiday notice excludes French Quarter and Downtown Development District routes."
  },
  "arlington": {
   "source": "https://www.arlingtontx.gov/News-Articles/2026/September/2026-Labor-Day-Closings-and-Service-Schedules-in-Arlington",
@@ -2159,6 +2342,32 @@
     "quote": "Holiday Garbage and Recycling Schedule: Garbage and recycling will not be picked up New Year’s Day, Fourth of July, Labor Day, Thanksgiving Day and Christmas.",
     "accessed": "2026-10-28T00:38:09Z",
     "basis": "official_exhaustive_list"
+   },
+   {
+    "slug": "arlington",
+    "date": "2026-11-26",
+    "holiday": "Thanksgiving Day",
+    "status": "change",
+    "shift": "No pickup on the listed holiday; replacement day not stated.",
+    "source_url": "https://www.arlingtontx.gov/News-Articles/2026/September/2026-Labor-Day-Closings-and-Service-Schedules-in-Arlington",
+    "quote": "Holiday Garbage and Recycling Schedule: Garbage and recycling will not be picked up New Year’s Day, Fourth of July, Labor Day, Thanksgiving Day and Christmas.",
+    "accessed": "2026-10-30T00:36:01Z",
+    "basis": "official_holiday_list",
+    "reason": "The 2026 city article names the two target holidays as no-pickup dates; it does not establish a replacement day.",
+    "rule": "unverified"
+   },
+   {
+    "slug": "arlington",
+    "date": "2026-12-25",
+    "holiday": "Christmas Day",
+    "status": "change",
+    "shift": "No pickup on the listed holiday; replacement day not stated.",
+    "source_url": "https://www.arlingtontx.gov/News-Articles/2026/September/2026-Labor-Day-Closings-and-Service-Schedules-in-Arlington",
+    "quote": "Holiday Garbage and Recycling Schedule: Garbage and recycling will not be picked up New Year’s Day, Fourth of July, Labor Day, Thanksgiving Day and Christmas.",
+    "accessed": "2026-10-30T00:36:01Z",
+    "basis": "official_holiday_list",
+    "reason": "The 2026 city article names the two target holidays as no-pickup dates; it does not establish a replacement day.",
+    "rule": "unverified"
    }
   ]
  },
@@ -2180,8 +2389,39 @@
     "basis": "calendar_pdf",
     "supporting_source_url": "https://www.columbus.gov/Services/Trash-Recycling-Bulk-Collection/Find-My-Collection-Day?lang_update=639273343957491296",
     "supporting_quote": "There is no trash collection on these city-observed holidays. Your trash collection day moves forward one day after each holiday."
+   },
+   {
+    "slug": "columbus",
+    "date": "2026-11-26",
+    "holiday": "Thanksgiving Day",
+    "status": "change",
+    "shift": "The 2026 color calendar marks the holiday for residents assigned a collection color; replacement routing is not stated. Non-color routes are unverified.",
+    "source_url": "https://www.columbus.gov/files/sharedassets/city/v/1/public-service/trash-recycling-amp-bulk-collection/find-my-collection-day/2026-rotating-holiday-calendar.pdf",
+    "quote": "2026 Rotating Holiday Refuse Collection Schedule for Residents Assigned a Collection Color",
+    "accessed": "2026-10-30T00:36:01Z",
+    "basis": "dated_schedule",
+    "reason": "The dated PDF marks the target holiday for color-schedule residents. It does not state a one-day rotation or a rule for non-color routes.",
+    "supporting_quote": "HOLIDAY",
+    "supporting_source_url": "https://www.columbus.gov/files/sharedassets/city/v/1/public-service/trash-recycling-amp-bulk-collection/find-my-collection-day/2026-rotating-holiday-calendar.pdf",
+    "rule": "unverified"
+   },
+   {
+    "slug": "columbus",
+    "date": "2026-12-25",
+    "holiday": "Christmas Day",
+    "status": "change",
+    "shift": "The 2026 color calendar marks the holiday for residents assigned a collection color; replacement routing is not stated. Non-color routes are unverified.",
+    "source_url": "https://www.columbus.gov/files/sharedassets/city/v/1/public-service/trash-recycling-amp-bulk-collection/find-my-collection-day/2026-rotating-holiday-calendar.pdf",
+    "quote": "2026 Rotating Holiday Refuse Collection Schedule for Residents Assigned a Collection Color",
+    "accessed": "2026-10-30T00:36:01Z",
+    "basis": "dated_schedule",
+    "reason": "The dated PDF marks the target holiday for color-schedule residents. It does not state a one-day rotation or a rule for non-color routes.",
+    "supporting_quote": "HOLIDAY",
+    "supporting_source_url": "https://www.columbus.gov/files/sharedassets/city/v/1/public-service/trash-recycling-amp-bulk-collection/find-my-collection-day/2026-rotating-holiday-calendar.pdf",
+    "rule": "unverified"
    }
-  ]
+  ],
+  "policy": "unknown"
  },
  "fort-worth": {
   "source": "https://www.fortworthtexas.gov/files/assets/public/v/3/environmental-services/solid-waste/documents/envd-solid-waste-holiday-schedule-2026-ada.pdf",
@@ -2199,6 +2439,30 @@
     "quote": "Veterans Day\nWednesday, November 11, 2026\nNO CHANGE",
     "accessed": "2026-10-28T00:40:59Z",
     "basis": "calendar_pdf"
+   },
+   {
+    "slug": "fort-worth",
+    "date": "2026-11-26",
+    "holiday": "Thanksgiving Day",
+    "status": "change",
+    "shift": "Thursday collection → Friday; Friday collection → Saturday.",
+    "source_url": "https://www.fortworthtexas.gov/files/assets/public/v/3/environmental-services/solid-waste/documents/envd-solid-waste-holiday-schedule-2026-ada.pdf",
+    "quote": "Thanksgiving Day\nThursday, November 26, 2026",
+    "accessed": "2026-10-30T00:36:01Z",
+    "basis": "dated_schedule",
+    "rule": "next_day"
+   },
+   {
+    "slug": "fort-worth",
+    "date": "2026-12-25",
+    "holiday": "Christmas Day",
+    "status": "change",
+    "shift": "Friday collection → Saturday.",
+    "source_url": "https://www.fortworthtexas.gov/files/assets/public/v/3/environmental-services/solid-waste/documents/envd-solid-waste-holiday-schedule-2026-ada.pdf",
+    "quote": "Christmas Day\nFriday, December 25, 2026",
+    "accessed": "2026-10-30T00:36:01Z",
+    "basis": "dated_schedule",
+    "rule": "next_day"
    }
   ]
  },
@@ -2208,7 +2472,12 @@
   "policy": "overrides",
   "coverage": "partial",
   "keep_title": true,
-  "overrides": [["2026-11-11", "2026-11-12"]],
+  "overrides": [
+   [
+    "2026-11-11",
+    "2026-11-12"
+   ]
+  ],
   "verified_rows": [
    {
     "date": "2026-11-11",
@@ -2244,8 +2513,8 @@
   ]
  },
  "montgomery": {
-  "source": "https://www.montgomeryal.gov/home/showpublisheddocument/19398/639106287840570000",
-  "checked": "2026-10-28",
+  "source": "https://www.montgomeryal.gov/home/showpublisheddocument/19398/639046663366570000",
+  "checked": "2026-10-30",
   "policy": "unknown",
   "coverage": "partial",
   "keep_title": true,
@@ -2259,12 +2528,72 @@
     "quote": "2026 SANITATION HOLIDAY SCHEDULE",
     "accessed": "2026-10-28T00:59:02Z",
     "basis": "official_exhaustive_list"
+   },
+   {
+    "slug": "montgomery",
+    "date": "2026-11-26",
+    "holiday": "Thanksgiving Day",
+    "status": "change",
+    "shift": "Monday/Thursday routes worked Monday (11/23/2026) only; Tuesday/Friday routes worked Tuesday (11/24/2026) only; curbside pickup may be worked as time permits Wednesday and Friday.",
+    "source_url": "https://www.montgomeryal.gov/home/showpublisheddocument/19398/639046663366570000",
+    "quote": "THANKSGIVING DAY - THURSDAY, NOVEMBER 26\nMonday & Thursday routes worked Monday (11/23/2026) only.\nTuesday & Friday routes worked Tuesday (11/24/2026) only.\nCurbside trash pickup will be worked as time permits on Wednesday and Friday.",
+    "accessed": "2026-10-30T00:36:01Z",
+    "basis": "dated_schedule",
+    "rule": "unverified"
+   },
+   {
+    "slug": "montgomery",
+    "date": "2026-12-25",
+    "holiday": "Christmas Day",
+    "status": "change",
+    "shift": "Monday/Thursday routes worked Monday (12/21/2026) only; Tuesday/Friday routes worked Tuesday (12/22/2026) only; curbside pickup may be worked as time permits Wednesday and Thursday.",
+    "source_url": "https://www.montgomeryal.gov/home/showpublisheddocument/19398/639046663366570000",
+    "quote": "CHRISTMAS DAY - FRIDAY, DECEMBER 25\nMonday & Thursday routes worked Monday (12/21/2026) only.\nTuesday & Friday routes worked Tuesday (12/22/2026) only.\nCurbside trash pickup will be worked as time permits on Wednesday and Thursday.",
+    "accessed": "2026-10-30T00:36:01Z",
+    "basis": "dated_schedule",
+    "rule": "unverified"
    }
-  ]
+  ],
+  "rule": "",
+  "observed": [
+   [
+    "2026-01-01",
+    "New Year's Day"
+   ],
+   [
+    "2026-01-19",
+    "Martin Luther King Jr. Birthday"
+   ],
+   [
+    "2026-05-25",
+    "Memorial Day"
+   ],
+   [
+    "2026-06-19",
+    "Juneteenth"
+   ],
+   [
+    "2026-07-03",
+    "Fourth of July"
+   ],
+   [
+    "2026-09-07",
+    "Labor Day"
+   ],
+   [
+    "2026-11-26",
+    "Thanksgiving Day"
+   ],
+   [
+    "2026-12-25",
+    "Christmas Day"
+   ]
+  ],
+  "dates_note": "The schedule is route-specific; some curbside pickup is worked as time permits."
  },
  "augusta": {
   "source": "https://www.augustaga.gov/2573/Holiday-Schedule",
-  "checked": "2026-10-28",
+  "checked": "2026-10-30",
   "policy": "unknown",
   "coverage": "partial",
   "keep_title": true,
@@ -2280,14 +2609,56 @@
     "basis": "official_exhaustive_list",
     "supporting_source_url": "https://www.augustaga.gov/DocumentCenter/View/19732/2026-Holiday-Schedule-",
     "supporting_quote": "Veterans Day      Wednesday, November 11th"
+   },
+   {
+    "slug": "augusta",
+    "date": "2026-11-26",
+    "holiday": "Thanksgiving Day",
+    "status": "change",
+    "shift": "Thursday service moves to Friday; Friday service moves to Saturday for that week only.",
+    "source_url": "https://www.augustaga.gov/2573/Holiday-Schedule",
+    "quote": "Thanksgiving Day",
+    "accessed": "2026-10-30T00:36:01Z",
+    "basis": "official_rule_with_annual_holiday_list",
+    "reason": "The holiday page is under Residential Services; the separate residential service page explicitly describes curbside trash collection. The annual observed-holiday list names Thanksgiving and Christmas. The source gives no year-specific 2027 New Year schedule.",
+    "supporting_source_url": "https://www.augustaga.gov/2327/Residential-Services",
+    "supporting_quote": "If the holiday is on a week day and your service day falls on or after the holiday during the work week, your collection will be delayed one day. Monday service will be on Tuesday, Tuesday on Wednesday, etc., with Friday service on Saturday for that week only."
+   },
+   {
+    "slug": "augusta",
+    "date": "2026-12-25",
+    "holiday": "Christmas Day",
+    "status": "change",
+    "shift": "Friday service moves to Saturday for that week only.",
+    "source_url": "https://www.augustaga.gov/2573/Holiday-Schedule",
+    "quote": "Christmas Day",
+    "accessed": "2026-10-30T00:36:01Z",
+    "basis": "official_rule_with_annual_holiday_list",
+    "reason": "The holiday page is under Residential Services; the separate residential service page explicitly describes curbside trash collection. The annual observed-holiday list names Thanksgiving and Christmas. The source gives no year-specific 2027 New Year schedule.",
+    "supporting_source_url": "https://www.augustaga.gov/2327/Residential-Services",
+    "supporting_quote": "If the holiday is on a week day and your service day falls on or after the holiday during the work week, your collection will be delayed one day. Monday service will be on Tuesday, Tuesday on Wednesday, etc., with Friday service on Saturday for that week only."
    }
-  ]
+  ],
+  "observed": [
+   [
+    "2026-11-26",
+    "Thanksgiving Day"
+   ],
+   [
+    "2026-12-25",
+    "Christmas Day"
+   ]
+  ],
+  "rule": "If the holiday is on a week day and your service day falls on or after the holiday during the work week, your collection will be delayed one day. Monday service will be on Tuesday, Tuesday on Wednesday, etc., with Friday service on Saturday for that week only.",
+  "dates_note": "current Residential Services holiday list; no year-specific 2027 New Year schedule",
+  "confirmed_policy": "next_day",
+  "dates_source": "https://www.augustaga.gov/2327/Residential-Services"
  },
  "akron": {
-  "source": "https://cms2.revize.com/revize/akronoh/Documents/Departments/Service/Public%20Works%20Bureau/Trash%20Collection%20Division/2026%20Holiday%20Schedule%20Front.pdf?t=202601071036530",
-  "checked": "2026-10-28",
-  "policy": "unknown",
-  "coverage": "partial",
+  "source": "https://cms2.revize.com/revize/akronoh/Documents/Departments/Service/Public%20Works%20Bureau/Trash%20Collection%20Division/2026%20Holiday%20Schedule%20Front.pdf?t=202601071005540",
+  "checked": "2026-10-30",
+  "policy": "next_day",
+  "coverage": "complete",
   "keep_title": true,
   "verified_rows": [
    {
@@ -2299,7 +2670,58 @@
     "quote": "Trash collection will not be delayed on any other holiday.",
     "accessed": "2026-10-28T00:43:44Z",
     "basis": "official_exhaustive_list"
+   },
+   {
+    "slug": "akron",
+    "date": "2026-11-26",
+    "holiday": "Thanksgiving Day",
+    "status": "change",
+    "shift": "Trash collection delayed one day.",
+    "source_url": "https://cms2.revize.com/revize/akronoh/Documents/Departments/Service/Public%20Works%20Bureau/Trash%20Collection%20Division/2026%20Holiday%20Schedule%20Front.pdf?t=202601071005540",
+    "quote": "THANKSGIVING DAY",
+    "accessed": "2026-10-30T00:36:01Z",
+    "basis": "dated_schedule",
+    "supporting_quote": "Trash collection will be delayed one day on these holidays."
+   },
+   {
+    "slug": "akron",
+    "date": "2026-12-25",
+    "holiday": "Christmas Day",
+    "status": "change",
+    "shift": "Trash collection delayed one day.",
+    "source_url": "https://cms2.revize.com/revize/akronoh/Documents/Departments/Service/Public%20Works%20Bureau/Trash%20Collection%20Division/2026%20Holiday%20Schedule%20Front.pdf?t=202601071005540",
+    "quote": "CHRISTMAS DAY",
+    "accessed": "2026-10-30T00:36:01Z",
+    "basis": "dated_schedule",
+    "supporting_quote": "Trash collection will be delayed one day on these holidays."
    }
+  ],
+  "rule": "Trash collection will be delayed one day on these holidays. Trash collection will not be delayed on any other holiday.",
+  "observed": [
+   [
+    "2026-01-01",
+    "New Year's Day"
+   ],
+   [
+    "2026-01-19",
+    "Martin Luther King Jr. Day"
+   ],
+   [
+    "2026-05-25",
+    "Memorial Day"
+   ],
+   [
+    "2026-09-07",
+    "Labor Day"
+   ],
+   [
+    "2026-11-26",
+    "Thanksgiving Day"
+   ],
+   [
+    "2026-12-25",
+    "Christmas Day"
+   ]
   ]
  },
  "bellevue": {
@@ -2318,6 +2740,30 @@
     "quote": "Republic Services does not collect recycling, garbage, or yard waste on Thanksgiving, Christmas, or New Year's Day. If your normally scheduled pickup day falls on one of these holidays, collection will be the following day. Collection for the rest of that holiday week will be one day later also.",
     "accessed": "2026-10-28T00:45:23Z",
     "basis": "official_exhaustive_list"
+   },
+   {
+    "slug": "bellevue",
+    "date": "2026-11-26",
+    "holiday": "Thanksgiving Day",
+    "status": "change",
+    "shift": "No pickup on holiday; remaining holiday-week routes move one day later.",
+    "source_url": "https://bellevuewa.gov/pa/node/70371",
+    "quote": "Thanksgiving",
+    "accessed": "2026-10-30T00:36:01Z",
+    "basis": "official_rule",
+    "rule": "next_day"
+   },
+   {
+    "slug": "bellevue",
+    "date": "2026-12-25",
+    "holiday": "Christmas Day",
+    "status": "change",
+    "shift": "No pickup on holiday; remaining holiday-week routes move one day later.",
+    "source_url": "https://bellevuewa.gov/pa/node/70371",
+    "quote": "Christmas",
+    "accessed": "2026-10-30T00:36:01Z",
+    "basis": "official_rule",
+    "rule": "next_day"
    }
   ]
  },
@@ -2337,6 +2783,18 @@
     "quote": "If a holiday is not listed as a scheduled holiday above, services will occur as scheduled on your normal collection day.",
     "accessed": "2026-10-28T00:57:37Z",
     "basis": "official_exhaustive_list"
+   },
+   {
+    "slug": "gainesville",
+    "date": "2026-11-26",
+    "holiday": "Thanksgiving Day",
+    "status": "change",
+    "shift": "One-day delay for Thursday routes only.",
+    "source_url": "https://www.gainesvillefl.gov/Government-Pages/Government/Departments/Public-Works/Garbage-Recycling/Holiday-Schedule",
+    "quote": "Thanksgiving Day: Thursday, Nov. 26",
+    "accessed": "2026-10-30T00:36:01Z",
+    "basis": "dated_schedule",
+    "rule": "thursday_only"
    }
   ]
  },
@@ -2356,14 +2814,38 @@
     "quote": "Holidays with no collection: Thanksgiving, Christmas Day and New Year's Day.",
     "accessed": "2026-10-28T00:46:09Z",
     "basis": "official_exhaustive_list"
+   },
+   {
+    "slug": "sunnyvale",
+    "date": "2026-11-26",
+    "holiday": "Thanksgiving Day",
+    "status": "change",
+    "shift": "No collection on listed holiday; makeup day not specified.",
+    "source_url": "https://www.sunnyvale.ca.gov/homes-streets-and-property/recycling-and-garbage",
+    "quote": "Thanksgiving",
+    "accessed": "2026-10-30T00:36:01Z",
+    "basis": "official_rule",
+    "rule": "unverified"
+   },
+   {
+    "slug": "sunnyvale",
+    "date": "2026-12-25",
+    "holiday": "Christmas Day",
+    "status": "change",
+    "shift": "No collection on listed holiday; makeup day not specified.",
+    "source_url": "https://www.sunnyvale.ca.gov/homes-streets-and-property/recycling-and-garbage",
+    "quote": "Christmas Day",
+    "accessed": "2026-10-30T00:36:01Z",
+    "basis": "official_rule",
+    "rule": "unverified"
    }
   ]
  },
  "pasadena": {
-  "source": "https://www.cityofpasadena.net/city-closures/",
-  "checked": "2026-10-28",
-  "policy": "unknown",
-  "coverage": "partial",
+  "source": "https://www.cityofpasadena.net/public-works/waste-management-recycling/residential-refuse-service-recycling/",
+  "checked": "2026-10-30",
+  "policy": "next_day",
+  "coverage": "complete",
   "keep_title": true,
   "verified_rows": [
    {
@@ -2375,7 +2857,70 @@
     "quote": "On all other holidays, trash will be collected on the regular schedule.",
     "accessed": "2026-10-28T00:47:14Z",
     "basis": "official_exhaustive_list"
+   },
+   {
+    "slug": "pasadena",
+    "date": "2026-11-26",
+    "holiday": "Thanksgiving Day",
+    "status": "change",
+    "shift": "Trash and recycling collection is one day after the normal pickup day.",
+    "source_url": "https://www.cityofpasadena.net/public-works/waste-management-recycling/residential-refuse-service-recycling/",
+    "quote": "November 26, 2026",
+    "accessed": "2026-10-30T00:36:01Z",
+    "basis": "dated_schedule",
+    "supporting_quote": "Trash and Recycling collection will be one day after your normal pick up day."
+   },
+   {
+    "slug": "pasadena",
+    "date": "2026-12-25",
+    "holiday": "Christmas Day",
+    "status": "change",
+    "shift": "Trash and recycling collection is one day after the normal pickup day.",
+    "source_url": "https://www.cityofpasadena.net/public-works/waste-management-recycling/residential-refuse-service-recycling/",
+    "quote": "December 25, 2026",
+    "accessed": "2026-10-30T00:36:01Z",
+    "basis": "dated_schedule",
+    "supporting_quote": "Trash and Recycling collection will be one day after your normal pick up day."
+   },
+   {
+    "slug": "pasadena",
+    "date": "2027-01-01",
+    "holiday": "New Year's Day",
+    "status": "change",
+    "shift": "Trash and recycling collection is one day after the normal pickup day.",
+    "source_url": "https://www.cityofpasadena.net/public-works/waste-management-recycling/residential-refuse-service-recycling/",
+    "quote": "January 1, 2027",
+    "accessed": "2026-10-30T00:36:01Z",
+    "basis": "dated_schedule",
+    "supporting_quote": "Trash and Recycling collection will be one day after your normal pick up day."
    }
+  ],
+  "rule": "Trash and Recycling collection will be one day after your normal pick up day.",
+  "observed": [
+   [
+    "2025-12-25",
+    "Christmas Day (2025)"
+   ],
+   [
+    "2026-01-01",
+    "New Year's Day"
+   ],
+   [
+    "2026-09-07",
+    "Labor Day"
+   ],
+   [
+    "2026-11-26",
+    "Thanksgiving Day"
+   ],
+   [
+    "2026-12-25",
+    "Christmas Day"
+   ],
+   [
+    "2027-01-01",
+    "New Year's Day (2027)"
+   ]
   ]
  },
  "lewisville": {
@@ -2394,12 +2939,38 @@
     "quote": "The only holidays that affect pickup are Thanksgiving, Christmas Day, and New Year's Day.",
     "accessed": "2026-10-28T00:47:29Z",
     "basis": "official_exhaustive_list"
+   },
+   {
+    "slug": "lewisville",
+    "date": "2026-11-26",
+    "holiday": "Thanksgiving Day",
+    "status": "change",
+    "shift": "Pickup is affected; the FAQ does not state the exact route shift.",
+    "source_url": "https://www.cityoflewisville.com/city-hall/city-departments/public-works/trash-and-recycling-information/trash-and-recycling-faq",
+    "quote": "Thanksgiving",
+    "accessed": "2026-10-30T00:36:01Z",
+    "basis": "official_rule",
+    "reason": "City FAQ lists Thanksgiving as one of the only holidays that affect pickup.",
+    "rule": "unverified"
+   },
+   {
+    "slug": "lewisville",
+    "date": "2026-12-25",
+    "holiday": "Christmas Day",
+    "status": "change",
+    "shift": "Pickup is affected; the FAQ does not state the exact route shift.",
+    "source_url": "https://www.cityoflewisville.com/city-hall/city-departments/public-works/trash-and-recycling-information/trash-and-recycling-faq",
+    "quote": "Christmas Day",
+    "accessed": "2026-10-30T00:36:01Z",
+    "basis": "official_rule",
+    "reason": "City FAQ lists Christmas as one of the only holidays that affect pickup.",
+    "rule": "unverified"
    }
   ]
  },
  "abilene": {
   "source": "https://www.abilenetx.gov/holidays",
-  "checked": "2026-10-28",
+  "checked": "2026-10-30",
   "policy": "unknown",
   "coverage": "partial",
   "keep_title": true,
@@ -2415,7 +2986,282 @@
     "basis": "single_notice",
     "supporting_source_url": "https://www.abilenetx.gov/holidays",
     "supporting_quote": "Collection as Scheduled: MLK Day; Good Friday; Memorial Day; Juneteenth; Independence Day; Veterans Day; Friday after Thanksgiving; Christmas Eve"
+   },
+   {
+    "slug": "abilene",
+    "date": "2026-11-26",
+    "holiday": "Thanksgiving Day",
+    "status": "change",
+    "shift": "No collection on the listed date; replacement day not stated.",
+    "source_url": "https://www.abilenetx.gov/holidays",
+    "quote": "Not Collecting | Trash Pick-Up Residential",
+    "accessed": "2026-10-30T00:36:01Z",
+    "basis": "dated_schedule",
+    "reason": "The 2026/2027 Holiday Schedule explicitly marks residential trash as Not Collecting; it gives no replacement day.",
+    "supporting_source_url": "https://www.abilenetx.gov/holidays",
+    "supporting_quote": "Thursday, November 26, 2026",
+    "rule": "unverified"
+   },
+   {
+    "slug": "abilene",
+    "date": "2026-12-25",
+    "holiday": "Christmas Day",
+    "status": "change",
+    "shift": "No collection on the listed date; replacement day not stated.",
+    "source_url": "https://www.abilenetx.gov/holidays",
+    "quote": "Not Collecting | Trash Pick-Up Residential",
+    "accessed": "2026-10-30T00:36:01Z",
+    "basis": "dated_schedule",
+    "reason": "The 2026/2027 Holiday Schedule explicitly marks residential trash as Not Collecting; it gives no replacement day.",
+    "supporting_source_url": "https://www.abilenetx.gov/holidays",
+    "supporting_quote": "Friday, December 25, 2026",
+    "rule": "unverified"
+   },
+   {
+    "slug": "abilene",
+    "date": "2027-01-01",
+    "holiday": "New Year's Day",
+    "status": "change",
+    "shift": "No collection on the listed date; replacement day not stated.",
+    "source_url": "https://www.abilenetx.gov/holidays",
+    "quote": "Not Collecting | Trash Pick-Up Residential",
+    "accessed": "2026-10-30T00:36:01Z",
+    "basis": "dated_schedule",
+    "reason": "The 2026/2027 Holiday Schedule explicitly marks residential trash as Not Collecting; it gives no replacement day.",
+    "supporting_source_url": "https://www.abilenetx.gov/holidays",
+    "supporting_quote": "Friday, January 1, 2027",
+    "rule": "unverified"
    }
+  ],
+  "observed": [
+   [
+    "2026-11-26",
+    "Thanksgiving Day"
+   ],
+   [
+    "2026-12-25",
+    "Christmas Day"
+   ],
+   [
+    "2027-01-01",
+    "New Year's Day"
+   ]
+  ],
+  "rule": "Collection as Scheduled: MLK Day; Good Friday; Memorial Day; Juneteenth; Independence Day; Veterans Day; Friday after Thanksgiving; Christmas Eve. No Collection: New Year’s Day; Labor Day; Thanksgiving Day; Christmas Day.",
+  "dates_note": "2026/2027 dated entries for the three target dates; the category list itself has no year-specific dates"
+ },
+ "milwaukee": {
+  "source": "https://city.milwaukee.gov/ImageLibrary/MilwaukeeRecycles/PDFs/Media-Room/26-COMFS-005--2026-Fall-Sanitation-Mailer_Digital-FINAL.pdf",
+  "rule": "NO COLLECTIONS ON CITY HOLIDAYS",
+  "observed": [
+   [
+    "2026-11-26",
+    "Thanksgiving Day"
+   ],
+   [
+    "2026-11-27",
+    "Day after Thanksgiving"
+   ],
+   [
+    "2026-12-24",
+    "Christmas Eve"
+   ],
+   [
+    "2026-12-25",
+    "Christmas Day"
+   ],
+   [
+    "2027-01-01",
+    "New Year's Day"
+   ],
+   [
+    "2027-01-18",
+    "Martin Luther King Jr. Day"
+   ],
+   [
+    "2027-03-26",
+    "Good Friday"
+   ],
+   [
+    "2027-05-31",
+    "Memorial Day"
+   ],
+   [
+    "2027-06-18",
+    "Juneteenth"
+   ],
+   [
+    "2027-07-05",
+    "Independence Day"
+   ],
+   [
+    "2027-09-06",
+    "Labor Day"
+   ]
+  ],
+  "checked": "2026-10-30",
+  "policy": "unknown",
+  "coverage": "partial",
+  "keep_title": true,
+  "dates_note": "This fall mailer covers 2026-11 through 2027-09, not the full 2026 calendar.",
+  "verified_rows": [
+   {
+    "slug": "milwaukee",
+    "date": "2026-11-26",
+    "holiday": "Thanksgiving Day",
+    "status": "change",
+    "shift": "No collection on listed date; makeup schedule not stated.",
+    "source_url": "https://city.milwaukee.gov/ImageLibrary/MilwaukeeRecycles/PDFs/Media-Room/26-COMFS-005--2026-Fall-Sanitation-Mailer_Digital-FINAL.pdf",
+    "quote": "THANKSGIVING: NOVEMBER 26 & 27, 2026",
+    "accessed": "2026-10-30T00:36:01Z",
+    "basis": "dated_schedule",
+    "rule": "unverified"
+   },
+   {
+    "slug": "milwaukee",
+    "date": "2026-12-25",
+    "holiday": "Christmas Day",
+    "status": "change",
+    "shift": "No collection on listed date; makeup schedule not stated.",
+    "source_url": "https://city.milwaukee.gov/ImageLibrary/MilwaukeeRecycles/PDFs/Media-Room/26-COMFS-005--2026-Fall-Sanitation-Mailer_Digital-FINAL.pdf",
+    "quote": "CHRISTMAS: DECEMBER 24 & 25, 2026",
+    "accessed": "2026-10-30T00:36:01Z",
+    "basis": "dated_schedule",
+    "rule": "unverified"
+   },
+   {
+    "slug": "milwaukee",
+    "date": "2027-01-01",
+    "holiday": "New Year's Day",
+    "status": "change",
+    "shift": "No collection on listed date; makeup schedule not stated.",
+    "source_url": "https://city.milwaukee.gov/ImageLibrary/MilwaukeeRecycles/PDFs/Media-Room/26-COMFS-005--2026-Fall-Sanitation-Mailer_Digital-FINAL.pdf",
+    "quote": "NEW YEAR’S DAY: JANUARY 1, 2027",
+    "accessed": "2026-10-30T00:36:01Z",
+    "basis": "dated_schedule",
+    "rule": "unverified"
+   }
+  ]
+ },
+ "washington-dc": {
+  "source": "https://dpw.dc.gov/page/trashrecycling-collections",
+  "checked": "2026-10-30",
+  "policy": "unknown",
+  "coverage": "partial",
+  "keep_title": true,
+  "verified_rows": [
+   {
+    "slug": "washington-dc",
+    "date": "2026-11-26",
+    "holiday": "Thanksgiving Day",
+    "status": "change",
+    "shift": "Affected routes move one day later through Saturday.",
+    "source_url": "https://dpw.dc.gov/page/trashrecycling-collections",
+    "quote": "When a trash and recycling collection day falls on a holiday, collections will “slide” to the next day for the rest of the week after the holiday through Saturday.",
+    "accessed": "2026-10-30T00:36:01Z",
+    "basis": "official_rule",
+    "reason": "Applies to DPW curbside collection days that fall on the holiday.",
+    "date_source_url": "https://dchr.dc.gov/page/holiday-schedules",
+    "supporting_source_url": "https://dchr.dc.gov/page/holiday-schedules",
+    "supporting_quote": "Thanksgiving Day: Thursday, November 26, 2026",
+    "rule": "next_day"
+   },
+   {
+    "slug": "washington-dc",
+    "date": "2026-12-25",
+    "holiday": "Christmas Day",
+    "status": "change",
+    "shift": "Affected routes move one day later through Saturday.",
+    "source_url": "https://dpw.dc.gov/page/trashrecycling-collections",
+    "quote": "When a trash and recycling collection day falls on a holiday, collections will “slide” to the next day for the rest of the week after the holiday through Saturday.",
+    "accessed": "2026-10-30T00:36:01Z",
+    "basis": "official_rule",
+    "reason": "Applies to DPW curbside collection days that fall on the holiday.",
+    "date_source_url": "https://dchr.dc.gov/page/holiday-schedules",
+    "supporting_source_url": "https://dchr.dc.gov/page/holiday-schedules",
+    "supporting_quote": "Christmas Day: Friday, December 25, 2026",
+    "rule": "next_day"
+   }
+  ]
+ },
+ "syracuse": {
+  "source": "https://www.syr.gov/files/sharedassets/public/v/1/departments/public-works/documents/2026-a-week-recycling-calendar.pdf",
+  "checked": "2026-10-30",
+  "policy": "unknown",
+  "coverage": "partial",
+  "keep_title": true,
+  "verified_rows": [
+   {
+    "slug": "syracuse",
+    "date": "2026-11-26",
+    "holiday": "Thanksgiving Day",
+    "status": "change",
+    "shift": "One-day delay for the rest of the week.",
+    "source_url": "https://www.syr.gov/files/sharedassets/public/v/1/departments/public-works/documents/2026-a-week-recycling-calendar.pdf",
+    "quote": "Thanksgiving Day",
+    "accessed": "2026-10-30T00:36:01Z",
+    "basis": "dated_schedule",
+    "supporting_quote": "HOLIDAY TRASH AND RECYCLING PICKUP SCHEDULE – Pickup will be one day late for remainder of week on the following holidays: New Year’s Day, Martin Luther King Day, Memorial Day, Labor Day, Thanksgiving Day, Christmas Day.",
+    "rule": "next_day"
+   },
+   {
+    "slug": "syracuse",
+    "date": "2026-12-25",
+    "holiday": "Christmas Day",
+    "status": "change",
+    "shift": "One-day delay for the rest of the week.",
+    "source_url": "https://www.syr.gov/files/sharedassets/public/v/1/departments/public-works/documents/2026-a-week-recycling-calendar.pdf",
+    "quote": "Christmas Day",
+    "accessed": "2026-10-30T00:36:01Z",
+    "basis": "dated_schedule",
+    "supporting_quote": "HOLIDAY TRASH AND RECYCLING PICKUP SCHEDULE – Pickup will be one day late for remainder of week on the following holidays: New Year’s Day, Martin Luther King Day, Memorial Day, Labor Day, Thanksgiving Day, Christmas Day.",
+    "rule": "next_day"
+   }
+  ]
+ },
+ "hampton": {
+  "source": "https://www.hampton.gov/DocumentCenter/View/2005/Trash-Collection-Recycling-Calendar-2026-27-PDF",
+  "checked": "2026-10-30",
+  "policy": "overrides",
+  "coverage": "partial",
+  "keep_title": true,
+  "verified_rows": [
+   {
+    "slug": "hampton",
+    "date": "2026-11-26",
+    "holiday": "Thanksgiving Day",
+    "status": "change",
+    "shift": "Thursday 11/26 pickup moves earlier to Wednesday 11/25; put containers out by 7 a.m.",
+    "source_url": "https://www.hampton.gov/DocumentCenter/View/2005/Trash-Collection-Recycling-Calendar-2026-27-PDF",
+    "quote": "November 26, 2026",
+    "accessed": "2026-10-30T00:36:01Z",
+    "basis": "dated_schedule",
+    "supporting_quote": "If a city holiday is also your curbside collection day, put containers out by 7 a.m. WEDNESDAY instead.",
+    "rule": "overrides"
+   },
+   {
+    "slug": "hampton",
+    "date": "2027-01-01",
+    "holiday": "New Year's Day",
+    "status": "change",
+    "shift": "Friday 1/1 pickup moves earlier to Wednesday 12/30; put containers out by 7 a.m.",
+    "source_url": "https://www.hampton.gov/DocumentCenter/View/2005/Trash-Collection-Recycling-Calendar-2026-27-PDF",
+    "quote": "January 1, 2027",
+    "accessed": "2026-10-30T00:36:01Z",
+    "basis": "dated_schedule",
+    "supporting_quote": "If a city holiday is also your curbside collection day, put containers out by 7 a.m. WEDNESDAY instead.",
+    "rule": "overrides"
+   }
+  ],
+  "overrides": [
+   [
+    "2026-11-26",
+    "2026-11-25"
+   ],
+   [
+    "2027-01-01",
+    "2026-12-30"
+   ]
   ]
  }
 }
