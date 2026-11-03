@@ -29,7 +29,7 @@
 {% with ex = g.examples.overrides %}{% if ex %}<p><b>Example — {{ ex.c.city }}.</b> {% if ex.c.holidays.dates_note or ex.c.holidays.rule %}The city's notice: “{{ ex.c.holidays.dates_note or ex.c.holidays.rule }}” {% endif %}{% if ex.cell %}On {{ ex.date }}: {{ ex.cell.detail }}.{% endif %}</p>{% endif %}{% endwith %}
 
 <h3>4. Normal collection <span class="muted small">{{ g.normal|length }} {{ 'city' if g.normal|length == 1 else 'cities' }}</span></h3>
-<p>Some haulers collect on holidays as usual. {% if g.normal %}{% for n in g.normal %}<a href="{{ base }}{{ n.c.slug }}/holidays/">{{ n.c.city }} ({{ n.c.state }})</a>{% if n.all %} collects on every holiday{% else %} runs as usual on {{ n.n }} of its listed 2026 holidays{% endif %}{% if not loop.last %}; {% endif %}{% endfor %}.{% else %}None of the verified cities is in this group yet.{% endif %}</p>
+<p>Some haulers collect on holidays as usual. {% if g.normal %}{% for n in g.normal %}<a href="{{ base }}{{ n.c.slug }}/holidays/">{{ n.c.city }} ({{ n.c.state }})</a>{% if n.all %} collects on every holiday{% else %} has collection changes on {{ n.changes }} of its listed 2026 holidays and runs as usual on {{ n.n }}{% endif %}{% if not loop.last %}; {% endif %}{% endfor %}.{% else %}None of the verified cities is in this group yet.{% endif %}</p>
 {% with ex = g.examples.no_change %}{% if ex and ex.c.holidays.rule %}<p><b>Example — {{ ex.c.city }}.</b> The city's notice: “{{ ex.c.holidays.rule }}”</p>{% endif %}{% endwith %}
 </div></div>
 

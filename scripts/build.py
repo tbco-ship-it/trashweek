@@ -252,6 +252,7 @@ def main():
         c["rank10"] = ({**rank10_cities[c["slug"]], "checked": rank10_data["checked"]}
                        if c["slug"] in rank10_cities else None)
         c["holidays"]["obs26"] = [o for o in observed if o[0].startswith("2026")]   # "N holidays in 2026" must not count Jan 2027 rows
+        c["holidays"]["no_change_obs26"] = [o for o in c["holidays"]["obs26"] if o[0] in set(no_change_dates)]
         skip_dates = set(h.get("skips") or []) | {d for d, rule in date_rules.items() if rule == "skip"}
         c["holidays"]["skip_rows"] = [o for o in c["holidays"]["obs26"] if o[0] in skip_dates]   # observed days the city says have no make-up day
         if verified_rows:
@@ -314,12 +315,13 @@ def main():
             rows = sorted(rows + [row for row in explicit_tbd if row[0] not in row_dates])
             known_for_week = [d for d, _ in observed if d not in no_change_dates]
         unverified_dates = {d for d, _ in unverified}
+        display_date_rules = {**date_rules, **{d: "no_change" for d in no_change_dates}}
         c["hol_rows"] = [{"iso": d, "name": n, "wd": LONG[DAYS[dt.date.fromisoformat(d).weekday()]],
-                          "shift": verified_shift_by_date.get(d) or shift_text(d, pol, c["holidays"]["overrides"], known_for_week, c["hol"]["pending"], c["hol"]["skips"], date_rules.get(d), unverified_dates),
+                          "shift": verified_shift_by_date.get(d) or shift_text(d, pol, c["holidays"]["overrides"], known_for_week, c["hol"]["pending"], c["hol"]["skips"], display_date_rules.get(d), unverified_dates),
                           "display": verified_display_by_date.get(d),
                           "weekend": dt.date.fromisoformat(d).weekday() >= 5, "skip": d in c["hol"]["skips"],
-                          "no_change": date_rules.get(d) == "no_change", "unverified": date_rules.get(d) == "unverified" or d in unverified_dates,
-                          "pending": date_rules.get(d) == "tbd",
+                          "no_change": display_date_rules.get(d) == "no_change", "unverified": display_date_rules.get(d) == "unverified" or d in unverified_dates,
+                          "pending": display_date_rules.get(d) == "tbd",
                           "earlier": pol == "overrides" and week_moves_earlier(d, c["holidays"]["overrides"])} for d, n in rows]
         # pending: a holiday the city usually observes but has not posted for this year yet (Detroit 12/25) — shown, never applied as confirmed
         rendered_dates = {row["iso"] for row in c["hol_rows"]}

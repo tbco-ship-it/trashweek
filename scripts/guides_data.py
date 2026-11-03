@@ -148,7 +148,7 @@ def holiday_guide(cities):
             continue
         n = sum(1 for r in c["hol_rows"] if r.get("no_change") and r["iso"].startswith("2026"))
         if n:
-            normal.append({"c": c, "all": False, "n": n})
+            normal.append({"c": c, "all": False, "changes": len(c["holidays"]["change_obs26"]), "n": n})
 
     def example(policy):
         pool = by_pol[policy]
