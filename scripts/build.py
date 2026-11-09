@@ -202,7 +202,8 @@ def main():
                     no_change_dates.add(date)
                 elif status == "change":
                     no_change_dates.discard(date)
-                if status == "unverified" or (status == "change" and row.get("rule") == "unverified"):
+                row_policy = row.get("confirmed_policy") or row.get("rule")
+                if status == "unverified" or (status == "change" and row_policy == "unverified"):
                     unverified_by_date[date] = holiday
                 elif status in ("change", "no_change", "tbd"):
                     unverified_by_date.pop(date, None)
@@ -214,7 +215,8 @@ def main():
             for row in verified_rows:
                 status = row["status"]
                 if status == "change":
-                    row_rule = row.get("rule") or rule_for_change
+                    # A verified row may confirm one date's policy without confirming the city's whole holiday list.
+                    row_rule = row.get("confirmed_policy") or row.get("rule") or rule_for_change
                     # Only supported date rules should alter zone schedules; an unverified rule stays on its regular date.
                     if row_rule == "unverified":
                         date_rules[row["date"]] = "unverified"
@@ -268,12 +270,13 @@ def main():
         c["holidays"]["unverified_dates"] = [d for d, _ in unverified]
         # Explicit display copy is authoritative; otherwise only unverified rules may expose source shift text.
         verified_display_by_date = {row["date"]: row["display"] for row in verified_rows
-                                    if row["status"] == "change" and row.get("display")}
+                                    if row["status"] in ("change", "no_change") and row.get("display")}
         verified_shift_by_date = {
             row["date"]: row.get("display") or row.get("shift")
             for row in verified_rows
-            if row["status"] == "change" and (
-                row.get("display") or (row.get("rule") == "unverified" and row.get("shift"))
+            if (row["status"] in ("change", "no_change") and row.get("display")) or (
+                row["status"] == "change" and
+                (row.get("confirmed_policy") or row.get("rule")) == "unverified" and row.get("shift")
             )
         }
         if c["slug"] == "philadelphia":

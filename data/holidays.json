@@ -1560,7 +1560,7 @@
  },
  "miramar": {
   "source": "https://www.wasteprousa.com/miramar/",
-  "checked": "2026-10-14",
+  "checked": "2026-11-09",
   "policy": "unknown",
   "coverage": "partial",
   "confirmed_policy": "skip",
@@ -1588,6 +1588,18 @@
     "accessed": "2026-10-30T00:36:01Z",
     "basis": "dated_schedule",
     "rule": "skip"
+   },
+   {
+    "slug": "miramar",
+    "date": "2026-11-11",
+    "holiday": "Veterans Day",
+    "status": "no_change",
+    "shift": "No service interruption for Veterans Day under the current 2026 schedule.",
+    "source_url": "https://www.wasteprousa.com/miramar/",
+    "quote": "For all other holidays, there will be no service interruptions.",
+    "accessed": "2026-11-09",
+    "basis": "closed_list",
+    "display": "Normal pickup confirmed"
    }
   ]
  },
@@ -1733,8 +1745,8 @@
   ]
  },
  "pembroke-pines": {
-  "source": "https://www.ppines.com/m/newsflash/Archive/Item/1978?arcId=3749",
-  "checked": "2026-10-14",
+  "source": "https://www.wasteprousa.com/pembroke-pines/",
+  "checked": "2026-11-09",
   "policy": "unknown",
   "coverage": "partial",
   "confirmed_policy": "next_day",
@@ -1773,6 +1785,18 @@
     "accessed": "2026-10-30T00:36:01Z",
     "basis": "dated_schedule",
     "rule": "skip"
+   },
+   {
+    "slug": "pembroke-pines",
+    "date": "2026-11-11",
+    "holiday": "Veterans Day",
+    "status": "no_change",
+    "shift": "No service interruption for Veterans Day under the current 2026 schedule.",
+    "source_url": "https://www.wasteprousa.com/pembroke-pines/",
+    "quote": "For all other holidays, there will be no service interruptions.",
+    "accessed": "2026-11-09",
+    "basis": "closed_list",
+    "display": "Normal pickup confirmed"
    }
   ]
  },
@@ -2017,7 +2041,7 @@
  },
  "san-francisco": {
   "source": "https://www.recology.com/recology-san-francisco/holiday-calendar/",
-  "checked": "2026-10-14",
+  "checked": "2026-11-09",
   "policy": "next_day",
   "coverage": "complete",
   "confirmed_policy": "next_day",
@@ -2111,15 +2135,16 @@
     "verdict_by": "hedgie 추출 FIX 8"
    },
    {
+    "slug": "san-francisco",
     "date": "2026-11-26",
     "holiday": "Thanksgiving Day",
     "status": "no_change",
-    "shift": "no change",
+    "shift": "Drivers service as normal on Thanksgiving Day, Thu. Nov. 26, 2026.",
     "source_url": "https://www.recology.com/recology-san-francisco/holiday-calendar/",
-    "quote": "Thanksgiving Day | Thursday, November 26 | Drivers will service as normal",
-    "accessed": "2026-10-14T01:32:08Z",
-    "basis": "official_exhaustive_list",
-    "verdict_by": "hedgie 추출 FIX 8"
+    "quote": "Drivers will service as normal",
+    "accessed": "2026-11-09",
+    "basis": "dated_schedule",
+    "display": "Normal pickup confirmed"
    },
    {
     "date": "2026-12-25",
@@ -2500,7 +2525,7 @@
  },
  "rochester": {
   "source": "https://www.cityofrochester.gov/departments/department-environmental-services-des/residential-refuse-collection-information",
-  "checked": "2026-10-28",
+  "checked": "2026-11-09",
   "policy": "unknown",
   "coverage": "partial",
   "keep_title": true,
@@ -2514,6 +2539,18 @@
     "quote": "When certain holidays fall on a weekday, expect refuse and recycling services to be delayed by one day for the remainder of the week. Monday routes will be picked up on Tuesday, etc. Otherwise, refuse and recycling services will be serviced on your normal scheduled weekday.",
     "accessed": "2026-10-28T00:58:28Z",
     "basis": "official_exhaustive_list"
+   },
+   {
+    "slug": "rochester",
+    "date": "2026-11-26",
+    "holiday": "Thanksgiving Day",
+    "status": "change",
+    "shift": "No refuse or recycling collection Thu. Nov. 26; remaining collection routes delay one day for the rest of the week.",
+    "source_url": "https://www.cityofrochester.gov/sites/default/files/2025-10/2509%20DES%20At%20Your%20Service%20bro%20Res.pdf?check_logged_in=1",
+    "quote": "There will be no refuse or recycling collection on the holidays listed below.",
+    "accessed": "2026-11-09",
+    "basis": "dated_schedule",
+    "confirmed_policy": "next_day"
    }
   ]
  },
@@ -3150,7 +3187,7 @@
  },
  "washington-dc": {
   "source": "https://dpw.dc.gov/page/trashrecycling-collections",
-  "checked": "2026-10-30",
+  "checked": "2026-11-09",
   "policy": "unknown",
   "coverage": "partial",
   "keep_title": true,
@@ -3186,6 +3223,18 @@
     "supporting_source_url": "https://dchr.dc.gov/page/holiday-schedules",
     "supporting_quote": "Christmas Day: Friday, December 25, 2026",
     "rule": "next_day"
+   },
+   {
+    "slug": "washington-dc",
+    "date": "2026-11-11",
+    "holiday": "Veterans Day",
+    "status": "change",
+    "shift": "The 2026 guide maps a Wednesday holiday to Thursday collection; Veterans Day is listed for Nov. 12.",
+    "source_url": "https://dpw.dc.gov/sites/default/files/dc/sites/dpw/SlideGuide2026.pdf",
+    "quote": "Veterans Day - Nov 12",
+    "accessed": "2026-11-09",
+    "basis": "dated_schedule",
+    "confirmed_policy": "next_day"
    }
   ]
  },
@@ -3267,6 +3316,110 @@
     "2027-01-01",
     "2026-12-30"
    ]
+  ]
+ },
+ "indianapolis": {
+  "source": "https://www.indy.gov/activity/leaf-collection-season",
+  "checked": "2026-11-09",
+  "policy": "unknown",
+  "coverage": "partial",
+  "verified_rows": [
+   {
+    "slug": "indianapolis",
+    "date": "2026-11-26",
+    "holiday": "Thanksgiving Day",
+    "status": "change",
+    "shift": "No trash, heavy trash, leaf, or curbside recycling service Thu. Nov. 26; Thursday routes move to Fri. Nov. 27 and Friday routes to Sat. Nov. 28.",
+    "source_url": "https://www.indy.gov/activity/leaf-collection-season",
+    "quote": "There will be no trash, heavy trash, leaf service or curbside recycling service on Thursday, 11/26 in observance of Thanksgiving",
+    "accessed": "2026-11-09",
+    "basis": "dated_notice",
+    "confirmed_policy": "next_day"
+   }
+  ]
+ },
+ "columbus-ga": {
+  "source": "https://cdnresources.blob.core.usgovcloudapi.net/city-wide/FY27%20Holiday%20Schedule.pdf",
+  "checked": "2026-11-09",
+  "policy": "unknown",
+  "coverage": "partial",
+  "overrides": [
+   [
+    "2026-11-26",
+    "2026-11-25"
+   ]
+  ],
+  "verified_rows": [
+   {
+    "slug": "columbus-ga",
+    "date": "2026-11-11",
+    "holiday": "Veterans Day",
+    "status": "change",
+    "shift": "No garbage service Wed. Nov. 11; no make-up day is listed.",
+    "source_url": "https://cdnresources.blob.core.usgovcloudapi.net/city-wide/FY27%20Holiday%20Schedule.pdf",
+    "quote": "No Garbage Service",
+    "accessed": "2026-11-09",
+    "basis": "dated_schedule",
+    "confirmed_policy": "skip"
+   },
+   {
+    "slug": "columbus-ga",
+    "date": "2026-11-26",
+    "holiday": "Thanksgiving Day",
+    "status": "change",
+    "shift": "Thursday collection routes are collected on Wed. Nov. 25.",
+    "source_url": "https://cdnresources.blob.core.usgovcloudapi.net/city-wide/FY27%20Holiday%20Schedule.pdf",
+    "quote": "Thursday Collection Routes",
+    "accessed": "2026-11-09",
+    "basis": "dated_schedule",
+    "confirmed_policy": "overrides"
+   }
+  ]
+ },
+ "cary": {
+  "source": "https://www.carync.gov/Home/Components/News/News/17313/715",
+  "checked": "2026-11-09",
+  "policy": "unknown",
+  "coverage": "partial",
+  "overrides": [
+   [
+    "2026-11-11",
+    "2026-11-12"
+   ],
+   [
+    "2026-11-12",
+    "2026-11-13"
+   ],
+   [
+    "2026-11-26",
+    "2026-11-27"
+   ]
+  ],
+  "verified_rows": [
+   {
+    "slug": "cary",
+    "date": "2026-11-11",
+    "holiday": "Veterans Day",
+    "status": "change",
+    "shift": "Wednesday and Thursday households are delayed one day during the week of Nov. 9; Monday and Tuesday routes remain on schedule.",
+    "source_url": "https://www.carync.gov/Home/Components/News/News/17313/715",
+    "quote": "Curbside collection will be delayed by one day for households that receive collection on Wednesdays and Thursdays",
+    "accessed": "2026-11-09",
+    "basis": "dated_notice",
+    "confirmed_policy": "overrides"
+   },
+   {
+    "slug": "cary",
+    "date": "2026-11-26",
+    "holiday": "Thanksgiving Day",
+    "status": "change",
+    "shift": "No curbside collection Thu. Nov. 26; collection moves one day later to Fri. Nov. 27.",
+    "source_url": "https://www.carync.gov/connect-engage/newsroom/bud-newsletter/bud-newsletter-october-2026",
+    "quote": "No curbside collection on Thursday, November 26. Instead, collection will move one day later to Friday, November 27.",
+    "accessed": "2026-11-09",
+    "basis": "dated_notice",
+    "confirmed_policy": "overrides"
+   }
   ]
  }
 }
