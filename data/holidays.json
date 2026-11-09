@@ -3323,6 +3323,7 @@
   "checked": "2026-11-09",
   "policy": "unknown",
   "coverage": "partial",
+  "keep_title": true,
   "verified_rows": [
    {
     "slug": "indianapolis",
@@ -3343,6 +3344,7 @@
   "checked": "2026-11-09",
   "policy": "unknown",
   "coverage": "partial",
+  "keep_title": true,
   "overrides": [
    [
     "2026-11-26",
@@ -3381,6 +3383,7 @@
   "checked": "2026-11-09",
   "policy": "unknown",
   "coverage": "partial",
+  "keep_title": true,
   "overrides": [
    [
     "2026-11-11",
